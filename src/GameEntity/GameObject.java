@@ -1,6 +1,5 @@
 package GameEntity;
 
-import Interface.Collidable;
 import javafx.scene.canvas.GraphicsContext;
 
 public abstract class GameObject {
@@ -17,12 +16,6 @@ public abstract class GameObject {
     public boolean isVisible(){
         return visible;
     }
-    public void onUpdate(){
-    }
-    private boolean collideWith(Collidable other){
-        GameObject otherG = (GameObject) other;
-        return false;//PlaceHolder
-        //ColliderLogic
-        //return Math.hypot(this.posX-otherG.posX, this.posY-otherG.posY) <= this.radius+otherG.radius;
-    }
+    public abstract void onUpdate();
+
 }

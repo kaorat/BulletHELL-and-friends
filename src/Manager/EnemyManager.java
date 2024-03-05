@@ -1,6 +1,7 @@
 package Manager;
 
 import GameEntity.Enemy.BaseEnemy;
+import Utils.Config;
 import Utils.EnemyType;
 
 import java.util.ArrayList;
@@ -15,8 +16,16 @@ public class EnemyManager {
 
     private EnemyManager() {
         enemies = new ArrayList<BaseEnemy>();
+        ChickenPerks = new ArrayList<Integer>();
+        SheepPerks = new ArrayList<Integer>();
+        CowPerks = new ArrayList<Integer>();
+        //singleton
+        for(int i = 0; i < 8; i++){
+            ChickenPerks.add(0);
+            SheepPerks.add(0);
+            CowPerks.add(0);
+        }
 
-        // what to do here??
     }
 
     public static EnemyManager getInstance() {
@@ -52,7 +61,7 @@ public class EnemyManager {
         }
     }
 
-    public void upgradePerks(EnemyType type, int index){
+    public void upgradePerks(EnemyType type, int index){ //index 0-7
         if(type == EnemyType.CHICKEN){
             ChickenPerks.set(index, ChickenPerks.get(index) + 1);
         }
@@ -64,6 +73,19 @@ public class EnemyManager {
         }
     }
 
+    public double getPerkValue(EnemyType type, int index){
+        if(type == EnemyType.CHICKEN){
+            return Config.baseValues.get(index) + (ChickenPerks.get(index) * Config.upgradeValues.get(index));
+        }
+        else if(type == EnemyType.SHEEP){
+            return Config.baseValues.get(index) + (SheepPerks.get(index) * Config.upgradeValues.get(index));
+        }
+        else if(type == EnemyType.COW){
+            return Config.baseValues.get(index) + (CowPerks.get(index) * Config.upgradeValues.get(index));
+        }
+        return 0;
+    }
+
     public void clearEnemy() {
         enemies.clear();
     }
@@ -72,4 +94,15 @@ public class EnemyManager {
         return enemies;
     }
 
+    public ArrayList<Integer> getChickenPerks() {
+        return ChickenPerks;
+    }
+
+    public ArrayList<Integer> getSheepPerks() {
+        return SheepPerks;
+    }
+
+    public ArrayList<Integer> getCowPerks() {
+        return CowPerks;
+    }
 }

@@ -61,6 +61,8 @@ public class EnemyManager {
         }
     }
 
+    // parts drop is still messed up!!!!
+
     public void upgradePerks(EnemyType type, int index){ //index 0-7
         if(type == EnemyType.CHICKEN){
             ChickenPerks.set(index, ChickenPerks.get(index) + 1);
@@ -73,7 +75,7 @@ public class EnemyManager {
         }
     }
 
-    public double getPerkValue(EnemyType type, int index){
+    public double calculatePerkValue(EnemyType type, int index){
         if(type == EnemyType.CHICKEN){
             return Config.baseValues.get(index) + (ChickenPerks.get(index) * Config.upgradeValues.get(index));
         }

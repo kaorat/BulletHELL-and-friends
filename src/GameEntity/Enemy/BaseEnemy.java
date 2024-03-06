@@ -18,7 +18,7 @@ public abstract class BaseEnemy extends GameObject {
 
     public static final Object[][] PERKS = {
             // Index, Perk Name, Base Value, Upgrade Value
-            {0, "Parts Drop", 25, 8},
+            {0, "Parts Drop", 25, null},
             {1, "Calcium Gene - Enemy HP", 100, 15},
             {2, "Agility Gene - Enemy Fire Rate", 2.4, 0.7},
             {3, "Lethal Mutation - Bullet Speed", 1.2, 0.25},

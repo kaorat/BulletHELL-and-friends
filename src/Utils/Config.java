@@ -50,6 +50,11 @@ public class Config {
 
     // Initialize base, upgrade, and drop upgrade values
     static {
+        // Parts Drop (no need , all zero)
+        baseValues.add(0d);
+        upgradeValues.add(0d);
+        dropUpgradeValues.add(0d);
+
         // Calcium Gene
         baseValues.add(CALC_G_ENEMY_HP_BASE);
         upgradeValues.add(CALC_G_ENEMY_HP_UPGRADE);
@@ -78,10 +83,12 @@ public class Config {
         // Genetic Drift (Only base and upgrade values, no drop upgrade)
         baseValues.add(GENETIC_CHANCE_OBTAIN_SOUL_BASE);
         upgradeValues.add(GENETIC_CHANCE_OBTAIN_SOUL_UPGRADE);
+        dropUpgradeValues.add(0d);
 
         // Fast Reproduction (Only base and upgrade values, no drop upgrade)
         baseValues.add(FAST_SPAWN_TIME_BASE);
         upgradeValues.add(FAST_SPAWN_TIME_UPGRADE);
+        dropUpgradeValues.add(0d);
 
     }
 }

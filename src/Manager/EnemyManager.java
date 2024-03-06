@@ -5,6 +5,7 @@ import Utils.Config;
 import Utils.EnemyType;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class EnemyManager {
 
@@ -16,15 +17,10 @@ public class EnemyManager {
 
     private EnemyManager() {
         enemies = new ArrayList<BaseEnemy>();
-        ChickenPerks = new ArrayList<Integer>();
-        SheepPerks = new ArrayList<Integer>();
-        CowPerks = new ArrayList<Integer>();
-        //singleton
-        for(int i = 0; i < 8; i++){
-            ChickenPerks.add(0);
-            SheepPerks.add(0);
-            CowPerks.add(0);
-        }
+        //singleton , 25 is the starting part drop rate
+        ChickenPerks = new ArrayList<Integer>(Arrays.asList(25, 0, 0, 0, 0, 0, 0, 0));
+        SheepPerks = new ArrayList<Integer>(Arrays.asList(25, 0, 0, 0, 0, 0, 0, 0));
+        CowPerks = new ArrayList<Integer>(Arrays.asList(25, 0, 0, 0, 0, 0, 0, 0));
 
     }
 
@@ -34,8 +30,6 @@ public class EnemyManager {
         }
         return instance;
     }
-
-
 
 //    public void checkCollision() {
 //        for (BaseEnemy enemy : enemies) {
@@ -62,17 +56,23 @@ public class EnemyManager {
     }
 
     // parts drop is still messed up!!!!
+    // 0 is the drop rate, 1-7 are the perks
 
-    public void upgradePerks(EnemyType type, int index){ //index 0-7
+    public void upgradePerks(EnemyType type, int index){ //index should be between 1-7
+        if(index == 0) return;
         if(type == EnemyType.CHICKEN){
             ChickenPerks.set(index, ChickenPerks.get(index) + 1);
+            ChickenPerks.set(0, (int) (ChickenPerks.get(0) + Config.dropUpgradeValues.get(index)));
         }
         else if(type == EnemyType.SHEEP){
             SheepPerks.set(index, SheepPerks.get(index) + 1);
+            SheepPerks.set(0, (int) (SheepPerks.get(0) + Config.dropUpgradeValues.get(index)));
         }
         else if(type == EnemyType.COW){
             CowPerks.set(index, CowPerks.get(index) + 1);
+            CowPerks.set(0, (int) (CowPerks.get(0) + Config.dropUpgradeValues.get(index)));
         }
+
     }
 
     public double calculatePerkValue(EnemyType type, int index){

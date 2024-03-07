@@ -1,6 +1,9 @@
 package Pane;
 
-import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 
-public class GameSideUIPane extends Canvas {
+public class GameSideUIPane extends GraphicEditor{
+    public GameSideUIPane(GraphicsContext graphicsContext) {
+        super(graphicsContext);
+    }
 }

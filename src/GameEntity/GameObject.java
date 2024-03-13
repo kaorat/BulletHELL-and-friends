@@ -2,7 +2,10 @@ package GameEntity;
 
 import javafx.scene.canvas.GraphicsContext;
 
+import java.util.ArrayList;
+
 public abstract class GameObject {
+
     protected double posX,posY,rotX,rotY,sclX,sclY;
     protected int z;
     protected boolean visible,destroyed;

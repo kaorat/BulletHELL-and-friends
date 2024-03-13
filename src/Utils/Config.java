@@ -5,6 +5,9 @@ import java.util.ArrayList;
 
 public class Config {
 
+    //TODO
+    // might need to make a base for each enemy type
+
     // Parts Drop
     public static final double PARTS_DROP_BASE = 25;
 

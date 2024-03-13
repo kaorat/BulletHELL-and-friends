@@ -1,5 +1,7 @@
 package GameEntity.Boss;
 
+import javafx.scene.canvas.GraphicsContext;
+
 public class KaoBoss extends BaseBoss{
     public KaoBoss(int hp, int fireRate, int bulletSpeed, int bulletLength) {
         super(hp, fireRate, bulletSpeed, bulletLength);
@@ -17,6 +19,5 @@ public class KaoBoss extends BaseBoss{
 
     @Override
     public void draw(GraphicsContext gc) {
-        super.draw(gc);
     }
 }

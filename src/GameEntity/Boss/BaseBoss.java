@@ -1,6 +1,7 @@
 package GameEntity.Boss;
 
 import GameEntity.GameObject;
+import javafx.scene.canvas.GraphicsContext;
 
 public abstract class BaseBoss extends GameObject {
     protected int hp;

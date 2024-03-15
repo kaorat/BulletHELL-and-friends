@@ -21,7 +21,7 @@ public class RootPane extends Canvas {
 
     public static RootPane getRootPane() {
         if (instance == null)
-            instance = new RootPane(1290,760);
+            instance = new RootPane(960,720);
         return instance;
     }
     public static RootPane getRootPane(double width,double height) {

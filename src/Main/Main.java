@@ -17,8 +17,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         SceneManager.GotoGameScene();
         StackPane root = new StackPane();
-        root.getChildren().add(RootPane.getRootPane(1280,960));
-        Scene scene = new Scene(root, 1280, 960);
+        root.getChildren().add(RootPane.getRootPane(960,720));
+        Scene scene = new Scene(root, 960, 720);
         primaryStage.setTitle("Funny BulletHell Game");
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);

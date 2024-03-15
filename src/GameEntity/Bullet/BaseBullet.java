@@ -1,6 +1,7 @@
 package GameEntity.Bullet;
 
 import GameEntity.GameObject;
+import Utils.Transform;
 import javafx.scene.canvas.GraphicsContext;
 
 public class BaseBullet extends GameObject {
@@ -9,16 +10,15 @@ public class BaseBullet extends GameObject {
     protected double damage;
     protected GameObject owner;
 
-    public BaseBullet(double damage, GameObject owner) {
+    public BaseBullet(double damage, GameObject owner, Transform transform, int z) {
+        super(transform,z);
         this.damage = damage;
         this.owner = owner;
     }
 
     public boolean isOutOfBounds() {
-        if(x < 0 || x > 1290 || y < 0 || y > 760) //idk
-            return true;
-        else
-            return false;
+        //idk
+        return x < 0 || x > 640 || y < 0 || y > 720;
     }
 
     @Override

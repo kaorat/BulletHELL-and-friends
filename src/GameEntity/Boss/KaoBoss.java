@@ -1,10 +1,11 @@
 package GameEntity.Boss;
 
+import Utils.Transform;
 import javafx.scene.canvas.GraphicsContext;
 
 public class KaoBoss extends BaseBoss{
-    public KaoBoss(int hp, int fireRate, int bulletSpeed, int bulletLength) {
-        super(hp, fireRate, bulletSpeed, bulletLength);
+    public KaoBoss(int hp, int fireRate, int bulletSpeed, int bulletLength, Transform transform, int z) {
+        super(hp, fireRate, bulletSpeed, bulletLength,transform,z);
     }
 
     @Override

@@ -1,12 +1,14 @@
 package GameEntity.Enemy;
 
 import Manager.EnemyManager;
+import Utils.EnemyType;
+import Utils.Transform;
 
 public class Chicken extends BaseEnemy{
 
 
-    public Chicken(int hp, int fireRate, int bulletSpeed, int bulletQuantity, int bulletLength, double soulChance) {
-        super(hp, fireRate, bulletSpeed, bulletQuantity, bulletLength, soulChance);
+    public Chicken(Transform transform,int z) {
+        super(EnemyType.CHICKEN,transform, z);
         Perks = EnemyManager.getInstance().getChickenPerks();
     }
 

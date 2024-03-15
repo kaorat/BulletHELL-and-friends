@@ -4,6 +4,7 @@ import GameEntity.GameObject;
 import Manager.EnemyManager;
 import Utils.EnemyType;
 import Utils.EnemyUtils;
+import Utils.Transform;
 import javafx.scene.canvas.GraphicsContext;
 
 import java.util.ArrayList;
@@ -30,7 +31,8 @@ public abstract class BaseEnemy extends GameObject {
             {7, "Fast Reproduction - Spawn Time", 2.0, -0.05}
     };
 
-    public BaseEnemy(EnemyType type){
+    public BaseEnemy(EnemyType type, Transform transform,int z){
+        super(transform, z);
         this.hp = EnemyUtils.calculateHp(type);
         this.fireRate = EnemyUtils.calculateFireRate(type);
         this.bulletSpeed = EnemyUtils.calculateBulletSpeed(type);

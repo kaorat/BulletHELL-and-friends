@@ -19,4 +19,5 @@ public abstract class GraphicEditor {
         return gameObject;
     }
     public abstract void clear();
+    public abstract void onUpdate();
 }

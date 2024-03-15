@@ -12,4 +12,9 @@ public class GameplayEditor extends GraphicEditor{
     public void clear() {
 
     }
+
+    @Override
+    public void onUpdate() {
+
+    }
 }

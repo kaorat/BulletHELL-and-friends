@@ -3,10 +3,11 @@ package GameEntity;
 import Utils.Transform;
 import javafx.scene.canvas.GraphicsContext;
 
-public abstract class GameObject {
+public abstract class GameObject{
     protected Transform transform;
     protected int z;
     protected boolean visible,destroyed;
+    //default game object
     public GameObject(Transform transform,int z) {
         this.transform=transform;
         this.z = z;

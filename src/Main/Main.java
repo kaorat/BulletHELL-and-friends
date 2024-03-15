@@ -27,7 +27,7 @@ public class Main extends Application {
         AnimationTimer animation = new AnimationTimer() {
             public void handle(long now) {
                 RootPane.paintComponent();
-                //logic.logicUpdate();
+                SceneManager.update();
                 GameObjectHolder.getInstance().update();
                 //InputUtility.updateInputState();
             }

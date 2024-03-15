@@ -19,4 +19,9 @@ public class SceneManager {
         SceneManager.graphicEditors.add(new GameplayEditor(RootPane.getRootPane().getGraphicsContext2D()));
         SceneManager.graphicEditors.add(new GameSideUIEditor(RootPane.getRootPane().getGraphicsContext2D()));
     }
+    public static void update(){
+        for (GraphicEditor graphicEditor : graphicEditors) {
+            graphicEditor.onUpdate();
+        }
+    }
 }

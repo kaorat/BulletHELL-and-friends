@@ -2,17 +2,19 @@ package GameEntity.Enemy;
 
 import GameEntity.GameObject;
 import Manager.EnemyManager;
+import Utils.EnemyType;
+import Utils.EnemyUtils;
 import javafx.scene.canvas.GraphicsContext;
 
 import java.util.ArrayList;
 
 public abstract class BaseEnemy extends GameObject {
 
-    protected int hp;
-    protected int fireRate;
-    protected int bulletSpeed;
-    protected int bulletQuantity;
-    protected int bulletLength;
+    protected double hp;
+    protected double fireRate;
+    protected double bulletSpeed;
+    protected double bulletQuantity;
+    protected double bulletLength;
     protected double soulChance;
     protected ArrayList<Integer> Perks; // stores level of each perk
 
@@ -28,15 +30,15 @@ public abstract class BaseEnemy extends GameObject {
             {7, "Fast Reproduction - Spawn Time", 2.0, -0.05}
     };
 
-    public BaseEnemy(int hp, int fireRate, int bulletSpeed, int bulletQuantity, int bulletLength, double soulChance){
-        this.hp = hp;
-        this.fireRate = fireRate;
-        this.bulletSpeed = bulletSpeed;
-        this.bulletQuantity = bulletQuantity;
-        this.bulletLength = bulletLength;
-        this.soulChance = soulChance;
+    public BaseEnemy(EnemyType type){
+        this.hp = EnemyUtils.calculateHp(type);
+        this.fireRate = EnemyUtils.calculateFireRate(type);
+        this.bulletSpeed = EnemyUtils.calculateBulletSpeed(type);
+        this.bulletQuantity = EnemyUtils.calculateBulletQuantity(type);
+        this.bulletLength = EnemyUtils.calculateBulletLength(type);
+        this.soulChance = EnemyUtils.calculateSoulChance(type) ;
 
-        //perk will be initialized in the child class
+
     }
 
     public abstract void startFiring(); //start thread?

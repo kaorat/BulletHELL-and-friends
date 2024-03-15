@@ -3,11 +3,12 @@ package Manager;
 import GameEntity.Enemy.BaseEnemy;
 import Utils.Config;
 import Utils.EnemyType;
+import Utils.Upgradable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class EnemyManager {
+public class EnemyManager implements Upgradable {
 
     private static EnemyManager instance;
     private ArrayList<BaseEnemy> enemies;
@@ -106,5 +107,15 @@ public class EnemyManager {
 
     public ArrayList<Integer> getCowPerks() {
         return CowPerks;
+    }
+
+    @Override
+    public void upgradeLevel() {
+        //TODO: implement this
+    }
+
+    @Override
+    public void clearLevel() {
+        //TODO: implement this
     }
 }

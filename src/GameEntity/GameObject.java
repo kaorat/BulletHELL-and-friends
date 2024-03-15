@@ -4,6 +4,14 @@ import Utils.Transform;
 import javafx.scene.canvas.GraphicsContext;
 
 public abstract class GameObject {
+    public Transform getTransform() {
+        return transform;
+    }
+
+    public void setTransform(Transform transform) {
+        this.transform = transform;
+    }
+
     protected Transform transform;
     protected int z;
     protected boolean visible,destroyed;

@@ -35,7 +35,6 @@ public class RootPane extends Canvas {
         gc.fillRect(0, 0, getRootPane().width, getRootPane().height);
         for (GameObject entity : GameObjectHolder.getInstance().getEntities()) {
             if (entity.isVisible() && !entity.isDestroyed()) {
-                System.out.println(entity);
                 entity.draw(gc);
             }
         }

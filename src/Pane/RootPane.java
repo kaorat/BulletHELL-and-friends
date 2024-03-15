@@ -2,6 +2,7 @@ package Pane;
 
 import GameEntity.GameObject;
 import Manager.GameObjectHolder;
+import Utils.Utility;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -21,7 +22,7 @@ public class RootPane extends Canvas {
 
     public static RootPane getRootPane() {
         if (instance == null)
-            instance = new RootPane(960,720);
+            instance = new RootPane(Utility.getScreenX(),Utility.getScreenY());
         return instance;
     }
     public static RootPane getRootPane(double width,double height) {

@@ -13,9 +13,10 @@ public abstract class GraphicEditor {
         this.graphicsContext = graphicsContext;
         Monitored_Object=new ArrayList<>();
     }
-    public void create(GameObject gameObject){
+    public GameObject create(GameObject gameObject){
         GameObjectHolder.getInstance().add(gameObject);
         Monitored_Object.add(gameObject);
+        return gameObject;
     }
     public abstract void clear();
 }

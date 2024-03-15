@@ -2,6 +2,7 @@ package Main;
 
 import Manager.GameObjectHolder;
 import Manager.SceneManager;
+import Utils.Utility;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -17,8 +18,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         SceneManager.GotoGameScene();
         StackPane root = new StackPane();
-        root.getChildren().add(RootPane.getRootPane(960,720));
-        Scene scene = new Scene(root, 960, 720);
+        root.getChildren().add(RootPane.getRootPane(Utility.getScreenX(),Utility.getScreenY()));
+        Scene scene = new Scene(root, Utility.getScreenX(), Utility.getScreenY());
         primaryStage.setTitle("Funny BulletHell Game");
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);

@@ -12,5 +12,5 @@ public class BossManager {
         }
         return instance;
     }
-// idk what to do lol
+
 }

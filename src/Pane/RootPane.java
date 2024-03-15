@@ -8,10 +8,14 @@ import javafx.scene.paint.Color;
 
 public class RootPane extends Canvas {
     private static RootPane instance;
+    private double width;
+    private double height;
 
     private RootPane(double width,double height) {
         ///////////////////////
         super(width, height);
+        this.width=width;
+        this.height=height;
         this.setVisible(true);
     }
 
@@ -28,6 +32,7 @@ public class RootPane extends Canvas {
     public static void paintComponent() {
         GraphicsContext gc = RootPane.getRootPane().getGraphicsContext2D();
         gc.setFill(Color.BLACK);
+        gc.fillRect(0, 0, getRootPane().width, getRootPane().height);
         for (GameObject entity : GameObjectHolder.getInstance().getEntities()) {
             if (entity.isVisible() && !entity.isDestroyed()) {
                 entity.draw(gc);

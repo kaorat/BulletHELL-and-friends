@@ -5,7 +5,7 @@ import javafx.util.Pair;
 
 import java.util.ArrayList;
 
-public class PlayerManger implements Upgradable {
+public class PlayerManager implements Upgradable {
     private double BioticRifleDamage;
     private double BioticRifleFirerate;
     private double Dexterity;
@@ -13,7 +13,7 @@ public class PlayerManger implements Upgradable {
     private double Minimize;
     private ArrayList<Pair<String, Integer>> Weapon;
 
-    public PlayerManger(){
+    public PlayerManager(){
         setDexterity(7);
         setBioticRifleDamage(1);
         setProficiency(1);

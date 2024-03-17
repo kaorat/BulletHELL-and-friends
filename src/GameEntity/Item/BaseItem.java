@@ -17,11 +17,11 @@ public abstract class BaseItem extends GameObject {
 
    public void spawn(){ // same for all items?
       this.visible = true;
-      this.transform.setRot(10); //fall down - change later
+      this.transform.setRot(90); //downwards direction
    };
 
    public void isOutOfBounds(){
-      if(this.posY > 760){ // lower than the screen
+      if(this.transform.getPosY() > 760){ // lower than the screen
          this.destroyed = true;
       }
    }

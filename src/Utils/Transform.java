@@ -1,5 +1,7 @@
 package Utils;
 
+import javafx.geometry.Point2D;
+
 public class Transform {
     protected double posX,posY,rot,sclX,sclY;
 
@@ -25,6 +27,22 @@ public class Transform {
         this.sclX = sclX;
         this.sclY = sclY;
     }
+
+    public Point2D calculateTranslation(double factor) {
+
+        double angleRad = Math.toRadians(rot);
+        double deltaX = factor * Math.cos(angleRad);
+        double deltaY = factor * Math.sin(angleRad);
+
+        return new Point2D(deltaX, deltaY); // translations
+    }
+
+    public void translate(double speed) {
+        Point2D translation = calculateTranslation(speed);
+        posX += translation.getX();
+        posY += translation.getY();
+    }
+
 
     public double getPosX() {
         return posX;

@@ -33,6 +33,7 @@ public abstract class BaseEnemy extends GameObject {
 
     public BaseEnemy(EnemyType type, Transform transform,int z){
         super(transform, z);
+
         this.hp = EnemyUtils.calculateHp(type);
         this.fireRate = EnemyUtils.calculateFireRate(type);
         this.bulletSpeed = EnemyUtils.calculateBulletSpeed(type);

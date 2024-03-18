@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f6417f7-5d89-4cd6-b948-7198d6de91f1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Image/cover.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BlockGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BlockGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bullet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +47,20 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Progmeth_learn\MINI_PRO_blockrun\src\Image" />
+    </key>
+  </component>
   <component name="RunManager">
+    <configuration name="BlockGame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="BlockGame" />
+      <module name="MINI_PRO_blockrun" />
+      <option name="VM_PARAMETERS" value="--module-path F:\openjfx-20.0.2_windows-x64_bin-sdk\javafx-sdk-20.0.2\lib --add-modules javafx.controls,javafx.fxml,javafx.graphics,javafx.media" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <module name="MINI_PRO_blockrun" />
       <option name="VM_PARAMETERS" value="--module-path F:\openjfx-20.0.2_windows-x64_bin-sdk\javafx-sdk-20.0.2\lib --add-modules javafx.controls,javafx.fxml,javafx.graphics,javafx.media" />
@@ -53,6 +68,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.BlockGame" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

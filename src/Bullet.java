@@ -1,10 +1,16 @@
 public class Bullet {
     private double bx;
     private double by;
+    private String image;
 
     public Bullet(double bx, double by) {
         this.bx = bx-2;
         this.by = by;
+        this.image = "Image/cover.jpg";
+    }
+
+    public String getImage() {
+        return image;
     }
 
     public double getBx() {
@@ -24,6 +30,6 @@ public class Bullet {
     }
 
     public void moveUp() {
-        by -= 5;
+        by -= 1;
     }
 }

@@ -11,7 +11,6 @@ public class UISprite extends GameObject {
     public UISprite(Image sprite,Transform transform, int z) {
         super(transform, z);
         this.sprite=sprite;
-
     }
 
     @Override

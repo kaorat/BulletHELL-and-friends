@@ -19,6 +19,18 @@ public abstract class BaseEnemy extends GameObject {
     protected double soulChance;
     protected ArrayList<Integer> Perks; // stores level of each perk
 
+    protected double uptime;
+    protected double downtime;
+    protected double shootTime;
+    protected enum States{
+        UP,
+        DOWN,
+        SHOOT
+    }
+
+    protected States state;
+
+
     public static final Object[][] PERKS = {
             // Index, Perk Name, Base Value, Upgrade Value
             {0, "Parts Drop", 25, null},
@@ -54,8 +66,21 @@ public abstract class BaseEnemy extends GameObject {
     }
 
     @Override
-    public void onUpdate() {
+    public void onUpdate() { //from animationTimer
 
+        double renderTime = 1000000000 / 60d; // idk
+        if(state == States.DOWN) {
+            downtime -= renderTime;
+            if(downtime <= 0) state = States.SHOOT;
+        }
+        if (state == States.SHOOT) {
+            shootTime -= renderTime;
+            if(shootTime <= 0) state = States.DOWN;
+        }
+        if(state == States.UP) {
+            uptime -= renderTime;
+            if(uptime <= 0) destroyed = true;
+        }
     }
 
     public ArrayList<Integer> getPerks() {

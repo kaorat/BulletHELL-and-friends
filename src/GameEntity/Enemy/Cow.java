@@ -3,6 +3,7 @@ package GameEntity.Enemy;
 import Manager.EnemyManager;
 import Utils.EnemyType;
 import Utils.Transform;
+import javafx.scene.canvas.GraphicsContext;
 
 public class Cow extends BaseEnemy{
     public Cow(Transform transform,int z) {
@@ -17,6 +18,11 @@ public class Cow extends BaseEnemy{
 
     @Override
     public void firing() {
+
+    }
+
+    @Override
+    public void draw(GraphicsContext gc) {
 
     }
 }

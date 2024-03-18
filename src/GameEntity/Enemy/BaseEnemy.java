@@ -53,34 +53,46 @@ public abstract class BaseEnemy extends GameObject {
         this.bulletLength = EnemyUtils.calculateBulletLength(type);
         this.soulChance = EnemyUtils.calculateSoulChance(type) ;
 
+        state = States.DOWN;
+        downtime= Math.random() * 1000 + 1400;
+        uptime = downtime;
+        shootTime = Math.random() * 3000 + 5000;
+
+
+
 
     }
 
     public abstract void startFiring(); //start thread?
     public abstract void firing();
 
-
     @Override
-    public void draw(GraphicsContext gc) {
+    public abstract void draw(GraphicsContext gc);
 
-    }
 
+    //Transform is not meant to be added directly , I believe.
     @Override
     public void onUpdate() { //from animationTimer
 
-        double renderTime = 1000000000 / 60d; // idk
+        double renderTime = 8d ; // idk
         if(state == States.DOWN) {
             downtime -= renderTime;
+            transform.setRot(90);
+            transform.translate(0.7);
             if(downtime <= 0) state = States.SHOOT;
         }
         if (state == States.SHOOT) {
             shootTime -= renderTime;
-            if(shootTime <= 0) state = States.DOWN;
+            if(shootTime <= 0) state = States.UP;
         }
         if(state == States.UP) {
             uptime -= renderTime;
+            transform.setRot(270);
+            transform.translate(0.7);
+
             if(uptime <= 0) destroyed = true;
         }
+        System.out.println("Enemy state : " + state.toString());
     }
 
     public ArrayList<Integer> getPerks() {

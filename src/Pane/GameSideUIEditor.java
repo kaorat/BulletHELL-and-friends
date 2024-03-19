@@ -2,6 +2,7 @@ package Pane;
 
 import GameEntity.GameObject;
 import GameEntity.UI.UISprite;
+import Manager.StatManager;
 import Utils.Asset;
 import Utils.Text;
 import Utils.Transform;
@@ -49,8 +50,8 @@ public class GameSideUIEditor extends GraphicEditor{
 
     @Override
     public void onUpdate() {
-        part.getText().setText("100");
-        soul.getText().setText("10000");
-        honey.getText().setText("0");
+        part.getText().setText(String.valueOf(StatManager.getInstance().getCoin()));
+        soul.getText().setText(String.valueOf(StatManager.getInstance().getSoul()));
+        honey.getText().setText(String.valueOf(StatManager.getInstance().getAmber()));
     }
 }

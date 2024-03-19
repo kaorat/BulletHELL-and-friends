@@ -2,11 +2,12 @@ package Pane;
 
 import GameEntity.GameObject;
 import Manager.GameObjectHolder;
+import Utils.Updatable;
 import javafx.scene.canvas.GraphicsContext;
 
 import java.util.ArrayList;
 
-public abstract class GraphicEditor {
+public abstract class GraphicEditor implements Updatable {
     protected GraphicsContext graphicsContext;
     protected ArrayList<GameObject> Monitored_Object;
     public GraphicEditor(GraphicsContext graphicsContext) {
@@ -19,5 +20,4 @@ public abstract class GraphicEditor {
         return gameObject;
     }
     public abstract void clear();
-    public abstract void onUpdate();
 }

@@ -31,22 +31,23 @@ public abstract class BaseEnemy extends GameObject {
 
     protected States state;
 
-
-    public static final Object[][] PERKS = {
-            // Index, Perk Name, Base Value, Upgrade Value
-            {0, "Parts Drop", 25, null},
-            {1, "Calcium Gene - Enemy HP", 100, 15},
-            {2, "Agility Gene - Enemy Fire Rate", 2.4, 0.7},
-            {3, "Lethal Mutation - Bullet Speed", 1.2, 0.25},
-            {4, "Fuzzy Mutation - Bullet Quantity", 8, 1},
-            {5, "Elongation - Bullet Length", 2, 1},
-            {6, "Genetic Drift - Chance to Obtain Soul", 10, 5},
-            {7, "Fast Reproduction - Spawn Time", 2.0, -0.05}
-    };
+    // ---- Suchas comment: I got headache from this-----
+//    public static final Object[][] PERKS = {
+//            // Index, Perk Name, Base Value, Upgrade Value
+//            {0, "Parts Drop", 25, null},
+//            {1, "Calcium Gene - Enemy HP", 100, 15},
+//            {2, "Agility Gene - Enemy Fire Rate", 2.4, 0.7},
+//            {3, "Lethal Mutation - Bullet Speed", 1.2, 0.25},
+//            {4, "Fuzzy Mutation - Bullet Quantity", 8, 1},
+//            {5, "Elongation - Bullet Length", 2, 1},
+//            {6, "Genetic Drift - Chance to Obtain Soul", 10, 5},
+//            {7, "Fast Reproduction - Spawn Time", 2.0, -0.05}
+//    };
 
     public BaseEnemy(EnemyType type, Transform transform,int z){
         super(transform, z);
-
+        // ---- Suchas comment: ALL of this should be constructed on children classes, because it calculates level too, doesn't it-----
+        // ---- or create one more argument (levels[]) -----
         this.hp = EnemyUtils.calculateHp(type);
         this.fireRate = EnemyUtils.calculateFireRate(type);
         this.bulletSpeed = EnemyUtils.calculateBulletSpeed(type);
@@ -70,20 +71,17 @@ public abstract class BaseEnemy extends GameObject {
     public abstract void startFiring(); //start thread?
     public abstract void firing();
 
-    @Override
-    public abstract void draw(GraphicsContext gc);
-
-
-
-
     //Transform is not meant to be added directly , I believe.
+    // ---- Suchas comment: correct, add when instantiating only but can be edited though setter-----
     @Override
     public void onUpdate() { //from animationTimer
+        // ---- Suchas comment: implement in manager please-----
         EnemyManager.getInstance().removeDestroyed();
         if(EnemyManager.getInstance().checkEnemyLeft()){ //less than 5
             EnemyManager.getInstance().spawnEnemy(EnemyType.CHICKEN);
         };
-        double renderTime = 8d ; // idk
+
+        double renderTime = 8d ; // idk  // Suchas comment: idk
         if(state == States.DOWN) {
             downtime -= renderTime;
             transform.setRot(90);

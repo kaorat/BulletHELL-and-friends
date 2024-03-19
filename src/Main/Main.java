@@ -31,7 +31,7 @@ public class Main extends Application {
             public void handle(long now) {
                 RootPane.paintComponent();
                 SceneManager.update();
-                GameObjectHolder.getInstance().update();
+                //GameObjectHolder.getInstance().update();
                 //InputUtility.updateInputState();
             }
         };

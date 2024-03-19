@@ -4,15 +4,12 @@ import GameEntity.Enemy.BaseEnemy;
 import GameEntity.Enemy.Chicken;
 import GameEntity.Enemy.Cow;
 import GameEntity.Enemy.Sheep;
-import Utils.Config;
-import Utils.EnemyType;
-import Utils.Transform;
-import Utils.Upgradable;
+import Utils.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class EnemyManager implements Upgradable {
+public class EnemyManager implements Upgradable, Updatable {
 
     private static EnemyManager instance;
     private ArrayList<BaseEnemy> enemies;
@@ -46,7 +43,7 @@ public class EnemyManager implements Upgradable {
 //    }
 
     public Transform randomTransform() {
-        double x = (Math.random() * 800);
+        double x = (Math.random() * 640);
         double y = -60d;
         return new Transform(x, y, 0, 2, 2);
     }
@@ -144,5 +141,10 @@ public class EnemyManager implements Upgradable {
     @Override
     public void clearLevel() {
         //TODO: implement this
+    }
+
+    @Override
+    public void onUpdate() {
+        
     }
 }

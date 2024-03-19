@@ -1,8 +1,9 @@
 package Manager;
 
 import GameEntity.Boss.BaseBoss;
+import Utils.Updatable;
 
-public class BossManager {
+public class BossManager implements Updatable {
     private static BossManager instance;
 
 
@@ -13,4 +14,8 @@ public class BossManager {
         return instance;
     }
 
+    @Override
+    public void onUpdate() {
+
+    }
 }

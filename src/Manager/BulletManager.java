@@ -3,10 +3,11 @@ package Manager;
 import GameEntity.Bullet.BaseBullet;
 import GameEntity.Bullet.PlayerBullet;
 import Utils.Asset;
+import Utils.Updatable;
 
 import java.util.ArrayList;
 
-public class BulletManager {
+public class BulletManager implements Updatable {
 
     private static BulletManager instance;
 
@@ -46,5 +47,10 @@ public class BulletManager {
 
     public ArrayList<BaseBullet> getBullets() {
         return bullets;
+    }
+
+    @Override
+    public void onUpdate() {
+
     }
 }

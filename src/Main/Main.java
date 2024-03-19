@@ -2,6 +2,7 @@ package Main;
 
 import Manager.GameObjectHolder;
 import Manager.SceneManager;
+import Utils.Utility;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -19,12 +20,9 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         SceneManager.GotoGameScene();
         StackPane root = new StackPane();
-        root.getChildren().add(RootPane.getRootPane(1280,960));
-
-        Scene scene = new Scene(root, 1280, 960);
-
+        root.getChildren().add(RootPane.getRootPane(Utility.getScreenX(),Utility.getScreenY()));
+        Scene scene = new Scene(root, Utility.getScreenX(), Utility.getScreenY());
         InputUtility.setKey(scene);
-
         primaryStage.setTitle("Funny BulletHell Game");
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
@@ -32,7 +30,7 @@ public class Main extends Application {
         AnimationTimer animation = new AnimationTimer() {
             public void handle(long now) {
                 RootPane.paintComponent();
-                //logic.logicUpdate();
+                SceneManager.update();
                 GameObjectHolder.getInstance().update();
                 //InputUtility.updateInputState();
             }

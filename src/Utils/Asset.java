@@ -5,17 +5,33 @@ import javafx.scene.image.Image;
 public class Asset {
     public static class UI{
         public static Image background;
-        public static Image skull;
+        public static Image currencyBG;
+        public static Image partUI;
+        public static Image soulUI;
+        public static Image honeyUI;
+        public static Image guniconUI;
+        public static Image sheepiconUI;
+        public static Image holyiconUI;
+        public static Image dnaiconUI;
         static{
             loadResource();
         }
 
         private static void loadResource() {
-            background=new Image(ClassLoader.getSystemResource("UI/Q86S4e.png").toString());
-           skull=new Image(ClassLoader.getSystemResource("UI/skull (1).png").toString());
+            background=Load("UI/Q86S4e.png");
+            currencyBG=Load("UI/valuebg.png");
+            partUI=Load("UI/meat.png");
+            soulUI=Load("UI/skull.png");
+            honeyUI=Load("UI/computer.png");
+            guniconUI=Load("UI/gun.png");
+            sheepiconUI=Load("UI/sheep.png");
+            holyiconUI=Load("UI/holy-grail.png");
+            dnaiconUI=Load("UI/dna.png");
+        }
+        private static Image Load(String url){
+            return new Image(ClassLoader.getSystemResource(url).toString());
         }
     }
-
     public static class Game{
         public static Image player;
         public static Image bullet;
@@ -26,9 +42,12 @@ public class Asset {
         }
 
         private static void loadResource() {
-            player=new Image(ClassLoader.getSystemResource("UI/kaosteak.png").toString());
-            bullet=new Image(ClassLoader.getSystemResource("UI/computer.png").toString());
-            enemyBullet=new Image(ClassLoader.getSystemResource("UI/firebullet.png").toString());
+            player=Load("UI/kaosteak.png");
+            bullet=Load("UI/computer.png");
+            enemyBullet=Load("UI/firebullet.png");
+        }
+        private static Image Load(String url){
+            return new Image(ClassLoader.getSystemResource(url).toString());
         }
     }
 }

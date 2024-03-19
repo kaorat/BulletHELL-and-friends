@@ -42,7 +42,7 @@ public class GameObjectHolder {
     }
 
     public void add(GameObject entity) {
-        System.out.println("add");
+//        System.out.println("add");
         entities.add(entity);
         entities.sort(comparator);
         /*

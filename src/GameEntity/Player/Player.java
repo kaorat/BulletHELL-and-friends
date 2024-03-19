@@ -21,7 +21,7 @@ public class Player extends GameObject implements Shootable {
 
     public Player(Transform transform, int z) {
         super(transform, z);
-        this.speed = 1.7;
+        this.speed = 3.5;
     }
 
     public void checkOutOfBounds() {
@@ -72,7 +72,7 @@ public class Player extends GameObject implements Shootable {
         long currentTime = System.currentTimeMillis();
         if (isShiftPressed()) {
             fireRate = 80;
-            speed = 3.5;
+            speed = 2.7;
             if (currentTime - lastFireTime > fireRate) {
                 shoot();
                 controlAggressiveShoot();
@@ -80,7 +80,7 @@ public class Player extends GameObject implements Shootable {
             }
         }else{
             fireRate = 200;
-            speed = 1.7;
+            speed = 3.5;
             if (currentTime - lastFireTime > fireRate) {
                 shoot();
 

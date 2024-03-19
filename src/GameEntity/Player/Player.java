@@ -6,11 +6,12 @@ import Manager.BulletManager;
 import Utils.Asset;
 import Utils.Shootable;
 import Utils.Transform;
+import Utils.Utility;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 import static input.InputUtility.*;
-
+// ---- Suchas comment: Interface is unnecessary but okay-----
 public class Player extends GameObject implements Shootable {
 
 
@@ -28,8 +29,8 @@ public class Player extends GameObject implements Shootable {
         if (this.transform.getPosX() < 0) {
             this.transform.setPosX(0);
         }
-        if (this.transform.getPosX() > 800) {
-            this.transform.setPosX(800);
+        if (this.transform.getPosX() > Utility.getGameScreenX()) {
+            this.transform.setPosX(Utility.getGameScreenX());
         }
         if (this.transform.getPosY() < 0) {
             this.transform.setPosY(0);
@@ -70,6 +71,7 @@ public class Player extends GameObject implements Shootable {
     public void onUpdate() {
 //        System.out.println("Player Update : " + isAPressed());
         long currentTime = System.currentTimeMillis();
+        // ---- Suchas comment: Left Shift?? Gonna be pretty hard to balance na (Use only for slow and hitbox show)-----
         if (isShiftPressed()) {
             fireRate = 80;
             speed = 2.7;
@@ -87,6 +89,7 @@ public class Player extends GameObject implements Shootable {
                 lastFireTime = currentTime;
             }
         }
+        // ---- Suchas comment: Could this be shorter? Lemme think-----
         if (isWPressed() && isDPressed()) { // Move up-right
             transform.setRot(-45);
             transform.translate(speed);

@@ -1,11 +1,13 @@
 package Manager;
 
+import Utils.Updatable;
 import Utils.Upgradable;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
 
-public class PlayerManager implements Upgradable {
+public class PlayerManager implements Upgradable, Updatable {
+    private static PlayerManager instance;
     private double BioticRifleDamage;
     private double BioticRifleFirerate;
     private double Dexterity;
@@ -22,7 +24,12 @@ public class PlayerManager implements Upgradable {
         this.Weapon = new ArrayList<Pair<String, Integer>>();
         Weapon.add(new Pair<>("Neuron Missile", 0));
     }
-
+    public static PlayerManager getInstance() {
+        if (instance == null) {
+            instance = new PlayerManager();
+        }
+        return instance;
+    }
     public double getMinimize() {
         return Minimize;
     }
@@ -73,6 +80,11 @@ public class PlayerManager implements Upgradable {
 
     @Override
     public void clearLevel() {
+
+    }
+
+    @Override
+    public void onUpdate() {
 
     }
 }

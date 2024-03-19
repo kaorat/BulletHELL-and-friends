@@ -3,6 +3,7 @@ package Utils;
 import javafx.geometry.Point2D;
 
 public class Transform {
+    // ---- Suchas comment: so 2 rots huh,one for visual, another for movement-----
     protected double posX,posY,rot,sclX,sclY;
 
     public Transform(double posX, double posY) {

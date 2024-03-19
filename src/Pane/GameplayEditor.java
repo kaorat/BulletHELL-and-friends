@@ -7,11 +7,10 @@ public class GameplayEditor extends GraphicEditor{
     public GameplayEditor(GraphicsContext graphicsContext) {
         super(graphicsContext);
         // DUMMY TEST
-//        create(new GameEntity.Enemy.Chicken(new Utils.Transform(10,-60),60));
-//        create(new GameEntity.Enemy.Chicken(new Utils.Transform(100,-60),60));
-//        create(new GameEntity.Enemy.Chicken(new Utils.Transform(200,-60),60));
-//        create(new GameEntity.Enemy.Chicken(new Utils.Transform(300,-60),60));
-//        create(new GameEntity.Enemy.Chicken(new Utils.Transform(400,-60),60));
+        create(new GameEntity.Enemy.Chicken(new Utils.Transform(10,-60),60));
+
+
+        create(new GameEntity.Player.Player(new Utils.Transform(200,400),70));
     }
 
     @Override

@@ -15,4 +15,20 @@ public class Asset {
            skull=new Image(ClassLoader.getSystemResource("UI/skull (1).png").toString());
         }
     }
+
+    public static class Game{
+        public static Image player;
+        public static Image bullet;
+        public static Image enemyBullet;
+        public static Image enemy;
+        static{
+            loadResource();
+        }
+
+        private static void loadResource() {
+            player=new Image(ClassLoader.getSystemResource("UI/kaosteak.png").toString());
+            bullet=new Image(ClassLoader.getSystemResource("UI/computer.png").toString());
+            enemyBullet=new Image(ClassLoader.getSystemResource("UI/firebullet.png").toString());
+        }
+    }
 }

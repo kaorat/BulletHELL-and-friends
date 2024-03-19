@@ -1,8 +1,12 @@
 package Manager;
 
 import GameEntity.Enemy.BaseEnemy;
+import GameEntity.Enemy.Chicken;
+import GameEntity.Enemy.Cow;
+import GameEntity.Enemy.Sheep;
 import Utils.Config;
 import Utils.EnemyType;
+import Utils.Transform;
 import Utils.Upgradable;
 
 import java.util.ArrayList;
@@ -41,12 +45,35 @@ public class EnemyManager implements Upgradable {
 //        }
 //    }
 
-    public void spawnEnemy(BaseEnemy e) {
-        add(e); // might be redundant.
+    public Transform randomTransform() {
+        double x = (Math.random() * 800);
+        double y = -60d;
+        return new Transform(x, y, 0, 2, 2);
+    }
+
+    public void spawnEnemy(EnemyType type) {
+        if(type == EnemyType.CHICKEN){
+            BaseEnemy enemy = new Chicken(randomTransform(), 0);
+            add(enemy);
+        }
+        else if(type == EnemyType.SHEEP){
+            BaseEnemy enemy = new Sheep(randomTransform(), 0);
+            add(enemy);
+        }
+        else if(type == EnemyType.COW){
+            BaseEnemy enemy = new Cow(randomTransform(), 0);
+            add(enemy);
+        }
+
+    }
+
+    public boolean checkEnemyLeft(){
+        return enemies.size() < 3;
     }
 
     public void add(BaseEnemy enemy) {
         enemies.add(enemy);
+        GameObjectHolder.getInstance().add(enemy);
     }
 
     public void removeDestroyed() {

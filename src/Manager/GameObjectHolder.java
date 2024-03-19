@@ -55,6 +55,7 @@ public class GameObjectHolder {
     }
 
     public void update() {
+        System.out.println(entities.size());
         for (int i = entities.size() - 1; i >= 0; i--) {
             if (entities.get(i).isDestroyed())
                 entities.remove(i);

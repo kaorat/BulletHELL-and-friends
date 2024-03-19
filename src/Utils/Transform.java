@@ -12,6 +12,14 @@ public class Transform {
         this.sclX = 1;
         this.sclY = 1;
     }
+
+    public Transform(double posX, double posY, double rot) {
+        this.posX = posX;
+        this.posY = posY;
+        this.rot = rot;
+        this.sclX = 1;
+        this.sclY = 1;
+    }
     public Transform(double posX, double posY, double sclX, double sclY) {
         this.posX = posX;
         this.posY = posY;

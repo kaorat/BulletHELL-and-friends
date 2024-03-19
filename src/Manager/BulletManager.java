@@ -1,6 +1,8 @@
 package Manager;
 
 import GameEntity.Bullet.BaseBullet;
+import GameEntity.Bullet.PlayerBullet;
+import Utils.Asset;
 
 import java.util.ArrayList;
 
@@ -14,15 +16,21 @@ public class BulletManager {
         bullets = new ArrayList<BaseBullet>();
     }
 
-    private static BulletManager getInstance() {
+    public static BulletManager getInstance() {
         if (instance == null) {
             instance = new BulletManager();
         }
         return instance;
     }
 
+//    public void shoot() {
+//        PlayerBullet bullet = new PlayerBullet(10, null, null, 0);
+//        add(bullet);
+//    }
+
     public void add(BaseBullet bullet) {
         bullets.add(bullet);
+        GameObjectHolder.getInstance().add(bullet);
     }
 
     public void removeDestroyed() {
@@ -36,4 +44,7 @@ public class BulletManager {
         bullets.clear();
     }
 
+    public ArrayList<BaseBullet> getBullets() {
+        return bullets;
+    }
 }

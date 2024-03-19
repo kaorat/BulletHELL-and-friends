@@ -22,6 +22,7 @@ public abstract class BaseEnemy extends GameObject {
     protected double uptime;
     protected double downtime;
     protected double shootTime;
+    protected long lastFireTime;
     protected enum States{
         UP,
         DOWN,
@@ -53,6 +54,9 @@ public abstract class BaseEnemy extends GameObject {
         this.bulletLength = EnemyUtils.calculateBulletLength(type);
         this.soulChance = EnemyUtils.calculateSoulChance(type) ;
 
+        this.fireRate = 700;
+
+
         state = States.DOWN;
         downtime= Math.random() * 1000 + 1400;
         uptime = downtime;
@@ -70,10 +74,15 @@ public abstract class BaseEnemy extends GameObject {
     public abstract void draw(GraphicsContext gc);
 
 
+
+
     //Transform is not meant to be added directly , I believe.
     @Override
     public void onUpdate() { //from animationTimer
-
+        EnemyManager.getInstance().removeDestroyed();
+        if(EnemyManager.getInstance().checkEnemyLeft()){ //less than 5
+            EnemyManager.getInstance().spawnEnemy(EnemyType.CHICKEN);
+        };
         double renderTime = 8d ; // idk
         if(state == States.DOWN) {
             downtime -= renderTime;
@@ -83,6 +92,12 @@ public abstract class BaseEnemy extends GameObject {
         }
         if (state == States.SHOOT) {
             shootTime -= renderTime;
+            long currentTime = System.currentTimeMillis();
+            if (currentTime - lastFireTime > fireRate) {
+                firing();
+                lastFireTime = currentTime;
+            }
+
             if(shootTime <= 0) state = States.UP;
         }
         if(state == States.UP) {
@@ -92,7 +107,7 @@ public abstract class BaseEnemy extends GameObject {
 
             if(uptime <= 0) destroyed = true;
         }
-        System.out.println("Enemy state : " + state.toString());
+//        System.out.println("Enemy state : " + state.toString());
     }
 
     public ArrayList<Integer> getPerks() {

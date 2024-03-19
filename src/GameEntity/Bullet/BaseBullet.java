@@ -1,8 +1,10 @@
 package GameEntity.Bullet;
 
 import GameEntity.GameObject;
+import Utils.Asset;
 import Utils.Transform;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 
 public class BaseBullet extends GameObject {
 
@@ -16,14 +18,15 @@ public class BaseBullet extends GameObject {
         this.owner = owner;
     }
 
-    public boolean isOutOfBounds() {
+    public void removeOutOfBounds() {
         //idk
-        return x < 0 || x > 640 || y < 0 || y > 720;
+        if(this.transform.getPosY() < 0 || this.transform.getPosY() > 760 || this.transform.getPosX() < 0 || this.transform.getPosX() > 800) {
+            destroyed = true;
+        }
     }
 
     @Override
     public void draw(GraphicsContext gc) {
-
     }
 
     @Override

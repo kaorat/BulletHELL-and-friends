@@ -18,8 +18,8 @@ public class Asset {
         }
 
         private static void loadResource() {
-            background=Load("UI/Q86S4e.png");
-            currencyBG=Load("UI/valuebg.png");
+            background=Load("UI/mainBackground.png");
+            currencyBG=Load("UI/currencyBG.png");
             partUI=Load("UI/meat.png");
             soulUI=Load("UI/skull.png");
             honeyUI=Load("UI/computer.png");

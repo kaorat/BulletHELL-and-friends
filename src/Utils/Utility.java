@@ -3,6 +3,7 @@ package Utils;
 
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import java.io.File;
 
 public class Utility {
     public static double getScreenX(){
@@ -15,7 +16,12 @@ public class Utility {
         return 640;
     }
     public static Font getGameFont(double size){
-        return Font.font("Arial", FontWeight.MEDIUM,size);
+//Add classloader
+        Font customFont = Font.loadFont(new File("src/Font/Valorax-lg25V.otf").toURI().toString(), size);
+//        Font customFont = Font.loadFont(new File("FONT/Valorax-lg25V.otf").toURI().toString(), size);
+//        return Font.font(customFont.getFamily(), FontWeight.MEDIUM,size);
+        return Font.font("Times New Roman", FontWeight.MEDIUM,size);
+
     }
     public static String NumberToString(double i){
         if(i>=Math.pow(10,12)) {

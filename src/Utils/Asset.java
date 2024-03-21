@@ -19,6 +19,7 @@ public class Asset {
         public static Image sheepiconUI;
         public static Image holyiconUI;
         public static Image dnaiconUI;
+        public static Image headerMain;
 
         static{
             loadResource();
@@ -33,6 +34,7 @@ public class Asset {
             spriteHover=LoadImg("UI/spriteHover.png");
             spriteClick=LoadImg("UI/buttonNavigate.png");
 
+            headerMain=LoadImg("UI/headerMain.png");
             currencyBG=LoadImg("UI/currencyBG.png");
             partUI=LoadImg("UI/meat.png");
             soulUI=LoadImg("UI/skull.png");

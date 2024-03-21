@@ -4,12 +4,12 @@ import Utils.Text;
 import Utils.Transform;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 
 public class UIButton extends UISprite {
     private boolean pressed;
     private boolean hovered;
+    private Runnable onClickHandler;
 
     public UIButton(Image sprite, Transform transform, int z) {
         super(sprite, transform, z);
@@ -55,6 +55,4 @@ public class UIButton extends UISprite {
     public void onUpdate() {
         // Add button-specific update logic here, if needed
     }
-
-    // Add any other methods specific to UIButton here
 }

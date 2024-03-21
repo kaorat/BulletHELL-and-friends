@@ -1,9 +1,6 @@
 package Manager;
 
-import Pane.GameSideUIEditor;
-import Pane.GameplayEditor;
-import Pane.GraphicEditor;
-import Pane.RootPane;
+import Pane.*;
 import Utils.Updatable;
 
 import java.util.ArrayList;
@@ -19,7 +16,9 @@ public class SceneManager {
         SceneManager.updatables.clear();
         //GraphicEditor
         SceneManager.updatables.add(new GameplayEditor(RootPane.getRootPane().getGraphicsContext2D()));
-        SceneManager.updatables.add(new GameSideUIEditor(RootPane.getRootPane().getGraphicsContext2D()));
+        SceneManager.updatables.add(new MainPage(RootPane.getRootPane().getGraphicsContext2D()));
+        SceneManager.updatables.add(new PlayerPage(RootPane.getRootPane().getGraphicsContext2D()));
+
         //Managers
         SceneManager.updatables.add(BossManager.getInstance());
         SceneManager.updatables.add(BulletManager.getInstance());
@@ -31,5 +30,15 @@ public class SceneManager {
         for (Updatable updatable : updatables) {
             updatable.onUpdate();
         }
+    }
+
+    public static void switchTo(GameSideUIEditor gameSideUIEditor) {
+        updatables.clear();
+        updatables.add(gameSideUIEditor);
+        update(); // Call update to ensure the new scene is rendered
+    }
+
+    public static Object getInstance() {
+        return null;
     }
 }

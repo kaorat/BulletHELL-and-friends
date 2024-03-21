@@ -1,11 +1,13 @@
 package Utils;
 
 import javafx.geometry.Point2D;
+import javafx.scene.image.Image;
 
 public class Transform {
+    private static final String UI_FOLDER = "UI/";
+
     // ---- Suchas comment: so 2 rots huh,one for visual, another for movement-----
     protected double posX,posY,rot,sclX,sclY;
-
     public Transform(double posX, double posY) {
         this.posX = posX;
         this.posY = posY;
@@ -92,4 +94,6 @@ public class Transform {
     public void setSclY(double sclY) {
         this.sclY = sclY;
     }
+
+
 }

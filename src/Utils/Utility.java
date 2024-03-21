@@ -15,14 +15,17 @@ public class Utility {
     public static double getGameScreenX(){
         return 640;
     }
-    public static Font getGameFont(double size){
-//Add classloader
-        Font customFont = Font.loadFont(new File("src/Font/Valorax-lg25V.otf").toURI().toString(), size);
-//        Font customFont = Font.loadFont(new File("FONT/Valorax-lg25V.otf").toURI().toString(), size);
-//        return Font.font(customFont.getFamily(), FontWeight.MEDIUM,size);
-        return Font.font("Times New Roman", FontWeight.MEDIUM,size);
-
+    public static Font getGameFont(double size) {
+        try {
+            Font.loadFont(Utility.class.getResourceAsStream("/FONT/Valorax-lg25V.otf"), size);
+            return Font.font("valorax", size);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Font.font("Arial", FontWeight.NORMAL, size);
+        }
     }
+
+
     public static String NumberToString(double i){
         if(i>=Math.pow(10,12)) {
             return (i / Math.pow(10, 12)) +"T";

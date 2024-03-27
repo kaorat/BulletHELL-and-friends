@@ -1,6 +1,7 @@
 package Utils;
 
 import javafx.scene.image.Image;
+import javafx.scene.media.AudioClip;
 
 
 public class Asset {
@@ -70,4 +71,20 @@ public class Asset {
             return new Image(ClassLoader.getSystemResource(url).toString());
         }
     }
+    public static class Audio{
+
+        public static AudioClip bulletSound;
+        public static AudioClip bgm;
+
+        static{
+            loadResource();
+        }
+
+        public static void loadResource(){
+            bulletSound = new AudioClip(ClassLoader.getSystemResource("AUDIO/bullet.wav").toString());
+            bgm = new AudioClip(ClassLoader.getSystemResource("AUDIO/scope.wav").toString());
+        }
+
+    }
+
 }

@@ -33,15 +33,6 @@ public class EnemyManager implements Upgradable, Updatable {
         return instance;
     }
 
-//    public void checkCollision() {
-//        for (BaseEnemy enemy : enemies) {
-//            if (enemy.isDestroyed()) {
-//                continue;
-//            }
-//            //collides ???
-//        }
-//    }
-
     public Transform randomTransform() {
         double x = (Math.random() * 640);
         double y = -60d;

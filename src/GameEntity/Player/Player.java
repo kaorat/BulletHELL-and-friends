@@ -1,14 +1,17 @@
 package GameEntity.Player;
 
+import GameEntity.Bullet.BaseBullet;
+import GameEntity.Bullet.EnemyBullet;
 import GameEntity.Bullet.PlayerBullet;
 import GameEntity.GameObject;
 import Manager.BulletManager;
-import Utils.Asset;
-import Utils.Shootable;
-import Utils.Transform;
-import Utils.Utility;
+import Utils.*;
+import javafx.geometry.BoundingBox;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.media.AudioClip;
+
+import java.util.ArrayList;
 
 import static input.InputUtility.*;
 // ---- Suchas comment: Interface is unnecessary but okay-----
@@ -30,14 +33,15 @@ public class Player extends GameObject implements Shootable {
         if (this.transform.getPosX() < 0) {
             this.transform.setPosX(0);
         }
-        if (this.transform.getPosX() > Utility.getGameScreenX()) {
-            this.transform.setPosX(Utility.getGameScreenX());
+        if (this.transform.getPosX() + Config.PLAYER_WIDTH > Utility.getGameScreenX()) {
+            this.transform.setPosX(Utility.getGameScreenX() - Config.PLAYER_WIDTH);
         }
         if (this.transform.getPosY() < 0) {
             this.transform.setPosY(0);
         }
-        if (this.transform.getPosY() > 760) {
-            this.transform.setPosY(760);
+        if (this.transform.getPosY() + Config.PLAYER_HEIGHT > 700) {
+            this.transform.setPosY(700 - Config.PLAYER_HEIGHT); ;
+            System.out.println(this.transform.getPosY());
         }
     }
 
@@ -46,12 +50,17 @@ public class Player extends GameObject implements Shootable {
         PlayerBullet bullet2 = new PlayerBullet(10, this, new Transform(this.transform.getPosX(), this.transform.getPosY(), -90, 2, 2), 0);
         BulletManager.getInstance().add(bullet);
         BulletManager.getInstance().add(bullet2);
+        AudioClip bulletSound = Asset.Audio.bulletSound;
+        bulletSound.setVolume(0.1);
+        bulletSound.play();
 //        System.out.println(BulletManager.getInstance().getBullets().size());
     }
 
     @Override
     public void draw(GraphicsContext gc) {
         gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 60, 60);
+        this.bounds = new BoundingBox(transform.getPosX()+20,transform.getPosY(),80,60);
+        drawBounds(Config.PLAYER_OFFSET_WIDTH, Config.PLAYER_OFFSET_HEIGHT, Config.PLAYER_WIDTH, Config.PLAYER_HEIGHT);
     }
 
     public void controlAggressiveShoot() {
@@ -71,7 +80,7 @@ public class Player extends GameObject implements Shootable {
     public void onUpdate() {
 //        System.out.println("Player Update : " + isAPressed());
         long currentTime = System.currentTimeMillis();
-        // ---- Suchas comment: Left Shift?? Gonna be pretty hard to balance na (Use only for slow and hitbox show)-----
+        // ---- !Suchas comment: Left Shift?? Gonna be pretty hard to balance na (Use only for slow and hitbox show)-----
         if (isShiftPressed()) {
             fireRate = 80;
             speed = 2.7;
@@ -89,33 +98,18 @@ public class Player extends GameObject implements Shootable {
                 lastFireTime = currentTime;
             }
         }
-        // ---- Suchas comment: Could this be shorter? Lemme think-----
-        if (isWPressed() && isDPressed()) { // Move up-right
-            transform.setRot(-45);
-            transform.translate(speed);
-        } else if (isWPressed() && isAPressed()) { // Move up-left
-            transform.setRot(-135);
-            transform.translate(speed);
-        } else if (isSPressed() && isDPressed()) { // Move down-right
-            transform.setRot(45);
-            transform.translate(speed);
-        } else if (isSPressed() && isAPressed()) { // Move down-left
-            transform.setRot(135);
-            transform.translate(speed);
-        } else if (isSPressed()) { // Move down
-            transform.setRot(90);
-            transform.translate(speed);
-        } else if (isWPressed()) { // Move up
-            transform.setRot(-90);
-            transform.translate(speed);
-        } else if (isAPressed()) { // Move left
-            transform.setRot(180);
-            transform.translate(speed);
-        } else if (isDPressed()) { // Move right
-            transform.setRot(0);
-            transform.translate(speed);
-        }
+        Utility.controlUtility(this.transform, speed);
+        // ---- !Suchas comment: Could this be shorter? Lemme think-----
         checkOutOfBounds();
+        ArrayList<BaseBullet> bulletList = BulletManager.getInstance().getBullets();
+        for (BaseBullet bullet : bulletList) {
+                if(bullet instanceof EnemyBullet){
+                    if(transform.checkCollide(this, bullet)){
+                    bullet.setDestroyed(true);
+                }
+            }
+        }
+
 
     }
 }

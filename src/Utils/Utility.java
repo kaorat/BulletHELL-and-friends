@@ -5,6 +5,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import java.io.File;
 
+import static input.InputUtility.*;
+
 public class Utility {
     public static double getScreenX(){
         return 1080;
@@ -55,5 +57,34 @@ public class Utility {
             return (i / Math.pow(10, 3)) +"K";
         }
         return String.valueOf(i);
+    }
+
+    public static void controlUtility(Transform transform, double speed) {
+
+        if (isWPressed() && isDPressed()) { // Move up-right
+            transform.setRot(-45);
+            transform.translate(speed);
+        } else if (isWPressed() && isAPressed()) { // Move up-left
+            transform.setRot(-135);
+            transform.translate(speed);
+        } else if (isSPressed() && isDPressed()) { // Move down-right
+            transform.setRot(45);
+            transform.translate(speed);
+        } else if (isSPressed() && isAPressed()) { // Move down-left
+            transform.setRot(135);
+            transform.translate(speed);
+        } else if (isSPressed()) { // Move down
+            transform.setRot(90);
+            transform.translate(speed);
+        } else if (isWPressed()) { // Move up
+            transform.setRot(-90);
+            transform.translate(speed);
+        } else if (isAPressed()) { // Move left
+            transform.setRot(180);
+            transform.translate(speed);
+        } else if (isDPressed()) { // Move right
+            transform.setRot(0);
+            transform.translate(speed);
+        }
     }
 }

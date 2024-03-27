@@ -4,6 +4,7 @@ import GameEntity.GameObject;
 import Manager.BulletManager;
 import Utils.Asset;
 import Utils.Transform;
+import javafx.geometry.BoundingBox;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
@@ -17,8 +18,10 @@ public class EnemyBullet extends BaseBullet{
 
     @Override
     public void draw(GraphicsContext gc) {
+
         // ---- Suchas comment: Calibration? that's okay-----
         gc.drawImage(getImage(), this.transform.getPosX() - 25, this.transform.getPosY(), 10, 10);
+        this.bounds = new BoundingBox(transform.getPosX(),transform.getPosY(),1,1);
     }
 
     @Override

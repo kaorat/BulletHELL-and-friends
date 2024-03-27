@@ -10,12 +10,12 @@ import javafx.scene.image.Image;
 public class PlayerBullet extends BaseBullet {
     public PlayerBullet(double damage, GameObject owner, Transform transform, int z) {
         super(damage, owner, transform, z);
+        setImage(Asset.Game.bullet);
     }
 
     @Override
     public void draw(GraphicsContext gc) {
-        Image bulletImage = Asset.Game.bullet;
-        gc.drawImage(bulletImage, this.transform.getPosX(), this.transform.getPosY(), 10, 10);
+        gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 10, 10);
     }
 
     @Override

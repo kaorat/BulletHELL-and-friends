@@ -1,8 +1,10 @@
 package Utils;
 
+import javafx.geometry.Bounds;
 import GameEntity.GameObject;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class Transform {
     private static final String UI_FOLDER = "UI/";
@@ -55,21 +57,14 @@ public class Transform {
         posY += translation.getY();
     }
 
+    public boolean checkCollide(GameObject Obj1,GameObject Obj2){
+        ImageView view1 = new ImageView(Obj1.getImage());
+        ImageView view2 = new ImageView(Obj2.getImage());
+        Bounds bound1 = view1.getBoundsInParent();
+        Bounds bound2 = view2.getBoundsInParent();
 
-    public void checkCollision(GameObject entity1, GameObject entity2) {
-        double x1 = entity1.getTransform().getPosX();
-        double y1 = entity1.getTransform().getPosY();
-        double x2 = entity2.getTransform().getPosX();
-        double y2 = entity2.getTransform().getPosY();
-        double distance = Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
-        if (distance < 20) {
-            entity1.setDestroyed(true);
-            entity2.setDestroyed(true);
-        }
-
+        return bound1.intersects(bound2);
     }
-
-
     public double getPosX() {
         return posX;
     }

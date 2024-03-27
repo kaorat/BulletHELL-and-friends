@@ -14,6 +14,7 @@ public class Chicken extends BaseEnemy{
 
     public Chicken(Transform transform,int z) {
         super(EnemyType.CHICKEN,transform, z);
+        setImage(Asset.UI.soulUI);
         // ---- Suchas comment: come with parameter instead -----
         Perks = EnemyManager.getInstance().getChickenPerks();
     }
@@ -41,8 +42,7 @@ public class Chicken extends BaseEnemy{
 
     @Override
     public void draw(GraphicsContext gc) {
-        Image chickenImage = Asset.UI.soulUI;
-        gc.drawImage(chickenImage,this.transform.getPosX(),this.transform.getPosY(), 60,60);
+        gc.drawImage(getImage(),this.transform.getPosX(),this.transform.getPosY(), 60,60);
     }
 
 }

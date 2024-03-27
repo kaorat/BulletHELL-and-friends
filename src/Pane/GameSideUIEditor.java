@@ -2,6 +2,7 @@ package Pane;
 
 import GameEntity.GameObject;
 import GameEntity.UI.UISprite;
+import Manager.SceneManager;
 import Manager.StatManager;
 import Utils.Asset;
 import Utils.Text;
@@ -38,6 +39,7 @@ public class GameSideUIEditor extends GraphicEditor{
         honey=(UISprite) create(new UISprite(new Text("0",Utility.getGameFont(18), Color.WHITE),new Transform(x+372,67),52));
 
 //        create(new UISprite(Asset.UI.currencyBG,new Transform(100,100,0.4,0.12),51));
+        SceneManager.setCurrentPage(new MainPage(graphicsContext));
 
     }
 
@@ -55,4 +57,7 @@ public class GameSideUIEditor extends GraphicEditor{
         soul.getText().setText(Utility.NumberToString(StatManager.getInstance().getSoul()));
         honey.getText().setText(Utility.NumberToString(StatManager.getInstance().getAmber()));
     }
+
+
+
 }

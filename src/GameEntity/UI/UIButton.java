@@ -1,5 +1,6 @@
 package GameEntity.UI;
 
+import Utils.MouseUtil;
 import Utils.Text;
 import Utils.Transform;
 import javafx.scene.canvas.GraphicsContext;
@@ -10,6 +11,7 @@ public class UIButton extends UISprite {
     private boolean pressed;
     private boolean hovered;
     private Runnable onClickHandler;
+    private int clickCount = 0;
 
     public UIButton(Image sprite, Transform transform, int z) {
         super(sprite, transform, z);
@@ -47,6 +49,14 @@ public class UIButton extends UISprite {
 
     @Override
     public void onUpdate() {
-        // Add button-specific update logic here, if needed
+        hovered = MouseUtil.getMouseX() > getTransform().getPosX() && MouseUtil.getMouseX() < getTransform().getPosX()
+                + getSprite().getWidth() * getTransform().getSclX() && MouseUtil.getMouseY() > getTransform().getPosY() &&
+                MouseUtil.getMouseY() < getTransform().getPosY() + getSprite().getHeight() * getTransform().getSclY();
+        pressed = MouseUtil.isPressed() && hovered;
+        if(pressed) {
+            clickCount++;
+        }
+        System.out.println(clickCount);
     }
+
 }

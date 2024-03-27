@@ -13,7 +13,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
 
-public class MainPage extends GameSideUIEditor {
+public class MainPage extends GraphicEditor {
     private UISprite textHeader;
     private UISprite playerText;
     private UISprite EnemyText;
@@ -24,6 +24,7 @@ public class MainPage extends GameSideUIEditor {
     private UIButton buttonGoblet;
     private UIButton buttonSpecialDNA;
     private int moveYButton = 65;
+    private double x = Utility.getGameScreenX();
 
     public MainPage(GraphicsContext graphicsContext) {
         super(graphicsContext);
@@ -65,6 +66,16 @@ public class MainPage extends GameSideUIEditor {
         create(buttonGoblet);
         create(buttonSpecialDNA);
 
+
+    }
+
+
+    @Override
+    public void onUpdate() {
+     if(buttonPlayer.isPressed()){
+            SceneManager.setCurrentPage(new PlayerPage(graphicsContext));
+         System.out.println("555");
+     }
 
     }
 }

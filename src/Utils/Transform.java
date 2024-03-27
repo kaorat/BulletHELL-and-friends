@@ -1,5 +1,6 @@
 package Utils;
 
+import GameEntity.GameObject;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 
@@ -52,6 +53,20 @@ public class Transform {
         Point2D translation = calculateTranslation(speed);
         posX += translation.getX();
         posY += translation.getY();
+    }
+
+
+    public void checkCollision(GameObject entity1, GameObject entity2) {
+        double x1 = entity1.getTransform().getPosX();
+        double y1 = entity1.getTransform().getPosY();
+        double x2 = entity2.getTransform().getPosX();
+        double y2 = entity2.getTransform().getPosY();
+        double distance = Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+        if (distance < 20) {
+            entity1.setDestroyed(true);
+            entity2.setDestroyed(true);
+        }
+
     }
 
 

@@ -2,6 +2,7 @@ package GameEntity;
 
 import Utils.Transform;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 
@@ -15,7 +16,10 @@ public abstract class GameObject {
     }
 
     protected Transform transform;
+
     protected int z;
+
+    protected Image image;
     protected boolean visible,destroyed;
     protected ArrayList<GameObject> childrenNode;
     public GameObject(Transform transform,int z) {

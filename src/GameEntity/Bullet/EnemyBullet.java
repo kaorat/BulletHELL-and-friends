@@ -28,6 +28,4 @@ public class EnemyBullet extends BaseBullet{
         removeOutOfBounds();
         BulletManager.getInstance().removeDestroyed();
     }
-
-
 }

@@ -2,6 +2,7 @@ package GameEntity.Bullet;
 
 import GameEntity.GameObject;
 import Manager.BulletManager;
+import Manager.EnemyManager;
 import Utils.Asset;
 import Utils.Transform;
 import javafx.scene.canvas.GraphicsContext;
@@ -23,6 +24,7 @@ public class PlayerBullet extends BaseBullet {
 //        transform.setRot(-90);
         transform.translate(5);
         removeOutOfBounds();
+        EnemyManager.getInstance().checkCollision();
         BulletManager.getInstance().removeDestroyed();
     }
 }

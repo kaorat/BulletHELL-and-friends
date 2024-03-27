@@ -1,14 +1,17 @@
 package Manager;
 
+import GameEntity.Bullet.BaseBullet;
+import GameEntity.Bullet.PlayerBullet;
 import GameEntity.Enemy.BaseEnemy;
 import GameEntity.Enemy.Chicken;
 import GameEntity.Enemy.Cow;
 import GameEntity.Enemy.Sheep;
 import Utils.*;
 
+import Manager.BulletManager;
 import java.util.ArrayList;
 import java.util.Arrays;
-
+import Utils.Transform;
 public class EnemyManager implements Upgradable, Updatable {
 
     private static EnemyManager instance;
@@ -33,14 +36,22 @@ public class EnemyManager implements Upgradable, Updatable {
         return instance;
     }
 
-//    public void checkCollision() {
-//        for (BaseEnemy enemy : enemies) {
-//            if (enemy.isDestroyed()) {
-//                continue;
-//            }
-//            //collides ???
-//        }
-//    }
+    public void checkCollision() {
+        BulletManager bulletManager = BulletManager.getInstance();
+
+        ArrayList<BaseBullet> bullets = bulletManager.getBullets();
+
+        for (BaseEnemy enemy : enemies) {
+            for (BaseBullet bullet : bullets) {
+                if (Transform.checkcollide( enemy,bullet) && bullet instanceof PlayerBullet) {
+                    // Collision detected, handle it
+                    enemy.setDestroyed(true);
+                    bullet.setDestroyed(true);
+                    break;
+                }
+            }
+        }
+    }
 
     public Transform randomTransform() {
         double x = (Math.random() * 640);
@@ -145,6 +156,6 @@ public class EnemyManager implements Upgradable, Updatable {
 
     @Override
     public void onUpdate() {
-        
+
     }
 }

@@ -22,6 +22,7 @@ public class Player extends GameObject implements Shootable {
 
     public Player(Transform transform, int z) {
         super(transform, z);
+        setImage(Asset.Game.player);
         this.speed = 1.7;
     }
 
@@ -50,8 +51,7 @@ public class Player extends GameObject implements Shootable {
 
     @Override
     public void draw(GraphicsContext gc) {
-        Image playerImage = Asset.Game.player;
-        gc.drawImage(playerImage, this.transform.getPosX(), this.transform.getPosY(), 60, 60);
+        gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 60, 60);
     }
 
     public void controlAggressiveShoot() {

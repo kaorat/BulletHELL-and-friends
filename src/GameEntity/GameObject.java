@@ -2,6 +2,7 @@ package GameEntity;
 
 import Utils.Transform;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 
@@ -18,11 +19,14 @@ public abstract class GameObject {
     protected int z;
     protected boolean visible,destroyed;
     protected ArrayList<GameObject> childrenNode;
+
+    protected Image image;
     public GameObject(Transform transform,int z) {
         this.transform=transform;
         this.z = z;
         this.visible = true;
         this.destroyed = false;
+        this.image = null;
     }
 
     public void addChildrenNode(GameObject childNode){
@@ -41,6 +45,7 @@ public abstract class GameObject {
         this.z = z;
     }
 
+    public void setImage(Image image){ this.image = image;}
     public void setVisible(boolean visible) {
         this.visible = visible;
     }
@@ -52,6 +57,8 @@ public abstract class GameObject {
     public int getZ(){
         return z;
     }
+
+    public Image getImage() { return image; }
 
     public boolean isDestroyed(){
         return destroyed;

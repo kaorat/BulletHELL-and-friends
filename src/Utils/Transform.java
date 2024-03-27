@@ -5,6 +5,7 @@ import GameEntity.GameObject;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.shape.Rectangle;
 
 public class Transform {
     private static final String UI_FOLDER = "UI/";
@@ -57,13 +58,11 @@ public class Transform {
         posY += translation.getY();
     }
 
-    public static boolean checkcollide(GameObject Obj1, GameObject Obj2){
-        ImageView view1 = new ImageView(Obj1.getImage());
-        ImageView view2 = new ImageView(Obj2.getImage());
-        Bounds bound1 = view1.getBoundsInParent();
-        Bounds bound2 = view2.getBoundsInParent();
-        return bound1.intersects(bound2);
+    public static boolean checkCollide(GameObject obj1, GameObject obj2) {
+        Rectangle rect1 = new Rectangle(obj1.getTransform().getPosX(), obj1.getTransform().getPosY(), 60, 60);
+        Rectangle rect2 = new Rectangle(obj2.getTransform().getPosX(), obj2.getTransform().getPosY(), 10,10);
 
+        return rect1.getBoundsInParent().intersects(rect2.getBoundsInParent());
     }
     public double getPosX() {
         return posX;

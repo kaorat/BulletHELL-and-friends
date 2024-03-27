@@ -40,13 +40,14 @@ public class EnemyManager implements Upgradable, Updatable {
         BulletManager bulletManager = BulletManager.getInstance();
 
         ArrayList<BaseBullet> bullets = bulletManager.getBullets();
-
-        for (BaseEnemy enemy : enemies) {
+        EnemyManager enemyManager = EnemyManager.getInstance();
+        ArrayList<BaseEnemy> enemies1 = enemyManager.getEnemies();
+        for (BaseEnemy enemy : enemies1) {
             for (BaseBullet bullet : bullets) {
-                if (Transform.checkcollide( enemy,bullet) && bullet instanceof PlayerBullet) {
-                    // Collision detected, handle it
+                if (Transform.checkCollide( enemy,bullet) && bullet instanceof PlayerBullet){
                     enemy.setDestroyed(true);
                     bullet.setDestroyed(true);
+//                    System.out.println("hit");
                     break;
                 }
             }

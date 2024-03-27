@@ -35,7 +35,7 @@ public class GameObjectHolder implements Updatable {
     }
 
     public void onUpdate() {
-        System.out.println(entities.size());
+//        System.out.println(entities.size());
         for (int i = entities.size() - 1; i >= 0; i--) {
             if (entities.get(i).isDestroyed())
                 entities.remove(i);

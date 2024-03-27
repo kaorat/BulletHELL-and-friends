@@ -17,12 +17,6 @@ public class UIButton extends UISprite {
         this.hovered = false;
     }
 
-    public UIButton(Text text, Transform transform, int z) {
-        super(text, transform, z);
-        this.pressed = false;
-        this.hovered = false;
-    }
-
     public boolean isPressed() {
         return pressed;
     }

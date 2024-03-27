@@ -29,13 +29,13 @@ public class GameObjectHolder implements Updatable {
         return instance;
     }
     public void add(GameObject entity) {
-        System.out.println("add");
+//        System.out.println("add");
         entities.add(entity);
         entities.sort(comparator);
     }
 
     public void onUpdate() {
-        System.out.println(entities.size());
+//        System.out.println(entities.size());
         for (int i = entities.size() - 1; i >= 0; i--) {
             if (entities.get(i).isDestroyed())
                 entities.remove(i);

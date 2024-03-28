@@ -20,7 +20,7 @@ public class UIButton extends UISprite {
     }
 
     public boolean isPressed() {
-        return pressed;
+        return enabled&&pressed;
     }
 
     public void setPressed(boolean pressed) {
@@ -28,7 +28,7 @@ public class UIButton extends UISprite {
     }
 
     public boolean isHovered() {
-        return hovered;
+        return enabled&&hovered;
     }
 
     public void setHovered(boolean hovered) {
@@ -63,9 +63,6 @@ public class UIButton extends UISprite {
                 + getSprite().getWidth() * getTransform().getSclX() && MouseUtil.getMouseY() > getTransform().getPosY() &&
                 MouseUtil.getMouseY() < getTransform().getPosY() + getSprite().getHeight() * getTransform().getSclY();
         pressed = MouseUtil.isActivated() && hovered;
-        if(pressed) {
-            clickCount++;
-        }
 //        System.out.println(clickCount);
     }
 

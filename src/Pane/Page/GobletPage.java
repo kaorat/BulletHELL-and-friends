@@ -11,6 +11,7 @@ import Utils.Transform;
 import Utils.Utility;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import Utils.ButtonType;
 
 public class GobletPage extends GraphicEditor {
 
@@ -32,7 +33,7 @@ public class GobletPage extends GraphicEditor {
 
 
         // Create the button
-        buttonGoBack = new UIButton(Asset.UI.backButton, new Transform(Utility.getGameScreenX() + 33, 660, 0.7, 1), 54);
+        buttonGoBack = new UIButton(Asset.UI.backButton, new Transform(Utility.getGameScreenX() + 33, 660, 0.7, 1), 54 , ButtonType.BACK);
 
 
         create(buttonGoBack);

@@ -11,6 +11,7 @@ import Utils.Transform;
 import Utils.Utility;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import Utils.ButtonType;
 
 public class EnemyPage extends GraphicEditor {
     private UIButton buttonGoBack;
@@ -31,7 +32,7 @@ public class EnemyPage extends GraphicEditor {
                 new Transform(x+170,120),52));
 
         // Create the button
-        buttonGoBack = new UIButton(Asset.UI.backButton, new Transform(Utility.getGameScreenX() + 33, 660, 0.7, 1), 54);
+        buttonGoBack = new UIButton(Asset.UI.backButton, new Transform(Utility.getGameScreenX() + 33, 660, 0.7, 1), 54 , ButtonType.BACK);
 
         create(buttonGoBack);
 

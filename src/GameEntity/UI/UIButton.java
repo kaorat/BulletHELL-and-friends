@@ -59,7 +59,7 @@ public class UIButton extends UISprite {
                 // Draw  hover
                 if(buttonType == ButtonType.UPGRADE){
                     setSprite(Asset.UI.upgradeButtonHover);
-                    System.out.println(getTransform().getSclX());
+
                 }
                 else if(buttonType == ButtonType.NAVIGATOR){
 //                    setSprite();
@@ -91,7 +91,7 @@ public class UIButton extends UISprite {
     }
 
     public void setEnable(boolean enable) {
-        this.enabled=enabled;
+        this.enabled=enable;
     }
     public boolean isEnables(){
         return enabled;

@@ -16,7 +16,7 @@ public class PlayerBullet extends BaseBullet {
 
     @Override
     public void draw(GraphicsContext gc) {
-        gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 10, 10);
+            gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 10, 10);
     }
 
     @Override

@@ -9,7 +9,7 @@ import Utils.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class EnemyManager implements Upgradable, Updatable {
+public class EnemyManager implements Updatable {
 
     private static EnemyManager instance;
     private ArrayList<BaseEnemy> enemies;
@@ -20,9 +20,7 @@ public class EnemyManager implements Upgradable, Updatable {
     private EnemyManager() {
         enemies = new ArrayList<BaseEnemy>();
         //singleton , 25 is the starting part drop rate
-        ChickenPerks = new ArrayList<Integer>(Arrays.asList(25, 0, 0, 0, 0, 0, 0, 0));
-        SheepPerks = new ArrayList<Integer>(Arrays.asList(25, 0, 0, 0, 0, 0, 0, 0));
-        CowPerks = new ArrayList<Integer>(Arrays.asList(25, 0, 0, 0, 0, 0, 0, 0));
+        reset();
 
     }
 
@@ -78,33 +76,36 @@ public class EnemyManager implements Upgradable, Updatable {
         if(index == 0) return;
         if(type == EnemyType.CHICKEN){
             ChickenPerks.set(index, ChickenPerks.get(index) + 1);
-            ChickenPerks.set(0, (int) (ChickenPerks.get(0) + Config.dropUpgradeValues.get(index)));
+            ChickenPerks.set(0, (int) (ChickenPerks.get(0) + Config.enemy_dropUpgradeValues.get(index)));
         }
         else if(type == EnemyType.SHEEP){
             SheepPerks.set(index, SheepPerks.get(index) + 1);
-            SheepPerks.set(0, (int) (SheepPerks.get(0) + Config.dropUpgradeValues.get(index)));
+            SheepPerks.set(0, (int) (SheepPerks.get(0) + Config.enemy_dropUpgradeValues.get(index)));
         }
         else if(type == EnemyType.COW){
             CowPerks.set(index, CowPerks.get(index) + 1);
-            CowPerks.set(0, (int) (CowPerks.get(0) + Config.dropUpgradeValues.get(index)));
+            CowPerks.set(0, (int) (CowPerks.get(0) + Config.enemy_dropUpgradeValues.get(index)));
         }
 
     }
 
     public double calculatePerkValue(EnemyType type, int index){
         if(type == EnemyType.CHICKEN){
-            return Config.baseValues.get(index) + (ChickenPerks.get(index) * Config.upgradeValues.get(index));
+            return Config.enemy_baseValues.get(index) + (ChickenPerks.get(index) * Config.enemy_upgradeValues.get(index));
         }
         else if(type == EnemyType.SHEEP){
-            return Config.baseValues.get(index) + (SheepPerks.get(index) * Config.upgradeValues.get(index));
+            return Config.enemy_baseValues.get(index) + (SheepPerks.get(index) * Config.enemy_upgradeValues.get(index));
         }
         else if(type == EnemyType.COW){
-            return Config.baseValues.get(index) + (CowPerks.get(index) * Config.upgradeValues.get(index));
+            return Config.enemy_baseValues.get(index) + (CowPerks.get(index) * Config.enemy_upgradeValues.get(index));
         }
         return 0;
     }
 
     public void clearEnemy() {
+        for(BaseEnemy e : enemies){
+            e.setDestroyed(true);
+        }
         enemies.clear();
     }
 
@@ -125,17 +126,14 @@ public class EnemyManager implements Upgradable, Updatable {
     }
 
     @Override
-    public void upgradeLevel() {
-        //TODO: implement this
-    }
-
-    @Override
-    public void clearLevel() {
-        //TODO: implement this
-    }
-
-    @Override
     public void onUpdate() {
         
     }
+    public void reset(){
+        ChickenPerks = new ArrayList<Integer>(Arrays.asList((int)Config.PARTS_DROP_BASE*Config.CHICKEN_MULTIPLIER, 1, 1, 1, 1, 1, 1, 1));
+        SheepPerks = new ArrayList<Integer>(Arrays.asList((int)Config.PARTS_DROP_BASE, 1, 1, 1, 1, 1, 1, 1));
+        CowPerks = new ArrayList<Integer>(Arrays.asList((int)Config.PARTS_DROP_BASE*Config.COW_MULTIPLIER, 1, 1, 1, 1, 1, 1, 1));
+        clearEnemy();
+    }
+
 }

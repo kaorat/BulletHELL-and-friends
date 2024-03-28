@@ -2,15 +2,16 @@ package Pane.Page;
 
 import GameEntity.UI.UIButton;
 import GameEntity.UI.UISprite;
+import Manager.PlayerManager;
 import Manager.SceneManager;
+import Manager.StatManager;
 import Pane.GameSideUIEditor;
 import Pane.GraphicEditor;
-import Utils.Asset;
-import Utils.Text;
-import Utils.Transform;
-import Utils.Utility;
+import Utils.*;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+
+import java.util.ArrayList;
 
 public class PlayerPage extends GraphicEditor {
 
@@ -26,6 +27,8 @@ public class PlayerPage extends GraphicEditor {
     private UISprite textDexterity;
     private UIButton buttonMinimize;
     private UISprite textMinimize;
+
+    private ArrayList<UIButton> allButtons = new ArrayList<>();
 
     private int moveYButton = 70;
 
@@ -96,14 +99,36 @@ public class PlayerPage extends GraphicEditor {
         create(buttonDexterity);
         create(buttonMinimize);
 
+        allButtons.add(buttonGoBack);
+        allButtons.add(buttonBioticRifleDamage);
+        allButtons.add(buttonBioticRifleFirerate);
+        allButtons.add(buttonMinimize);
+        allButtons.add(buttonDexterity);
+        allButtons.add(buttonProficiency);
 }
-
     @Override
     public void onUpdate() {
-        if(buttonGoBack.isPressed()){
-            SceneManager.setCurrentPage(new MainPage(graphicsContext));
-            System.out.println("Now is MainPage");
+        int coin = StatManager.getInstance().getCoin();
+        for(int i=0;i<6;i++){
+            UIButton button = allButtons.get(i);
+            if(i==0){
+                if(button.isPressed()) SceneManager.setCurrentPage(new MainPage(graphicsContext));
+            }
+            else{
+                int level = PlayerManager.getInstance().getPlayerPerks().get(i);
+                int basePrice = Config.player_basePrices.get(i-1).intValue();
+                int cost = basePrice * (int) Math.pow(Config.player_priceIncrements.get(i-1),level);
+                if(coin > cost){
+                    button.setEnable(true);
+                    if(button.isPressed()){
+                        coin-= cost;
+                        PlayerManager.getInstance().getPlayerPerks().set(i,level+1);
+                    }
+                }
+                else{
+                    button.setEnable(false);
+                }
+            }
         }
-
     }
 }

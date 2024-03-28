@@ -17,6 +17,7 @@ public class UIButton extends UISprite {
         super(sprite, transform, z);
         this.pressed = false;
         this.hovered = false;
+        this.enabled = true;
     }
 
     public boolean isPressed() {

@@ -20,9 +20,9 @@ public class EnemyManager implements Upgradable, Updatable {
     private EnemyManager() {
         enemies = new ArrayList<BaseEnemy>();
         //singleton , 25 is the starting part drop rate
-        ChickenPerks = new ArrayList<Integer>(Arrays.asList(25, 0, 0, 0, 0, 0, 0, 0));
-        SheepPerks = new ArrayList<Integer>(Arrays.asList(25, 0, 0, 0, 0, 0, 0, 0));
-        CowPerks = new ArrayList<Integer>(Arrays.asList(25, 0, 0, 0, 0, 0, 0, 0));
+        ChickenPerks = new ArrayList<Integer>(Arrays.asList((int)Config.PARTS_DROP_BASE*Config.CHICKEN_MULTIPLIER, 1, 1, 1, 1, 1, 1, 1));
+        SheepPerks = new ArrayList<Integer>(Arrays.asList((int)Config.PARTS_DROP_BASE, 1, 1, 1, 1, 1, 1, 1));
+        CowPerks = new ArrayList<Integer>(Arrays.asList((int)Config.PARTS_DROP_BASE*Config.COW_MULTIPLIER, 1, 1, 1, 1, 1, 1, 1));
 
     }
 

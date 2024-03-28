@@ -4,6 +4,7 @@ import GameEntity.UI.UIButton;
 import GameEntity.UI.UISprite;
 import Manager.SceneManager;
 import Pane.GameSideUIEditor;
+import Pane.GraphicEditor;
 import Utils.Asset;
 import Utils.Text;
 import Utils.Transform;
@@ -11,7 +12,7 @@ import Utils.Utility;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public class GobletPage extends GameSideUIEditor {
+public class GobletPage extends GraphicEditor {
 
     private UIButton buttonGoBack;
     private UISprite textHeader;

@@ -38,7 +38,8 @@ public class Config {
     public static final double LETHAL_PARTS_DROP_UPGRADE = 5;
     public static final double LETHAL_MAX_LEVEL = 1000;
 
-    // Fuzzy Mutation Sheep multiply fire rate by n/10 , cow increase bullet number by n*6 , chicken increase bullet number (more shotgun) by n
+    // Fuzzy Mutation
+    // Sheep multiply fire rate by n/10 , cow increase bullet number by n*6 , chicken increase bullet number (more shotgun) by n
     public static final double SHEEP_BULLET_QUANTITY_BASE = 0;
     public static final double COW_BULLET_QUANTITY_BASE = 12;
     public static final double CHICKEN_QUANTITY_BASE = 1;

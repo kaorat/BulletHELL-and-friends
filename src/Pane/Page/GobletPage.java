@@ -2,7 +2,10 @@ package Pane.Page;
 
 import GameEntity.UI.UIButton;
 import GameEntity.UI.UISprite;
+import Manager.EnemyManager;
+import Manager.PlayerManager;
 import Manager.SceneManager;
+import Manager.StatManager;
 import Pane.GameSideUIEditor;
 import Pane.GraphicEditor;
 import Utils.Asset;
@@ -11,6 +14,8 @@ import Utils.Transform;
 import Utils.Utility;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+
+import java.util.ArrayList;
 
 public class GobletPage extends GraphicEditor {
 
@@ -47,6 +52,17 @@ public class GobletPage extends GraphicEditor {
             System.out.println("Now is MainPage");
         }
 
+    }
+    public void reset(){
+        //calculate honey
+        StatManager statManager = StatManager.getInstance();
+        while(statManager.getTotalCoin()>=1000*statManager.getHoneyLevel()){
+            statManager.setTotalCoin(statManager.getTotalCoin()-(1000*statManager.getHoneyLevel()));
+            StatManager.getInstance().setHoneyLevel(statManager.getHoneyLevel()+1);
+            statManager.setAmber(statManager.getAmber()+1);
+        }
+        PlayerManager.getInstance().reset();
+        EnemyManager.getInstance().reset();
     }
 }
 

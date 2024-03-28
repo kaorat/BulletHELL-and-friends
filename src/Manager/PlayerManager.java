@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 public class PlayerManager implements  Updatable {
     private static PlayerManager instance;
-    private final ArrayList<Integer> PlayerPerks;
+    private ArrayList<Integer> PlayerPerks;
     private double BioticRifleDamage;
     private double BioticRifleFirerate;
     private double Dexterity;
@@ -18,14 +18,7 @@ public class PlayerManager implements  Updatable {
     private ArrayList<Pair<String, Integer>> Weapon;
 
     public PlayerManager(){
-        setDexterity(7);
-        setBioticRifleDamage(1);
-        setProficiency(1);
-        setBioticRifleFirerate(0.5);
-        setMinimize(5);
-        PlayerPerks = new ArrayList<Integer>(Arrays.asList(0, 1, 1, 1, 1, 1));
-        this.Weapon = new ArrayList<Pair<String, Integer>>();
-        Weapon.add(new Pair<>("Neuron Missile", 0));
+        reset();
     }
     public static PlayerManager getInstance() {
         if (instance == null) {
@@ -84,4 +77,15 @@ public class PlayerManager implements  Updatable {
     public void onUpdate() {
 
     }
+    public void reset(){
+        setDexterity(7);
+        setBioticRifleDamage(1);
+        setProficiency(1);
+        setBioticRifleFirerate(0.5);
+        setMinimize(5);
+        PlayerPerks = new ArrayList<Integer>(Arrays.asList(0, 1, 1, 1, 1, 1));
+        this.Weapon = new ArrayList<Pair<String, Integer>>();
+        Weapon.add(new Pair<>("Neuron Missile", 0));
+    }
+
 }

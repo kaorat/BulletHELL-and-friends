@@ -29,7 +29,7 @@ public class UIButton extends UISprite {
     }
 
     public boolean isHovered() {
-        return enabled&&hovered;
+        return hovered;
     }
 
     public void setHovered(boolean hovered) {
@@ -68,7 +68,7 @@ public class UIButton extends UISprite {
     }
 
     public void setEnable(boolean enable) {
-        this.enabled=enabled;
+        this.enabled = enable;
     }
     public boolean isEnables(){
         return enabled;

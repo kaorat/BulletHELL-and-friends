@@ -112,6 +112,8 @@ public class Config {
     public static final double PROFICIENCY_MAX_LEVEL = 100;
 
     //Goblet galore->10*level soul->level others->2^level
+    //cost (level+1)!
+    //reset -> gain honey ->
 
     // ArrayLists to store base values, upgrade values, and drop upgrade values
     //Enemy

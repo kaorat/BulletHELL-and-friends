@@ -24,6 +24,8 @@ public class Asset {
         public static Image upgradeChoose5;
         public static Image backgroundPlayerPage;
         public static Image upgradeButton;
+        public static Image upgradeButtonNoMoney;
+        public static Image upgradeButtonHover;
 
 
         static{
@@ -40,6 +42,8 @@ public class Asset {
             buttonNavigate=LoadImg("UI/buttonNavigate.png");
             backButton=LoadImg("UI/backButton.png");
             upgradeButton=LoadImg("UI/upgradeButton.png");
+            upgradeButtonNoMoney=LoadImg("UI/upgradeButtonNoMoney.png");
+            upgradeButtonHover=LoadImg("UI/upgradeButtonHover.png");
             spriteHover=LoadImg("UI/spriteHover.png");
             spriteClick=LoadImg("UI/buttonNavigate.png");
 

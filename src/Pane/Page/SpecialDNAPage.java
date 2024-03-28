@@ -10,6 +10,7 @@ import Utils.Transform;
 import Utils.Utility;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import Utils.ButtonType;
 
 public class SpecialDNAPage extends GameSideUIEditor {
     private UIButton buttonGoBack;
@@ -28,7 +29,7 @@ public class SpecialDNAPage extends GameSideUIEditor {
                 new Transform(x+132,120),52));
 
         // Create the button
-        buttonGoBack = new UIButton(Asset.UI.backButton, new Transform(Utility.getGameScreenX() + 33, 660, 0.7, 1), 54);
+        buttonGoBack = new UIButton(Asset.UI.backButton, new Transform(Utility.getGameScreenX() + 33, 660, 0.7, 1), 54 , ButtonType.BACK);
 
 
         create(buttonGoBack);

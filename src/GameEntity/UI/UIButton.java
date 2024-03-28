@@ -1,5 +1,7 @@
 package GameEntity.UI;
 
+import Utils.Asset;
+import Utils.ButtonType;
 import input.MouseUtil;
 import Utils.Transform;
 import javafx.scene.canvas.GraphicsContext;
@@ -11,17 +13,19 @@ public class UIButton extends UISprite {
     private boolean enabled;
     private Runnable onClickHandler;
     private int clickCount = 0;
+    private ButtonType buttonType;
 
 
-    public UIButton(Image sprite, Transform transform, int z) {
+    public UIButton(Image sprite, Transform transform, int z , ButtonType buttonType) {
         super(sprite, transform, z);
         this.pressed = false;
         this.hovered = false;
         this.enabled = true;
+        this.buttonType = buttonType;
     }
 
     public boolean isPressed() {
-        return enabled&&pressed;
+        return pressed;
     }
 
     public void setPressed(boolean pressed) {
@@ -37,21 +41,40 @@ public class UIButton extends UISprite {
     }
 
     @Override
-    public void draw(GraphicsContext gc) {
+    public void draw(GraphicsContext gc ) {
 
         // Add button-specific drawing logic here, such as highlighting when hovered or pressed
         if(!enabled){
             //Not enough money
+            setSprite(Asset.UI.upgradeButtonNoMoney);
+
+
         }
         else{
             if (pressed) {
-                // Draw hover effect
+                // Draw pressed effect
+
             }
             else if (hovered) {
-                // Draw pressed effect
+                // Draw  hover
+                if(buttonType == ButtonType.UPGRADE){
+                    setSprite(Asset.UI.upgradeButtonHover);
+
+                }
+                else if(buttonType == ButtonType.NAVIGATOR){
+//                    setSprite();
+                }
+
             }
             else{
                 //Normal
+                if(buttonType == ButtonType.UPGRADE){
+                    setSprite(Asset.UI.upgradeButton);
+                }
+                else if(buttonType == ButtonType.NAVIGATOR){
+
+                }
+
             }
         }
 

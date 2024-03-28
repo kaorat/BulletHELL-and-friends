@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 public class UIButton extends UISprite {
     private boolean pressed;
     private boolean hovered;
+    private boolean enabled;
     private Runnable onClickHandler;
     private int clickCount = 0;
 
@@ -36,14 +37,24 @@ public class UIButton extends UISprite {
 
     @Override
     public void draw(GraphicsContext gc) {
-        super.draw(gc);
+
         // Add button-specific drawing logic here, such as highlighting when hovered or pressed
-        if (hovered) {
-            // Draw hover effect
+        if(!enabled){
+            //Not enough money
         }
-        if (pressed) {
-            // Draw pressed effect
+        else{
+            if (pressed) {
+                // Draw hover effect
+            }
+            else if (hovered) {
+                // Draw pressed effect
+            }
+            else{
+                //Normal
+            }
         }
+
+        super.draw(gc);
     }
 
     @Override
@@ -58,10 +69,11 @@ public class UIButton extends UISprite {
 //        System.out.println(clickCount);
     }
 
-    public void isEnable(boolean enable) {
-        if(enable) {
-
-        }
+    public void setEnable(boolean enable) {
+        this.enabled=enabled;
+    }
+    public boolean isEnables(){
+        return enabled;
     }
 
 }

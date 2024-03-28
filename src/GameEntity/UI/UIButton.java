@@ -11,6 +11,7 @@ public class UIButton extends UISprite {
     private Runnable onClickHandler;
     private int clickCount = 0;
 
+
     public UIButton(Image sprite, Transform transform, int z) {
         super(sprite, transform, z);
         this.pressed = false;
@@ -55,6 +56,12 @@ public class UIButton extends UISprite {
             clickCount++;
         }
 //        System.out.println(clickCount);
+    }
+
+    public void isEnable(boolean enable) {
+        if(enable) {
+
+        }
     }
 
 }

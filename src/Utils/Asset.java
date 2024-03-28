@@ -21,8 +21,9 @@ public class Asset {
         public static Image dnaiconUI;
         public static Image headerMain;
         public static Image backButton;
-        public static Image upgradeFrame;
+        public static Image upgradeChoose5;
         public static Image backgroundPlayerPage;
+        public static Image upgradeButton;
 
 
         static{
@@ -38,10 +39,12 @@ public class Asset {
             //Button
             buttonNavigate=LoadImg("UI/buttonNavigate.png");
             backButton=LoadImg("UI/backButton.png");
+            upgradeButton=LoadImg("UI/upgradeButton.png");
             spriteHover=LoadImg("UI/spriteHover.png");
             spriteClick=LoadImg("UI/buttonNavigate.png");
 
-            upgradeFrame=LoadImg("UI/upgradeFrame.png");
+
+            upgradeChoose5=LoadImg("UI/upgradeChoose5.png");
             headerMain=LoadImg("UI/headerMain.png");
             currencyBG=LoadImg("UI/currencyBG.png");
             partUI=LoadImg("UI/meat.png");

@@ -29,6 +29,8 @@ public class GobletPage extends GraphicEditor {
         textHeader=(UISprite) create(new UISprite(new Text("Goblet",Utility.getGameFont(22 ), Color.BLACK),
                 new Transform(x+168,120),52));
 
+
+
         // Create the button
         buttonGoBack = new UIButton(Asset.UI.backButton, new Transform(Utility.getGameScreenX() + 33, 660, 0.7, 1), 54);
 

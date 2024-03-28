@@ -66,16 +66,26 @@ public class MainPage extends GraphicEditor {
         create(buttonGoblet);
         create(buttonSpecialDNA);
 
-
     }
-
 
     @Override
     public void onUpdate() {
      if(buttonPlayer.isPressed()){
             SceneManager.setCurrentPage(new PlayerPage(graphicsContext));
-         System.out.println("555");
+         System.out.println("Now is PlayerPage");
      }
+        if(buttonEnemy.isPressed()){
+                SceneManager.setCurrentPage(new EnemyPage(graphicsContext));
+            System.out.println("Now is EnemyPage");
+        }
+        if(buttonGoblet.isPressed()){
+            SceneManager.setCurrentPage(new GobletPage(graphicsContext));
+            System.out.println("Now is GobletPage");
+        }
+        if(buttonSpecialDNA.isPressed()){
+            SceneManager.setCurrentPage(new SpecialDNAPage(graphicsContext));
+            System.out.println("Now is SpecialDNAPage");
+        }
 
     }
 }

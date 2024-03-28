@@ -4,6 +4,7 @@ import GameEntity.GameObject;
 import GameEntity.UI.UISprite;
 import Manager.SceneManager;
 import Manager.StatManager;
+import Pane.Page.MainPage;
 import Utils.Asset;
 import Utils.Text;
 import Utils.Transform;

@@ -20,6 +20,7 @@ public class Asset {
         public static Image holyiconUI;
         public static Image dnaiconUI;
         public static Image headerMain;
+        public static Image backButton;
 
         static{
             loadResource();
@@ -31,6 +32,7 @@ public class Asset {
             mainBackground=LoadImg("UI/mainBackground.png");
             //Button
             buttonNavigate=LoadImg("UI/buttonNavigate.png");
+            backButton=LoadImg("UI/backButton.png");
             spriteHover=LoadImg("UI/spriteHover.png");
             spriteClick=LoadImg("UI/buttonNavigate.png");
 

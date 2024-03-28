@@ -22,7 +22,6 @@ public class SceneManager {
         //GraphicEditor
         SceneManager.updatables.add(new GameplayEditor(RootPane.getRootPane().getGraphicsContext2D()));
         SceneManager.updatables.add(new GameSideUIEditor(RootPane.getRootPane().getGraphicsContext2D()));
-        SceneManager.updatables.add(new PlayerPage(RootPane.getRootPane().getGraphicsContext2D()));
 
         //Managers
         SceneManager.updatables.add(BossManager.getInstance());

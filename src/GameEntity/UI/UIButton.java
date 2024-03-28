@@ -54,7 +54,7 @@ public class UIButton extends UISprite {
         if(pressed) {
             clickCount++;
         }
-        System.out.println(clickCount);
+//        System.out.println(clickCount);
     }
 
 }

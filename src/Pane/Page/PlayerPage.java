@@ -28,23 +28,10 @@ public class PlayerPage extends GraphicEditor {
     private UISprite textDexterity;
     private UIButton buttonMinimize;
     private UISprite textMinimize;
-    private UISprite descriptionRifleDamage;
-    private UISprite descriptionRifleFirerate;
-    private UISprite descriptionProficiency;
-    private UISprite descriptionDexterity;
-    private UISprite descriptionMinimize;
-    private UISprite lvlRifleDamage;
-    private UISprite lvlRifleFirerate;
-    private UISprite lvlProficiency;
-    private UISprite lvlDexterity;
-    private UISprite lvlMinimize;
-    private UISprite increaseRifleDamage;
-    private UISprite increaseRifleFirerate;
-    private UISprite increaseProficiency;
-    private UISprite increaseDexterity;
-    private UISprite increaseMinimize;
-
     private ArrayList<UIButton> allButtons = new ArrayList<>();
+    private ArrayList<UISprite> allLvL = new ArrayList<>();
+    private ArrayList<UISprite> allDescription = new ArrayList<>();
+    private ArrayList<UISprite> allIncrease = new ArrayList<>();
 
     private int moveYButton = 70;
 
@@ -66,36 +53,36 @@ public class PlayerPage extends GraphicEditor {
         textRifleDamage = (UISprite) create(new UISprite(new Text("100", Utility.getGameFont(13), Color.YELLOWGREEN),
                 new Transform(buttonRifleDamage.getTransform().getPosX() + 28,
                         buttonRifleDamage.getTransform().getPosY() + 23), 55));
-        lvlRifleDamage = (UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 260, 192, 0.25, 0.25), 55));
-        descriptionRifleDamage = (UISprite) create(new UISprite(new Text("Damage : 2.4", Utility.getGameFont(11), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 58, 210, 0.25, 0.25), 55));
-        increaseRifleDamage = (UISprite) create(new UISprite(new Text("+0.25 Damage", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 213, 0.25, 0.25), 55));
+        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 260, 192, 0.25, 0.25), 55)));
+        allDescription.add((UISprite) create(new UISprite(new Text("Damage : 2.4", Utility.getGameFont(11), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 58, 210, 0.25, 0.25), 55)));
+        allIncrease.add((UISprite) create(new UISprite(new Text("+0.25 Damage", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 213, 0.25, 0.25), 55)));
 
         // Create RifleFirerate
         buttonRifleFirerate = new UIButton(Asset.UI.upgradeButton, new Transform(Utility.getGameScreenX() + 320, 170 + moveYButton, 0.25, 0.27), 54 , ButtonType.UPGRADE);
         textRifleFirerate = (UISprite) create(new UISprite(new Text("100", Utility.getGameFont(13), Color.YELLOWGREEN),
                 new Transform(buttonRifleFirerate.getTransform().getPosX() + 28,
                         buttonRifleFirerate.getTransform().getPosY() + 23), 55));
-        lvlRifleFirerate = (UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 260, 192 + moveYButton, 0.25, 0.25), 55));
-        descriptionRifleFirerate = (UISprite) create(new UISprite(new Text("Firerate : 2", Utility.getGameFont(11), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 58, 210 + moveYButton, 0.25, 0.25), 55));
-        increaseRifleFirerate = (UISprite) create(new UISprite(new Text("+0.25 Firerate", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 213 + moveYButton, 0.25, 0.25), 55));
+        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 260, 192 + moveYButton, 0.25, 0.25), 55)));
+        allDescription.add((UISprite) create(new UISprite(new Text("Firerate : 2", Utility.getGameFont(11), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 58, 210 + moveYButton, 0.25, 0.25), 55)));
+        allIncrease.add((UISprite) create(new UISprite(new Text("+0.25 Firerate", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 213 + moveYButton, 0.25, 0.25), 55)));
 
         // Create Proficiency
         buttonProficiency = new UIButton(Asset.UI.upgradeButton, new Transform(Utility.getGameScreenX() + 320, 170 + moveYButton*2, 0.25, 0.27), 54 , ButtonType.UPGRADE);
         textProficiency = (UISprite) create(new UISprite(new Text("100", Utility.getGameFont(13), Color.YELLOWGREEN),
                 new Transform(buttonProficiency.getTransform().getPosX() + 28,
                         buttonProficiency.getTransform().getPosY() + 23), 55));
-        lvlProficiency = (UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 180, 190 + moveYButton*2, 0.25, 0.25), 55));
-        descriptionProficiency = (UISprite) create(new UISprite(new Text("Proficiency : 2", Utility.getGameFont(11), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 58, 210 + moveYButton*2, 0.25, 0.25), 55));
-        increaseProficiency = (UISprite) create(new UISprite(new Text("+0.25 Proficiency", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 280, 213 + moveYButton*2, 0.25, 0.25), 55));
+        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 180, 190 + moveYButton*2, 0.25, 0.25), 55)));
+        allDescription.add((UISprite) create(new UISprite(new Text("Proficiency : 2", Utility.getGameFont(11), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 58, 210 + moveYButton*2, 0.25, 0.25), 55)));
+        allIncrease.add((UISprite) create(new UISprite(new Text("+0.25 Proficiency", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 280, 213 + moveYButton*2, 0.25, 0.25), 55)));
 
         // Create Dexterity
         buttonDexterity = new UIButton(Asset.UI.upgradeButton, new Transform(Utility.getGameScreenX() + 320, 170 + moveYButton*3, 0.25, 0.27), 54 , ButtonType.UPGRADE);
         textDexterity = (UISprite) create(new UISprite(new Text("100", Utility.getGameFont(13), Color.YELLOWGREEN),
                 new Transform(buttonDexterity.getTransform().getPosX() + 28,
                         buttonDexterity.getTransform().getPosY() + 23), 55));
-        lvlDexterity = (UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 160, 190 + moveYButton*3, 0.25, 0.25), 55));
-        descriptionDexterity = (UISprite) create(new UISprite(new Text("Dexterity : 2", Utility.getGameFont(11), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 58, 210 + moveYButton*3, 0.25, 0.25), 55));
-        increaseDexterity = (UISprite) create(new UISprite(new Text("+0.25 Dexterity", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 290, 213 + moveYButton*3, 0.25, 0.25), 55));
+        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 160, 190 + moveYButton*3, 0.25, 0.25), 55)));
+        allDescription.add((UISprite) create(new UISprite(new Text("Dexterity : 2", Utility.getGameFont(11), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 58, 210 + moveYButton*3, 0.25, 0.25), 55)));
+        allIncrease.add((UISprite) create(new UISprite(new Text("+0.25 Dexterity", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 290, 213 + moveYButton*3, 0.25, 0.25), 55)));
 
 
         // Create Minimize
@@ -103,9 +90,9 @@ public class PlayerPage extends GraphicEditor {
         textMinimize = (UISprite) create(new UISprite(new Text("100", Utility.getGameFont(13), Color.YELLOWGREEN),
                 new Transform(buttonMinimize.getTransform().getPosX() + 28,
                         buttonMinimize.getTransform().getPosY() + 23), 55));
-        lvlMinimize = (UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 160, 190 + moveYButton*4, 0.25, 0.25), 55));
-        descriptionMinimize = (UISprite) create(new UISprite(new Text("Minimize : 2", Utility.getGameFont(11), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 58, 210 + moveYButton*4, 0.25, 0.25), 55));
-        increaseMinimize = (UISprite) create(new UISprite(new Text("+0.25 Minimize", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 290, 210 + moveYButton*4, 0.25, 0.25), 55));
+        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 160, 190 + moveYButton*4, 0.25, 0.25), 55)));
+        allDescription.add((UISprite) create(new UISprite(new Text("Minimize : 2", Utility.getGameFont(11), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 58, 210 + moveYButton*4, 0.25, 0.25), 55)));
+        allIncrease.add((UISprite) create(new UISprite(new Text("+0.25 Minimize", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 290, 210 + moveYButton*4, 0.25, 0.25), 55)));
 
 
         // Create the button

@@ -1,11 +1,9 @@
 package GameEntity.UI;
 
-import Utils.MouseUtil;
-import Utils.Text;
+import input.MouseUtil;
 import Utils.Transform;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 
 public class UIButton extends UISprite {
     private boolean pressed;
@@ -52,7 +50,7 @@ public class UIButton extends UISprite {
         hovered = MouseUtil.getMouseX() > getTransform().getPosX() && MouseUtil.getMouseX() < getTransform().getPosX()
                 + getSprite().getWidth() * getTransform().getSclX() && MouseUtil.getMouseY() > getTransform().getPosY() &&
                 MouseUtil.getMouseY() < getTransform().getPosY() + getSprite().getHeight() * getTransform().getSclY();
-        pressed = MouseUtil.isPressed() && hovered;
+        pressed = MouseUtil.isActivated() && hovered;
         if(pressed) {
             clickCount++;
         }

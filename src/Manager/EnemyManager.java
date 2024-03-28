@@ -9,7 +9,7 @@ import Utils.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class EnemyManager implements Upgradable, Updatable {
+public class EnemyManager implements Updatable {
 
     private static EnemyManager instance;
     private ArrayList<BaseEnemy> enemies;
@@ -131,16 +131,6 @@ public class EnemyManager implements Upgradable, Updatable {
 
     public ArrayList<Integer> getCowPerks() {
         return CowPerks;
-    }
-
-    @Override
-    public void upgradeLevel() {
-        //TODO: implement this
-    }
-
-    @Override
-    public void clearLevel() {
-        //TODO: implement this
     }
 
     @Override

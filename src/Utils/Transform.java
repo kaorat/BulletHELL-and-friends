@@ -62,6 +62,7 @@ public class Transform {
     }
 
     public boolean checkCollide(GameObject Obj1,GameObject Obj2){
+        // draw here the bounds of the object
 
         return Obj1.getBounds().intersects(Obj2.getBounds());
 

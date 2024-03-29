@@ -21,7 +21,8 @@ public class PlayerPage extends GraphicEditor {
     private ArrayList<UISprite> allLvL = new ArrayList<>();
     private ArrayList<UISprite> allDescription = new ArrayList<>();
     private ArrayList<UISprite> allIncrease = new ArrayList<>();
-
+    private final ArrayList<String> descTemplete = new ArrayList<>();
+    private final ArrayList<String> increaseTemplete = new ArrayList<>();
     private int moveYButton = 70;
 
     private double x = Utility.getGameScreenX();
@@ -88,19 +89,34 @@ public class PlayerPage extends GraphicEditor {
         allButtons.add ((UIButton) create(new UIButton(Asset.UI.backButton, new Transform(Utility.getGameScreenX() + 33, 660, 0.7, 1), 54 , ButtonType.BACK)));
         //choose upgrade
         create(new UISprite(Asset.UI.upgradeChoose5, new Transform(Utility.getGameScreenX() +10, 145, 0.25, 0.25), 53));
+
+        //Init Templete
+        descTemplete.add("Damage : ");
+        descTemplete.add("Firerate : ");
+        descTemplete.add("Hitbox size : ");
+        descTemplete.add("Graze hitbox size : ");
+        descTemplete.add("Part per graze : ");
+        increaseTemplete.add("damage");
+        increaseTemplete.add("shot/s");
+        increaseTemplete.add("m");
+        increaseTemplete.add("m");
+        increaseTemplete.add("parts");
 }
     @Override
     public void onUpdate() {
         int coin = StatManager.getInstance().getCoin();
         if(allButtons.get(5).isPressed()) SceneManager.setCurrentPage(new MainPage(graphicsContext));
         for(int i=0;i<5;i++){
-            //Price
-
-            //Button
-            UIButton button = allButtons.get(i);
+            //Variable
             int level = PlayerManager.getInstance().getPlayerPerks().get(i+1);
             int basePrice = Config.player_basePrices.get(i).intValue();
             int cost = basePrice * (int) Math.pow(Config.player_priceIncrements.get(i),level);
+            //Price
+            UISprite price = allPrice.get(i);
+            price.getText().setText(Utility.NumberToString(cost));
+            //Button
+            UIButton button = allButtons.get(i);
+
             if(coin > cost){
                 button.setEnable(true);
                 if(button.isPressed()){
@@ -111,7 +127,12 @@ public class PlayerPage extends GraphicEditor {
             else{
                 button.setEnable(false);
             }
-
+            //Level
+            allLvL.get(i).getText().setText("LV."+Utility.NumberToString(level));
+            //Desc
+            allDescription.get(i).getText().setText(descTemplete.get(i)+Utility.NumberToString(Config.player_baseValues.get(i)+((Config.player_upgradeValues.get(i))*level))+" "+increaseTemplete.get(i));
+            //Desc
+            allIncrease.get(i).getText().setText(Utility.NumberToString(Config.player_upgradeValues.get(i))+" "+increaseTemplete.get(i));
         }
     }
 }

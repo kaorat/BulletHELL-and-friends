@@ -83,6 +83,9 @@ public class PlayerManager implements  Updatable {
 
     @Override
     public void onUpdate() {
+        // print all the player stats
+//        System.out.println("Player Stats: ");
+        System.out.println("Biotic Rifle Damage: " + getBioticRifleDamage());
 
     }
     // what is reset?

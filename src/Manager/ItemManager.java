@@ -43,6 +43,5 @@ public class ItemManager implements Updatable {
 //        for(BaseItem item : items){
 //            item.spawn();
 //        }
-        System.out.println(items.size());
     }
 }

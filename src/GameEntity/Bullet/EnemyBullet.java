@@ -26,7 +26,7 @@ public class EnemyBullet extends BaseBullet{
 
     @Override
     public void onUpdate() {
-        transform.translate(2);
+        transform.translate(10);
         removeOutOfBounds();
         BulletManager.getInstance().removeDestroyed();
     }

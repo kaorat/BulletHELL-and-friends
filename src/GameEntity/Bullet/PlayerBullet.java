@@ -23,7 +23,7 @@ public class PlayerBullet extends BaseBullet {
     @Override
     public void onUpdate() {
 //        transform.setRot(-90);
-        transform.translate(5);
+        transform.translate(10);
 
         removeOutOfBounds();
 

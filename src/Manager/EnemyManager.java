@@ -195,6 +195,10 @@ public class EnemyManager implements Updatable {
             spawnEnemy(EnemyType.SHEEP);
             lastSheepSpawnTime = System.currentTimeMillis();
         }
+        if (System.currentTimeMillis() - lastCowSpawnTime > cowSpawnRate) {
+            spawnEnemy(EnemyType.COW);
+            lastCowSpawnTime = System.currentTimeMillis();
+        }
 
 
         

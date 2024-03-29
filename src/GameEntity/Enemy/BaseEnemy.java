@@ -3,8 +3,11 @@ package GameEntity.Enemy;
 import GameEntity.Bullet.BaseBullet;
 import GameEntity.Bullet.PlayerBullet;
 import GameEntity.GameObject;
+import GameEntity.Item.BaseItem;
+import GameEntity.Item.Coin;
 import Manager.BulletManager;
 import Manager.EnemyManager;
+import Manager.ItemManager;
 import Utils.EnemyType;
 import Utils.EnemyUtils;
 import Utils.Transform;
@@ -47,7 +50,7 @@ public abstract class BaseEnemy extends GameObject {
 //            {7, "Fast Reproduction - Spawn Time", 2.0, -0.05}
 //    };
 
-    public BaseEnemy(EnemyType type, Transform transform,int z){
+    public BaseEnemy(EnemyType type, Transform transform,double z){
         super(transform, z);
         // ---- Suchas comment: ALL of this should be constructed on children classes, because it calculates level too, doesn't it-----
         // ---- or create one more argument (levels[]) -----
@@ -79,10 +82,10 @@ public abstract class BaseEnemy extends GameObject {
     @Override
     public void onUpdate() { //from animationTimer
         // ---- Suchas comment: implement in manager please-----
-        EnemyManager.getInstance().removeDestroyed();
-        if(EnemyManager.getInstance().checkEnemyLeft()){ //less than 5
-            EnemyManager.getInstance().spawnEnemy(EnemyType.CHICKEN);
-        };
+//        EnemyManager.getInstance().removeDestroyed();
+//        if(EnemyManager.getInstance().checkEnemyLeft()){ //less than 5
+//            EnemyManager.getInstance().spawnEnemy(EnemyType.CHICKEN);
+//        };
 
         double renderTime = 8d ; // idk  // Suchas comment: idk
         if(state == States.DOWN) {
@@ -109,12 +112,15 @@ public abstract class BaseEnemy extends GameObject {
             if(uptime <= 0) destroyed = true;
         }
 
+        //bullet collision
         BulletManager bm = BulletManager.getInstance();
         ArrayList<BaseBullet> bulletList = bm.getBullets();
         for (BaseBullet bullet : bulletList) {
             if (this.transform.checkCollide(this, bullet) && bullet instanceof PlayerBullet) {
 //                this.hp -= bullet.getDamage();
                 bullet.setDestroyed(true);
+                Coin coin = new Coin(transform.getPosX(), transform.getPosY());
+                ItemManager.getInstance().add(coin);
                 this.setDestroyed(true);
             }
         }

@@ -28,6 +28,7 @@ public class SceneManager {
         SceneManager.updatables.add(BulletManager.getInstance());
         SceneManager.updatables.add(EnemyManager.getInstance());
         SceneManager.updatables.add(PlayerManager.getInstance());
+        SceneManager.updatables.add(ItemManager.getInstance());
     }
     public static void update(){
         for (Updatable updatable : updatables) {

@@ -16,7 +16,7 @@ public class UIButton extends UISprite {
     private ButtonType buttonType;
 
 
-    public UIButton(Image sprite, Transform transform, int z , ButtonType buttonType) {
+    public UIButton(Image sprite, Transform transform, double z , ButtonType buttonType) {
         super(sprite, transform, z);
         this.pressed = false;
         this.hovered = false;

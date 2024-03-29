@@ -2,17 +2,18 @@ package GameEntity.Item;
 
 import GameEntity.GameObject;
 import Utils.Transform;
+import Utils.Utility;
 import javafx.scene.canvas.GraphicsContext;
 
 public abstract class BaseItem extends GameObject {
 
    public BaseItem(double posX, double posY){
 
-       super(new Transform(posX, posY), 1);
+       super(new Transform(posX, posY), Math.random());
 
        this.destroyed = false;
 
-       this.visible = false;
+//       this.visible = false;
    }
 
    public void spawn(){ // same for all items?
@@ -21,7 +22,7 @@ public abstract class BaseItem extends GameObject {
    };
 
    public void isOutOfBounds(){
-      if(this.transform.getPosY() > 760){ // lower than the screen
+      if(this.transform.getPosX() > Utility.getGameScreenX()){ // lower than the screen
          this.destroyed = true;
       }
    }

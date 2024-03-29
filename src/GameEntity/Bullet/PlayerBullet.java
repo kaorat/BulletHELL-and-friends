@@ -9,7 +9,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 public class PlayerBullet extends BaseBullet {
-    public PlayerBullet(double damage, GameObject owner, Transform transform, int z) {
+    public PlayerBullet(double damage, GameObject owner, Transform transform, double z) {
         super(damage, owner, transform, z);
         setImage(Asset.Game.bullet);
     }

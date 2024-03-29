@@ -8,10 +8,10 @@ public class GameplayEditor extends GraphicEditor{
     public GameplayEditor(GraphicsContext graphicsContext) {
         super(graphicsContext);
         // DUMMY TEST
-        create(new GameEntity.Enemy.Chicken(new Utils.Transform(10,-60),20));
+//        create(new GameEntity.Enemy.Chicken(new Utils.Transform(10,-60),20));
 
 
-        create(new GameEntity.Player.Player(new Utils.Transform(200,400),30));
+//        create(new GameEntity.Player.Player(new Utils.Transform(200,400),30));
     }
 
     @Override

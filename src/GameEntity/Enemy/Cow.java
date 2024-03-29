@@ -6,7 +6,7 @@ import Utils.Transform;
 import javafx.scene.canvas.GraphicsContext;
 
 public class Cow extends BaseEnemy{
-    public Cow(Transform transform,int z) {
+    public Cow(Transform transform,double z) {
         super(EnemyType.COW,transform,z);
         Perks = EnemyManager.getInstance().getCowPerks();
     }

@@ -23,7 +23,7 @@ public class Player extends GameObject implements Shootable {
     private long fireRate = 200;
     private long lastFireTime = 0;
 
-    public Player(Transform transform, int z) {
+    public Player(Transform transform, double z) {
         super(transform, z);
         this.speed = 3.5;
         setImage(Asset.Game.player);

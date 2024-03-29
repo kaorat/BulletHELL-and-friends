@@ -7,7 +7,7 @@ import javafx.scene.canvas.GraphicsContext;
 // ---- Suchas comment: Different from enemy's bullet, no?-----
 public class BossBullet extends BaseBullet{
 
-    public BossBullet(double damage, GameObject owner, Transform transform, int z) {
+    public BossBullet(double damage, GameObject owner, Transform transform, double z) {
         super(damage, owner,transform,z);
     }
 

@@ -12,7 +12,7 @@ public abstract class BaseBoss extends GameObject {
 
 //    boss should drop sth????
 
-    public BaseBoss(int hp, int fireRate, int bulletSpeed, int bulletLength, Transform transform,int z){
+    public BaseBoss(int hp, int fireRate, int bulletSpeed, int bulletLength, Transform transform,double z){
         super(transform,z);
         this.hp = hp;
         this.fireRate = fireRate;

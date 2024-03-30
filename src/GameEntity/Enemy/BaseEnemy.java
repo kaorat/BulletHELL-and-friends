@@ -76,41 +76,14 @@ public abstract class BaseEnemy extends GameObject {
 
     public abstract void startFiring(); //start thread?
     public abstract void firing();
+    public abstract void action();
 
     //Transform is not meant to be added directly , I believe.
     // ---- Suchas comment: correct, add when instantiating only but can be edited though setter-----
     @Override
     public void onUpdate() { //from animationTimer
-        // ---- Suchas comment: implement in manager please-----
-//        EnemyManager.getInstance().removeDestroyed();
-//        if(EnemyManager.getInstance().checkEnemyLeft()){ //less than 5
-//            EnemyManager.getInstance().spawnEnemy(EnemyType.CHICKEN);
-//        };
 
-        double renderTime = 8d ; // idk  // Suchas comment: idk
-        if(state == States.DOWN) {
-            downtime -= renderTime;
-            transform.setRot(90);
-            transform.translate(0.7);
-            if(downtime <= 0) state = States.SHOOT;
-        }
-        if (state == States.SHOOT) {
-            shootTime -= renderTime;
-            long currentTime = System.currentTimeMillis();
-            if (currentTime - lastFireTime > fireRate) {
-                firing();
-                lastFireTime = currentTime;
-            }
-
-            if(shootTime <= 0) state = States.UP;
-        }
-        if(state == States.UP) {
-            uptime -= renderTime;
-            transform.setRot(270);
-            transform.translate(0.7);
-
-            if(uptime <= 0) destroyed = true;
-        }
+        action();
 
         //bullet collision
         BulletManager bm = BulletManager.getInstance();
@@ -125,7 +98,6 @@ public abstract class BaseEnemy extends GameObject {
             }
         }
 
-//        System.out.println("Enemy state : " + state.toString());
     }
 
     public ArrayList<Integer> getPerks() {

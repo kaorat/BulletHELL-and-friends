@@ -118,7 +118,7 @@ public class EnemyUtils {
     public static void ChickenShootPattern(Chicken chicken){
 //        for(int i = 0; i < 3; i++){
 
-            EnemyBullet bullet = new EnemyBullet(10, chicken, new Transform(chicken.getTransform().getPosX() + 50, chicken.getTransform().getPosY() + 20, 90 , 2, 2), 0);
+            EnemyBullet bullet = new EnemyBullet(10, chicken, new Transform(chicken.getTransform().getPosX() + 25, chicken.getTransform().getPosY() + 20, 90 , 2, 2), 0);
             BulletManager.getInstance().add(bullet);
 //        }
     }
@@ -132,10 +132,12 @@ public class EnemyUtils {
 
     }
 
-    public static void CowShootPattern(Cow cow){
+    public static void CowShootPattern(Cow cow, int pattern){
+        // semicircular direction
         for(int i = 0; i <= 10; i++){
+
             //TODO
-            EnemyBullet bullet = new EnemyBullet(10, cow, new Transform(cow.getTransform().getPosX() + 50, cow.getTransform().getPosY() + 20, 0 + i * 18, 2, 2), 0);
+            EnemyBullet bullet = new EnemyBullet(10, cow, new Transform(cow.getTransform().getPosX() + 50, cow.getTransform().getPosY() + 20, 0 + ( i * 18 ), 2, 2), 0);
             BulletManager.getInstance().add(bullet);
         }
 

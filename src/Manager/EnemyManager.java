@@ -22,9 +22,9 @@ public class EnemyManager implements Updatable {
     private long lastCowSpawnTime;
 
 
-    private long chickenSpawnRate = 600;
-    private long sheepSpawnRate = 1000;
-    private long cowSpawnRate = 2000;
+    private long chickenSpawnRate = 400;
+    private long sheepSpawnRate = 800;
+    private long cowSpawnRate = 1000;
 
     private EnemyManager() {
         enemies = new ArrayList<BaseEnemy>();

@@ -10,12 +10,14 @@ import javafx.scene.image.Image;
 public abstract class BaseBullet extends GameObject {
 
     protected double damage; // ---- !Suchas comment: damage is only for player's bullet, no? (Enemy bullet one-shot you)----- Gannub -> please no, Suchas.
-    protected GameObject owner; // ---- !Suchas comment: Unnecessary? or have a plan? if so, please inform -----
+    protected GameObject owner;
+    protected boolean isRotChanged;
 
     public BaseBullet(double damage, GameObject owner, Transform transform, double z) {
         super(transform,z);
         this.damage = damage;
         this.owner = owner;
+        this.isRotChanged = false;
     }
 
     public void removeOutOfBounds() {

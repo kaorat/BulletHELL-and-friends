@@ -30,6 +30,7 @@ public class Transform {
         this.sclX = 1;
         this.sclY = 1;
     }
+
     public Transform(double posX, double posY, double sclX, double sclY) {
         this.posX = posX;
         this.posY = posY;
@@ -61,7 +62,7 @@ public class Transform {
         posY += translation.getY();
     }
 
-    public boolean checkCollide(GameObject Obj1,GameObject Obj2){
+    public  boolean checkCollide(GameObject Obj1,GameObject Obj2){
         // draw here the bounds of the object
 
         return Obj1.getBounds().intersects(Obj2.getBounds());
@@ -69,6 +70,13 @@ public class Transform {
     }
         public double getPosX() {
         return posX;
+    }
+
+    public static double calculateAngleToTarget(Transform from, Transform to) {
+        return Math.toDegrees(Math.atan2(to.getPosY() - from.getPosY(), to.getPosX() - from.getPosX()));
+    }
+    public static double calculateDistanceToTarget(Transform from, Transform to) {
+        return Math.sqrt(Math.pow(to.getPosX() - from.getPosX(), 2) + Math.pow(to.getPosY() - from.getPosY(), 2));
     }
 
     public void setPosX(double posX) {

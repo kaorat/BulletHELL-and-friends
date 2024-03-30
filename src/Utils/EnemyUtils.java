@@ -5,6 +5,7 @@ import GameEntity.Enemy.Chicken;
 import GameEntity.Enemy.Cow;
 import GameEntity.Enemy.Sheep;
 import Manager.BulletManager;
+import Manager.PlayerManager;
 
 public class EnemyUtils {
 
@@ -124,11 +125,17 @@ public class EnemyUtils {
     }
 
     public static void SheepShootPattern(Sheep sheep){
-        for(int i = 0; i < 3; i++){
-            //TODO
-            EnemyBullet bullet = new EnemyBullet(10, sheep, new Transform(sheep.getTransform().getPosX() + 50, sheep.getTransform().getPosY() + 20, 85 + i * 5, 2, 2), 0);
-            BulletManager.getInstance().add(bullet);
-        }
+
+
+        EnemyBullet bullet = new EnemyBullet(10, sheep, new Transform(sheep.getTransform().getPosX() -25, sheep.getTransform().getPosY() + 20, 0 , 2, 2), 0);
+        EnemyBullet bullet2 = new EnemyBullet(10, sheep, new Transform(sheep.getTransform().getPosX() + 25, sheep.getTransform().getPosY() + 60, 0, 2, 2), 0);
+        EnemyBullet bullet3 = new EnemyBullet(10, sheep, new Transform(sheep.getTransform().getPosX() +75, sheep.getTransform().getPosY() + 20,  0, 2, 2), 0);
+//        bullet.getTransform().setRot(Transform.calculateAngleToTarget(sheep.getTransform(), PlayerManager.getInstance().getPlayer().getTransform()));
+//        bullet2.getTransform().setRot(Transform.calculateAngleToTarget(sheep.getTransform(), PlayerManager.getInstance().getPlayer().getTransform()));
+//        bullet3.getTransform().setRot(Transform.calculateAngleToTarget(sheep.getTransform(), PlayerManager.getInstance().getPlayer().getTransform()));
+        BulletManager.getInstance().add(bullet);
+        BulletManager.getInstance().add(bullet2);
+        BulletManager.getInstance().add(bullet3);
 
     }
 
@@ -137,7 +144,7 @@ public class EnemyUtils {
         for(int i = 0; i <= 10; i++){
 
             //TODO
-            EnemyBullet bullet = new EnemyBullet(10, cow, new Transform(cow.getTransform().getPosX() + 50, cow.getTransform().getPosY() + 20, 0 + ( i * 18 ), 2, 2), 0);
+            EnemyBullet bullet = new EnemyBullet(10, cow, new Transform(cow.getTransform().getPosX() + 25, cow.getTransform().getPosY() + 20, 0 + ( i * 18 ), 2, 2), 0);
             BulletManager.getInstance().add(bullet);
         }
 

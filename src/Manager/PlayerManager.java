@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 public class PlayerManager implements  Updatable {
     private static PlayerManager instance;
-    public static Player player;
+    private Player player;
     private ArrayList<Integer> playerPerks;
     private double bioticRifleDamage;
     private double bioticRifleFireRate;
@@ -32,6 +32,7 @@ public class PlayerManager implements  Updatable {
 
     private void addPlayer(){
         Player player = new Player(new Transform(200,400),30);
+        this.player = player;
         GameObjectHolder.getInstance().add(player);
     }
     public double getMinimize() {
@@ -81,6 +82,11 @@ public class PlayerManager implements  Updatable {
 
     }
 
+
+    public Player getPlayer(){
+        return player;
+    }
+
     @Override
     public void onUpdate() {
         // print all the player stats
@@ -88,6 +94,7 @@ public class PlayerManager implements  Updatable {
         System.out.println("Biotic Rifle Damage: " + getBioticRifleDamage());
 
     }
+
     // what is reset?
     public void reset(){
         addPlayer();
@@ -100,5 +107,6 @@ public class PlayerManager implements  Updatable {
         this.weapon = new ArrayList<Pair<String, Integer>>();
         weapon.add(new Pair<>("Neuron Missile", 0));
     }
+
 
 }

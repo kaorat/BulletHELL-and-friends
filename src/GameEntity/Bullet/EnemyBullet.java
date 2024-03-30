@@ -1,7 +1,9 @@
 package GameEntity.Bullet;
 
+import GameEntity.Enemy.Sheep;
 import GameEntity.GameObject;
 import Manager.BulletManager;
+import Manager.PlayerManager;
 import Utils.Asset;
 import Utils.Transform;
 import javafx.geometry.BoundingBox;
@@ -30,6 +32,13 @@ public class EnemyBullet extends BaseBullet{
     @Override
     public void onUpdate() {
         transform.translate(3);
+        if(this.owner instanceof Sheep &&  Transform.calculateDistanceToTarget(this.transform, PlayerManager.getInstance().getPlayer().getTransform()) <= 400 && !isRotChanged) {
+            isRotChanged = true;
+        }
+        if(this.owner instanceof Sheep && Transform.calculateDistanceToTarget(this.transform, PlayerManager.getInstance().getPlayer().getTransform()) > 400 && !isRotChanged) {
+            transform.setRot(Transform.calculateAngleToTarget(this.transform, PlayerManager.getInstance().getPlayer().getTransform()));
+//            isRotChanged = true;
+        }
         removeOutOfBounds();
         BulletManager.getInstance().removeDestroyed();
     }

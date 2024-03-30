@@ -76,12 +76,11 @@ public class Player extends GameObject implements Shootable {
         long currentTime = System.currentTimeMillis();
         // ---- !Suchas comment: Left Shift?? Gonna be pretty hard to balance na (Use only for slow and hitbox show)-----
         if (isShiftPressed()) {
-            fireRate = 80;
+            fireRate = 100;
             speed = 3;
             if (currentTime - lastFireTime > fireRate) {
-                shoot();
 //                controlAggressiveShoot();
-                PlayerUtils.twin(this);
+                PlayerUtils.autoAim(this);
                 lastFireTime = currentTime;
 
             }

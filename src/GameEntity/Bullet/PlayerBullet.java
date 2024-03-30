@@ -4,6 +4,7 @@ import GameEntity.GameObject;
 import Manager.BulletManager;
 import Manager.EnemyManager;
 import Utils.Asset;
+import Utils.Config;
 import Utils.Transform;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -16,15 +17,19 @@ public class PlayerBullet extends BaseBullet {
 
     @Override
     public void draw(GraphicsContext gc) {
-            gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 10, 10);
+
+        gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 10, 10);
+        drawBounds(Config.PLAYER_BULLET_OFFSET_WIDTH, Config.PLAYER_BULLET_OFFSET_HEIGHT, Config.PLAYER_BULLET_WIDTH, Config.PLAYER_BULLET_HEIGHT);
+
     }
 
     @Override
     public void onUpdate() {
 //        transform.setRot(-90);
         transform.translate(5);
+
         removeOutOfBounds();
-        EnemyManager.getInstance().checkCollision();
+
         BulletManager.getInstance().removeDestroyed();
     }
 }

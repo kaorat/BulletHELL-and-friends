@@ -4,6 +4,7 @@ import GameEntity.Bullet.EnemyBullet;
 import Manager.BulletManager;
 import Manager.EnemyManager;
 import Utils.Asset;
+import Utils.Config;
 import Utils.EnemyType;
 import Utils.Transform;
 import javafx.scene.canvas.GraphicsContext;
@@ -17,6 +18,7 @@ public class Chicken extends BaseEnemy{
         setImage(Asset.UI.soulUI);
         // ---- Suchas comment: come with parameter instead -----
         Perks = EnemyManager.getInstance().getChickenPerks();
+
     }
 
     @Override
@@ -43,6 +45,7 @@ public class Chicken extends BaseEnemy{
     @Override
     public void draw(GraphicsContext gc) {
         gc.drawImage(getImage(),this.transform.getPosX(),this.transform.getPosY(), 60,60);
+        drawBounds(Config.CHICKEN_OFFSET_WIDTH, Config.CHICKEN_OFFSET_HEIGHT, Config.CHICKEN_WIDTH, Config.CHICKEN_HEIGHT);
     }
 
 }

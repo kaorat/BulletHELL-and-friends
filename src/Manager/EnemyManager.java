@@ -36,6 +36,7 @@ public class EnemyManager implements Upgradable, Updatable {
         return instance;
     }
 
+
     public void checkCollision() {
         BulletManager bulletManager = BulletManager.getInstance();
 
@@ -53,6 +54,7 @@ public class EnemyManager implements Upgradable, Updatable {
             }
         }
     }
+
 
     public Transform randomTransform() {
         double x = (Math.random() * 640);

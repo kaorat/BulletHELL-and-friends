@@ -1,6 +1,8 @@
 package GameEntity;
 
 import Utils.Transform;
+import javafx.geometry.BoundingBox;
+import javafx.geometry.Bounds;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
@@ -16,18 +18,33 @@ public abstract class GameObject {
     }
 
     protected Transform transform;
+
     protected int z;
+
+    protected Image image;
+    protected Bounds bounds;
     protected boolean visible,destroyed;
     protected ArrayList<GameObject> childrenNode;
 
-    protected Image image;
+    public void drawBounds(double offsetW, double offsetH, double width, double height){
+        this.bounds = new BoundingBox(transform.getPosX() + offsetW,transform.getPosY() + offsetH, width, height);
+    }
+    public Bounds getBounds(){
+        if(bounds == null)
+            return new BoundingBox(0,0,0,0);
+        return bounds;
+    }
+
     public GameObject(Transform transform,int z) {
         this.transform=transform;
         this.z = z;
         this.visible = true;
         this.destroyed = false;
         this.image = null;
+
     }
+
+
 
     public void addChildrenNode(GameObject childNode){
         this.childrenNode.add(childNode);

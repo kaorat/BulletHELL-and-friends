@@ -1,6 +1,9 @@
 package GameEntity.Enemy;
 
+import GameEntity.Bullet.BaseBullet;
+import GameEntity.Bullet.PlayerBullet;
 import GameEntity.GameObject;
+import Manager.BulletManager;
 import Manager.EnemyManager;
 import Utils.EnemyType;
 import Utils.EnemyUtils;
@@ -105,6 +108,17 @@ public abstract class BaseEnemy extends GameObject {
 
             if(uptime <= 0) destroyed = true;
         }
+
+        BulletManager bm = BulletManager.getInstance();
+        ArrayList<BaseBullet> bulletList = bm.getBullets();
+        for (BaseBullet bullet : bulletList) {
+            if (Transform.checkCollide(this, bullet) && bullet instanceof PlayerBullet) {
+//                this.hp -= bullet.getDamage();
+                bullet.setDestroyed(true);
+                this.setDestroyed(true);
+            }
+        }
+
 //        System.out.println("Enemy state : " + state.toString());
     }
 

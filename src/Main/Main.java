@@ -2,12 +2,14 @@ package Main;
 
 import Manager.GameObjectHolder;
 import Manager.SceneManager;
+import Utils.Asset;
 import Utils.Utility;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import Pane.RootPane;
 import input.InputUtility;
@@ -35,6 +37,11 @@ public class Main extends Application {
                 //InputUtility.updateInputState();
             }
         };
+        //just for testing bgm
+        AudioClip bgm = Asset.Audio.bgm;
+        bgm.setCycleCount(AudioClip.INDEFINITE);
+        bgm.setVolume(0.2);
+        bgm.play();
         animation.start();
     }
 }

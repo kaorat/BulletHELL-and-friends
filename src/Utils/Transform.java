@@ -1,5 +1,6 @@
 package Utils;
 
+import javafx.geometry.BoundingBox;
 import javafx.geometry.Bounds;
 import GameEntity.GameObject;
 import javafx.geometry.Point2D;
@@ -12,6 +13,9 @@ public class Transform {
 
     // ---- Suchas comment: so 2 rots huh,one for visual, another for movement-----
     protected double posX,posY,rot,sclX,sclY;
+
+
+
     public Transform(double posX, double posY) {
         this.posX = posX;
         this.posY = posY;
@@ -58,13 +62,14 @@ public class Transform {
         posY += translation.getY();
     }
 
-    public static boolean checkCollide(GameObject obj1, GameObject obj2) {
-        Rectangle rect1 = new Rectangle(obj1.getTransform().getPosX(), obj1.getTransform().getPosY(), 60, 60);
-        Rectangle rect2 = new Rectangle(obj2.getTransform().getPosX(), obj2.getTransform().getPosY(), 10,10);
 
-        return rect1.getBoundsInParent().intersects(rect2.getBoundsInParent());
+    public static boolean checkCollide(GameObject Obj1, GameObject Obj2){
+
+        return Obj1.getBounds().intersects(Obj2.getBounds());
+
+
     }
-    public double getPosX() {
+        public double getPosX() {
         return posX;
     }
 

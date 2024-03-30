@@ -72,6 +72,7 @@ public class Asset {
         public static Image player;
         public static Image bullet;
         public static Image enemyBullet;
+        public static Image cowBullet;
         public static Image enemy;
         static{
             loadResource();
@@ -81,6 +82,7 @@ public class Asset {
             player=Load("UI/kaosteak.png");
             bullet=Load("UI/computer.png");
             enemyBullet=Load("UI/firebullet.png");
+            cowBullet=Load("UI/CowBullet.png");
         }
         private static Image Load(String url){
             return new Image(ClassLoader.getSystemResource(url).toString());

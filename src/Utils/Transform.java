@@ -6,6 +6,7 @@ import GameEntity.GameObject;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.shape.Rectangle;
 
 public class Transform {
     private static final String UI_FOLDER = "UI/";
@@ -62,10 +63,11 @@ public class Transform {
         posY += translation.getY();
     }
 
-    public  boolean checkCollide(GameObject Obj1,GameObject Obj2){
-        // draw here the bounds of the object
 
+    public static boolean checkCollide(GameObject Obj1, GameObject Obj2){
+        // draw here the bounds of the object
         return Obj1.getBounds().intersects(Obj2.getBounds());
+
 
     }
         public double getPosX() {

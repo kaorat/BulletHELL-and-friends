@@ -108,7 +108,7 @@ public class Player extends GameObject implements Shootable {
         ArrayList<BaseBullet> bulletList = BulletManager.getInstance().getBullets();
         for (BaseBullet bullet : bulletList) {
                 if(bullet instanceof EnemyBullet){
-                    if(transform.checkCollide(this, bullet)){
+                    if(Transform.checkCollide(this, bullet)){
                     bullet.setDestroyed(true);
                 }
             }

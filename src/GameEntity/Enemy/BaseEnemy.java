@@ -89,7 +89,7 @@ public abstract class BaseEnemy extends GameObject {
         BulletManager bm = BulletManager.getInstance();
         ArrayList<BaseBullet> bulletList = bm.getBullets();
         for (BaseBullet bullet : bulletList) {
-            if (this.transform.checkCollide(this, bullet) && bullet instanceof PlayerBullet) {
+            if (Transform.checkCollide(this, bullet) && bullet instanceof PlayerBullet) {
 //                this.hp -= bullet.getDamage();
                 bullet.setDestroyed(true);
                 Coin coin = new Coin(transform.getPosX(), transform.getPosY());

@@ -234,12 +234,12 @@ public class Config {
         player_maxLevels.add(PROFICIENCY_MAX_LEVEL);
     }
 
-    public static final double PLAYER_OFFSET_WIDTH = 20;
+    public static final double PLAYER_OFFSET_WIDTH = 0;
     public static final double PLAYER_OFFSET_HEIGHT = 0;
     public static final double PLAYER_WIDTH = 60;
     public static final double PLAYER_HEIGHT = 40;
 
-    public static final double CHICKEN_OFFSET_WIDTH = 20;
+    public static final double CHICKEN_OFFSET_WIDTH = 0;
 
     public static final double CHICKEN_OFFSET_HEIGHT = 0;
     public static final double CHICKEN_WIDTH = 40;

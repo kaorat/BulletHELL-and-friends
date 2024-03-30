@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 
 public class Chicken extends BaseEnemy{
 
+    private long lastPatternTime = 0;
 
     public Chicken(Transform transform,double z) {
         super(EnemyType.CHICKEN,transform, z);
@@ -26,7 +27,37 @@ public class Chicken extends BaseEnemy{
     public void firing() {
         // circular direction
         // utils got it
-        EnemyUtils.ChickenShootPattern(this);
+        long currentTime = System.currentTimeMillis();
+        if(currentTime - lastPatternTime > 600){ // 5 seconds
+            EnemyUtils.ChickenShootPattern(this);
+            lastPatternTime = currentTime;
+        }
+
+    }
+
+    @Override
+    public void action() {
+
+
+        double renderTime = 8d ; // idk  // Suchas comment: idk
+        if(state == States.DOWN) {
+            downtime -= renderTime;
+            transform.setRot(90);
+            transform.translate(0.7);
+            if(downtime <= 0) state = States.SHOOT;
+        }
+        if (state == States.SHOOT) {
+            shootTime -= renderTime;
+            firing();
+            if(shootTime <= 0) state = States.UP;
+        }
+        if(state == States.UP) {
+            uptime -= renderTime;
+            transform.setRot(270);
+            transform.translate(0.7);
+
+            if(uptime <= 0) destroyed = true;
+        }
     }
 
     @Override

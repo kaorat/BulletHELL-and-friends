@@ -5,6 +5,9 @@ import Utils.*;
 import javafx.scene.canvas.GraphicsContext;
 
 public class Sheep extends BaseEnemy{
+
+    private long lastPatternTime = 0;
+
     public Sheep(Transform transform,double z) {
         super(EnemyType.SHEEP,transform,z);
         setImage(Asset.UI.sheepiconUI);
@@ -18,7 +21,35 @@ public class Sheep extends BaseEnemy{
 
     @Override
     public void firing() {
-        EnemyUtils.SheepShootPattern(this);
+        long currentTime = System.currentTimeMillis();
+        if(currentTime - lastPatternTime > 1000){ // 5 seconds
+            EnemyUtils.SheepShootPattern(this);
+            lastPatternTime = currentTime;
+        }
+    }
+
+    @Override
+    public void action() {
+
+        double renderTime = 10d ; // idk  // Suchas comment: idk
+        if(state == States.DOWN) {
+            downtime -= renderTime;
+            transform.setRot(90);
+            transform.translate(0.7);
+            if(downtime <= 0) state = States.SHOOT;
+        }
+        if (state == States.SHOOT) {
+            shootTime -= renderTime;
+            firing();
+            if(shootTime <= 0) state = States.UP;
+        }
+        if(state == States.UP) {
+            uptime -= renderTime;
+            transform.setRot(270);
+            transform.translate(0.7);
+
+            if(uptime <= 0) destroyed = true;
+        }
     }
 
     @Override

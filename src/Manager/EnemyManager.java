@@ -1,15 +1,19 @@
 package Manager;
 
+import GameEntity.Bullet.BaseBullet;
+import GameEntity.Bullet.PlayerBullet;
 import GameEntity.Enemy.BaseEnemy;
 import GameEntity.Enemy.Chicken;
 import GameEntity.Enemy.Cow;
 import GameEntity.Enemy.Sheep;
 import Utils.*;
 
+import Manager.BulletManager;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class EnemyManager implements Updatable {
+
 
     private static EnemyManager instance;
     private ArrayList<BaseEnemy> enemies;
@@ -22,9 +26,9 @@ public class EnemyManager implements Updatable {
     private long lastCowSpawnTime;
 
 
-    private long chickenSpawnRate = 600;
-    private long sheepSpawnRate = 1000;
-    private long cowSpawnRate = 2000;
+    private long chickenSpawnRate = 400;
+    private long sheepSpawnRate = 800;
+    private long cowSpawnRate = 1000;
 
     private EnemyManager() {
         enemies = new ArrayList<BaseEnemy>();
@@ -39,6 +43,26 @@ public class EnemyManager implements Updatable {
         }
         return instance;
     }
+
+
+//    public void checkCollision() {
+//        BulletManager bulletManager = BulletManager.getInstance();
+//
+//        ArrayList<BaseBullet> bullets = bulletManager.getBullets();
+//        EnemyManager enemyManager = EnemyManager.getInstance();
+//        ArrayList<BaseEnemy> enemies1 = enemyManager.getEnemies();
+//        for (BaseEnemy enemy : enemies1) {
+//            for (BaseBullet bullet : bullets) {
+//                if (Transform.checkCollide( enemy,bullet) && bullet instanceof PlayerBullet){
+//                    enemy.setDestroyed(true);
+//                    bullet.setDestroyed(true);
+////                    System.out.println("hit");
+//                    break;
+//                }
+//            }
+//        }
+//    }
+
 
     public Transform randomTransform() {
         double x = (Math.random() * 640);
@@ -185,6 +209,7 @@ public class EnemyManager implements Updatable {
 
     @Override
     public void onUpdate() {
+
         removeDestroyed();
 
         if (System.currentTimeMillis() - lastChickenSpawnTime > chickenSpawnRate) {
@@ -201,7 +226,6 @@ public class EnemyManager implements Updatable {
         }
 
 
-        
     }
 
 

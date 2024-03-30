@@ -1,8 +1,13 @@
 package Utils;
 
 import GameEntity.Bullet.PlayerBullet;
+import GameEntity.Enemy.BaseEnemy;
 import GameEntity.Player.Player;
 import Manager.BulletManager;
+import Manager.EnemyManager;
+import javafx.scene.media.AudioClip;
+
+import java.util.ArrayList;
 
 public class PlayerUtils {
     public static void normal(Player player){
@@ -30,4 +35,21 @@ public class PlayerUtils {
             BulletManager.getInstance().add(bullet);
         }
     }
+
+    public static void autoAim(Player player){
+        ArrayList<BaseEnemy> enemies = EnemyManager.getInstance().getEnemies();
+        if(enemies.isEmpty()){
+            return;
+        }
+        BaseEnemy enemy = enemies.getFirst();
+        Transform tf = enemy.getTransform();
+        double rot = Transform.calculateAngleToTarget(player.getTransform(), tf);
+        PlayerBullet bullet = new PlayerBullet(10, player, new Transform(player.getTransform().getPosX() + 25, player.getTransform().getPosY() + 20, rot, 2, 2), 0);
+        BulletManager.getInstance().add(bullet);
+
+        AudioClip bulletSound = Asset.Audio.bulletSound;
+        bulletSound.setVolume(0.1);
+        bulletSound.play();
+        }
+
 }

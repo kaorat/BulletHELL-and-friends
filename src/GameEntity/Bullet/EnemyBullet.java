@@ -1,12 +1,16 @@
 package GameEntity.Bullet;
 
+import GameEntity.Enemy.Cow;
+import GameEntity.Enemy.Sheep;
 import GameEntity.GameObject;
 import Manager.BulletManager;
+import Manager.PlayerManager;
 import Utils.Asset;
 import Utils.Transform;
 import javafx.geometry.BoundingBox;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 
 
 public class EnemyBullet extends BaseBullet{
@@ -20,13 +24,22 @@ public class EnemyBullet extends BaseBullet{
     public void draw(GraphicsContext gc) {
 
         // ---- Suchas comment: Calibration? that's okay-----
-        gc.drawImage(getImage(), this.transform.getPosX() - 25, this.transform.getPosY(), 10, 10);
-        this.bounds = new BoundingBox(transform.getPosX(),transform.getPosY(),1,1);
+        gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 10, 10);
+        this.bounds = new BoundingBox(transform.getPosX(),transform.getPosY(),10,10); // manual offset calibration
+        gc.setStroke(Color.WHITE);
+        gc.strokeRect(bounds.getMinX(),bounds.getMinY(),bounds.getWidth(),bounds.getHeight());
     }
 
     @Override
     public void onUpdate() {
-        transform.translate(10);
+        transform.translate(3);
+        if( !(this.owner instanceof Cow) &&  Transform.calculateDistanceToTarget(this.transform, PlayerManager.getInstance().getPlayer().getTransform()) <= 400 && !isRotChanged) {
+            isRotChanged = true;
+        }
+        if(!(this.owner instanceof Cow) && Transform.calculateDistanceToTarget(this.transform, PlayerManager.getInstance().getPlayer().getTransform()) > 400 && !isRotChanged) {
+            transform.setRot(Transform.calculateAngleToTarget(this.transform, PlayerManager.getInstance().getPlayer().getTransform()));
+//            isRotChanged = true;
+        }
         removeOutOfBounds();
         BulletManager.getInstance().removeDestroyed();
     }

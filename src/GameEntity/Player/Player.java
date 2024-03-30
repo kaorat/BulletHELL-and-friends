@@ -10,6 +10,7 @@ import javafx.geometry.BoundingBox;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
@@ -56,8 +57,12 @@ public class Player extends GameObject implements Shootable {
     @Override
     public void draw(GraphicsContext gc) {
         gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 60, 60);
-        this.bounds = new BoundingBox(transform.getPosX()+20,transform.getPosY(),80,60);
-        drawBounds(Config.PLAYER_OFFSET_WIDTH, Config.PLAYER_OFFSET_HEIGHT, Config.PLAYER_WIDTH, Config.PLAYER_HEIGHT);
+        if(isShiftPressed()){
+            gc.setStroke(Color.GREENYELLOW);
+          gc.strokeRect(bounds.getMinX(),bounds.getMinY(),bounds.getWidth(),bounds.getHeight());
+        }
+//        drawBounds(Config.PLAYER_OFFSET_WIDTH, Config.PLAYER_OFFSET_HEIGHT, Config.PLAYER_WIDTH, Config.PLAYER_HEIGHT);
+        drawBounds(15,15,25,25);
     }
 
     public void controlAggressiveShoot() {
@@ -71,18 +76,17 @@ public class Player extends GameObject implements Shootable {
         long currentTime = System.currentTimeMillis();
         // ---- !Suchas comment: Left Shift?? Gonna be pretty hard to balance na (Use only for slow and hitbox show)-----
         if (isShiftPressed()) {
-            fireRate = 80;
-            speed = 5.7;
+            fireRate = 100;
+            speed = 3;
             if (currentTime - lastFireTime > fireRate) {
-                shoot();
 //                controlAggressiveShoot();
-                PlayerUtils.twin(this);
+                PlayerUtils.autoAim(this);
                 lastFireTime = currentTime;
 
             }
         } else if (isSlashPressed()) {
             fireRate =  10;
-            speed = 12;
+            speed = 4;
 
             if (currentTime - lastFireTime > fireRate) {
                 PlayerUtils.earthQuake(this);
@@ -91,7 +95,7 @@ public class Player extends GameObject implements Shootable {
 
         }else {
         fireRate = 200;
-            speed = 7;
+            speed = 4;
             if (currentTime - lastFireTime > fireRate) {
                 shoot();
 
@@ -104,7 +108,7 @@ public class Player extends GameObject implements Shootable {
         ArrayList<BaseBullet> bulletList = BulletManager.getInstance().getBullets();
         for (BaseBullet bullet : bulletList) {
                 if(bullet instanceof EnemyBullet){
-                    if(transform.checkCollide(this, bullet)){
+                    if(Transform.checkCollide(this, bullet)){
                     bullet.setDestroyed(true);
                 }
             }

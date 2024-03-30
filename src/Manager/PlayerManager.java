@@ -9,6 +9,8 @@ import javafx.util.Pair;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static java.lang.Math.pow;
+
 public class PlayerManager implements  Updatable {
     private static PlayerManager instance;
     public static Player player;
@@ -92,13 +94,39 @@ public class PlayerManager implements  Updatable {
     public void reset(){
         addPlayer();
         setDexterity(7);
-        setBioticRifleDamage(1);
+        setBioticRifleDamage(Config.DAMAGE_BASE);
         setProficiency(1);
         setBioticRifleFireRate(0.5);
         setMinimize(5);
-        playerPerks = new ArrayList<Integer>(Arrays.asList(0, 1, 1, 1, 1, 1));
+        playerPerks = new ArrayList<Integer>(Arrays.asList(1, 1, 1, 1, 1, 1));
         this.weapon = new ArrayList<Pair<String, Integer>>();
         weapon.add(new Pair<>("Neuron Missile", 0));
+    }
+    public void upgradeStat(int index){
+        playerPerks.set(index,playerPerks.get(index)+1);
+        switch (index){
+            case 0:
+                double damage_price = Config.DAMAGE_BASE_PRICE*pow(Config.DAMAGE_PRICE_INCREMENT,playerPerks.get(index));
+                setBioticRifleDamage(getBioticRifleDamage()+Config.DAMAGE_UPGRADE);
+                break;
+            case 1:
+                double firerate_price = Config.PLAYER_FIRE_RATE_BASE_PRICE*pow(Config.PLAYER_FIRE_RATE_PRICE_INCREMENT,playerPerks.get(index));
+                setBioticRifleFireRate(getBioticRifleFireRate()+Config.PLAYER_FIRE_RATE_UPGRADE);
+                break;
+            case 2:
+                double minimize_price = Config.MINIMIZE_BASE_PRICE*pow(Config.MINIMIZE_PRICE_INCREMENT,playerPerks.get(index));
+                setMinimize(getMinimize()-Config.MINIMIZE_UPGRADE);
+                break;
+            case 3:
+                double dexterity_price = Config.DEXTERITY_BASE_PRICE*pow(Config.DEXTERITY_PRICE_INCREMENT,playerPerks.get(index));
+                setDexterity(getDexterity()+Config.DEXTERITY_UPGRADE);
+                break;
+            case 4:
+                double proficiency_price = Config.PROFICIENCY_BASE_PRICE*pow(Config.PROFICIENCY_PRICE_INCREMENT,playerPerks.get(index));
+                setProficiency(getProficiency()+Config.PROFICIENCY_UPGRADE);
+                break;
+        }
+
     }
 
 }

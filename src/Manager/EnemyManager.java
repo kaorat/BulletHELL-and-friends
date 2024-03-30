@@ -207,7 +207,26 @@ public class EnemyManager implements Updatable {
         this.cowSpawnRate = cowSpawnRate;
     }
 
+    @Override
+    public void onUpdate() {
 
+        removeDestroyed();
+
+        if (System.currentTimeMillis() - lastChickenSpawnTime > chickenSpawnRate) {
+            spawnEnemy(EnemyType.CHICKEN);
+            lastChickenSpawnTime = System.currentTimeMillis();
+        }
+        if (System.currentTimeMillis() - lastSheepSpawnTime > sheepSpawnRate) {
+            spawnEnemy(EnemyType.SHEEP);
+            lastSheepSpawnTime = System.currentTimeMillis();
+        }
+        if (System.currentTimeMillis() - lastCowSpawnTime > cowSpawnRate) {
+            spawnEnemy(EnemyType.COW);
+            lastCowSpawnTime = System.currentTimeMillis();
+        }
+
+
+    }
 
 
     public void reset(){

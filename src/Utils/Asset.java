@@ -21,6 +21,13 @@ public class Asset {
         public static Image holyiconUI;
         public static Image dnaiconUI;
         public static Image headerMain;
+        public static Image backButton;
+        public static Image upgradeChoose5;
+        public static Image backgroundPlayerPage;
+        public static Image upgradeButton;
+        public static Image upgradeButtonNoMoney;
+        public static Image upgradeButtonHover;
+
 
         static{
             loadResource();
@@ -30,11 +37,19 @@ public class Asset {
             //Background
             baseBackground=LoadImg("UI/baseBackground.png");
             mainBackground=LoadImg("UI/mainBackground.png");
+            backgroundPlayerPage=LoadImg("UI/backgroundPlayerPage.png");
+
             //Button
             buttonNavigate=LoadImg("UI/buttonNavigate.png");
+            backButton=LoadImg("UI/backButton.png");
+            upgradeButton=LoadImg("UI/upgradeButton.png");
+            upgradeButtonNoMoney=LoadImg("UI/upgradeButtonNoMoney.png");
+            upgradeButtonHover=LoadImg("UI/upgradeButtonHover.png");
             spriteHover=LoadImg("UI/spriteHover.png");
             spriteClick=LoadImg("UI/buttonNavigate.png");
 
+
+            upgradeChoose5=LoadImg("UI/upgradeChoose5.png");
             headerMain=LoadImg("UI/headerMain.png");
             currencyBG=LoadImg("UI/currencyBG.png");
             partUI=LoadImg("UI/meat.png");

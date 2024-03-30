@@ -1,13 +1,16 @@
 package GameEntity.Enemy;
 
 import Manager.EnemyManager;
-import Utils.EnemyType;
-import Utils.Transform;
+import Utils.*;
 import javafx.scene.canvas.GraphicsContext;
 
 public class Sheep extends BaseEnemy{
-    public Sheep(Transform transform,int z) {
+
+    private long lastPatternTime = 0;
+
+    public Sheep(Transform transform,double z) {
         super(EnemyType.SHEEP,transform,z);
+        setImage(Asset.UI.sheepiconUI);
         Perks = EnemyManager.getInstance().getSheepPerks();
     }
 
@@ -18,11 +21,41 @@ public class Sheep extends BaseEnemy{
 
     @Override
     public void firing() {
+        long currentTime = System.currentTimeMillis();
+        if(currentTime - lastPatternTime > 1000){ // 5 seconds
+            EnemyUtils.SheepShootPattern(this);
+            lastPatternTime = currentTime;
+        }
+    }
 
+    @Override
+    public void action() {
+
+        double renderTime = 10d ; // idk  // Suchas comment: idk
+        if(state == States.DOWN) {
+            downtime -= renderTime;
+            transform.setRot(90);
+            transform.translate(0.7);
+            if(downtime <= 0) state = States.SHOOT;
+        }
+        if (state == States.SHOOT) {
+            shootTime -= renderTime;
+            firing();
+            if(shootTime <= 0) state = States.UP;
+        }
+        if(state == States.UP) {
+            uptime -= renderTime;
+            transform.setRot(270);
+            transform.translate(0.7);
+
+            if(uptime <= 0) destroyed = true;
+        }
     }
 
     @Override
     public void draw(GraphicsContext gc) {
+        gc.drawImage(getImage(),this.transform.getPosX(),this.transform.getPosY(), 60,60);
+        drawBounds(Config.SHEEP_OFFSET_WIDTH,Config.SHEEP_OFFSET_HEIGHT,Config.SHEEP_WIDTH,Config.SHEEP_HEIGHT);
 
     }
 }

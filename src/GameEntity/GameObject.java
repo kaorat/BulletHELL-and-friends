@@ -19,7 +19,7 @@ public abstract class GameObject {
 
     protected Transform transform;
 
-    protected int z;
+    protected double z;
 
     protected Image image;
     protected Bounds bounds;
@@ -35,7 +35,7 @@ public abstract class GameObject {
         return bounds;
     }
 
-    public GameObject(Transform transform,int z) {
+    public GameObject(Transform transform,double z) {
         this.transform=transform;
         this.z = z;
         this.visible = true;
@@ -58,7 +58,7 @@ public abstract class GameObject {
     public GameObject getChildrenNode(int index){
         return this.childrenNode.get(index);
     }
-    public void setZ(int z) {
+    public void setZ(double z) {
         this.z = z;
     }
 
@@ -71,7 +71,7 @@ public abstract class GameObject {
         this.destroyed = destroyed;
     }
 
-    public int getZ(){
+    public double getZ(){
         return z;
     }
 

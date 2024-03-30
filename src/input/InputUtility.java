@@ -12,6 +12,7 @@ public class InputUtility {
     private static boolean sPressed = false;
     private static boolean dPressed = false;
     private static boolean shiftPressed = false;
+    private static boolean slashPressed = false;
 
     public static boolean isWPressed() {
         return wPressed;
@@ -30,6 +31,9 @@ public class InputUtility {
     }
     public static boolean isShiftPressed() {
         return shiftPressed;
+    }
+    public static boolean isSlashPressed() {
+        return slashPressed;
     }
 
     public static void setKey(Scene canvas) {
@@ -53,6 +57,9 @@ public class InputUtility {
                 case SHIFT:
                     shiftPressed = true;
                     break;
+                case SLASH:
+                    slashPressed = true;
+                    break;
                 default:
                     break;
             }
@@ -75,6 +82,9 @@ public class InputUtility {
                     break;
                 case SHIFT:
                     shiftPressed = false;
+                    break;
+                case SLASH:
+                    slashPressed = false;
                     break;
                 default:
                     break;

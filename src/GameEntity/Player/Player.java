@@ -10,6 +10,7 @@ import javafx.geometry.BoundingBox;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
@@ -23,7 +24,7 @@ public class Player extends GameObject implements Shootable {
     private long fireRate = 200;
     private long lastFireTime = 0;
 
-    public Player(Transform transform, int z) {
+    public Player(Transform transform, double z) {
         super(transform, z);
         this.speed = 3.5;
         setImage(Asset.Game.player);
@@ -46,10 +47,7 @@ public class Player extends GameObject implements Shootable {
     }
 
     public void shoot() {
-        PlayerBullet bullet = new PlayerBullet(10, this, new Transform(this.transform.getPosX() + 50, this.transform.getPosY(), -90, 2, 2), 0);
-        PlayerBullet bullet2 = new PlayerBullet(10, this, new Transform(this.transform.getPosX(), this.transform.getPosY(), -90, 2, 2), 0);
-        BulletManager.getInstance().add(bullet);
-        BulletManager.getInstance().add(bullet2);
+        PlayerUtils.normal(this);
         AudioClip bulletSound = Asset.Audio.bulletSound;
         bulletSound.setVolume(0.1);
         bulletSound.play();
@@ -59,21 +57,17 @@ public class Player extends GameObject implements Shootable {
     @Override
     public void draw(GraphicsContext gc) {
         gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 60, 60);
-        this.bounds = new BoundingBox(transform.getPosX()+20,transform.getPosY(),80,60);
-        drawBounds(Config.PLAYER_OFFSET_WIDTH, Config.PLAYER_OFFSET_HEIGHT, Config.PLAYER_WIDTH, Config.PLAYER_HEIGHT);
+        if(isShiftPressed()){
+            gc.setStroke(Color.GREENYELLOW);
+          gc.strokeRect(bounds.getMinX(),bounds.getMinY(),bounds.getWidth(),bounds.getHeight());
+        }
+//        drawBounds(Config.PLAYER_OFFSET_WIDTH, Config.PLAYER_OFFSET_HEIGHT, Config.PLAYER_WIDTH, Config.PLAYER_HEIGHT);
+        drawBounds(15,15,25,25);
     }
 
     public void controlAggressiveShoot() {
-        PlayerBullet bulletR = new PlayerBullet(10, this, new Transform(this.transform.getPosX() + 50, this.transform.getPosY() + 20, -70, 2, 2), 0);
-        PlayerBullet bulletL = new PlayerBullet(10, this, new Transform(this.transform.getPosX(), this.transform.getPosY() + 20, -110, 2, 2), 0);
-        // all direction
-        PlayerBullet bulletRU = new PlayerBullet(10, this, new Transform(this.transform.getPosX() + 50, this.transform.getPosY(), -50, 2, 2), 0);
-        PlayerBullet bulletLU = new PlayerBullet(10, this, new Transform(this.transform.getPosX(), this.transform.getPosY(), -130, 2, 2), 0);
+        PlayerUtils.earthQuake(this);
 
-        BulletManager.getInstance().add(bulletR);
-        BulletManager.getInstance().add(bulletL);
-        BulletManager.getInstance().add(bulletRU);
-        BulletManager.getInstance().add(bulletLU);
     }
 
     @Override
@@ -83,15 +77,26 @@ public class Player extends GameObject implements Shootable {
         // ---- !Suchas comment: Left Shift?? Gonna be pretty hard to balance na (Use only for slow and hitbox show)-----
         if (isShiftPressed()) {
             fireRate = 80;
-            speed = 2.7;
+            speed = 3;
             if (currentTime - lastFireTime > fireRate) {
                 shoot();
-                controlAggressiveShoot();
+//                controlAggressiveShoot();
+                PlayerUtils.twin(this);
+                lastFireTime = currentTime;
+
+            }
+        } else if (isSlashPressed()) {
+            fireRate =  10;
+            speed = 4;
+
+            if (currentTime - lastFireTime > fireRate) {
+                PlayerUtils.earthQuake(this);
                 lastFireTime = currentTime;
             }
-        }else{
-            fireRate = 200;
-            speed = 3.5;
+
+        }else {
+        fireRate = 200;
+            speed = 4;
             if (currentTime - lastFireTime > fireRate) {
                 shoot();
 

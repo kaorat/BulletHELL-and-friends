@@ -3,8 +3,11 @@ package GameEntity.Enemy;
 import GameEntity.Bullet.BaseBullet;
 import GameEntity.Bullet.PlayerBullet;
 import GameEntity.GameObject;
+import GameEntity.Item.BaseItem;
+import GameEntity.Item.Coin;
 import Manager.BulletManager;
 import Manager.EnemyManager;
+import Manager.ItemManager;
 import Utils.EnemyType;
 import Utils.EnemyUtils;
 import Utils.Transform;
@@ -47,7 +50,7 @@ public abstract class BaseEnemy extends GameObject {
 //            {7, "Fast Reproduction - Spawn Time", 2.0, -0.05}
 //    };
 
-    public BaseEnemy(EnemyType type, Transform transform,int z){
+    public BaseEnemy(EnemyType type, Transform transform,double z){
         super(transform, z);
         // ---- Suchas comment: ALL of this should be constructed on children classes, because it calculates level too, doesn't it-----
         // ---- or create one more argument (levels[]) -----
@@ -73,53 +76,28 @@ public abstract class BaseEnemy extends GameObject {
 
     public abstract void startFiring(); //start thread?
     public abstract void firing();
+    public abstract void action();
 
     //Transform is not meant to be added directly , I believe.
     // ---- Suchas comment: correct, add when instantiating only but can be edited though setter-----
     @Override
     public void onUpdate() { //from animationTimer
-        // ---- Suchas comment: implement in manager please-----
-        EnemyManager.getInstance().removeDestroyed();
-        if(EnemyManager.getInstance().checkEnemyLeft()){ //less than 5
-            EnemyManager.getInstance().spawnEnemy(EnemyType.CHICKEN);
-        };
 
-        double renderTime = 8d ; // idk  // Suchas comment: idk
-        if(state == States.DOWN) {
-            downtime -= renderTime;
-            transform.setRot(90);
-            transform.translate(0.7);
-            if(downtime <= 0) state = States.SHOOT;
-        }
-        if (state == States.SHOOT) {
-            shootTime -= renderTime;
-            long currentTime = System.currentTimeMillis();
-            if (currentTime - lastFireTime > fireRate) {
-                firing();
-                lastFireTime = currentTime;
-            }
+        action();
 
-            if(shootTime <= 0) state = States.UP;
-        }
-        if(state == States.UP) {
-            uptime -= renderTime;
-            transform.setRot(270);
-            transform.translate(0.7);
-
-            if(uptime <= 0) destroyed = true;
-        }
-
+        //bullet collision
         BulletManager bm = BulletManager.getInstance();
         ArrayList<BaseBullet> bulletList = bm.getBullets();
         for (BaseBullet bullet : bulletList) {
             if (Transform.checkCollide(this, bullet) && bullet instanceof PlayerBullet) {
 //                this.hp -= bullet.getDamage();
                 bullet.setDestroyed(true);
+                Coin coin = new Coin(transform.getPosX(), transform.getPosY());
+                ItemManager.getInstance().add(coin);
                 this.setDestroyed(true);
             }
         }
 
-//        System.out.println("Enemy state : " + state.toString());
     }
 
     public ArrayList<Integer> getPerks() {

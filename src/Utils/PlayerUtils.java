@@ -41,7 +41,7 @@ public class PlayerUtils {
         if(enemies.isEmpty()){
             return;
         }
-        BaseEnemy enemy = enemies.getFirst();
+        BaseEnemy enemy = enemies.get(0);
         Transform tf = enemy.getTransform();
         double rot = Transform.calculateAngleToTarget(player.getTransform(), tf);
         PlayerBullet bullet = new PlayerBullet(10, player, new Transform(player.getTransform().getPosX() + 25, player.getTransform().getPosY() + 20, rot, 2, 2), 0);

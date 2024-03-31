@@ -21,7 +21,7 @@ public class SpecialDNAPage extends GameSideUIEditor {
 
         super(graphicsContext);
         //Background
-        create(new UISprite(Asset.UI.mainBackground, new Transform(Utility.getGameScreenX(), 0, 0.3, 0.25), 50));
+        create(new UISprite(Asset.UI.backgroundSpecialDNAPage, new Transform(Utility.getGameScreenX(), 0, 0.3, 0.25), 50));
 
         //Header
         create(new UISprite(Asset.UI.headerMain, new Transform(Utility.getGameScreenX() +90, 92, 0.93, 0.65), 53));

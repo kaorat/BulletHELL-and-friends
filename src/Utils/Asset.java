@@ -23,7 +23,11 @@ public class Asset {
         public static Image headerMain;
         public static Image backButton;
         public static Image upgradeChoosePlayerPage;
+        public static Image upgradeChooseEnemyPage;
         public static Image backgroundPlayerPage;
+        public static Image backgroundEnemyPage;
+        public static Image backgroundGobletPage;
+        public static Image backgroundSpecialDNAPage;
         public static Image upgradeButton;
         public static Image upgradeButtonNoMoney;
         public static Image upgradeButtonHover;
@@ -39,6 +43,9 @@ public class Asset {
             baseBackground=LoadImg("UI/Background/baseBackground.png");
             mainBackground=LoadImg("UI/Background/mainBackground.png");
             backgroundPlayerPage=LoadImg("UI/Background/backgroundPlayerPage.png");
+            backgroundEnemyPage=LoadImg("UI/Background/backgroundEnemyPage.png");
+            backgroundGobletPage=LoadImg("UI/Background/backgroundGobletPage.png");
+            backgroundSpecialDNAPage=LoadImg("UI/Background/backgroundSpecialDNAPage.png");
 
             //Button
             buttonNavigate=LoadImg("UI/Button/Navigate/buttonNavigate.png");
@@ -50,8 +57,9 @@ public class Asset {
             spriteHover=LoadImg("UI/Button/spriteHover.png");
             spriteClick=LoadImg("UI/Button/Navigate/buttonNavigate.png");
 
-
             upgradeChoosePlayerPage=LoadImg("UI/UpgradeChoose/upgradeChoosePlayerPage.png");
+            upgradeChooseEnemyPage=LoadImg("UI/UpgradeChoose/upgradeChooseEnemyPage.png");
+
             headerMain=LoadImg("UI/headerMain.png");
             currencyBG=LoadImg("UI/Currency/currencyBG.png");
             partUI=LoadImg("UI/Currency/meat.png");

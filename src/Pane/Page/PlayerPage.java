@@ -15,7 +15,6 @@ import Utils.ButtonType;
 import java.util.ArrayList;
 
 public class PlayerPage extends GraphicEditor {
-    private UISprite textHeader; //May not need a variable
     private ArrayList<UIButton> allButtons = new ArrayList<>(); //0-4 upgrade button 5 go back button
     private ArrayList<UISprite> allPrice = new ArrayList<>();
     private ArrayList<UISprite> allLvL = new ArrayList<>();
@@ -33,7 +32,7 @@ public class PlayerPage extends GraphicEditor {
         create(new UISprite(Asset.UI.backgroundPlayerPage, new Transform(Utility.getGameScreenX(), 0, 0.3, 0.25), 50));
 
         //Header
-        textHeader=(UISprite) create(new UISprite(new Text("Player",Utility.getGameFont(22 ), Color.BLACK),
+       create(new UISprite(new Text("Player",Utility.getGameFont(22 ), Color.BLACK),
                 new Transform(x+165,120),52));
 
         // Create the button

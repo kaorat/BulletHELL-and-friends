@@ -28,7 +28,7 @@ public class GobletPage extends GraphicEditor {
     public GobletPage(GraphicsContext graphicsContext) {
         super(graphicsContext);
         //Background
-        create(new UISprite(Asset.UI.mainBackground, new Transform(Utility.getGameScreenX(), 0, 0.3, 0.25), 50));
+        create(new UISprite(Asset.UI.backgroundGobletPage, new Transform(Utility.getGameScreenX(), 0, 0.3, 0.25), 50));
 
         //Header
         create(new UISprite(Asset.UI.headerMain, new Transform(Utility.getGameScreenX() +135, 92, 0.60, 0.65), 53));

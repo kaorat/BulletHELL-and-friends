@@ -63,7 +63,7 @@ public class PlayerPage extends GraphicEditor {
                         allButtons.get(2).getTransform().getPosY() + 23), 55)));
         allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 160, 190 + moveYButton*2, 0.25, 0.25), 55)));
         allDescription.add((UISprite) create(new UISprite(new Text("Hitbox size : 8", Utility.getGameFont(11), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 60, 210 + moveYButton*2, 0.25, 0.25), 55)));
-        allIncrease.add((UISprite) create(new UISprite(new Text("+0.25 Minimize", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 210 + moveYButton*2, 0.25, 0.25), 55)));
+        allIncrease.add((UISprite) create(new UISprite(new Text("+0.25 Minimize", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 340, 210 + moveYButton*2, 0.25, 0.25), 55)));
 
         // Create Dexterity
         allButtons.add((UIButton) create( new UIButton(Asset.UI.upgradeButton, new Transform(Utility.getGameScreenX() + 320, 170 + moveYButton*3, 0.25, 0.27), 54 , ButtonType.UPGRADE)));
@@ -72,7 +72,7 @@ public class PlayerPage extends GraphicEditor {
                         allButtons.get(3).getTransform().getPosY() + 23), 55)));
         allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 160, 190 + moveYButton*3, 0.25, 0.25), 55)));
         allDescription.add((UISprite) create(new UISprite(new Text("Dexterity : 2", Utility.getGameFont(11), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 58, 210 + moveYButton*3, 0.25, 0.25), 55)));
-        allIncrease.add((UISprite) create(new UISprite(new Text("+0.25 Dexterity", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 295, 210 + moveYButton*3, 0.25, 0.25), 55)));
+        allIncrease.add((UISprite) create(new UISprite(new Text("+0.25 Dexterity", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 340, 210 + moveYButton*3, 0.25, 0.25), 55)));
 
         // Create Proficiency
         allButtons.add((UIButton) create( new UIButton(Asset.UI.upgradeButton, new Transform(Utility.getGameScreenX() + 320, 170 + moveYButton*4, 0.25, 0.27), 54 , ButtonType.UPGRADE)));
@@ -81,13 +81,13 @@ public class PlayerPage extends GraphicEditor {
                         allButtons.get(4).getTransform().getPosY() + 23), 55)));
         allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 180, 190 + moveYButton*4, 0.25, 0.25), 55)));
         allDescription.add((UISprite) create(new UISprite(new Text("Parts per graze : 2", Utility.getGameFont(11), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 58, 210 + moveYButton*4, 0.25, 0.25), 55)));
-        allIncrease.add((UISprite) create(new UISprite(new Text("+1 part", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 325, 213 + moveYButton*4, 0.25, 0.25), 55)));
+        allIncrease.add((UISprite) create(new UISprite(new Text("+1 part", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 325, 210 + moveYButton*4, 0.25, 0.25), 55)));
 
 
         // Create the button
         allButtons.add ((UIButton) create(new UIButton(Asset.UI.backButton, new Transform(Utility.getGameScreenX() + 33, 660, 0.7, 1), 54 , ButtonType.BACK)));
         //choose upgrade
-        create(new UISprite(Asset.UI.upgradeChoose5, new Transform(Utility.getGameScreenX() +10, 145, 0.25, 0.25), 53));
+        create(new UISprite(Asset.UI.upgradeChoosePlayerPage, new Transform(Utility.getGameScreenX() +10, 145, 0.25, 0.25), 53));
 
         //Init Templete
         descTemplete.add("Damage : ");
@@ -109,7 +109,7 @@ public class PlayerPage extends GraphicEditor {
             //Variable
             int level = PlayerManager.getInstance().getPlayerPerks().get(i+1);
             int basePrice = Config.player_basePrices.get(i).intValue();
-            int cost = (int) (basePrice * Math.pow(Config.player_priceIncrements.get(i),level));
+            int cost = basePrice * (int) Math.pow(Config.player_priceIncrements.get(i),level);
             //Price
             UISprite price = allPrice.get(i);
             price.getText().setText(Utility.NumberToString(cost));
@@ -119,8 +119,7 @@ public class PlayerPage extends GraphicEditor {
             if(coin > cost){
                 button.setEnable(true);
                 if(button.isPressed()){
-                    //coin-= cost;
-                    StatManager.getInstance().setCoin(coin-cost);
+                    coin-= cost;
                     PlayerManager.getInstance().getPlayerPerks().set(i+1,level+1);
                 }
             }

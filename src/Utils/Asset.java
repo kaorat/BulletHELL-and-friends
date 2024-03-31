@@ -22,11 +22,12 @@ public class Asset {
         public static Image dnaiconUI;
         public static Image headerMain;
         public static Image backButton;
-        public static Image upgradeChoose5;
+        public static Image upgradeChoosePlayerPage;
         public static Image backgroundPlayerPage;
         public static Image upgradeButton;
         public static Image upgradeButtonNoMoney;
         public static Image upgradeButtonHover;
+        public static Image upgradeButtonPressed;
 
 
         static{
@@ -35,30 +36,31 @@ public class Asset {
 
         private static void loadResource() {
             //Background
-            baseBackground=LoadImg("UI/baseBackground.png");
-            mainBackground=LoadImg("UI/mainBackground.png");
-            backgroundPlayerPage=LoadImg("UI/backgroundPlayerPage.png");
+            baseBackground=LoadImg("UI/Background/baseBackground.png");
+            mainBackground=LoadImg("UI/Background/mainBackground.png");
+            backgroundPlayerPage=LoadImg("UI/Background/backgroundPlayerPage.png");
 
             //Button
-            buttonNavigate=LoadImg("UI/buttonNavigate.png");
-            backButton=LoadImg("UI/backButton.png");
-            upgradeButton=LoadImg("UI/upgradeButton.png");
-            upgradeButtonNoMoney=LoadImg("UI/upgradeButtonNoMoney.png");
-            upgradeButtonHover=LoadImg("UI/upgradeButtonHover.png");
-            spriteHover=LoadImg("UI/spriteHover.png");
-            spriteClick=LoadImg("UI/buttonNavigate.png");
+            buttonNavigate=LoadImg("UI/Button/Navigate/buttonNavigate.png");
+            backButton=LoadImg("UI/Button/backButton.png");
+            upgradeButton=LoadImg("UI/Button/Upgrade/upgradeButton.png");
+            upgradeButtonNoMoney=LoadImg("UI/Button/Upgrade/upgradeButtonNoMoney.png");
+            upgradeButtonHover=LoadImg("UI/Button/Upgrade/upgradeButtonHover.png");
+            upgradeButtonPressed=LoadImg("UI/Button/Upgrade/upgradeButtonPressed.png");
+            spriteHover=LoadImg("UI/Button/spriteHover.png");
+            spriteClick=LoadImg("UI/Button/Navigate/buttonNavigate.png");
 
 
-            upgradeChoose5=LoadImg("UI/upgradeChoose5.png");
+            upgradeChoosePlayerPage=LoadImg("UI/UpgradeChoose/upgradeChoosePlayerPage.png");
             headerMain=LoadImg("UI/headerMain.png");
-            currencyBG=LoadImg("UI/currencyBG.png");
-            partUI=LoadImg("UI/meat.png");
-            soulUI=LoadImg("UI/skull.png");
-            honeyUI=LoadImg("UI/computer.png");
+            currencyBG=LoadImg("UI/Currency/currencyBG.png");
+            partUI=LoadImg("UI/Currency/meat.png");
+            soulUI=LoadImg("UI/Enemy/skull.png");
+            honeyUI=LoadImg("UI/Currency/Honey.png");
             guniconUI=LoadImg("UI/gun.png");
-            sheepiconUI=LoadImg("UI/sheep.png");
-            holyiconUI=LoadImg("UI/holy-grail.png");
-            dnaiconUI=LoadImg("UI/dna.png");
+            sheepiconUI=LoadImg("UI/Enemy/sheep.png");
+            holyiconUI=LoadImg("UI/Currency/holy-grail.png");
+            dnaiconUI=LoadImg("UI/Currency/dna.png");
 
         }
         private static Image LoadImg(String url){
@@ -79,7 +81,7 @@ public class Asset {
 
         private static void loadResource() {
             player=Load("UI/kaosteak.png");
-            bullet=Load("UI/computer.png");
+            bullet=Load("UI/Currency/Honey.png");
             enemyBullet=Load("UI/firebullet.png");
         }
         private static Image Load(String url){

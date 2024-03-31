@@ -19,7 +19,7 @@ public class StatManager {
 
     public StatManager(){
         setAmber(0);
-        setCoin(0);
+        setCoin(10000);
         setTotalCoin(0);
         setHoneyLevel(1);
         setCompletion(0);

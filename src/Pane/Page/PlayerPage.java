@@ -103,35 +103,36 @@ public class PlayerPage extends GraphicEditor {
 }
     @Override
     public void onUpdate() {
-//        int coin = StatManager.getInstance().getCoin();
-//        if(allButtons.get(5).isPressed()) SceneManager.setCurrentPage(new MainPage(graphicsContext));
-//        for(int i=0;i<5;i++){
-//            //Variable
-//            int level = PlayerManager.getInstance().getPlayerPerks().get(i+1);
-//            int basePrice = Config.player_basePrices.get(i).intValue();
-//            int cost = basePrice * (int) Math.pow(Config.player_priceIncrements.get(i),level);
-//            //Price
-//            UISprite price = allPrice.get(i);
-//            price.getText().setText(Utility.NumberToString(cost));
-//            //Button
-//            UIButton button = allButtons.get(i);
-//
-//            if(coin > cost){
-//                button.setEnable(true);
-//                if(button.isPressed()){
-//                    coin-= cost;
-//                    PlayerManager.getInstance().getPlayerPerks().set(i+1,level+1);
-//                }
-//            }
-//            else{
-//                button.setEnable(false);
-//            }
-//            //Level
-//            allLvL.get(i).getText().setText("LV."+Utility.NumberToString(level));
-//            //Desc
-//            allDescription.get(i).getText().setText(descTemplete.get(i)+Utility.NumberToString(Config.player_baseValues.get(i)+((Config.player_upgradeValues.get(i))*level))+" "+increaseTemplete.get(i));
-//            //Desc
-//            allIncrease.get(i).getText().setText(Utility.NumberToString(Config.player_upgradeValues.get(i))+" "+increaseTemplete.get(i));
-//        }
+        int coin = StatManager.getInstance().getCoin();
+        if(allButtons.get(5).isPressed()) SceneManager.setCurrentPage(new MainPage(graphicsContext));
+        for(int i=0;i<5;i++){
+            //Variable
+            int level = PlayerManager.getInstance().getPlayerPerks().get(i+1);
+            int basePrice = Config.player_basePrices.get(i).intValue();
+            int cost = (int) (basePrice * Math.pow(Config.player_priceIncrements.get(i),level));
+            //Price
+            UISprite price = allPrice.get(i);
+            price.getText().setText(Utility.NumberToString(cost));
+            //Button
+            UIButton button = allButtons.get(i);
+
+            if(coin > cost){
+                button.setEnable(true);
+                if(button.isPressed()){
+                    //coin-= cost;
+                    StatManager.getInstance().setCoin(coin-cost);
+                    PlayerManager.getInstance().getPlayerPerks().set(i+1,level+1);
+                }
+            }
+            else{
+                button.setEnable(false);
+            }
+            //Level
+            allLvL.get(i).getText().setText("LV."+Utility.NumberToString(level));
+            //Desc
+            allDescription.get(i).getText().setText(descTemplete.get(i)+Utility.NumberToString(Config.player_baseValues.get(i)+((Config.player_upgradeValues.get(i))*level))+" "+increaseTemplete.get(i));
+            //Desc
+            allIncrease.get(i).getText().setText(Utility.NumberToString(Config.player_upgradeValues.get(i))+" "+increaseTemplete.get(i));
+        }
     }
 }

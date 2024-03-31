@@ -105,9 +105,9 @@ public class PlayerManager implements  Updatable {
         setProficiency(1);
         setBioticRifleFireRate(0.5);
         setMinimize(5);
-        playerPerks = new ArrayList<Integer>(Arrays.asList(1, 1, 1, 1, 1, 1));
-        this.weapon = new ArrayList<Pair<String, Integer>>();
-        weapon.add(new Pair<>("Neuron Missile", 0));
+        PlayerPerks = new ArrayList<Integer>(Arrays.asList(0, 0, 0, 0, 0, 0));
+        this.Weapon = new ArrayList<Pair<String, Integer>>();
+        Weapon.add(new Pair<>("Neuron Missile", 0));
     }
     public void upgradeStat(int index){
         playerPerks.set(index,playerPerks.get(index)+1);

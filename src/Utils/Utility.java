@@ -19,8 +19,8 @@ public class Utility {
     }
     public static Font getGameFont(double size) {
         try {
-            Font.loadFont(Utility.class.getResourceAsStream("/FONT/Valorax-lg25V.otf"), size);
-            return Font.font("valorax", size);
+            Font.loadFont(Utility.class.getResourceAsStream("/FONT/VeniteAdoremus-rgRBA.ttf"), size);
+            return Font.font("Venite Adoremus", size);
         } catch (Exception e) {
             e.printStackTrace();
             return Font.font("Arial", FontWeight.NORMAL, size);

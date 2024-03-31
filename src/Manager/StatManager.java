@@ -34,9 +34,9 @@ public class StatManager {
     public void addDeath(){
         death+=1;
     }
-    public void addCoin(){
-        coin+=1;
-        totalCoin+=1;
+    public void addCoin(long coin){
+        coin+=coin;
+        totalCoin+=coin;
     }
     public void addCompletion(int percent){
         completion+=percent;

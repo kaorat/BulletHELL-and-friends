@@ -9,23 +9,18 @@ public abstract class BaseItem extends GameObject {
 
    public BaseItem(double posX, double posY){
 
-       super(new Transform(posX, posY), Math.random());
+       super(new Transform(posX, posY), 30+Math.random());
+      this.transform.setRot(90); //downwards direction
 
        this.destroyed = false;
 
 //       this.visible = false;
    }
 
-   public void spawn(){ // same for all items?
-      this.visible = true;
-      this.transform.setRot(90); //downwards direction
-   };
-
-   public void isOutOfBounds(){
-      if(this.transform.getPosX() > Utility.getGameScreenX()){ // lower than the screen
-         this.destroyed = true;
-      }
-   }
+//   public void spawn(){ // same for all items?
+//      this.visible = true;
+//
+//   };
 
    public abstract void onPickup();
 

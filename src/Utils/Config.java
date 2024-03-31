@@ -69,7 +69,7 @@ public class Config {
     public static final double GENETIC_MAX_LEVEL = 20;
 
     // Fast Reproduction
-    public static final double SPAWN_TIME_BASE = 2.0;
+    public static final double SPAWN_TIME_BASE = 4.0;
     public static final double REPRODUCTION_SPAWN_TIME_UPGRADE = -0.05;
     public static final double REPRODUCTION_BASE_PRICE = 300;
     public static final double REPRODUCTION_PRICE_INCREMENT = 1.25;//Power by level
@@ -166,7 +166,7 @@ public class Config {
         enemy_maxLevels.add(LETHAL_MAX_LEVEL);
 
         // Fuzzy Mutation //TODO:base values -> manual add
-        enemy_baseValues.add(0d);
+        enemy_baseValues.add(SHEEP_BULLET_QUANTITY_BASE);
         enemy_upgradeValues.add(FUZZY_BULLET_QUANTITY_UPGRADE);
         enemy_basePrices.add(FUZZY_BASE_PRICE);
         enemy_priceIncrements.add(FUZZY_PRICE_INCREMENT);

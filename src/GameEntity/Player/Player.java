@@ -42,7 +42,6 @@ public class Player extends GameObject implements Shootable {
         }
         if (this.transform.getPosY() + Config.PLAYER_HEIGHT > 700) {
             this.transform.setPosY(700 - Config.PLAYER_HEIGHT); ;
-            System.out.println(this.transform.getPosY());
         }
     }
 
@@ -57,6 +56,7 @@ public class Player extends GameObject implements Shootable {
     @Override
     public void draw(GraphicsContext gc) {
         gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 60, 60);
+        //Suchas Comment : will change to image graphic right?
         if(isShiftPressed()){
             gc.setStroke(Color.GREENYELLOW);
           gc.strokeRect(bounds.getMinX(),bounds.getMinY(),bounds.getWidth(),bounds.getHeight());
@@ -67,7 +67,6 @@ public class Player extends GameObject implements Shootable {
 
     public void controlAggressiveShoot() {
         PlayerUtils.earthQuake(this);
-
     }
 
     @Override

@@ -3,6 +3,8 @@ package Utils;
 import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;
 
+import java.util.ArrayList;
+
 
 public class Asset {
 
@@ -36,39 +38,39 @@ public class Asset {
 
         private static void loadResource() {
             //Background
-            baseBackground=LoadImg("UI/Background/baseBackground.png");
-            mainBackground=LoadImg("UI/Background/mainBackground.png");
-            backgroundPlayerPage=LoadImg("UI/Background/backgroundPlayerPage.png");
+            baseBackground=Load("UI/Background/baseBackground.png");
+            mainBackground=Load("UI/Background/mainBackground.png");
+            backgroundPlayerPage=Load("UI/Background/backgroundPlayerPage.png");
 
             //Button
-            buttonNavigate=LoadImg("UI/Button/Navigate/buttonNavigate.png");
-            backButton=LoadImg("UI/Button/backButton.png");
-            upgradeButton=LoadImg("UI/Button/Upgrade/upgradeButton.png");
-            upgradeButtonNoMoney=LoadImg("UI/Button/Upgrade/upgradeButtonNoMoney.png");
-            upgradeButtonHover=LoadImg("UI/Button/Upgrade/upgradeButtonHover.png");
-            upgradeButtonPressed=LoadImg("UI/Button/Upgrade/upgradeButtonPressed.png");
-            spriteHover=LoadImg("UI/Button/spriteHover.png");
-            spriteClick=LoadImg("UI/Button/Navigate/buttonNavigate.png");
+            buttonNavigate=Load("UI/Button/Navigate/buttonNavigate.png");
+            backButton=Load("UI/Button/backButton.png");
+            upgradeButton=Load("UI/Button/Upgrade/upgradeButton.png");
+            upgradeButtonNoMoney=Load("UI/Button/Upgrade/upgradeButtonNoMoney.png");
+            upgradeButtonHover=Load("UI/Button/Upgrade/upgradeButtonHover.png");
+            upgradeButtonPressed=Load("UI/Button/Upgrade/upgradeButtonPressed.png");
+            spriteHover=Load("UI/Button/spriteHover.png");
+            spriteClick=Load("UI/Button/Navigate/buttonNavigate.png");
 
 
-            upgradeChoosePlayerPage=LoadImg("UI/UpgradeChoose/upgradeChoosePlayerPage.png");
-            headerMain=LoadImg("UI/headerMain.png");
-            currencyBG=LoadImg("UI/Currency/currencyBG.png");
-            partUI=LoadImg("UI/Currency/meat.png");
-            soulUI=LoadImg("UI/Enemy/skull.png");
-            honeyUI=LoadImg("UI/Currency/Honey.png");
-            guniconUI=LoadImg("UI/gun.png");
-            sheepiconUI=LoadImg("UI/Enemy/sheep.png");
-            holyiconUI=LoadImg("UI/Currency/holy-grail.png");
-            dnaiconUI=LoadImg("UI/Currency/dna.png");
+            upgradeChoosePlayerPage=Load("UI/UpgradeChoose/upgradeChoosePlayerPage.png");
+            headerMain=Load("UI/headerMain.png");
+            currencyBG=Load("UI/Currency/currencyBG.png");
+            partUI=Load("UI/Currency/meat.png");
+            soulUI=Load("UI/Enemy/skull.png");
+            honeyUI=Load("UI/Currency/Honey.png");
+            guniconUI=Load("UI/gun.png");
+            sheepiconUI=Load("UI/Enemy/sheep.png");
+            holyiconUI=Load("UI/Currency/holy-grail.png");
+            dnaiconUI=Load("UI/Currency/dna.png");
 
         }
-        private static Image LoadImg(String url){
+        private static Image Load(String url){
             return new Image(ClassLoader.getSystemResource(url).toString());
         }
-
-
     }
+
+
 
     public static class Game{
         public static Image player;
@@ -87,6 +89,7 @@ public class Asset {
         private static Image Load(String url){
             return new Image(ClassLoader.getSystemResource(url).toString());
         }
+
     }
     public static class Audio{
 
@@ -103,5 +106,6 @@ public class Asset {
         }
 
     }
+
 
 }

@@ -17,11 +17,12 @@ import java.util.ArrayList;
 
 public abstract class BaseEnemy extends GameObject {
 
+    protected long partDrop;
     protected double hp;
     protected double fireRate;
     protected double bulletSpeed;
-    protected double bulletQuantity;
-    protected double bulletLength;
+    protected int bulletQuantity;
+    protected int bulletLength;
     protected double soulChance;
     protected ArrayList<Integer> Perks; // stores level of each perk
 
@@ -37,49 +38,28 @@ public abstract class BaseEnemy extends GameObject {
 
     protected States state;
 
-    // ---- Suchas comment: I got headache from this-----
-//    public static final Object[][] PERKS = {
-//            // Index, Perk Name, Base Value, Upgrade Value
-//            {0, "Parts Drop", 25, null},
-//            {1, "Calcium Gene - Enemy HP", 100, 15},
-//            {2, "Agility Gene - Enemy Fire Rate", 2.4, 0.7},
-//            {3, "Lethal Mutation - Bullet Speed", 1.2, 0.25},
-//            {4, "Fuzzy Mutation - Bullet Quantity", 8, 1},
-//            {5, "Elongation - Bullet Length", 2, 1},
-//            {6, "Genetic Drift - Chance to Obtain Soul", 10, 5},
-//            {7, "Fast Reproduction - Spawn Time", 2.0, -0.05}
-//    };
-
-    public BaseEnemy(EnemyType type, Transform transform,double z){
+    public BaseEnemy(Transform transform,double z){
         super(transform, z);
-        // ---- Suchas comment: ALL of this should be constructed on children classes, because it calculates level too, doesn't it-----
-        // ---- or create one more argument (levels[]) -----
-        this.hp = EnemyUtils.calculateHp(type);
-        this.fireRate = EnemyUtils.calculateFireRate(type);
-        this.bulletSpeed = EnemyUtils.calculateBulletSpeed(type);
-        this.bulletQuantity = EnemyUtils.calculateBulletQuantity(type);
-        this.bulletLength = EnemyUtils.calculateBulletLength(type);
-        this.soulChance = EnemyUtils.calculateSoulChance(type) ;
 
-        this.fireRate = 700;
-
-
+        this.fireRate = 700;// --Suchas Comment : PlaceHolder?
+        this.partDrop = 11;
         state = States.DOWN;
         downtime= Math.random() * 1000 + 1400;
         uptime = downtime;
         shootTime = Math.random() * 3000 + 5000;
 
-
-
-
     }
 
-    public abstract void startFiring(); //start thread?
     public abstract void firing();
     public abstract void action();
-
-    //Transform is not meant to be added directly , I believe.
-    // ---- Suchas comment: correct, add when instantiating only but can be edited though setter-----
+    public void ApplyStat(EnemyType type){
+        this.hp = EnemyUtils.calculateStat(type,1,Perks.get(1));
+        this.fireRate = EnemyUtils.calculateStat(type,2,Perks.get(2));
+        this.bulletSpeed = EnemyUtils.calculateStat(type,3,Perks.get(3));
+        this.bulletQuantity = (int)EnemyUtils.calculateStat(type,4,Perks.get(4));
+        this.bulletLength = (int)EnemyUtils.calculateStat(type,5,Perks.get(5));
+        this.soulChance = EnemyUtils.calculateStat(type,6,Perks.get(6)) ;
+    }
     @Override
     public void onUpdate() { //from animationTimer
 
@@ -90,10 +70,9 @@ public abstract class BaseEnemy extends GameObject {
         ArrayList<BaseBullet> bulletList = bm.getBullets();
         for (BaseBullet bullet : bulletList) {
             if (Transform.checkCollide(this, bullet) && bullet instanceof PlayerBullet) {
-//                this.hp -= bullet.getDamage();
+                this.hp -= ((PlayerBullet)bullet).getDamage();
                 bullet.setDestroyed(true);
-                Coin coin = new Coin(transform.getPosX(), transform.getPosY());
-                ItemManager.getInstance().add(coin);
+                EnemyUtils.DropParts(transform.getPosX(),transform.getPosY(),partDrop);
                 this.setDestroyed(true);
             }
         }

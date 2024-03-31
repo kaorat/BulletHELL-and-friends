@@ -31,7 +31,6 @@ public class ItemManager implements Updatable {
         for (int i = items.size() - 1; i >= 0; i--) {
             if (items.get(i).isDestroyed()) {
                 items.remove(i);
-                StatManager.getInstance().addCoin();
             }
         }
     }

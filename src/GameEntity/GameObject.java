@@ -24,7 +24,6 @@ public abstract class GameObject {
     protected Image image;
     protected Bounds bounds;
     protected boolean visible,destroyed;
-    protected ArrayList<GameObject> childrenNode;
 
     public void drawBounds(double offsetW, double offsetH, double width, double height){
         this.bounds = new BoundingBox(transform.getPosX() + offsetW,transform.getPosY() + offsetH, width, height);
@@ -44,20 +43,6 @@ public abstract class GameObject {
 
     }
 
-
-
-    public void addChildrenNode(GameObject childNode){
-        this.childrenNode.add(childNode);
-    }
-    public void removeChildrenNode(GameObject childNode){
-        this.childrenNode.remove(childNode);
-    }
-    public void clearChildrenNode(){
-        this.childrenNode.clear();
-    }
-    public GameObject getChildrenNode(int index){
-        return this.childrenNode.get(index);
-    }
     public void setZ(double z) {
         this.z = z;
     }

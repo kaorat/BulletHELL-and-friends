@@ -9,13 +9,10 @@ public class Sheep extends BaseEnemy{
     private long lastPatternTime = 0;
 
     public Sheep(Transform transform,double z) {
-        super(EnemyType.SHEEP,transform,z);
+        super(transform,z);
         setImage(Asset.UI.sheepiconUI);
         Perks = EnemyManager.getInstance().getSheepPerks();
-    }
-
-    @Override
-    public void startFiring() {
+        ApplyStat(EnemyType.SHEEP);
 
     }
 
@@ -23,7 +20,7 @@ public class Sheep extends BaseEnemy{
     public void firing() {
         long currentTime = System.currentTimeMillis();
         if(currentTime - lastPatternTime > 1000){ // 5 seconds
-            EnemyUtils.SheepShootPattern(this);
+            EnemyUtils.SheepShootPattern(this,bulletSpeed,bulletQuantity,bulletLength);
             lastPatternTime = currentTime;
         }
     }

@@ -6,13 +6,16 @@ import Manager.EnemyManager;
 import Utils.Asset;
 import Utils.Config;
 import Utils.Transform;
+import Utils.Utility;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 public class PlayerBullet extends BaseBullet {
-    public PlayerBullet(double damage, GameObject owner, Transform transform, double z) {
-        super(damage, owner, transform, z);
-        setImage(Asset.Game.bullet);
+    private double damage;
+    public PlayerBullet(double speed, GameObject owner, Transform transform, double z,double damage,int graphic) {
+        super(speed, owner, transform, z,Asset.Game.bullet);
+        this.damage = damage;
+        //setImage(Asset.Game.bullet);
     }
 
     @Override
@@ -22,13 +25,19 @@ public class PlayerBullet extends BaseBullet {
         drawBounds(Config.PLAYER_BULLET_OFFSET_WIDTH, Config.PLAYER_BULLET_OFFSET_HEIGHT, Config.PLAYER_BULLET_WIDTH, Config.PLAYER_BULLET_HEIGHT);
 
     }
+    public double getDamage() {
+        return damage;
+    }
 
+    public void setDamage(double damage) {
+        this.damage = damage;
+    }
     @Override
     public void onUpdate() {
 //        transform.setRot(-90);
-        transform.translate(10);
+        transform.translate(speed);
 
-        removeOutOfBounds();
+        Utility.isOutOfBounds(this);
 
         BulletManager.getInstance().removeDestroyed();
     }

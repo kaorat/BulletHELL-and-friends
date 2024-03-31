@@ -12,14 +12,10 @@ public class Chicken extends BaseEnemy{
     private long lastPatternTime = 0;
 
     public Chicken(Transform transform,double z) {
-        super(EnemyType.CHICKEN,transform, z);
+        super(transform, z);
         setImage(Asset.UI.soulUI);
         Perks = EnemyManager.getInstance().getChickenPerks();
-
-    }
-
-    @Override
-    public void startFiring() {
+        ApplyStat(EnemyType.CHICKEN);
 
     }
 
@@ -28,8 +24,8 @@ public class Chicken extends BaseEnemy{
         // circular direction
         // utils got it
         long currentTime = System.currentTimeMillis();
-        if(currentTime - lastPatternTime > 600){ // 5 seconds
-            EnemyUtils.ChickenShootPattern(this);
+        if(currentTime - lastPatternTime > 120*fireRate*bulletQuantity){ // 5 seconds
+            EnemyUtils.ChickenShootPattern(this,bulletSpeed);
             lastPatternTime = currentTime;
         }
 
@@ -37,9 +33,7 @@ public class Chicken extends BaseEnemy{
 
     @Override
     public void action() {
-
-
-        double renderTime = 8d ; // idk  // Suchas comment: idk
+        double renderTime = 8d ;
         if(state == States.DOWN) {
             downtime -= renderTime;
             transform.setRot(90);

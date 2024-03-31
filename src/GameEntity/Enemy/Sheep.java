@@ -19,7 +19,7 @@ public class Sheep extends BaseEnemy{
     @Override
     public void firing() {
         long currentTime = System.currentTimeMillis();
-        if(currentTime - lastPatternTime > 1000){ // 5 seconds
+        if(currentTime - lastPatternTime > 1000){
             EnemyUtils.SheepShootPattern(this,bulletSpeed,bulletQuantity,bulletLength);
             lastPatternTime = currentTime;
         }
@@ -28,7 +28,7 @@ public class Sheep extends BaseEnemy{
     @Override
     public void action() {
 
-        double renderTime = 10d ; // idk  // Suchas comment: idk
+        double renderTime = 10d ;
         if(state == States.DOWN) {
             downtime -= renderTime;
             transform.setRot(90);

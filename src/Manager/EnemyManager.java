@@ -53,16 +53,16 @@ public class EnemyManager implements Updatable {
 
     public void spawnEnemy(EnemyType type) {
         if(type == EnemyType.CHICKEN){
-            //BaseEnemy enemy = new Chicken(randomTransform(), Math.random());
-            //add(enemy);
+            BaseEnemy enemy = new Chicken(randomTransform(), Math.random());
+            add(enemy);
         }
         else if(type == EnemyType.SHEEP){
             BaseEnemy enemy = new Sheep(randomTransform(), Math.random() + 10);
             add(enemy);
         }
         else if(type == EnemyType.COW){
-            //BaseEnemy enemy = new Cow(randomTransform(), Math.random() + 20);
-            //add(enemy);
+            BaseEnemy enemy = new Cow(randomTransform(), Math.random() + 20);
+            add(enemy);
         }
 
     }

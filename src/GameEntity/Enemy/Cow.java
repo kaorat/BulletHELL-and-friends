@@ -31,7 +31,7 @@ public class Cow extends BaseEnemy{
     @Override
     public void action() {
 
-        double renderTime = 16d ; // idk  // Suchas comment: idk
+        double renderTime = 16d ;
         if(state == States.DOWN) {
             downtime -= renderTime;
             transform.setRot(90);

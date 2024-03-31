@@ -120,7 +120,8 @@ public class PlayerPage extends GraphicEditor {
                 button.setEnable(true);
                 if(button.isPressed()){
                     StatManager.getInstance().setCoin(coin-cost);
-                    PlayerManager.getInstance().getPlayerPerks().set(i+1,level+1);
+//                    PlayerManager.getInstance().getPlayerPerks().set(i+1,level+1);
+                    PlayerManager.getInstance().upgradeStat(i+1);
                 }
             }
             else{

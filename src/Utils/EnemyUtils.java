@@ -15,17 +15,18 @@ public class EnemyUtils {
 
     public static double calculateStat(EnemyType type,int index,int level) {
         double stat;
-        if(index==6){
+        if(index == 4){
             if(type==EnemyType.COW){
-                stat = (Config.COW_BULLET_QUANTITY_BASE+(Config.enemy_upgradeValues.get(index)*level));
+                stat = (Config.COW_BULLET_QUANTITY_BASE + (Config.enemy_upgradeValues.get(index)*level));
             }
             else if(type==EnemyType.CHICKEN){
-                stat = (Config.CHICKEN_QUANTITY_BASE+(Config.enemy_upgradeValues.get(index)*level));
+                stat = (Config.CHICKEN_BULLET_QUANTITY_BASE + (Config.enemy_upgradeValues.get(index)*level));
             }
             else {
-                stat = (Config.enemy_baseValues.get(index)+(Config.enemy_upgradeValues.get(index)*level));
+                stat = (Config.SHEEP_BULLET_QUANTITY_BASE + (Config.enemy_upgradeValues.get(index)*level));
             }
         }
+
         else{
             stat = (Config.enemy_baseValues.get(index)+(Config.enemy_upgradeValues.get(index)*level));
             if(index==1){
@@ -33,11 +34,10 @@ public class EnemyUtils {
             }
         }
 
-
         return stat;
     }
     public static double calculateSpawnRate(int level) {
-        return 1000*(Config.SPAWN_TIME_BASE+(Config.REPRODUCTION_SPAWN_TIME_UPGRADE*level));
+        return 1000*(Config.SPAWN_TIME_BASE + (Config.REPRODUCTION_SPAWN_TIME_UPGRADE*level));
     }
 
     public static void ChickenShootPattern(Chicken chicken,double speed){
@@ -48,10 +48,10 @@ public class EnemyUtils {
     public static void SheepShootPattern(Sheep sheep,double speed,int quantity,int length){
 
         double angleToP=Transform.calculateAngleToTarget(sheep.getTransform(), PlayerManager.getInstance().getPlayer().getTransform());
-        int maxAngle = 10*quantity;
+        int maxAngle = 10 * (quantity);
         for(int i=0;i<quantity;i++){
             for(int j=1;j<=length;j++){
-                EnemyBullet bullet = new EnemyBullet(speed/j, sheep, new Transform(sheep.getTransform().getPosX(), sheep.getTransform().getPosY(), angleToP- (double) maxAngle /2 + ((double) (i * maxAngle) /quantity), 2, 2), 0,0);
+                EnemyBullet bullet = new EnemyBullet(speed/j, sheep, new Transform(sheep.getTransform().getPosX() + 25, sheep.getTransform().getPosY() + 20, angleToP - (double) (maxAngle / quantity) + ((double) (i * maxAngle) /quantity), 2, 2), 0,0);
                 BulletManager.getInstance().add(bullet);
             }
 
@@ -59,8 +59,9 @@ public class EnemyUtils {
 
     }
 
+
     public static void CowShootPattern(Cow cow,int initRot,double speed,int quantity,int length){
-        // semicircular direction
+        // circular direction
         for(int i = 0; i <= quantity; i++){
             for(int j=1;j<=length;j++){
                 EnemyBullet bullet = new EnemyBullet(speed/j, cow, new Transform(cow.getTransform().getPosX() + 25, cow.getTransform().getPosY() + 20, (initRot + ( (double) (i * 360) /quantity ))%360, 2, 2), 0,0);

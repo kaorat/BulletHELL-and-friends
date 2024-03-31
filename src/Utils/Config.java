@@ -31,7 +31,7 @@ public class Config {
     public static final double AGILITY_MAX_LEVEL = 99;
 
     // Lethal Mutation
-    public static final double ENEMY_BULLET_SPEED_BASE = 0.75;
+    public static final double ENEMY_BULLET_SPEED_BASE = 2.5;
     public static final double LETHAL_BULLET_SPEED_UPGRADE = 0.4;
     public static final double LETHAL_BASE_PRICE = 300;
     public static final double LETHAL_PRICE_INCREMENT = 1.2;//Power by level
@@ -40,9 +40,10 @@ public class Config {
 
     // Fuzzy Mutation
     // Sheep multiply fire rate by n/10 , cow increase bullet number by n*6 , chicken increase bullet number (more shotgun) by n
-    public static final double SHEEP_BULLET_QUANTITY_BASE = 0;
-    public static final double COW_BULLET_QUANTITY_BASE = 12;
-    public static final double CHICKEN_QUANTITY_BASE = 1;
+    // bullet quantity
+    public static final double SHEEP_BULLET_QUANTITY_BASE = 3;
+    public static final double COW_BULLET_QUANTITY_BASE = 20;
+    public static final double CHICKEN_BULLET_QUANTITY_BASE = 1;
     public static final double FUZZY_BULLET_QUANTITY_UPGRADE = 1;
     public static final double FUZZY_BASE_PRICE = 200;
     public static final double FUZZY_PRICE_INCREMENT = 1.25;//Power by level
@@ -51,8 +52,9 @@ public class Config {
 
 
 
-    // Elongation Sheep has no upgrade
-    public static final double BULLET_LENGTH_BASE = 1;
+    // Elongation Sheep has no upgrade ??
+    // chicken has no upgrade (random bullet spread)
+    public static final double BULLET_LENGTH_BASE = 3;
     public static final double ELONGATION_BULLET_LENGTH_UPGRADE = 1;
     public static final double ELONGATION_BASE_PRICE = 800;
     public static final double ELONGATION_PRICE_INCREMENT = 1.25;//Power by level
@@ -69,7 +71,7 @@ public class Config {
     public static final double GENETIC_MAX_LEVEL = 20;
 
     // Fast Reproduction
-    public static final double SPAWN_TIME_BASE = 2.0;
+    public static final double SPAWN_TIME_BASE = 4.0;
     public static final double REPRODUCTION_SPAWN_TIME_UPGRADE = -0.05;
     public static final double REPRODUCTION_BASE_PRICE = 300;
     public static final double REPRODUCTION_PRICE_INCREMENT = 1.25;//Power by level
@@ -166,7 +168,7 @@ public class Config {
         enemy_maxLevels.add(LETHAL_MAX_LEVEL);
 
         // Fuzzy Mutation //TODO:base values -> manual add
-        enemy_baseValues.add(0d);
+        enemy_baseValues.add(SHEEP_BULLET_QUANTITY_BASE);
         enemy_upgradeValues.add(FUZZY_BULLET_QUANTITY_UPGRADE);
         enemy_basePrices.add(FUZZY_BASE_PRICE);
         enemy_priceIncrements.add(FUZZY_PRICE_INCREMENT);

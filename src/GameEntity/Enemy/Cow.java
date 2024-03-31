@@ -6,18 +6,15 @@ import javafx.scene.canvas.GraphicsContext;
 
 public class Cow extends BaseEnemy{
     private long lastPatternTime = 0;
-    private int pattern = 0;
+    private int initRot = 0;
 
 
 
     public Cow(Transform transform,double z) {
-        super(EnemyType.COW,transform,z);
+        super(transform,z);
         setImage(Asset.UI.guniconUI);
         Perks = EnemyManager.getInstance().getCowPerks();
-    }
-
-    @Override
-    public void startFiring() {
+        ApplyStat(EnemyType.COW);
 
     }
 
@@ -25,8 +22,8 @@ public class Cow extends BaseEnemy{
     public void firing() {
         long currentTime = System.currentTimeMillis();
         if(currentTime - lastPatternTime > 1500){ // 5 seconds
-            EnemyUtils.CowShootPattern(this,pattern);
-            pattern = (pattern + 1)%3;
+            EnemyUtils.CowShootPattern(this,initRot, bulletSpeed,bulletQuantity,bulletLength);
+            initRot+=10;
             lastPatternTime = currentTime;
         }
 
@@ -34,7 +31,7 @@ public class Cow extends BaseEnemy{
     @Override
     public void action() {
 
-        double renderTime = 16d ; // idk  // Suchas comment: idk
+        double renderTime = 16d ;
         if(state == States.DOWN) {
             downtime -= renderTime;
             transform.setRot(90);

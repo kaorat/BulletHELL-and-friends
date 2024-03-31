@@ -1,13 +1,17 @@
 package GameEntity.Item;
 
+import Manager.StatManager;
 import Utils.Asset;
+import Utils.Utility;
 import javafx.scene.canvas.GraphicsContext;
 
 public class Coin extends BaseItem{ // this is 'parts drop', I just want to change the name.
-
-
-    public Coin(double posX, double posY) {
+    private long amount;
+    public Coin(double posX, double posY,double scl,long amount) {
         super(posX, posY);
+        this.transform.setSclX(scl);
+        this.transform.setSclY(scl);
+        this.amount = amount;
         setImage(Asset.UI.partUI);
     }
 
@@ -20,11 +24,12 @@ public class Coin extends BaseItem{ // this is 'parts drop', I just want to chan
     @Override
     public void onUpdate() {
         transform.translate(2);
-        isOutOfBounds();
+        Utility.isOutOfBounds(this);
     }
 
     @Override
     public void onPickup() {
+        StatManager.getInstance().addCoin(amount);
         this.destroyed = true;
     }
 }

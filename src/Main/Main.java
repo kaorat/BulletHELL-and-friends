@@ -51,10 +51,10 @@ public class Main extends Application {
             }
         };
         //just for testing bgm
-        AudioClip bgm = Asset.Audio.bgm;
-        bgm.setCycleCount(AudioClip.INDEFINITE);
-        bgm.setVolume(0.05);
-        bgm.play();
+//        AudioClip bgm = Asset.Audio.bgm;
+//        bgm.setCycleCount(AudioClip.INDEFINITE);
+//        bgm.setVolume(0.05);
+//        bgm.play();
         animation.start();
     }
 }

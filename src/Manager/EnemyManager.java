@@ -32,7 +32,7 @@ public class EnemyManager implements Updatable {
 
     private EnemyManager() {
         enemies = new ArrayList<BaseEnemy>();
-        //singleton , 25 is the starting part drop rate
+        //singleton , 10 is the starting part drop rate
         reset();
 
     }
@@ -43,25 +43,6 @@ public class EnemyManager implements Updatable {
         }
         return instance;
     }
-
-
-//    public void checkCollision() {
-//        BulletManager bulletManager = BulletManager.getInstance();
-//
-//        ArrayList<BaseBullet> bullets = bulletManager.getBullets();
-//        EnemyManager enemyManager = EnemyManager.getInstance();
-//        ArrayList<BaseEnemy> enemies1 = enemyManager.getEnemies();
-//        for (BaseEnemy enemy : enemies1) {
-//            for (BaseBullet bullet : bullets) {
-//                if (Transform.checkCollide( enemy,bullet) && bullet instanceof PlayerBullet){
-//                    enemy.setDestroyed(true);
-//                    bullet.setDestroyed(true);
-////                    System.out.println("hit");
-//                    break;
-//                }
-//            }
-//        }
-//    }
 
 
     public Transform randomTransform() {
@@ -84,10 +65,6 @@ public class EnemyManager implements Updatable {
             add(enemy);
         }
 
-    }
-
-    public boolean checkEnemyLeft(){
-        return enemies.size() < 3;
     }
 
     public void add(BaseEnemy enemy) {
@@ -122,24 +99,41 @@ public class EnemyManager implements Updatable {
 
     }
 
-    public double calculatePerkValue(EnemyType type, int index){
-        if(type == EnemyType.CHICKEN){
-            return Config.enemy_baseValues.get(index) + (ChickenPerks.get(index) * Config.enemy_upgradeValues.get(index));
-        }
-        else if(type == EnemyType.SHEEP){
-            return Config.enemy_baseValues.get(index) + (SheepPerks.get(index) * Config.enemy_upgradeValues.get(index));
-        }
-        else if(type == EnemyType.COW){
-            return Config.enemy_baseValues.get(index) + (CowPerks.get(index) * Config.enemy_upgradeValues.get(index));
-        }
-        return 0;
-    }
 
     public void clearEnemy() {
         for(BaseEnemy e : enemies){
             e.setDestroyed(true);
         }
         enemies.clear();
+    }
+
+    @Override
+    public void onUpdate() {
+
+        removeDestroyed();
+
+        if (System.currentTimeMillis() - lastChickenSpawnTime > EnemyUtils.calculateSpawnRate(ChickenPerks.get(7))) {
+            spawnEnemy(EnemyType.CHICKEN);
+            lastChickenSpawnTime = System.currentTimeMillis();
+        }
+        if (System.currentTimeMillis() - lastSheepSpawnTime > EnemyUtils.calculateSpawnRate(SheepPerks.get(7))) {
+            spawnEnemy(EnemyType.SHEEP);
+            lastSheepSpawnTime = System.currentTimeMillis();
+        }
+        if (System.currentTimeMillis() - lastCowSpawnTime > EnemyUtils.calculateSpawnRate(CowPerks.get(7))) {
+            spawnEnemy(EnemyType.COW);
+            lastCowSpawnTime = System.currentTimeMillis();
+        }
+
+
+    }
+
+
+    public void reset(){
+        ChickenPerks = new ArrayList<Integer>(Arrays.asList((int)Config.PARTS_DROP_BASE*Config.CHICKEN_MULTIPLIER, 0, 0, 0, 0, 0, 0, 0));
+        SheepPerks = new ArrayList<Integer>(Arrays.asList((int)Config.PARTS_DROP_BASE, 0, 0, 0, 0, 0, 0, 0));
+        CowPerks = new ArrayList<Integer>(Arrays.asList((int)Config.PARTS_DROP_BASE*Config.COW_MULTIPLIER, 0, 0, 0, 0, 0, 0, 0));
+        clearEnemy();
     }
 
     public ArrayList<BaseEnemy> getEnemies() {
@@ -205,35 +199,6 @@ public class EnemyManager implements Updatable {
 
     public void setCowSpawnRate(long cowSpawnRate) {
         this.cowSpawnRate = cowSpawnRate;
-    }
-
-    @Override
-    public void onUpdate() {
-
-        removeDestroyed();
-
-        if (System.currentTimeMillis() - lastChickenSpawnTime > chickenSpawnRate) {
-            spawnEnemy(EnemyType.CHICKEN);
-            lastChickenSpawnTime = System.currentTimeMillis();
-        }
-        if (System.currentTimeMillis() - lastSheepSpawnTime > sheepSpawnRate) {
-            spawnEnemy(EnemyType.SHEEP);
-            lastSheepSpawnTime = System.currentTimeMillis();
-        }
-        if (System.currentTimeMillis() - lastCowSpawnTime > cowSpawnRate) {
-            spawnEnemy(EnemyType.COW);
-            lastCowSpawnTime = System.currentTimeMillis();
-        }
-
-
-    }
-
-
-    public void reset(){
-        ChickenPerks = new ArrayList<Integer>(Arrays.asList((int)Config.PARTS_DROP_BASE*Config.CHICKEN_MULTIPLIER, 1, 1, 1, 1, 1, 1, 1));
-        SheepPerks = new ArrayList<Integer>(Arrays.asList((int)Config.PARTS_DROP_BASE, 1, 1, 1, 1, 1, 1, 1));
-        CowPerks = new ArrayList<Integer>(Arrays.asList((int)Config.PARTS_DROP_BASE*Config.COW_MULTIPLIER, 1, 1, 1, 1, 1, 1, 1));
-        clearEnemy();
     }
 
 }

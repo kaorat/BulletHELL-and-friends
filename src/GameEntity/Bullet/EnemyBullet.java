@@ -7,6 +7,7 @@ import Manager.BulletManager;
 import Manager.PlayerManager;
 import Utils.Asset;
 import Utils.Transform;
+import Utils.Utility;
 import javafx.geometry.BoundingBox;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -14,10 +15,10 @@ import javafx.scene.paint.Color;
 
 
 public class EnemyBullet extends BaseBullet{
-    // ---- Suchas comment: Bosses may shoot out bullet of different sprite, insert Image argument-----
-    public EnemyBullet(double damage, GameObject owner, Transform transform, double z) {
-        super(damage, owner,transform,z);
-        setImage(Asset.Game.enemyBullet);
+    public EnemyBullet(double speed, GameObject owner, Transform transform, double z,int graphic) {
+        super(speed, owner,transform,z,Asset.Game.enemyBullet);
+
+        //setImage(Asset.Game.enemyBullet);
     }
 
     @Override
@@ -32,15 +33,14 @@ public class EnemyBullet extends BaseBullet{
 
     @Override
     public void onUpdate() {
-        transform.translate(3);
-        if( !(this.owner instanceof Cow) &&  Transform.calculateDistanceToTarget(this.transform, PlayerManager.getInstance().getPlayer().getTransform()) <= 400 && !isRotChanged) {
-            isRotChanged = true;
-        }
-        if(!(this.owner instanceof Cow) && Transform.calculateDistanceToTarget(this.transform, PlayerManager.getInstance().getPlayer().getTransform()) > 400 && !isRotChanged) {
-            transform.setRot(Transform.calculateAngleToTarget(this.transform, PlayerManager.getInstance().getPlayer().getTransform()));
+//        transform.translate(3);
+//        if( !(this.owner instanceof Cow) &&  Transform.calculateDistanceToTarget(this.transform, PlayerManager.getInstance().getPlayer().getTransform()) <= 400 && !isRotChanged) {
 //            isRotChanged = true;
-        }
-        removeOutOfBounds();
+//        }
+//        if(!(this.owner instanceof Cow) && Transform.calculateDistanceToTarget(this.transform, PlayerManager.getInstance().getPlayer().getTransform()) > 400 && !isRotChanged) {
+//            transform.setRot(Transform.calculateAngleToTarget(this.transform, PlayerManager.getInstance().getPlayer().getTransform()));
+        transform.translate(speed);
+        Utility.isOutOfBounds(this);
         BulletManager.getInstance().removeDestroyed();
     }
 }

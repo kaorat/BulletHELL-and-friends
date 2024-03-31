@@ -53,6 +53,12 @@ public class UIButton extends UISprite {
         else{
             if (pressed) {
                 // Draw pressed effect
+                if(buttonType == ButtonType.UPGRADE){
+                    setSprite(Asset.UI.upgradeButtonPressed);
+                }
+                else if(buttonType == ButtonType.NAVIGATOR){
+//                    setSprite();
+                }
 
             }
             else if (hovered) {

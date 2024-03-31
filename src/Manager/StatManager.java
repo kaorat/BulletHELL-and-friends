@@ -19,7 +19,7 @@ public class StatManager {
 
     public StatManager(){
         setAmber(0);
-        setCoin(0);
+        setCoin(10000);
         setTotalCoin(0);
         setHoneyLevel(1);
         setCompletion(0);
@@ -34,9 +34,9 @@ public class StatManager {
     public void addDeath(){
         death+=1;
     }
-    public void addCoin(){
-        coin+=1;
-        totalCoin+=1;
+    public void addCoin(long coin){
+        coin+=coin;
+        totalCoin+=coin;
     }
     public void addCompletion(int percent){
         completion+=percent;

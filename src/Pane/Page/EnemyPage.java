@@ -35,7 +35,7 @@ public class EnemyPage extends GraphicEditor {
                 new Transform(x+180,110),52));
 
         // Create the button
-        allButtons.add((UIButton) create(new UIButton(Asset.UI.upgradeButton, new Transform(Utility.getGameScreenX() + 303, 194 , 0.28, 0.24), 54 , ButtonType.UPGRADE)));
+        allButtons.add((UIButton) create(new UIButton(Asset.UI.upgradeButtonMeat, new Transform(Utility.getGameScreenX() + 303, 194 , 0.28, 0.24), 54 , ButtonType.UPGRADEMEAT)));
         // Create CalciumGene
         allPrice.add( (UISprite) create(new UISprite(new Text("100", Utility.getGameFont(12), Color.YELLOWGREEN),
                 new Transform(allButtons.get(0).getTransform().getPosX() + 32,
@@ -47,7 +47,7 @@ public class EnemyPage extends GraphicEditor {
 
 
         // Create AgilityGene
-        allButtons.add((UIButton) create( new UIButton(Asset.UI.upgradeButton, new Transform(Utility.getGameScreenX() + 303, 192 + moveYButton, 0.28, 0.24), 54 , ButtonType.UPGRADE)));
+        allButtons.add((UIButton) create( new UIButton(Asset.UI.upgradeButtonMeat, new Transform(Utility.getGameScreenX() + 303, 192 + moveYButton, 0.28, 0.24), 54 , ButtonType.UPGRADEMEAT)));
         allPrice.add( (UISprite) create(new UISprite(new Text("100", Utility.getGameFont(12), Color.YELLOWGREEN),
                 new Transform(allButtons.get(1).getTransform().getPosX() + 32,
                         allButtons.get(1).getTransform().getPosY() + 21), 55)));
@@ -57,7 +57,7 @@ public class EnemyPage extends GraphicEditor {
         allIncrease.add((UISprite) create(new UISprite(new Text("0 parts", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 239 + moveYButton*1, 0.25, 0.25), 55)));
 
         // Create LethalMutation
-        allButtons.add((UIButton) create( new UIButton(Asset.UI.upgradeButton, new Transform(Utility.getGameScreenX() + 303, 190 + moveYButton*2, 0.28, 0.24), 54 , ButtonType.UPGRADE)));
+        allButtons.add((UIButton) create( new UIButton(Asset.UI.upgradeButtonMeat, new Transform(Utility.getGameScreenX() + 303, 190 + moveYButton*2, 0.28, 0.24), 54 , ButtonType.UPGRADEMEAT)));
         allPrice.add((UISprite) create(new UISprite(new Text("100", Utility.getGameFont(12), Color.YELLOWGREEN),
                 new Transform(allButtons.get(2).getTransform().getPosX() + 32,
                         allButtons.get(2).getTransform().getPosY() + 21), 55)));
@@ -67,7 +67,7 @@ public class EnemyPage extends GraphicEditor {
         allIncrease.add((UISprite) create(new UISprite(new Text("0 parts", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 239 + moveYButton*2, 0.25, 0.25), 55)));
 
         // Create FuzzyMutation
-        allButtons.add((UIButton) create( new UIButton(Asset.UI.upgradeButton, new Transform(Utility.getGameScreenX() + 303, 188 + moveYButton*3, 0.28, 0.24), 54 , ButtonType.UPGRADE)));
+        allButtons.add((UIButton) create( new UIButton(Asset.UI.upgradeButtonMeat, new Transform(Utility.getGameScreenX() + 303, 188 + moveYButton*3, 0.28, 0.24), 54 , ButtonType.UPGRADEMEAT)));
         allPrice.add((UISprite) create(new UISprite(new Text("100", Utility.getGameFont(12), Color.YELLOWGREEN),
                 new Transform(allButtons.get(3).getTransform().getPosX() + 32,
                         allButtons.get(3).getTransform().getPosY() + 21), 55)));
@@ -77,7 +77,7 @@ public class EnemyPage extends GraphicEditor {
         allIncrease.add((UISprite) create(new UISprite(new Text("0 parts", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 239 + moveYButton*3, 0.25, 0.25), 55)));
 
         // Create Elongation
-        allButtons.add((UIButton) create( new UIButton(Asset.UI.upgradeButton, new Transform(Utility.getGameScreenX() + 303, 186 + moveYButton*4, 0.28, 0.24), 54 , ButtonType.UPGRADE)));
+        allButtons.add((UIButton) create( new UIButton(Asset.UI.upgradeButtonMeat, new Transform(Utility.getGameScreenX() + 303, 186 + moveYButton*4, 0.28, 0.24), 54 , ButtonType.UPGRADEMEAT)));
         allPrice.add((UISprite) create(new UISprite(new Text("100", Utility.getGameFont(12), Color.YELLOWGREEN),
                 new Transform(allButtons.get(4).getTransform().getPosX() + 32,
                         allButtons.get(4).getTransform().getPosY() + 21), 55)));
@@ -87,7 +87,7 @@ public class EnemyPage extends GraphicEditor {
         allIncrease.add((UISprite) create(new UISprite(new Text("0 parts", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 237 + moveYButton*4, 0.25, 0.25), 55)));
 
         //Create GeneticDrift
-        allButtons.add((UIButton) create( new UIButton(Asset.UI.upgradeButton, new Transform(Utility.getGameScreenX() + 303, 188 + moveYButton*5, 0.28, 0.24), 54 , ButtonType.UPGRADE)));
+        allButtons.add((UIButton) create( new UIButton(Asset.UI.upgradeButtonMeat, new Transform(Utility.getGameScreenX() + 303, 188 + moveYButton*5, 0.28, 0.24), 54 , ButtonType.UPGRADEMEAT)));
         allPrice.add((UISprite) create(new UISprite(new Text("100", Utility.getGameFont(12), Color.YELLOWGREEN),
                 new Transform(allButtons.get(5).getTransform().getPosX() + 32,
                         allButtons.get(5).getTransform().getPosY() + 21), 55)));
@@ -96,7 +96,7 @@ public class EnemyPage extends GraphicEditor {
         allIncrease.add((UISprite) create(new UISprite(new Text("0% chances", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 228 + moveYButton*5, 0.25, 0.25), 55)));
 
         //Create FastReproduction
-        allButtons.add((UIButton) create( new UIButton(Asset.UI.upgradeButton, new Transform(Utility.getGameScreenX() + 303, 184 + moveYButton*6, 0.28, 0.24), 54 , ButtonType.UPGRADE)));
+        allButtons.add((UIButton) create( new UIButton(Asset.UI.upgradeButtonMeat, new Transform(Utility.getGameScreenX() + 303, 184 + moveYButton*6, 0.28, 0.24), 54 , ButtonType.UPGRADEMEAT)));
         allPrice.add((UISprite) create(new UISprite(new Text("100", Utility.getGameFont(12), Color.YELLOWGREEN),
                 new Transform(allButtons.get(6).getTransform().getPosX() + 32,
                         allButtons.get(6).getTransform().getPosY() + 21), 55)));
@@ -107,14 +107,15 @@ public class EnemyPage extends GraphicEditor {
         //Unlock
         create(new UISprite(new Text("Unlock Chicken ",Utility.getGameFont(18 ), Color.BLACK),
                 new Transform(x+100,685),52));
-        allButtons.add((UIButton) create( new UIButton(Asset.UI.upgradeButton, new Transform(Utility.getGameScreenX() + 280, 665, 0.28, 0.24), 54 , ButtonType.UPGRADE)));
+        allButtons.add((UIButton) create( new UIButton(Asset.UI.upgradeButtonMeat, new Transform(Utility.getGameScreenX() + 280, 665, 0.28, 0.24), 54 , ButtonType.UPGRADEMEAT)));
         allPrice.add((UISprite) create(new UISprite(new Text("100", Utility.getGameFont(12), Color.YELLOWGREEN),
                 new Transform(allButtons.get(7).getTransform().getPosX() + 32,
                         allButtons.get(7).getTransform().getPosY() + 21), 55)));
 
 
         // Create the button
-        allButtons.add ((UIButton) create(new UIButton(Asset.UI.backButton, new Transform(Utility.getGameScreenX() + 33, 660, 0.7, 1), 54 , ButtonType.BACK)));
+        allButtons.add ((UIButton) create(new UIButton(Asset.UI.backButtonNormal, new Transform(Utility.getGameScreenX() + 33, 660, 0.34, 0.34), 54 , ButtonType.BACK)));
+
         //choose upgrade
         create(new UISprite(Asset.UI.upgradeChooseEnemyPage, new Transform(Utility.getGameScreenX() +17, 170, 0.25, 0.25), 53));
 

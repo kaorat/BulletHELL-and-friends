@@ -1,5 +1,9 @@
 package Pane;
 
+import GameEntity.UI.UISprite;
+import Utils.Asset;
+import Utils.Transform;
+import Utils.Utility;
 import javafx.scene.canvas.GraphicsContext;
 
 //Bullet hell game here (game box)
@@ -7,6 +11,10 @@ import javafx.scene.canvas.GraphicsContext;
 public class GameplayEditor extends GraphicEditor{
     public GameplayEditor(GraphicsContext graphicsContext) {
         super(graphicsContext);
+        //Background
+        create(new UISprite(Asset.UI.backgroundGameplay, new Transform(0, 0, 0.63, 0.71), -100));
+
+
         // DUMMY TEST
         create(new GameEntity.Enemy.Chicken(new Utils.Transform(10,-60),20));
 

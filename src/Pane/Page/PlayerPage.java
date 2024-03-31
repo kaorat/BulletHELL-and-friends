@@ -36,7 +36,7 @@ public class PlayerPage extends GraphicEditor {
                 new Transform(x+165,120),52));
 
         // Create the button
-        allButtons.add((UIButton) create(new UIButton(Asset.UI.upgradeButton, new Transform(Utility.getGameScreenX() + 310, 170 , 0.28, 0.27), 54 , ButtonType.UPGRADE)));
+        allButtons.add((UIButton) create(new UIButton(Asset.UI.upgradeButtonMeat, new Transform(Utility.getGameScreenX() + 310, 170 , 0.28, 0.27), 54 , ButtonType.UPGRADEMEAT)));
 
         // Create RifleDamage
         allPrice.add( (UISprite) create(new UISprite(new Text("100", Utility.getGameFont(13), Color.YELLOWGREEN),
@@ -47,7 +47,7 @@ public class PlayerPage extends GraphicEditor {
         allIncrease.add((UISprite) create(new UISprite(new Text("+0.25 Damage", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 213, 0.25, 0.25), 55)));
 
         // Create RifleFirerate
-        allButtons.add((UIButton) create( new UIButton(Asset.UI.upgradeButton, new Transform(Utility.getGameScreenX() + 310, 170 + moveYButton, 0.28, 0.27), 54 , ButtonType.UPGRADE)));
+        allButtons.add((UIButton) create( new UIButton(Asset.UI.upgradeButtonMeat, new Transform(Utility.getGameScreenX() + 310, 170 + moveYButton, 0.28, 0.27), 54 , ButtonType.UPGRADEMEAT)));
         allPrice.add( (UISprite) create(new UISprite(new Text("100", Utility.getGameFont(13), Color.YELLOWGREEN),
                 new Transform(allButtons.get(1).getTransform().getPosX() + 32,
                         allButtons.get(1).getTransform().getPosY() + 23), 55)));
@@ -56,7 +56,7 @@ public class PlayerPage extends GraphicEditor {
         allIncrease.add((UISprite) create(new UISprite(new Text("+0.25 Firerate", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 304, 213 + moveYButton, 0.25, 0.25), 55)));
 
         // Create Minimize
-        allButtons.add((UIButton) create( new UIButton(Asset.UI.upgradeButton, new Transform(Utility.getGameScreenX() + 310, 170 + moveYButton*2, 0.28, 0.27), 54 , ButtonType.UPGRADE)));
+        allButtons.add((UIButton) create( new UIButton(Asset.UI.upgradeButtonMeat, new Transform(Utility.getGameScreenX() + 310, 170 + moveYButton*2, 0.28, 0.27), 54 , ButtonType.UPGRADEMEAT)));
         allPrice.add((UISprite) create(new UISprite(new Text("100", Utility.getGameFont(13), Color.YELLOWGREEN),
                 new Transform(allButtons.get(2).getTransform().getPosX() + 32,
                         allButtons.get(2).getTransform().getPosY() + 23), 55)));
@@ -65,7 +65,7 @@ public class PlayerPage extends GraphicEditor {
         allIncrease.add((UISprite) create(new UISprite(new Text("+0.25 Minimize", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 340, 210 + moveYButton*2, 0.25, 0.25), 55)));
 
         // Create Dexterity
-        allButtons.add((UIButton) create( new UIButton(Asset.UI.upgradeButton, new Transform(Utility.getGameScreenX() + 310, 170 + moveYButton*3, 0.28, 0.27), 54 , ButtonType.UPGRADE)));
+        allButtons.add((UIButton) create( new UIButton(Asset.UI.upgradeButtonMeat, new Transform(Utility.getGameScreenX() + 310, 170 + moveYButton*3, 0.28, 0.27), 54 , ButtonType.UPGRADEMEAT)));
         allPrice.add((UISprite) create(new UISprite(new Text("100", Utility.getGameFont(13), Color.YELLOWGREEN),
                 new Transform(allButtons.get(3).getTransform().getPosX() + 32,
                         allButtons.get(3).getTransform().getPosY() + 23), 55)));
@@ -74,7 +74,7 @@ public class PlayerPage extends GraphicEditor {
         allIncrease.add((UISprite) create(new UISprite(new Text("+0.25 Dexterity", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 340, 210 + moveYButton*3, 0.25, 0.25), 55)));
 
         // Create Proficiency
-        allButtons.add((UIButton) create( new UIButton(Asset.UI.upgradeButton, new Transform(Utility.getGameScreenX() + 310, 170 + moveYButton*4, 0.28, 0.27), 54 , ButtonType.UPGRADE)));
+        allButtons.add((UIButton) create( new UIButton(Asset.UI.upgradeButtonMeat, new Transform(Utility.getGameScreenX() + 310, 170 + moveYButton*4, 0.28, 0.27), 54 , ButtonType.UPGRADEMEAT)));
         allPrice.add((UISprite) create(new UISprite(new Text("100", Utility.getGameFont(13), Color.YELLOWGREEN),
                 new Transform(allButtons.get(4).getTransform().getPosX() + 32,
                         allButtons.get(4).getTransform().getPosY() + 23), 55)));
@@ -84,7 +84,7 @@ public class PlayerPage extends GraphicEditor {
 
 
         // Create the button
-        allButtons.add ((UIButton) create(new UIButton(Asset.UI.backButton, new Transform(Utility.getGameScreenX() + 33, 660, 0.7, 1), 54 , ButtonType.BACK)));
+        allButtons.add ((UIButton) create(new UIButton(Asset.UI.backButtonNormal, new Transform(Utility.getGameScreenX() + 33, 660, 0.38, 0.38), 54 , ButtonType.BACK)));
         //choose upgrade
         create(new UISprite(Asset.UI.upgradeChoosePlayerPage, new Transform(Utility.getGameScreenX() +10, 145, 0.25, 0.25), 53));
 

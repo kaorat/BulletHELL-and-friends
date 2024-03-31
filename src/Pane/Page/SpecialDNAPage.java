@@ -29,7 +29,7 @@ public class SpecialDNAPage extends GameSideUIEditor {
                 new Transform(x+132,120),52));
 
         // Create the button
-        buttonGoBack = new UIButton(Asset.UI.backButton, new Transform(Utility.getGameScreenX() + 33, 660, 0.7, 1), 54 , ButtonType.BACK);
+        buttonGoBack = new UIButton(Asset.UI.backButtonNormal, new Transform(Utility.getGameScreenX() + 33, 660, 0.7, 1), 54 , ButtonType.BACK);
 
 
         create(buttonGoBack);

@@ -21,17 +21,28 @@ public class Asset {
         public static Image holyiconUI;
         public static Image dnaiconUI;
         public static Image headerMain;
-        public static Image backButton;
+        public static Image backButtonNormal;
+        public static Image backButtonHover;
         public static Image upgradeChoosePlayerPage;
         public static Image upgradeChooseEnemyPage;
+        public static Image upgradeChooseGobletPage;
         public static Image backgroundPlayerPage;
         public static Image backgroundEnemyPage;
         public static Image backgroundGobletPage;
         public static Image backgroundSpecialDNAPage;
-        public static Image upgradeButton;
-        public static Image upgradeButtonNoMoney;
-        public static Image upgradeButtonHover;
-        public static Image upgradeButtonPressed;
+        public static Image upgradeButtonMeat;
+        public static Image upgradeButtonNoMoneyMeat;
+        public static Image upgradeButtonHoney;
+        public static Image upgradeButtonNoMoneyHoney;
+        public static Image upgradeButtonHoverMeat;
+        public static Image upgradeButtonPressedMeat;
+        public static Image upgradeButtonCARTHoney;
+        public static Image buttonNavigatePlayer;
+        public static Image buttonNavigateEnemy;
+        public static Image buttonNavigateGoblet;
+        public static Image buttonNavigateDNA;
+        public static Image buttonNavigateHover;
+        public static Image backgroundGameplay;
 
 
         static{
@@ -46,19 +57,32 @@ public class Asset {
             backgroundEnemyPage=LoadImg("UI/Background/backgroundEnemyPage.png");
             backgroundGobletPage=LoadImg("UI/Background/backgroundGobletPage.png");
             backgroundSpecialDNAPage=LoadImg("UI/Background/backgroundSpecialDNAPage.png");
+            backgroundGameplay=LoadImg("UI/Background/backgroundGameplay2.png");
 
             //Button
             buttonNavigate=LoadImg("UI/Button/Navigate/buttonNavigate.png");
-            backButton=LoadImg("UI/Button/backButton.png");
-            upgradeButton=LoadImg("UI/Button/Upgrade/upgradeButton.png");
-            upgradeButtonNoMoney=LoadImg("UI/Button/Upgrade/upgradeButtonNoMoney.png");
-            upgradeButtonHover=LoadImg("UI/Button/Upgrade/upgradeButtonHover.png");
-            upgradeButtonPressed=LoadImg("UI/Button/Upgrade/upgradeButtonPressed.png");
+            buttonNavigatePlayer=LoadImg("UI/Button/Navigate/buttonNavigatePlayer.png");
+            buttonNavigateEnemy=LoadImg("UI/Button/Navigate/buttonNavigateEnemy.png");
+            buttonNavigateGoblet=LoadImg("UI/Button/Navigate/buttonNavigateGoblet.png");
+            buttonNavigateDNA=LoadImg("UI/Button/Navigate/buttonNavigateDNA.png");
+            buttonNavigateHover=LoadImg("UI/Button/Navigate/buttonNavigateHover.png");
+
+            backButtonNormal=LoadImg("UI/Button/Back/backButtonNormal.png");
+            backButtonHover=LoadImg("UI/Button/Back/backButtonHover.png");
+            upgradeButtonMeat=LoadImg("UI/Button/Upgrade/Meat/upgradeButtonMeat.png");
+            upgradeButtonNoMoneyMeat=LoadImg("UI/Button/Upgrade/Meat/upgradeButtonNoMoneyMeat.png");
+            upgradeButtonHoverMeat=LoadImg("UI/Button/Upgrade/Meat/upgradeButtonHoverMeat.png");
+            upgradeButtonPressedMeat=LoadImg("UI/Button/Upgrade/Meat/upgradeButtonPressedMeat.png");
+            upgradeButtonHoney=LoadImg("UI/Button/Upgrade/Honey/upgradeButtonHoney.png");
+            upgradeButtonNoMoneyHoney=LoadImg("UI/Button/Upgrade/Honey/upgradeButtonNoMoneyHoney.png");
+            upgradeButtonCARTHoney=LoadImg("UI/Button/Upgrade/Honey/upgradeButtonCARTHoney.png");
+
             spriteHover=LoadImg("UI/Button/spriteHover.png");
             spriteClick=LoadImg("UI/Button/Navigate/buttonNavigate.png");
 
             upgradeChoosePlayerPage=LoadImg("UI/UpgradeChoose/upgradeChoosePlayerPage.png");
             upgradeChooseEnemyPage=LoadImg("UI/UpgradeChoose/upgradeChooseEnemyPage.png");
+            upgradeChooseGobletPage=LoadImg("UI/UpgradeChoose/upgradeChooseGobletPage.png");
 
             headerMain=LoadImg("UI/headerMain.png");
             currencyBG=LoadImg("UI/Currency/currencyBG.png");

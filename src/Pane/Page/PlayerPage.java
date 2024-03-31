@@ -109,24 +109,22 @@ public class PlayerPage extends GraphicEditor {
             //Variable
             int level = PlayerManager.getInstance().getPlayerPerks().get(i+1);
             int basePrice = Config.player_basePrices.get(i).intValue();
-            int cost = basePrice * (int) Math.pow(Config.player_priceIncrements.get(i),level);
+            int cost = (int)(basePrice * Math.pow(Config.player_priceIncrements.get(i),level));
             //Price
             UISprite price = allPrice.get(i);
             price.getText().setText(Utility.NumberToString(cost));
             //Button
             UIButton button = allButtons.get(i);
 
-                if(coin > cost){
-                    button.setEnable(true);
-                    if(button.isPressed()){
-//                        coin-= cost;
-                        StatManager.getInstance().setCoin(coin-cost);
-                        PlayerManager.getInstance().getPlayerPerks().set(i,level+1);
-                    }
+            if(coin > cost){
+                button.setEnable(true);
+                if(button.isPressed()){
+                    StatManager.getInstance().setCoin(coin-cost);
+                    PlayerManager.getInstance().getPlayerPerks().set(i+1,level+1);
                 }
-                else{
-                    button.setEnable(false);
-                }
+            }
+            else{
+                button.setEnable(false);
             }
             //Level
             allLvL.get(i).getText().setText("LV."+Utility.NumberToString(level));

@@ -6,16 +6,17 @@ import Manager.PlayerManager;
 import Manager.SceneManager;
 import Manager.StatManager;
 import Pane.GameSideUIEditor;
+import Pane.GraphicEditor;
 import Utils.*;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
-public class SpecialDNAPage extends GameSideUIEditor {
+public class SpecialDNAPage extends GraphicEditor {
     private ArrayList<UIButton> allButtons = new ArrayList<>(); //0-4 upgrade button 5 go back button
     private ArrayList<UISprite> allPrice = new ArrayList<>();
-
+    private double x = Utility.getGameScreenX();
     private int moveYButton = 70;
     public SpecialDNAPage(GraphicsContext graphicsContext) {
         super(graphicsContext);
@@ -49,9 +50,35 @@ public class SpecialDNAPage extends GameSideUIEditor {
     }
     @Override
     public void onUpdate() {
-        int coin = StatManager.getInstance().getCoin();
+        int dna = StatManager.getInstance().getDna();
         if(allButtons.get(2).isPressed()) SceneManager.setCurrentPage(new MainPage(graphicsContext));
+        for(int i=0;i<2;i++){
+            //Variable
+            int level = StatManager.getInstance().getGobletLevels().get(i);
+            UISprite price = allPrice.get(i);
+            if(level>0){
+                price.getText().setText("OBTAINED");
+                continue;
+            }
+            int cost = level+1;
+            //Price
 
+            price.getText().setText(Utility.NumberToString(cost));
+            //Button
+            UIButton button = allButtons.get(i);
+
+            if(dna > cost){
+                button.setEnable(true);
+                if(button.isPressed()){
+                    StatManager.getInstance().setAmber(dna-cost);
+                    StatManager.getInstance().getGobletLevels().set(i,level+1);
+                }
+            }
+            else{
+                button.setEnable(false);
+            }
+
+        }
     }
 }
 

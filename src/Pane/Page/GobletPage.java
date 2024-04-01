@@ -8,13 +8,9 @@ import Manager.SceneManager;
 import Manager.StatManager;
 import Pane.GameSideUIEditor;
 import Pane.GraphicEditor;
-import Utils.Asset;
-import Utils.Text;
-import Utils.Transform;
-import Utils.Utility;
+import Utils.*;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import Utils.ButtonType;
 
 import java.util.ArrayList;
 
@@ -94,23 +90,58 @@ public class GobletPage extends GraphicEditor {
         create(new UISprite(Asset.UI.upgradeChooseGobletPage, new Transform(Utility.getGameScreenX() +10, 145, 0.25, 0.25), 53));
 
         //Init Templete
-        descTemplete.add("Goblet conversion rate : ");
-        descTemplete.add("Parts obtain multiplier : ");
-        descTemplete.add("Damage multiplier : ");
+        descTemplete.add("Goblet conversion rate : x");
+        descTemplete.add("Parts obtain multiplier : x");
+        descTemplete.add("Damage multiplier : x");
         descTemplete.add("Multiple Spawn Chance : ");
-        descTemplete.add("Chance to obtain soul : ");
-        increaseTemplete.add("xx");
-        increaseTemplete.add("xx");
-        increaseTemplete.add("xx");
-        increaseTemplete.add("xx");
-        increaseTemplete.add("xx");
+        descTemplete.add("Chance to obtain soul : x");
+        increaseTemplete.add("multiplier");
+        increaseTemplete.add("multiplier");
+        increaseTemplete.add("multiplier");
+        increaseTemplete.add("%");
+        increaseTemplete.add("multiplier");
 
 
     }
     @Override
     public void onUpdate() {
-        int coin = StatManager.getInstance().getCoin();
+        int amber = StatManager.getInstance().getAmber();
         if(allButtons.get(5).isPressed()) SceneManager.setCurrentPage(new MainPage(graphicsContext));
+        for(int i=0;i<5;i++){
+            //Variable
+            int level = StatManager.getInstance().getGobletLevels().get(i);
+            int cost = (int) (10*(Math.pow(2,level)));
+            //Price
+            UISprite price = allPrice.get(i);
+            price.getText().setText(Utility.NumberToString(cost));
+            //Button
+            UIButton button = allButtons.get(i);
+
+            if(amber > cost){
+                button.setEnable(true);
+                if(button.isPressed()){
+                    StatManager.getInstance().setAmber(amber-cost);
+                    StatManager.getInstance().getGobletLevels().set(i,level+1);
+                }
+            }
+            else{
+                button.setEnable(false);
+            }
+            //Level
+            allLvL.get(i).getText().setText("LV."+Utility.NumberToString(level));
+            //Desc
+            if(i==3){
+                allDescription.get(i).getText().setText(descTemplete.get(i)+level*10+" "+increaseTemplete.get(i));
+                allIncrease.get(i).getText().setText(10+" "+increaseTemplete.get(i));
+            }
+            else{
+                allDescription.get(i).getText().setText(descTemplete.get(i)+(level+1));
+                allIncrease.get(i).getText().setText("1"+" "+increaseTemplete.get(i));
+            }
+
+            //Desc
+
+        }
     }
 }
 

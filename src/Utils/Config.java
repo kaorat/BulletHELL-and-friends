@@ -14,7 +14,7 @@ public class Config {
     // Parts Drop
     public static final double PARTS_DROP_BASE = 10;
 
-    // Calcium Gene
+    // Calcium Gene : 1
     public static final double ENEMY_HP_BASE = 10;
     public static final double CALC_G_HP_UPGRADE = 5;
     public static final double CALC_G_BASE_PRICE = 30;
@@ -22,7 +22,7 @@ public class Config {
     public static final double CALC_G_PARTS_DROP_UPGRADE = 2;
     public static final double CALC_G_MAX_LEVEL = 1000000;
 
-    // Agility Gene
+    // Agility Gene : 2
     public static final double ENEMY_FIRE_RATE_BASE=5;
     public static final double AGILITY_FIRE_RATE_UPGRADE = -0.1;
     public static final double AGILITY_BASE_PRICE = 400;
@@ -30,7 +30,7 @@ public class Config {
     public static final double AGILITY_PARTS_DROP_UPGRADE = 5;
     public static final double AGILITY_MAX_LEVEL = 99;
 
-    // Lethal Mutation
+    // Lethal Mutation : 3
     public static final double ENEMY_BULLET_SPEED_BASE = 6;
     public static final double LETHAL_BULLET_SPEED_UPGRADE = 0.4;
     public static final double LETHAL_BASE_PRICE = 300;
@@ -38,11 +38,11 @@ public class Config {
     public static final double LETHAL_PARTS_DROP_UPGRADE = 5;
     public static final double LETHAL_MAX_LEVEL = 1000;
 
-    // Fuzzy Mutation
+    // Fuzzy Mutation : 4
     // Sheep multiply fire rate by n/10 , cow increase bullet number by n*6 , chicken increase bullet number (more shotgun) by n
     // bullet quantity
-    public static final double SHEEP_BULLET_QUANTITY_BASE = 5;
-    public static final double COW_BULLET_QUANTITY_BASE = 3;
+    public static final double SHEEP_BULLET_QUANTITY_BASE = 3;
+    public static final double COW_BULLET_QUANTITY_BASE = 10;
     public static final double CHICKEN_BULLET_QUANTITY_BASE = 1;
     public static final double FUZZY_BULLET_QUANTITY_UPGRADE = 1;
     public static final double FUZZY_BASE_PRICE = 200;
@@ -52,9 +52,9 @@ public class Config {
 
 
 
-    // Elongation Sheep has no upgrade ??
+    // Elongation Sheep has no upgrade ?? : 5
     // chicken has no upgrade (random bullet spread)
-    public static final double BULLET_LENGTH_BASE = 2;
+    public static final double BULLET_LENGTH_BASE = 3;
     public static final double ELONGATION_BULLET_LENGTH_UPGRADE = 1;
     public static final double ELONGATION_BASE_PRICE = 800;
     public static final double ELONGATION_PRICE_INCREMENT = 1.25;//Power by level
@@ -63,15 +63,15 @@ public class Config {
 
 
 
-    // Genetic Drift
+    // Genetic Drift : 6
     public static final double SOUL_CHANCE_BASE = 5;
     public static final double GENETIC_SOUL_CHANCE_UPGRADE = 5;
     public static final double GENETIC_BASE_PRICE = 1000;
     public static final double GENETIC_PRICE_INCREMENT = 1.25;//Power by level
     public static final double GENETIC_MAX_LEVEL = 20;
 
-    // Fast Reproduction
-    public static final double SPAWN_TIME_BASE = 4.0;
+    // Fast Reproduction : 7
+    public static final double SPAWN_TIME_BASE = 2.0;
     public static final double REPRODUCTION_SPAWN_TIME_UPGRADE = -0.05;
     public static final double REPRODUCTION_BASE_PRICE = 300;
     public static final double REPRODUCTION_PRICE_INCREMENT = 1.25;//Power by level

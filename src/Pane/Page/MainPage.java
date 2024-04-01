@@ -23,7 +23,7 @@ public class MainPage extends GraphicEditor {
     private UIButton buttonSpecialDNA;
 
 
-    private int moveYButton = 65;
+    private int moveYButton = 75;
     private double x = Utility.getGameScreenX();
 
     public MainPage(GraphicsContext graphicsContext) {
@@ -36,31 +36,13 @@ public class MainPage extends GraphicEditor {
                 new Transform(x+155,120),52));
 
         // Create the buttonPlayer
-        buttonPlayer = new UIButton(Asset.UI.buttonNavigate, new Transform(Utility.getGameScreenX() + 57, 145 , 0.25, 0.27), 54, ButtonType.NAVIGATOR);
-        playerText = (UISprite) create(new UISprite(new Text("Player", Utility.getGameFont(20), Color.WHITE),
-                new Transform(buttonPlayer.getTransform().getPosX() + 110,
-                        buttonPlayer.getTransform().getPosY() + 35), 55));
-
+        buttonPlayer = new UIButton(Asset.UI.buttonNavigatePlayer, new Transform(Utility.getGameScreenX() + 65, 160 , 0.26, 0.25), 54, ButtonType.NAVIGATORPLAYER);
         // Create the buttonEnemy
-        buttonEnemy = new UIButton(Asset.UI.buttonNavigate, new Transform(Utility.getGameScreenX() + 57, 145 + moveYButton, 0.25, 0.27), 54 , ButtonType.NAVIGATOR);
-        EnemyText = (UISprite) create(new UISprite(new Text("Enemy", Utility.getGameFont(20), Color.WHITE),
-                new Transform(buttonEnemy.getTransform().getPosX() + 110,
-                        buttonEnemy.getTransform().getPosY() + 35 ), 55));
-
+        buttonEnemy = new UIButton(Asset.UI.buttonNavigate, new Transform(Utility.getGameScreenX() + 65, 160 + moveYButton, 0.26, 0.25), 54 , ButtonType.NAVIGATORENEMY);
         // Create the buttonGoblet
-        buttonGoblet = new UIButton(Asset.UI.buttonNavigate, new Transform(Utility.getGameScreenX() + 57, 145 + moveYButton*2, 0.25, 0.27), 54 , ButtonType.NAVIGATOR);
-        GobletText = (UISprite) create(new UISprite(new Text("Goblet", Utility.getGameFont(20), Color.WHITE),
-                new Transform(buttonGoblet.getTransform().getPosX() + 110,
-                        buttonGoblet.getTransform().getPosY() + 35 ), 55));
-
+        buttonGoblet = new UIButton(Asset.UI.buttonNavigate, new Transform(Utility.getGameScreenX() + 65, 160 + moveYButton*2, 0.26, 0.25), 54 , ButtonType.NAVIGATORGOBLET);
         // Create the buttonSpecialDNA
-        buttonSpecialDNA = new UIButton(Asset.UI.buttonNavigate, new Transform(Utility.getGameScreenX() + 57, 145 + moveYButton*3, 0.25, 0.27), 54 , ButtonType.NAVIGATOR);
-        SpecialDNAText = (UISprite) create(new UISprite(new Text("Special DNA", Utility.getGameFont(20), Color.WHITE),
-                new Transform(buttonSpecialDNA.getTransform().getPosX() + 80,
-                        buttonSpecialDNA.getTransform().getPosY() + 35 ), 55));
-
-
-
+        buttonSpecialDNA = new UIButton(Asset.UI.buttonNavigate, new Transform(Utility.getGameScreenX() + 65, 160 + moveYButton*3, 0.26, 0.25), 54 , ButtonType.NAVIGATORDNA);
 
         // Add the button and text to the pane
         create(buttonPlayer);

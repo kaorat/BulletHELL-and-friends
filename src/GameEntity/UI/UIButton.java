@@ -46,39 +46,58 @@ public class UIButton extends UISprite {
         // Add button-specific drawing logic here, such as highlighting when hovered or pressed
         if(!enabled){
             //Not enough money
-            setSprite(Asset.UI.upgradeButtonNoMoney);
+            if(buttonType == ButtonType.UPGRADEMEAT){
+                setSprite(Asset.UI.upgradeButtonNoMoneyMeat);
+            }
 
 
         }
         else{
             if (pressed) {
                 // Draw pressed effect
-                if(buttonType == ButtonType.UPGRADE){
-                    setSprite(Asset.UI.upgradeButtonPressed);
-                }
-                else if(buttonType == ButtonType.NAVIGATOR){
-//                    setSprite();
+                if(buttonType == ButtonType.UPGRADEMEAT){
+                    setSprite(Asset.UI.upgradeButtonPressedMeat);
                 }
 
             }
             else if (hovered) {
                 // Draw  hover
-                if(buttonType == ButtonType.UPGRADE){
-                    setSprite(Asset.UI.upgradeButtonHover);
-
+                if(buttonType == ButtonType.UPGRADEMEAT){
+                    setSprite(Asset.UI.upgradeButtonHoverMeat);
                 }
-                else if(buttonType == ButtonType.NAVIGATOR){
-//                    setSprite();
+                else if(buttonType == ButtonType.NAVIGATORPLAYER || buttonType == ButtonType.NAVIGATORENEMY || buttonType == ButtonType.NAVIGATORGOBLET || buttonType == ButtonType.NAVIGATORDNA){
+                    setSprite(Asset.UI.buttonNavigateHover);
+                }
+                else if(buttonType == ButtonType.UPGRADEHONEY){
+                    setSprite(Asset.UI.upgradeButtonCARTHoney);
+                }
+                else if(buttonType == ButtonType.BACK){
+                    setSprite(Asset.UI.backButtonHover);
                 }
 
             }
             else{
                 //Normal
-                if(buttonType == ButtonType.UPGRADE){
-                    setSprite(Asset.UI.upgradeButton);
+                if(buttonType == ButtonType.UPGRADEMEAT){
+                    setSprite(Asset.UI.upgradeButtonMeat);
                 }
-                else if(buttonType == ButtonType.NAVIGATOR){
-
+                else if(buttonType == ButtonType.NAVIGATORPLAYER){
+                    setSprite(Asset.UI.buttonNavigatePlayer);
+                }
+                else if(buttonType == ButtonType.NAVIGATORENEMY){
+                    setSprite(Asset.UI.buttonNavigateEnemy);
+                }
+                else if(buttonType == ButtonType.NAVIGATORGOBLET){
+                    setSprite(Asset.UI.buttonNavigateGoblet);
+                }
+                else if(buttonType == ButtonType.NAVIGATORDNA){
+                    setSprite(Asset.UI.buttonNavigateDNA);
+                }
+                else if(buttonType == ButtonType.UPGRADEHONEY){
+                    setSprite(Asset.UI.upgradeButtonHoney);
+                }
+                else if(buttonType == ButtonType.BACK){
+                    setSprite(Asset.UI.backButtonNormal);
                 }
 
             }

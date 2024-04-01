@@ -21,7 +21,7 @@ public class SpecialDNAPage extends GameSideUIEditor {
 
         super(graphicsContext);
         //Background
-        create(new UISprite(Asset.UI.mainBackground, new Transform(Utility.getGameScreenX(), 0, 0.3, 0.25), 50));
+        create(new UISprite(Asset.UI.backgroundSpecialDNAPage, new Transform(Utility.getGameScreenX(), 0, 0.3, 0.25), 50));
 
         //Header
         create(new UISprite(Asset.UI.headerMain, new Transform(Utility.getGameScreenX() +90, 92, 0.93, 0.65), 53));
@@ -29,7 +29,7 @@ public class SpecialDNAPage extends GameSideUIEditor {
                 new Transform(x+132,120),52));
 
         // Create the button
-        buttonGoBack = new UIButton(Asset.UI.backButton, new Transform(Utility.getGameScreenX() + 33, 660, 0.7, 1), 54 , ButtonType.BACK);
+        buttonGoBack = new UIButton(Asset.UI.backButtonNormal, new Transform(Utility.getGameScreenX() + 33, 660, 0.7, 1), 54 , ButtonType.BACK);
 
 
         create(buttonGoBack);

@@ -32,7 +32,6 @@ public class PlayerUtils {
         for(int i = 0; i < 10; i++){
             //TODO
             PlayerBullet bullet = new PlayerBullet(10, player, new Transform(player.getTransform().getPosX() + 50, player.getTransform().getPosY() + 20, -180 + i * 20, 2, 2), 0, PlayerManager.getInstance().getBioticRifleDamage(),1);
-            bullet.setImage(Asset.UI.upgradeButtonHover);
             BulletManager.getInstance().add(bullet);
         }
     }

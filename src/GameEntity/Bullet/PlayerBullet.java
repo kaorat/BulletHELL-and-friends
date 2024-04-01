@@ -13,7 +13,7 @@ import javafx.scene.image.Image;
 public class PlayerBullet extends BaseBullet {
     private double damage;
     public PlayerBullet(double speed, GameObject owner, Transform transform, double z,double damage,int graphic) {
-        super(speed, owner, transform, z,Asset.Game.bullet);
+        super(speed, owner, transform, z,Asset.Game.thinBullet);
         this.damage = damage;
         //setImage(Asset.Game.bullet);
     }

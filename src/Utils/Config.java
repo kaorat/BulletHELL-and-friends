@@ -31,7 +31,7 @@ public class Config {
     public static final double AGILITY_MAX_LEVEL = 99;
 
     // Lethal Mutation
-    public static final double ENEMY_BULLET_SPEED_BASE = 2.5;
+    public static final double ENEMY_BULLET_SPEED_BASE = 6;
     public static final double LETHAL_BULLET_SPEED_UPGRADE = 0.4;
     public static final double LETHAL_BASE_PRICE = 300;
     public static final double LETHAL_PRICE_INCREMENT = 1.2;//Power by level
@@ -41,8 +41,8 @@ public class Config {
     // Fuzzy Mutation
     // Sheep multiply fire rate by n/10 , cow increase bullet number by n*6 , chicken increase bullet number (more shotgun) by n
     // bullet quantity
-    public static final double SHEEP_BULLET_QUANTITY_BASE = 3;
-    public static final double COW_BULLET_QUANTITY_BASE = 20;
+    public static final double SHEEP_BULLET_QUANTITY_BASE = 5;
+    public static final double COW_BULLET_QUANTITY_BASE = 3;
     public static final double CHICKEN_BULLET_QUANTITY_BASE = 1;
     public static final double FUZZY_BULLET_QUANTITY_UPGRADE = 1;
     public static final double FUZZY_BASE_PRICE = 200;
@@ -54,7 +54,7 @@ public class Config {
 
     // Elongation Sheep has no upgrade ??
     // chicken has no upgrade (random bullet spread)
-    public static final double BULLET_LENGTH_BASE = 3;
+    public static final double BULLET_LENGTH_BASE = 2;
     public static final double ELONGATION_BULLET_LENGTH_UPGRADE = 1;
     public static final double ELONGATION_BASE_PRICE = 800;
     public static final double ELONGATION_PRICE_INCREMENT = 1.25;//Power by level
@@ -77,7 +77,12 @@ public class Config {
     public static final double REPRODUCTION_PRICE_INCREMENT = 1.25;//Power by level
     public static final double REPRODUCTION_MAX_LEVEL = 75;
 
-    //Player
+    //TODO : Player
+    //Player Speed
+    public static final double PLAYER_SPEED_BASE = 5;
+    // no upgrade
+
+
     //Damage
     public static final double DAMAGE_BASE = 1;
     public static final double DAMAGE_UPGRADE = 0.25;
@@ -236,6 +241,8 @@ public class Config {
         player_maxLevels.add(PROFICIENCY_MAX_LEVEL);
     }
 
+
+    //TODO : Image Config
     public static final double PLAYER_OFFSET_WIDTH = 0;
     public static final double PLAYER_OFFSET_HEIGHT = 0;
     public static final double PLAYER_WIDTH = 60;

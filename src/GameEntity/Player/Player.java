@@ -26,7 +26,7 @@ public class Player extends GameObject implements Shootable {
 
     public Player(Transform transform, double z) {
         super(transform, z);
-        this.speed = 3.5;
+        this.speed = Config.PLAYER_SPEED_BASE;
         setImage(Asset.Game.player);
     }
 
@@ -55,14 +55,14 @@ public class Player extends GameObject implements Shootable {
 
     @Override
     public void draw(GraphicsContext gc) {
+        drawBounds(15,15,25,25);
         gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 60, 60);
-        //Suchas Comment : will change to image graphic right?
         if(isShiftPressed()){
             gc.setStroke(Color.GREENYELLOW);
-          gc.strokeRect(bounds.getMinX(),bounds.getMinY(),bounds.getWidth(),bounds.getHeight());
+            gc.strokeRect(bounds.getMinX(),bounds.getMinY(),bounds.getWidth(),bounds.getHeight());
         }
+        //Suchas Comment : will change to image graphic right?
 //        drawBounds(Config.PLAYER_OFFSET_WIDTH, Config.PLAYER_OFFSET_HEIGHT, Config.PLAYER_WIDTH, Config.PLAYER_HEIGHT);
-        drawBounds(15,15,25,25);
     }
 
     public void controlAggressiveShoot() {
@@ -71,12 +71,10 @@ public class Player extends GameObject implements Shootable {
 
     @Override
     public void onUpdate() {
-//        System.out.println("Player Update : " + isAPressed());
         long currentTime = System.currentTimeMillis();
-        // ---- !Suchas comment: Left Shift?? Gonna be pretty hard to balance na (Use only for slow and hitbox show)-----
         if (isShiftPressed()) {
             fireRate = 100;
-            speed = 3;
+            speed = 6;
             if (currentTime - lastFireTime > fireRate) {
 //                controlAggressiveShoot();
                 PlayerUtils.autoAim(this);
@@ -94,7 +92,7 @@ public class Player extends GameObject implements Shootable {
 
         }else {
         fireRate = 200;
-            speed = 4;
+            speed = Config.PLAYER_SPEED_BASE;
             if (currentTime - lastFireTime > fireRate) {
                 shoot();
 

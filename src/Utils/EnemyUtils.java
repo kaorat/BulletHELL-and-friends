@@ -48,12 +48,22 @@ public class EnemyUtils {
 
         double angleToP=Transform.calculateAngleToTarget(sheep.getTransform(), PlayerManager.getInstance().getPlayer().getTransform());
         int maxAngle = 10 * (quantity);
-        for(int i=0;i<quantity;i++){
-            for(int j=1;j<=length;j++){
-                EnemyBullet bullet = new EnemyBullet(speed/j, sheep, new Transform(sheep.getTransform().getPosX() + 25, sheep.getTransform().getPosY() + 20, angleToP - (double) (maxAngle / quantity) + ((double) (i * maxAngle) /quantity), 2, 2), 0,0);
-                BulletManager.getInstance().add(bullet);
-            }
+        if(quantity%2  == 0){
+            for(int i=0;i<quantity;i++){
+                for(int j=1;j<=length;j++){
+                    EnemyBullet bullet = new EnemyBullet(speed/j, sheep, new Transform(sheep.getTransform().getPosX() + 25, sheep.getTransform().getPosY() + 20, angleToP - (double) (maxAngle / 2) + ((double) (i * maxAngle) /quantity), 2, 2), 0,0);
+                    BulletManager.getInstance().add(bullet);
+                }
 
+            }
+        }else{
+            for(int i=0;i<quantity;i++){
+                for(int j=1;j<=length;j++){
+                    EnemyBullet bullet = new EnemyBullet(speed/j, sheep, new Transform(sheep.getTransform().getPosX() + 25, sheep.getTransform().getPosY() + 20, angleToP - (double) (maxAngle / quantity ) + ((double) (i * maxAngle) /quantity), 2, 2), 0,0);
+                    BulletManager.getInstance().add(bullet);
+                }
+
+            }
         }
 
     }

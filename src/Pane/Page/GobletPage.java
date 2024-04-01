@@ -67,7 +67,7 @@ public class GobletPage extends GraphicEditor {
                         allButtons.get(2).getTransform().getPosY() + 23), 55)));
         allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 250, 190 + moveYButton*2, 0.25, 0.25), 55)));
         allDescription.add((UISprite) create(new UISprite(new Text("Damage multiplier : 0", Utility.getGameFont(11), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 60, 210 + moveYButton*2, 0.25, 0.25), 55)));
-        allIncrease.add((UISprite) create(new UISprite(new Text("+0 multiplier", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 320, 210 + moveYButton*2, 0.25, 0.25), 55)));
+        allIncrease.add((UISprite) create(new UISprite(new Text("+0 multiplier", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 320 , 210 + moveYButton*2, 0.25, 0.25), 55)));
 
         // Create EmbraceGalore
         allButtons.add((UIButton) create( new UIButton(Asset.UI.upgradeButtonHoney, new Transform(Utility.getGameScreenX() + 310, 170 + moveYButton*3, 0.28, 0.27), 54 , ButtonType.UPGRADEHONEY)));

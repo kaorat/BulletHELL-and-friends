@@ -22,7 +22,7 @@ public class Main extends Application {
         SceneManager.GotoGameScene();
         StackPane root = new StackPane();
         root.getChildren().add(RootPane.getRootPane(Utility.getScreenX(),Utility.getScreenY()));
-        root.setOnMouseClicked(e -> {
+        root.setOnMousePressed(e -> {
             MouseUtil.setMouseX(e.getX());
             MouseUtil.setMouseY(e.getY());
             MouseUtil.setPressed(true);
@@ -34,7 +34,10 @@ public class Main extends Application {
             MouseUtil.setMouseX(e.getX());
             MouseUtil.setMouseY(e.getY());
         });
-
+        root.setOnMouseDragged(e -> {
+            MouseUtil.setMouseX(e.getX());
+            MouseUtil.setMouseY(e.getY());
+        });
         Scene scene = new Scene(root, Utility.getScreenX(), Utility.getScreenY());
         InputUtility.setKey(scene);
         primaryStage.setTitle("Funny BulletHell Game");

@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 public class UIButton extends UISprite {
     private boolean pressed;
     private boolean hovered;
+    private boolean clicked;
     private boolean enabled;
     private Runnable onClickHandler;
     private int clickCount = 0;
@@ -53,7 +54,7 @@ public class UIButton extends UISprite {
 
         }
         else{
-            if (pressed) {
+            if (MouseUtil.isPressed()&&hovered) {
                 // Draw pressed effect
                 if(buttonType == ButtonType.UPGRADEMEAT){
                     setSprite(Asset.UI.upgradeButtonPressedMeat);

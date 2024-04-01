@@ -3,8 +3,6 @@ package Utils;
 import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;
 
-import java.util.ArrayList;
-
 
 public class Asset {
 
@@ -108,7 +106,7 @@ public class Asset {
     public static class Game{
         public static Image player;
         public static Image bullet;
-        public static Image thinBullet;
+        public static Image rifleBullet;
         public static Image enemyBullet;
         public static Image cowBullet;
         public static Image enemy;
@@ -119,9 +117,9 @@ public class Asset {
         private static void loadResource() {
             player=Load("UI/kaosteak.png");
             bullet=Load("UI/Currency/Honey.png");
-            thinBullet=Load("UI/Bullet/ThinShot.png");
+            rifleBullet=Load("UI/Bullet/RifleShot.png");
 
-            enemyBullet=Load("UI/Bullet/EnemyBlueThin.png");
+            enemyBullet=Load("UI/Bullet/NormalShot.png");
             cowBullet=Load("UI/CowBullet.png");
         }
         private static Image Load(String url){

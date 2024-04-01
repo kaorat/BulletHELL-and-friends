@@ -31,8 +31,8 @@ public class Config {
     public static final double AGILITY_MAX_LEVEL = 99;
 
     // Lethal Mutation : 3
-    public static final double ENEMY_BULLET_SPEED_BASE = 6;
-    public static final double LETHAL_BULLET_SPEED_UPGRADE = 0.4;
+    public static final double ENEMY_BULLET_SPEED_BASE = 1;
+    public static final double LETHAL_BULLET_SPEED_UPGRADE = 0.2;
     public static final double LETHAL_BASE_PRICE = 300;
     public static final double LETHAL_PRICE_INCREMENT = 1.2;//Power by level
     public static final double LETHAL_PARTS_DROP_UPGRADE = 5;
@@ -41,7 +41,7 @@ public class Config {
     // Fuzzy Mutation : 4
     // Sheep multiply fire rate by n/10 , cow increase bullet number by n*6 , chicken increase bullet number (more shotgun) by n
     // bullet quantity
-    public static final double SHEEP_BULLET_QUANTITY_BASE = 3;
+    public static final double SHEEP_BULLET_QUANTITY_BASE = 0;
     public static final double COW_BULLET_QUANTITY_BASE = 10;
     public static final double CHICKEN_BULLET_QUANTITY_BASE = 1;
     public static final double FUZZY_BULLET_QUANTITY_UPGRADE = 1;

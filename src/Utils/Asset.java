@@ -26,6 +26,7 @@ public class Asset {
         public static Image upgradeChoosePlayerPage;
         public static Image upgradeChooseEnemyPage;
         public static Image upgradeChooseGobletPage;
+        public static Image upgradeChooseDNAPage;
         public static Image backgroundPlayerPage;
         public static Image backgroundEnemyPage;
         public static Image backgroundGobletPage;
@@ -37,6 +38,9 @@ public class Asset {
         public static Image upgradeButtonHoverMeat;
         public static Image upgradeButtonPressedMeat;
         public static Image upgradeButtonCARTHoney;
+        public static Image upgradeButtonDNA;
+        public static Image upgradeButtonHoverDNA;
+        public static Image upgradeButtonNoMoneyDNA;
         public static Image buttonNavigatePlayer;
         public static Image buttonNavigateEnemy;
         public static Image buttonNavigateGoblet;
@@ -57,7 +61,7 @@ public class Asset {
             backgroundEnemyPage=LoadImg("UI/Background/backgroundEnemyPage.png");
             backgroundGobletPage=LoadImg("UI/Background/backgroundGobletPage.png");
             backgroundSpecialDNAPage=LoadImg("UI/Background/backgroundSpecialDNAPage.png");
-            backgroundGameplay=LoadImg("UI/Background/backgroundGameplay2.png");
+            backgroundGameplay=LoadImg("UI/Background/test2.png");
 
             //Button
             buttonNavigate=LoadImg("UI/Button/Navigate/buttonNavigate.png");
@@ -76,6 +80,9 @@ public class Asset {
             upgradeButtonHoney=LoadImg("UI/Button/Upgrade/Honey/upgradeButtonHoney.png");
             upgradeButtonNoMoneyHoney=LoadImg("UI/Button/Upgrade/Honey/upgradeButtonNoMoneyHoney.png");
             upgradeButtonCARTHoney=LoadImg("UI/Button/Upgrade/Honey/upgradeButtonCARTHoney.png");
+            upgradeButtonDNA=LoadImg("UI/Button/Upgrade/DNA/upgradeButtonDNA.png");
+            upgradeButtonHoverDNA=LoadImg("UI/Button/Upgrade/DNA/upgradeButtonHoverDNA.png");
+            upgradeButtonNoMoneyDNA=LoadImg("UI/Button/Upgrade/DNA/upgradeButtonNoMoneyDNA.png");
 
             spriteHover=LoadImg("UI/Button/spriteHover.png");
             spriteClick=LoadImg("UI/Button/Navigate/buttonNavigate.png");
@@ -83,6 +90,7 @@ public class Asset {
             upgradeChoosePlayerPage=LoadImg("UI/UpgradeChoose/upgradeChoosePlayerPage.png");
             upgradeChooseEnemyPage=LoadImg("UI/UpgradeChoose/upgradeChooseEnemyPage.png");
             upgradeChooseGobletPage=LoadImg("UI/UpgradeChoose/upgradeChooseGobletPage.png");
+            upgradeChooseDNAPage=LoadImg("UI/UpgradeChoose/upgradeChooseDNAPage.png");
 
             headerMain=LoadImg("UI/headerMain.png");
             currencyBG=LoadImg("UI/Currency/currencyBG.png");

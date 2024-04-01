@@ -49,6 +49,12 @@ public class UIButton extends UISprite {
             if(buttonType == ButtonType.UPGRADEMEAT){
                 setSprite(Asset.UI.upgradeButtonNoMoneyMeat);
             }
+            else if(buttonType == ButtonType.UPGRADEHONEY){
+                setSprite(Asset.UI.upgradeButtonNoMoneyHoney);
+            }
+            else if(buttonType == ButtonType.UPGRADEDNA){
+                setSprite(Asset.UI.upgradeButtonNoMoneyDNA);
+            }
 
 
         }
@@ -70,6 +76,9 @@ public class UIButton extends UISprite {
                 }
                 else if(buttonType == ButtonType.UPGRADEHONEY){
                     setSprite(Asset.UI.upgradeButtonCARTHoney);
+                }
+                else if(buttonType == ButtonType.UPGRADEDNA){
+                    setSprite(Asset.UI.upgradeButtonHoverDNA);
                 }
                 else if(buttonType == ButtonType.BACK){
                     setSprite(Asset.UI.backButtonHover);
@@ -98,6 +107,9 @@ public class UIButton extends UISprite {
                 }
                 else if(buttonType == ButtonType.BACK){
                     setSprite(Asset.UI.backButtonNormal);
+                }
+                else if(buttonType == ButtonType.UPGRADEDNA){
+                    setSprite(Asset.UI.upgradeButtonDNA);
                 }
 
             }

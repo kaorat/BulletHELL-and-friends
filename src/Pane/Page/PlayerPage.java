@@ -106,7 +106,7 @@ public class PlayerPage extends GraphicEditor {
         if(allButtons.get(5).isPressed()) SceneManager.setCurrentPage(new MainPage(graphicsContext));
         for(int i=0;i<5;i++){
             //Variable
-            int level = PlayerManager.getInstance().getPlayerPerks().get(i+1);
+            int level = PlayerManager.getInstance().getPlayerPerks().get(i);
             int basePrice = Config.player_basePrices.get(i).intValue();
             int cost = (int)(basePrice * Math.pow(Config.player_priceIncrements.get(i),level));
             //Price
@@ -120,7 +120,7 @@ public class PlayerPage extends GraphicEditor {
                 if(button.isPressed()){
                     StatManager.getInstance().setCoin(coin-cost);
 //                    PlayerManager.getInstance().getPlayerPerks().set(i+1,level+1);
-                    PlayerManager.getInstance().upgradeStat(i+1);
+                    PlayerManager.getInstance().upgradeStat(i);
                 }
             }
             else{

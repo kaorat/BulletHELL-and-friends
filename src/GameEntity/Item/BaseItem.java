@@ -17,11 +17,6 @@ public abstract class BaseItem extends GameObject {
 //       this.visible = false;
    }
 
-//   public void spawn(){ // same for all items?
-//      this.visible = true;
-//
-//   };
-
    public abstract void onPickup();
 
 

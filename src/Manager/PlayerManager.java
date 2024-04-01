@@ -49,6 +49,7 @@ public class PlayerManager implements  Updatable {
 
     @Override
     public void onUpdate() {
+//        System.out.println(toString());
 
     }
 
@@ -64,15 +65,21 @@ public class PlayerManager implements  Updatable {
         playerPerks = new ArrayList<Integer>(Arrays.asList(0, 0, 0, 0, 0, 0));
         this.weapon = new ArrayList<Pair<String, Integer>>();
         weapon.add(new Pair<>("Neuron Missile", 0));
+        //TODO: Config Player
+//        player.setFireRate(getBioticRifleFireRate()*1000);
     }
     public void upgradeStat(int index){
+
         playerPerks.set(index,playerPerks.get(index)+1);
+
         switch (index){
             case 0:
                 setBioticRifleDamage(getBioticRifleDamage()+Config.DAMAGE_UPGRADE);
+
                 break;
             case 1:
                 setBioticRifleFireRate(getBioticRifleFireRate()+Config.PLAYER_FIRE_RATE_UPGRADE);
+//                player.setFireRate(getBioticRifleFireRate()*1000);
                 break;
             case 2:
                 setMinimize(getMinimize()-Config.MINIMIZE_UPGRADE);
@@ -131,6 +138,19 @@ public class PlayerManager implements  Updatable {
     public ArrayList<Integer> getPlayerPerks() {
         return playerPerks;
     }
+
+    public String toString(){
+        return "PlayerManager{" +
+                "bioticRifleDamage=" + bioticRifleDamage +
+                ", bioticRifleFireRate=" + bioticRifleFireRate +
+                ", minimize=" + minimize +
+                ", dexterity=" + dexterity +
+                ", proficiency=" + proficiency +
+                ", weapon=" + weapon +
+                '}';
+    }
+
+
 
 
 }

@@ -1,7 +1,10 @@
 package GameEntity.Item;
 
+import Manager.PlayerManager;
 import Manager.StatManager;
 import Utils.Asset;
+import Utils.Config;
+import Utils.Transform;
 import Utils.Utility;
 import javafx.scene.canvas.GraphicsContext;
 
@@ -18,18 +21,28 @@ public class Coin extends BaseItem{ // this is 'parts drop', I just want to chan
     @Override
     public void draw(GraphicsContext gc) {
         gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 20, 20);
+        drawBounds(Config.CHICKEN_OFFSET_WIDTH, Config.CHICKEN_OFFSET_HEIGHT, Config.CHICKEN_WIDTH, Config.CHICKEN_HEIGHT);
+        gc.setStroke(javafx.scene.paint.Color.GREENYELLOW);
+        gc.strokeRect(bounds.getMinX(), bounds.getMinY(), bounds.getWidth(), bounds.getHeight());
 
     }
 
     @Override
     public void onUpdate() {
-        transform.translate(2);
+        transform.translate(3);
         Utility.isOutOfBounds(this);
+
+        if(Transform.checkCollide(this, PlayerManager.getInstance().getPlayer())){
+            onPickup();
+        }
+
     }
 
     @Override
     public void onPickup() {
         StatManager.getInstance().addCoin(amount);
+        System.out.println(amount);
+        System.out.println(StatManager.getInstance().getCoin());
         this.destroyed = true;
     }
 }

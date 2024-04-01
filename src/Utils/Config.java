@@ -79,7 +79,7 @@ public class Config {
 
     //TODO : Player
     //Player Speed
-    public static final double PLAYER_SPEED_BASE = 5;
+    public static final double PLAYER_SPEED_BASE = 10;
     // no upgrade
 
 

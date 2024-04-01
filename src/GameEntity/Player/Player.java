@@ -5,6 +5,8 @@ import GameEntity.Bullet.EnemyBullet;
 import GameEntity.Bullet.PlayerBullet;
 import GameEntity.GameObject;
 import Manager.BulletManager;
+import Manager.PlayerManager;
+import Manager.StatManager;
 import Utils.*;
 import javafx.geometry.BoundingBox;
 import javafx.scene.canvas.GraphicsContext;
@@ -21,7 +23,7 @@ public class Player extends GameObject implements Shootable {
 
     private int hp;
     private double speed;
-    private long fireRate = 200;
+//    private double fireRate;
     private long lastFireTime = 0;
 
     public Player(Transform transform, double z) {
@@ -71,9 +73,9 @@ public class Player extends GameObject implements Shootable {
 
     @Override
     public void onUpdate() {
+        double fireRate = PlayerManager.getInstance().getBioticRifleFireRate() * 1000;
         long currentTime = System.currentTimeMillis();
         if (isShiftPressed()) {
-            fireRate = 100;
             speed = 6;
             if (currentTime - lastFireTime > fireRate) {
 //                controlAggressiveShoot();
@@ -82,7 +84,6 @@ public class Player extends GameObject implements Shootable {
 
             }
         } else if (isSlashPressed()) {
-            fireRate =  10;
             speed = 4;
 
             if (currentTime - lastFireTime > fireRate) {
@@ -91,7 +92,6 @@ public class Player extends GameObject implements Shootable {
             }
 
         }else {
-        fireRate = 200;
             speed = Config.PLAYER_SPEED_BASE;
             if (currentTime - lastFireTime > fireRate) {
                 shoot();
@@ -112,5 +112,12 @@ public class Player extends GameObject implements Shootable {
         }
 
 
+    }
+
+//    public void setFireRate(double fireRate) {
+//        this.fireRate = fireRate;
+//    }
+    public void setSpeed(double speed) {
+        this.speed = speed;
     }
 }

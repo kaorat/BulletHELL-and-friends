@@ -18,7 +18,7 @@ public class StatManager implements Updatable {
 
     public StatManager(){
         setAmber(0);
-        setCoin(1000000000);
+        setCoin(0);
         setTotalCoin(0);
         setHoneyLevel(1);
         setCompletion(0);

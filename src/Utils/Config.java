@@ -71,7 +71,7 @@ public class Config {
     public static final double GENETIC_MAX_LEVEL = 20;
 
     // Fast Reproduction : 7
-    public static final double SPAWN_TIME_BASE = 3.0;
+    public static final double SPAWN_TIME_BASE = 0.2;
     public static final double REPRODUCTION_SPAWN_TIME_UPGRADE = -0.05;
     public static final double REPRODUCTION_BASE_PRICE = 300;
     public static final double REPRODUCTION_PRICE_INCREMENT = 1.25;//Power by level

@@ -57,18 +57,18 @@ public class Player extends GameObject implements Shootable {
 //        System.out.println(BulletManager.getInstance().getBullets().size());
     }
     public void drawHitbox(double offsetX, double offsetY){
-        hitbox = new BoundingBox(this.transform.getPosX() + offsetX, this.transform.getPosY() + offsetY, 25,25);
+        hitbox = new BoundingBox(this.transform.getPosX() + offsetX, this.transform.getPosY() + offsetY, 10,10);
     }
 
     @Override
     public void draw(GraphicsContext gc) {
-        drawHitbox(15,15);
+        drawHitbox(25,25);
         drawBounds(Config.PLAYER_OFFSET_WIDTH, Config.PLAYER_OFFSET_HEIGHT, Config.PLAYER_WIDTH, Config.PLAYER_HEIGHT);
         gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 60, 60);
         if(isShiftPressed()){
             gc.setStroke(Color.GREENYELLOW);
             gc.strokeRect(bounds.getMinX(),bounds.getMinY(),bounds.getWidth(),bounds.getHeight());
-            gc.setStroke(Color.ORANGERED);
+            gc.setStroke(Color.YELLOW);
             gc.strokeRect(hitbox.getMinX(),hitbox.getMinY(),hitbox.getWidth(),hitbox.getHeight());
         }
         //Suchas Comment : will change to image graphic right?
@@ -111,15 +111,20 @@ public class Player extends GameObject implements Shootable {
 
         checkOutOfBounds();
 
-        //Check collision with enemy bullet
+        //Check hitbox with enemy bullet
         ArrayList<BaseBullet> bulletList = BulletManager.getInstance().getBullets();
         for (BaseBullet bullet : bulletList) {
                 if(bullet instanceof EnemyBullet){
                     if(Transform.checkCollide(this.hitbox, bullet.getBounds())){
                     bullet.setDestroyed(true);
-                }
+                    }
+                    if(Transform.checkCollide(this.bounds, bullet.getBounds())){
+                        StatManager.getInstance().addCoin(1);
+
+                    }
             }
         }
+        //Check bounds with enemy bullets
 
 
     }

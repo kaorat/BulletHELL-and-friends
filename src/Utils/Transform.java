@@ -68,6 +68,9 @@ public class Transform {
         // draw here the bounds of the object
         return b1.intersects(b2);
     }
+    public static boolean checkContain(Bounds b1, Bounds b2){
+        return b1.contains(b2);
+    }
         public double getPosX() {
         return posX;
     }

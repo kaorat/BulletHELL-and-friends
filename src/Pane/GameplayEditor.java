@@ -12,7 +12,7 @@ public class GameplayEditor extends GraphicEditor{
     public GameplayEditor(GraphicsContext graphicsContext) {
         super(graphicsContext);
         //Background
-        create(new UISprite(Asset.UI.backgroundGameplay, new Transform(-250, 0, 0.7, 0.7), -100));
+        create(new UISprite(Asset.UI.backgroundGameplay, new Transform(0, -130, 0.63, 0.63), -100));
 
 
         // DUMMY TEST

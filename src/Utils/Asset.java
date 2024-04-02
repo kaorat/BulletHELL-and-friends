@@ -61,7 +61,7 @@ public class Asset {
             backgroundEnemyPage=LoadImg("UI/Background/backgroundEnemyPage.png");
             backgroundGobletPage=LoadImg("UI/Background/backgroundGobletPage.png");
             backgroundSpecialDNAPage=LoadImg("UI/Background/backgroundSpecialDNAPage.png");
-            backgroundGameplay=LoadImg("UI/Background/test2.png");
+            backgroundGameplay=LoadImg("UI/Background/test.png");
 
             //Button
             buttonNavigate=LoadImg("UI/Button/Navigate/buttonNavigate.png");

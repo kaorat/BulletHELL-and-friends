@@ -56,8 +56,9 @@ public class Chicken extends BaseEnemy{
 
     @Override
     public void draw(GraphicsContext gc) {
-        gc.drawImage(getImage(),this.transform.getPosX(),this.transform.getPosY(), 60,60);
-        drawBounds(Config.CHICKEN_OFFSET_WIDTH, Config.CHICKEN_OFFSET_HEIGHT, Config.CHICKEN_WIDTH, Config.CHICKEN_HEIGHT);
+        //gc.drawImage(getImage(),this.transform.getPosX(),this.transform.getPosY(), 60,60);
+        Utility.DrawImage(gc,getImage(),transform);
+        drawBounds(0, 0);
     }
 
 }

@@ -21,8 +21,9 @@ public class PlayerBullet extends BaseBullet {
     @Override
     public void draw(GraphicsContext gc) {
 
-        gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 10, 10);
-        drawBounds(Config.PLAYER_BULLET_OFFSET_WIDTH, Config.PLAYER_BULLET_OFFSET_HEIGHT, Config.PLAYER_BULLET_WIDTH, Config.PLAYER_BULLET_HEIGHT);
+        //gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 10, 10);
+        Utility.DrawImage(gc,getImage(),transform);
+        drawBounds(0, 0);
 
     }
     public double getDamage() {

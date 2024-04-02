@@ -38,14 +38,14 @@ public class Player extends GameObject implements Shootable {
         if (this.transform.getPosX() < 0) {
             this.transform.setPosX(0);
         }
-        if (this.transform.getPosX() + Config.PLAYER_WIDTH > Utility.getGameScreenX()) {
-            this.transform.setPosX(Utility.getGameScreenX() - Config.PLAYER_WIDTH);
+        if (this.transform.getPosX() + transform.getSclX()*getImage().getWidth() > Utility.getGameScreenX()) {
+            this.transform.setPosX(Utility.getGameScreenX() - transform.getSclX()*getImage().getWidth());
         }
         if (this.transform.getPosY() < 0) {
             this.transform.setPosY(0);
         }
-        if (this.transform.getPosY() + Config.PLAYER_HEIGHT > 700) {
-            this.transform.setPosY(700 - Config.PLAYER_HEIGHT); ;
+        if (this.transform.getPosY() + transform.getSclY()*getImage().getHeight() > 700) {
+            this.transform.setPosY(700 - transform.getSclY()*getImage().getHeight()); ;
         }
     }
 
@@ -62,9 +62,10 @@ public class Player extends GameObject implements Shootable {
 
     @Override
     public void draw(GraphicsContext gc) {
-        drawHitbox(25,25);
-        drawBounds(Config.PLAYER_OFFSET_WIDTH, Config.PLAYER_OFFSET_HEIGHT, Config.PLAYER_WIDTH, Config.PLAYER_HEIGHT);
-        gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 60, 60);
+        drawHitbox((transform.getSclX()*getImage().getWidth())/4,(transform.getSclY()*getImage().getHeight())/4);
+        drawBounds(0, 0);
+        Utility.DrawImage(gc,getImage(),this.transform);
+//        gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 60, 60);
         if(isShiftPressed()){
             gc.setStroke(Color.GREENYELLOW);
             gc.strokeRect(bounds.getMinX(),bounds.getMinY(),bounds.getWidth(),bounds.getHeight());

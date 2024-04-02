@@ -20,8 +20,9 @@ public class Coin extends BaseItem{ // this is 'parts drop', I just want to chan
 
     @Override
     public void draw(GraphicsContext gc) {
-        gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 20, 20);
-        drawBounds(Config.COIN_OFFSET_HEIGHT,Config.COIN_OFFSET_WIDTH,Config.COIN_WIDTH,Config.COIN_HEIGHT);
+        //gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 20, 20);
+        Utility.DrawImage(gc,getImage(),transform);
+        drawBounds(0,0);
         gc.setStroke(javafx.scene.paint.Color.GREENYELLOW);
         gc.strokeRect(bounds.getMinX(), bounds.getMinY(), bounds.getWidth(), bounds.getHeight());
 

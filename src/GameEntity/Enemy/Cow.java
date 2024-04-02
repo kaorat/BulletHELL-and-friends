@@ -53,7 +53,8 @@ public class Cow extends BaseEnemy{
     }
     @Override
     public void draw(GraphicsContext gc) {
-        gc.drawImage(getImage(),this.transform.getPosX(),this.transform.getPosY(), 60,60);
-        drawBounds(Config.COW_OFFSET_WIDTH,Config.COW_OFFSET_HEIGHT,Config.COW_WIDTH,Config.COW_HEIGHT);
+        //gc.drawImage(getImage(),this.transform.getPosX(),this.transform.getPosY(), 60,60);
+        Utility.DrawImage(gc,getImage(),transform);
+        drawBounds(0,0);
     }
 }

@@ -2,9 +2,13 @@ package Utils;
 
 
 import GameEntity.GameObject;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import java.io.File;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import static input.InputUtility.*;
 
@@ -31,31 +35,31 @@ public class Utility {
 
     public static String NumberToString(double i){
         if(i>=Math.pow(10,12)) {
-            return (i / Math.pow(10, 12)) +"T";
+            return BigDecimal.valueOf(i / Math.pow(10, 12)).setScale(2, RoundingMode.DOWN) +"T";
         }
         if(i>=Math.pow(10,9)) {
-            return (i / Math.pow(10, 9)) +"B";
+            return BigDecimal.valueOf(i / Math.pow(10, 9)).setScale(2, RoundingMode.DOWN) +"B";
         }
         if(i>=Math.pow(10,6)) {
-            return (i / Math.pow(10, 6)) +"M";
+            return BigDecimal.valueOf(i / Math.pow(10, 6)).setScale(2, RoundingMode.DOWN) +"M";
         }
         if(i>Math.pow(10,3)) {
-            return (i / Math.pow(10, 3)) +"K";
+            return BigDecimal.valueOf(i / Math.pow(10, 3)).setScale(2, RoundingMode.DOWN) +"K";
         }
         return String.valueOf(i);
     }
     public static String NumberToString(long i){
         if(i>=Math.pow(10,12)) {
-            return (i / Math.pow(10, 12)) +"T";
+            return BigDecimal.valueOf(i / Math.pow(10, 12)).setScale(2, RoundingMode.DOWN) +"T";
         }
         if(i>=Math.pow(10,9)) {
-            return (i / Math.pow(10, 9)) +"B";
+            return BigDecimal.valueOf(i / Math.pow(10, 9)).setScale(2, RoundingMode.DOWN) +"B";
         }
         if(i>=Math.pow(10,6)) {
-            return (i / Math.pow(10, 6)) +"M";
+            return BigDecimal.valueOf(i / Math.pow(10, 6)).setScale(2, RoundingMode.DOWN) +"M";
         }
         if(i>Math.pow(10,3)) {
-            return (i / Math.pow(10, 3)) +"K";
+            return BigDecimal.valueOf(i / Math.pow(10, 3)).setScale(2, RoundingMode.DOWN) +"K";
         }
         return String.valueOf(i);
     }
@@ -89,8 +93,11 @@ public class Utility {
         }
     }
     public static void isOutOfBounds(GameObject gameObject){
-        if(gameObject.getTransform().getPosY() < 0 || gameObject.getTransform().getPosY() > getScreenY() || gameObject.getTransform().getPosX() < 0 || gameObject.getTransform().getPosX() > getGameScreenX()){ // lower than the screen
+        if(gameObject.getTransform().getPosY() < -20 || gameObject.getTransform().getPosY() > getScreenY()+20 || gameObject.getTransform().getPosX() < -20 || gameObject.getTransform().getPosX() > getGameScreenX()+20){ // lower than the screen
             gameObject.setDestroyed(true);
         }
+    }
+    public static void DrawImage(GraphicsContext gc,Image sprite, Transform transform){
+        gc.drawImage(sprite, transform.getPosX(), transform.getPosY(), sprite.getWidth() * transform.getSclX(), sprite.getHeight() * transform.getSclY());
     }
 }

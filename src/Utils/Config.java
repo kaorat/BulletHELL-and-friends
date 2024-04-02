@@ -242,40 +242,40 @@ public class Config {
     }
 
 
-    //TODO : Image Config
-    public static final double PLAYER_OFFSET_WIDTH = 0;
-    public static final double PLAYER_OFFSET_HEIGHT = 0;
-    public static final double PLAYER_WIDTH = 60;
-    public static final double PLAYER_HEIGHT = 60;
-
-    public static final double CHICKEN_OFFSET_WIDTH = 0;
-    public static final double CHICKEN_OFFSET_HEIGHT = 0;
-    public static final double CHICKEN_WIDTH = 40;
-    public static final double CHICKEN_HEIGHT = 60;
-
-    public static final double SHEEP_OFFSET_WIDTH = 0;
-    public static final double SHEEP_OFFSET_HEIGHT = 0;
-    public static final double SHEEP_WIDTH = 60;
-    public static final double SHEEP_HEIGHT = 60;
-
-    public static final double COW_OFFSET_WIDTH = 0;
-    public static final double COW_OFFSET_HEIGHT = 0;
-    public static final double COW_WIDTH = 60;
-    public static final double COW_HEIGHT = 60;
-
-    public static final double ENEMY_BULLET_OFFSET_WIDTH = 0;
-    public static final double ENEMY_BULLET_OFFSET_HEIGHT = 0;
-    public static final double ENEMY_BULLET_WIDTH = 2;
-    public static final double ENEMY_BULLET_HEIGHT = 2;
-
-    public static final double PLAYER_BULLET_OFFSET_WIDTH = 0;
-    public static final double PLAYER_BULLET_OFFSET_HEIGHT = 0;
-    public static final double PLAYER_BULLET_WIDTH = 10;
-    public static final double PLAYER_BULLET_HEIGHT = 10;
-
-    public static final double COIN_OFFSET_WIDTH = 0;
-    public static final double COIN_OFFSET_HEIGHT = 0;
-    public static final double COIN_WIDTH = 20;
-    public static final double COIN_HEIGHT = 20;
+//    //TODO : Image Config
+//    public static final double PLAYER_OFFSET_WIDTH = 0;
+//    public static final double PLAYER_OFFSET_HEIGHT = 0;
+//    public static final double PLAYER_WIDTH = 60;
+//    public static final double PLAYER_HEIGHT = 60;
+//
+//    public static final double CHICKEN_OFFSET_WIDTH = 0;
+//    public static final double CHICKEN_OFFSET_HEIGHT = 0;
+//    public static final double CHICKEN_WIDTH = 40;
+//    public static final double CHICKEN_HEIGHT = 60;
+//
+//    public static final double SHEEP_OFFSET_WIDTH = 0;
+//    public static final double SHEEP_OFFSET_HEIGHT = 0;
+//    public static final double SHEEP_WIDTH = 60;
+//    public static final double SHEEP_HEIGHT = 60;
+//
+//    public static final double COW_OFFSET_WIDTH = 0;
+//    public static final double COW_OFFSET_HEIGHT = 0;
+//    public static final double COW_WIDTH = 60;
+//    public static final double COW_HEIGHT = 60;
+//
+//    public static final double ENEMY_BULLET_OFFSET_WIDTH = 0;
+//    public static final double ENEMY_BULLET_OFFSET_HEIGHT = 0;
+//    public static final double ENEMY_BULLET_WIDTH = 2;
+//    public static final double ENEMY_BULLET_HEIGHT = 2;
+//
+//    public static final double PLAYER_BULLET_OFFSET_WIDTH = 0;
+//    public static final double PLAYER_BULLET_OFFSET_HEIGHT = 0;
+//    public static final double PLAYER_BULLET_WIDTH = 10;
+//    public static final double PLAYER_BULLET_HEIGHT = 10;
+//
+//    public static final double COIN_OFFSET_WIDTH = 0;
+//    public static final double COIN_OFFSET_HEIGHT = 0;
+//    public static final double COIN_WIDTH = 20;
+//    public static final double COIN_HEIGHT = 20;
 
 }

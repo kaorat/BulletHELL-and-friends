@@ -3,6 +3,7 @@ package GameEntity.UI;
 import GameEntity.GameObject;
 import Utils.Text;
 import Utils.Transform;
+import Utils.Utility;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
@@ -25,7 +26,7 @@ public class UISprite extends GameObject {
     //Updatable Text
     @Override
     public void draw(GraphicsContext gc) {
-        if(type.equals("image")) gc.drawImage(sprite, transform.getPosX(), transform.getPosY(), sprite.getWidth() * transform.getSclX(), sprite.getHeight() * transform.getSclY());
+        if(type.equals("image")) Utility.DrawImage(gc,sprite,transform);
         else if(type.equals("text")){
             gc.setLineWidth(text.getLinewidth());
             gc.setFill(text.getFillColor());

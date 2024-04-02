@@ -33,7 +33,7 @@ public class PlayerManager implements  Updatable {
     }
 
     private void addPlayer(){
-        Player player = new Player(new Transform(200,400),30);
+        Player player = new Player(new Transform(200,400,0.1,0.1),30);
         this.player = player;
         GameObjectHolder.getInstance().add(player);
     }

@@ -51,8 +51,9 @@ public class Sheep extends BaseEnemy{
 
     @Override
     public void draw(GraphicsContext gc) {
-        gc.drawImage(getImage(),this.transform.getPosX(),this.transform.getPosY(), 60,60);
-        drawBounds(Config.SHEEP_OFFSET_WIDTH,Config.SHEEP_OFFSET_HEIGHT,Config.SHEEP_WIDTH,Config.SHEEP_HEIGHT);
+        //gc.drawImage(getImage(),this.transform.getPosX(),this.transform.getPosY(), 60,60);
+        Utility.DrawImage(gc,getImage(),transform);
+        drawBounds(0,0);
 
     }
 }

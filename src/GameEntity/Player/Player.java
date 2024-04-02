@@ -9,6 +9,7 @@ import Manager.PlayerManager;
 import Manager.StatManager;
 import Utils.*;
 import javafx.geometry.BoundingBox;
+import javafx.geometry.Bounds;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;
@@ -23,6 +24,7 @@ public class Player extends GameObject implements Shootable {
 
     private int hp;
     private double speed;
+    private Bounds hitbox;
 //    private double fireRate;
     private long lastFireTime = 0;
 
@@ -54,14 +56,20 @@ public class Player extends GameObject implements Shootable {
         bulletSound.play();
 //        System.out.println(BulletManager.getInstance().getBullets().size());
     }
+    public void drawHitbox(double offsetX, double offsetY){
+        hitbox = new BoundingBox(this.transform.getPosX() + offsetX, this.transform.getPosY() + offsetY, 25,25);
+    }
 
     @Override
     public void draw(GraphicsContext gc) {
-        drawBounds(15,15,25,25);
+        drawHitbox(15,15);
+        drawBounds(Config.PLAYER_OFFSET_WIDTH, Config.PLAYER_OFFSET_HEIGHT, Config.PLAYER_WIDTH, Config.PLAYER_HEIGHT);
         gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 60, 60);
         if(isShiftPressed()){
             gc.setStroke(Color.GREENYELLOW);
             gc.strokeRect(bounds.getMinX(),bounds.getMinY(),bounds.getWidth(),bounds.getHeight());
+            gc.setStroke(Color.ORANGERED);
+            gc.strokeRect(hitbox.getMinX(),hitbox.getMinY(),hitbox.getWidth(),hitbox.getHeight());
         }
         //Suchas Comment : will change to image graphic right?
 //        drawBounds(Config.PLAYER_OFFSET_WIDTH, Config.PLAYER_OFFSET_HEIGHT, Config.PLAYER_WIDTH, Config.PLAYER_HEIGHT);
@@ -76,7 +84,7 @@ public class Player extends GameObject implements Shootable {
         double fireRate = PlayerManager.getInstance().getBioticRifleFireRate() * 1000;
         long currentTime = System.currentTimeMillis();
         if (isShiftPressed()) {
-            speed = 6;
+            speed = 8;
             if (currentTime - lastFireTime > fireRate) {
 //                controlAggressiveShoot();
                 PlayerUtils.autoAim(this);
@@ -100,12 +108,14 @@ public class Player extends GameObject implements Shootable {
             }
         }
         Utility.controlUtility(this.transform, speed);
-        // ---- !Suchas comment: Could this be shorter? Lemme think-----
+
         checkOutOfBounds();
+
+        //Check collision with enemy bullet
         ArrayList<BaseBullet> bulletList = BulletManager.getInstance().getBullets();
         for (BaseBullet bullet : bulletList) {
                 if(bullet instanceof EnemyBullet){
-                    if(Transform.checkCollide(this, bullet)){
+                    if(Transform.checkCollide(this.hitbox, bullet.getBounds())){
                     bullet.setDestroyed(true);
                 }
             }

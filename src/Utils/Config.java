@@ -31,7 +31,7 @@ public class Config {
     public static final double AGILITY_MAX_LEVEL = 99;
 
     // Lethal Mutation : 3
-    public static final double ENEMY_BULLET_SPEED_BASE = 1;
+    public static final double ENEMY_BULLET_SPEED_BASE = 8;
     public static final double LETHAL_BULLET_SPEED_UPGRADE = 0.2;
     public static final double LETHAL_BASE_PRICE = 300;
     public static final double LETHAL_PRICE_INCREMENT = 1.2;//Power by level
@@ -41,8 +41,8 @@ public class Config {
     // Fuzzy Mutation : 4
     // Sheep multiply fire rate by n/10 , cow increase bullet number by n*6 , chicken increase bullet number (more shotgun) by n
     // bullet quantity
-    public static final double SHEEP_BULLET_QUANTITY_BASE = 0;
-    public static final double COW_BULLET_QUANTITY_BASE = 10;
+    public static final double SHEEP_BULLET_QUANTITY_BASE = 2;
+    public static final double COW_BULLET_QUANTITY_BASE = 5;
     public static final double CHICKEN_BULLET_QUANTITY_BASE = 1;
     public static final double FUZZY_BULLET_QUANTITY_UPGRADE = 1;
     public static final double FUZZY_BASE_PRICE = 200;
@@ -71,7 +71,7 @@ public class Config {
     public static final double GENETIC_MAX_LEVEL = 20;
 
     // Fast Reproduction : 7
-    public static final double SPAWN_TIME_BASE = 2.0;
+    public static final double SPAWN_TIME_BASE = 3.0;
     public static final double REPRODUCTION_SPAWN_TIME_UPGRADE = -0.05;
     public static final double REPRODUCTION_BASE_PRICE = 300;
     public static final double REPRODUCTION_PRICE_INCREMENT = 1.25;//Power by level
@@ -246,10 +246,9 @@ public class Config {
     public static final double PLAYER_OFFSET_WIDTH = 0;
     public static final double PLAYER_OFFSET_HEIGHT = 0;
     public static final double PLAYER_WIDTH = 60;
-    public static final double PLAYER_HEIGHT = 40;
+    public static final double PLAYER_HEIGHT = 60;
 
     public static final double CHICKEN_OFFSET_WIDTH = 0;
-
     public static final double CHICKEN_OFFSET_HEIGHT = 0;
     public static final double CHICKEN_WIDTH = 40;
     public static final double CHICKEN_HEIGHT = 60;
@@ -273,4 +272,10 @@ public class Config {
     public static final double PLAYER_BULLET_OFFSET_HEIGHT = 0;
     public static final double PLAYER_BULLET_WIDTH = 10;
     public static final double PLAYER_BULLET_HEIGHT = 10;
+
+    public static final double COIN_OFFSET_WIDTH = 0;
+    public static final double COIN_OFFSET_HEIGHT = 0;
+    public static final double COIN_WIDTH = 20;
+    public static final double COIN_HEIGHT = 20;
+
 }

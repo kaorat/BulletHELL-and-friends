@@ -21,7 +21,7 @@ public class Coin extends BaseItem{ // this is 'parts drop', I just want to chan
     @Override
     public void draw(GraphicsContext gc) {
         gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 20, 20);
-        drawBounds(Config.CHICKEN_OFFSET_WIDTH, Config.CHICKEN_OFFSET_HEIGHT, Config.CHICKEN_WIDTH, Config.CHICKEN_HEIGHT);
+        drawBounds(Config.COIN_OFFSET_HEIGHT,Config.COIN_OFFSET_WIDTH,Config.COIN_WIDTH,Config.COIN_HEIGHT);
         gc.setStroke(javafx.scene.paint.Color.GREENYELLOW);
         gc.strokeRect(bounds.getMinX(), bounds.getMinY(), bounds.getWidth(), bounds.getHeight());
 
@@ -32,7 +32,7 @@ public class Coin extends BaseItem{ // this is 'parts drop', I just want to chan
         transform.translate(3);
         Utility.isOutOfBounds(this);
 
-        if(Transform.checkCollide(this, PlayerManager.getInstance().getPlayer())){
+        if(Transform.checkCollide(this.getBounds(), PlayerManager.getInstance().getPlayer().getBounds())){
             onPickup();
         }
 
@@ -41,7 +41,7 @@ public class Coin extends BaseItem{ // this is 'parts drop', I just want to chan
     @Override
     public void onPickup() {
         StatManager.getInstance().addCoin(amount);
-        System.out.println(amount);
+//        System.out.println(amount);
         System.out.println(StatManager.getInstance().getCoin());
         this.destroyed = true;
     }

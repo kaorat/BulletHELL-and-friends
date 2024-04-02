@@ -64,11 +64,9 @@ public class Transform {
     }
 
 
-    public static boolean checkCollide(GameObject Obj1, GameObject Obj2){
+    public static boolean checkCollide(Bounds b1, Bounds b2){
         // draw here the bounds of the object
-        return Obj1.getBounds().intersects(Obj2.getBounds());
-
-
+        return b1.intersects(b2);
     }
         public double getPosX() {
         return posX;

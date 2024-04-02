@@ -69,7 +69,7 @@ public abstract class BaseEnemy extends GameObject {
         BulletManager bm = BulletManager.getInstance();
         ArrayList<BaseBullet> bulletList = bm.getBullets();
         for (BaseBullet bullet : bulletList) {
-            if (Transform.checkCollide(this, bullet) && bullet instanceof PlayerBullet) {
+            if (Transform.checkCollide(this.getBounds(), bullet.getBounds()) && bullet instanceof PlayerBullet) {
                 this.hp -= ((PlayerBullet)bullet).getDamage();
                 bullet.setDestroyed(true);
                 EnemyUtils.DropParts(transform.getPosX(),transform.getPosY(),partDrop);

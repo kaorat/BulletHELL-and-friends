@@ -40,7 +40,7 @@ public class EnemyUtils {
         return 1000*(Config.SPAWN_TIME_BASE + (Config.REPRODUCTION_SPAWN_TIME_UPGRADE*level));
     }
     public static void ChickenShootPattern(Chicken chicken,double speed){
-            EnemyBullet bullet = new EnemyBullet(speed, chicken, new Transform(chicken.getTransform().getPosX() + 25, chicken.getTransform().getPosY() + 20, (Math.random()*360), 2, 2), 0,0);
+            EnemyBullet bullet = new EnemyBullet(speed, chicken, new Transform(chicken.getTransform().getPosX() + 25, chicken.getTransform().getPosY() + 20, (Math.random()*360), 2, 2), 35,0);
             BulletManager.getInstance().add(bullet);
     }
 
@@ -51,7 +51,7 @@ public class EnemyUtils {
         if(quantity%2  == 0){
             for(int i=0;i<quantity;i++){
                 for(int j=1;j<=length;j++){
-                    EnemyBullet bullet = new EnemyBullet(speed/j, sheep, new Transform(sheep.getTransform().getPosX() + 25, sheep.getTransform().getPosY() + 20, angleToP - (double) (maxAngle / 2) + ((double) (i * maxAngle) /quantity), 2, 2), 0,0);
+                    EnemyBullet bullet = new EnemyBullet(speed/j, sheep, new Transform(sheep.getTransform().getPosX() + 25, sheep.getTransform().getPosY() + 20, angleToP - (double) (maxAngle / 2) + ((double) (i * maxAngle) /quantity), 2, 2), 35,0);
                     BulletManager.getInstance().add(bullet);
                 }
 
@@ -59,7 +59,7 @@ public class EnemyUtils {
         }else{
             for(int i=0;i<quantity;i++){
                 for(int j=1;j<=length;j++){
-                    EnemyBullet bullet = new EnemyBullet(speed/j, sheep, new Transform(sheep.getTransform().getPosX() + 25, sheep.getTransform().getPosY() + 20, angleToP - (double) (maxAngle / quantity ) + ((double) (i * maxAngle) /quantity), 2, 2), 0,0);
+                    EnemyBullet bullet = new EnemyBullet(speed/j, sheep, new Transform(sheep.getTransform().getPosX() + 25, sheep.getTransform().getPosY() + 20, angleToP - (double) (maxAngle / quantity ) + ((double) (i * maxAngle) /quantity), 2, 2), 35,0);
                     BulletManager.getInstance().add(bullet);
                 }
 

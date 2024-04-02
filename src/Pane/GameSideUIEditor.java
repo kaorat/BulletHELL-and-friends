@@ -30,14 +30,14 @@ public class GameSideUIEditor extends GraphicEditor{
         create(new UISprite(Asset.UI.currencyBG,new Transform(x+304,40,0.25,0.29),51));
 
         //Currency
-        create(new UISprite(Asset.UI.partUI,new Transform(x+55,45,0.05,0.05),52));
-        create(new UISprite(Asset.UI.soulUI,new Transform(x+180,45,0.05,0.05),52));
-        create(new UISprite(Asset.UI.honeyUI,new Transform(x+310,45,0.05,0.05),52));
+        create(new UISprite(Asset.UI.partUI,new Transform(x+55,50,0.035,0.035),52));
+        create(new UISprite(Asset.UI.soulUI,new Transform(x+185,50,0.035,0.035),52));
+        create(new UISprite(Asset.UI.honeyUI,new Transform(x+315,50,0.035,0.035),52));
 
         //Will change text
-        part=(UISprite) create(new UISprite(new Text("0",Utility.getGameFont(18 ), Color.WHITE,TextAlignment.RIGHT),new Transform(x+152,67),52));
-        soul=(UISprite) create(new UISprite(new Text("0",Utility.getGameFont(18), Color.WHITE,TextAlignment.RIGHT),new Transform(x+284,67),52));
-        honey=(UISprite) create(new UISprite(new Text("0",Utility.getGameFont(18), Color.WHITE,TextAlignment.RIGHT),new Transform(x+390,67),52));
+        part=(UISprite) create(new UISprite(new Text("0",Utility.getGameFont(12 ), Color.WHITE,TextAlignment.RIGHT),new Transform(x+152,67),52));
+        soul=(UISprite) create(new UISprite(new Text("0",Utility.getGameFont(12), Color.WHITE,TextAlignment.RIGHT),new Transform(x+284,67),52));
+        honey=(UISprite) create(new UISprite(new Text("0",Utility.getGameFont(12), Color.WHITE,TextAlignment.RIGHT),new Transform(x+390,67),52));
 
 //        create(new UISprite(Asset.UI.currencyBG,new Transform(100,100,0.4,0.12),51));
         SceneManager.setCurrentPage(new MainPage(graphicsContext));

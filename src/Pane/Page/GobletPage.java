@@ -8,13 +8,9 @@ import Manager.SceneManager;
 import Manager.StatManager;
 import Pane.GameSideUIEditor;
 import Pane.GraphicEditor;
-import Utils.Asset;
-import Utils.Text;
-import Utils.Transform;
-import Utils.Utility;
+import Utils.*;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import Utils.ButtonType;
 
 import java.util.ArrayList;
 
@@ -37,8 +33,8 @@ public class GobletPage extends GraphicEditor {
         create(new UISprite(Asset.UI.backgroundGobletPage, new Transform(Utility.getGameScreenX(), 0, 0.3, 0.25), 50));
 
         //Header
-        create(new UISprite(new Text("Goblet",Utility.getGameFont(22 ), Color.BLACK),
-                new Transform(x+165,120),52));
+        create(new UISprite(Asset.UI.gobletHeader, new Transform(Utility.getGameScreenX() + 86, 70, 0.24, 0.22), 52));
+
 
         // Create the button
         allButtons.add((UIButton) create(new UIButton(Asset.UI.upgradeButtonHoney, new Transform(Utility.getGameScreenX() + 310, 170 , 0.28, 0.27), 54 , ButtonType.UPGRADEHONEY)));
@@ -48,7 +44,7 @@ public class GobletPage extends GraphicEditor {
                 new Transform(allButtons.get(0).getTransform().getPosX() + 32,
                         allButtons.get(0).getTransform().getPosY() + 23), 55)));
         allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 220, 192, 0.25, 0.25), 55)));
-        allDescription.add((UISprite) create(new UISprite(new Text("Goblet conversion rate : 0", Utility.getGameFont(11), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 58, 210, 0.25, 0.25), 55)));
+        allDescription.add((UISprite) create(new UISprite(new Text("Goblet conversion rate : 0", Utility.getGameFont(11), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 58, 210, 0.25, 0.25), 55)));
         allIncrease.add((UISprite) create(new UISprite(new Text("+0 rate", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 213, 0.25, 0.25), 55)));
 
         // Create EmbraceWealth
@@ -57,7 +53,7 @@ public class GobletPage extends GraphicEditor {
                 new Transform(allButtons.get(1).getTransform().getPosX() + 32,
                         allButtons.get(1).getTransform().getPosY() + 23), 55)));
         allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 230, 192 + moveYButton, 0.25, 0.25), 55)));
-        allDescription.add((UISprite) create(new UISprite(new Text("Parts obtain multiplier : 0", Utility.getGameFont(11), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 58, 210 + moveYButton, 0.25, 0.25), 55)));
+        allDescription.add((UISprite) create(new UISprite(new Text("Parts obtain multiplier : 0", Utility.getGameFont(11), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 58, 210 + moveYButton, 0.25, 0.25), 55)));
         allIncrease.add((UISprite) create(new UISprite(new Text("+0 multiplier", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 304, 213 + moveYButton, 0.25, 0.25), 55)));
 
         // Create EmbraceStrength
@@ -66,7 +62,7 @@ public class GobletPage extends GraphicEditor {
                 new Transform(allButtons.get(2).getTransform().getPosX() + 32,
                         allButtons.get(2).getTransform().getPosY() + 23), 55)));
         allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 250, 190 + moveYButton*2, 0.25, 0.25), 55)));
-        allDescription.add((UISprite) create(new UISprite(new Text("Damage multiplier : 0", Utility.getGameFont(11), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 60, 210 + moveYButton*2, 0.25, 0.25), 55)));
+        allDescription.add((UISprite) create(new UISprite(new Text("Damage multiplier : 0", Utility.getGameFont(11), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 60, 210 + moveYButton*2, 0.25, 0.25), 55)));
         allIncrease.add((UISprite) create(new UISprite(new Text("+0 multiplier", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 320 , 210 + moveYButton*2, 0.25, 0.25), 55)));
 
         // Create EmbraceGalore
@@ -75,7 +71,7 @@ public class GobletPage extends GraphicEditor {
                 new Transform(allButtons.get(3).getTransform().getPosX() + 32,
                         allButtons.get(3).getTransform().getPosY() + 23), 55)));
         allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 235, 190 + moveYButton*3, 0.25, 0.25), 55)));
-        allDescription.add((UISprite) create(new UISprite(new Text("Multiple Spawn Chance : ", Utility.getGameFont(11), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 58, 210 + moveYButton*3, 0.25, 0.25), 55)));
+        allDescription.add((UISprite) create(new UISprite(new Text("Multiple Spawn Chance : ", Utility.getGameFont(11), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 58, 210 + moveYButton*3, 0.25, 0.25), 55)));
         allIncrease.add((UISprite) create(new UISprite(new Text("+0% chance", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 320, 210 + moveYButton*3, 0.25, 0.25), 55)));
 
         // Create EmbraceSoul
@@ -84,7 +80,7 @@ public class GobletPage extends GraphicEditor {
                 new Transform(allButtons.get(4).getTransform().getPosX() + 32,
                         allButtons.get(4).getTransform().getPosY() + 23), 55)));
         allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 210, 188 + moveYButton*4, 0.25, 0.25), 55)));
-        allDescription.add((UISprite) create(new UISprite(new Text("Chance to obtain soul : ", Utility.getGameFont(11), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 58, 210 + moveYButton*4, 0.25, 0.25), 55)));
+        allDescription.add((UISprite) create(new UISprite(new Text("Chance to obtain soul : ", Utility.getGameFont(11), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 58, 210 + moveYButton*4, 0.25, 0.25), 55)));
         allIncrease.add((UISprite) create(new UISprite(new Text("+0 multiplier", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 325, 210 + moveYButton*4, 0.25, 0.25), 55)));
 
 
@@ -94,23 +90,58 @@ public class GobletPage extends GraphicEditor {
         create(new UISprite(Asset.UI.upgradeChooseGobletPage, new Transform(Utility.getGameScreenX() +10, 145, 0.25, 0.25), 53));
 
         //Init Templete
-        descTemplete.add("Goblet conversion rate : ");
-        descTemplete.add("Parts obtain multiplier : ");
-        descTemplete.add("Damage multiplier : ");
+        descTemplete.add("Goblet conversion rate : x");
+        descTemplete.add("Parts obtain multiplier : x");
+        descTemplete.add("Damage multiplier : x");
         descTemplete.add("Multiple Spawn Chance : ");
-        descTemplete.add("Chance to obtain soul : ");
-        increaseTemplete.add("xx");
-        increaseTemplete.add("xx");
-        increaseTemplete.add("xx");
-        increaseTemplete.add("xx");
-        increaseTemplete.add("xx");
+        descTemplete.add("Chance to obtain soul : x");
+        increaseTemplete.add("multiplier");
+        increaseTemplete.add("multiplier");
+        increaseTemplete.add("multiplier");
+        increaseTemplete.add("%");
+        increaseTemplete.add("multiplier");
 
 
     }
     @Override
     public void onUpdate() {
-        int coin = StatManager.getInstance().getCoin();
+        int amber = StatManager.getInstance().getAmber();
         if(allButtons.get(5).isPressed()) SceneManager.setCurrentPage(new MainPage(graphicsContext));
+        for(int i=0;i<5;i++){
+            //Variable
+            int level = StatManager.getInstance().getGobletLevels().get(i);
+            int cost = (int) (10*(Math.pow(2,level)));
+            //Price
+            UISprite price = allPrice.get(i);
+            price.getText().setText(Utility.NumberToString(cost));
+            //Button
+            UIButton button = allButtons.get(i);
+
+            if(amber > cost){
+                button.setEnable(true);
+                if(button.isPressed()){
+                    StatManager.getInstance().setAmber(amber-cost);
+                    StatManager.getInstance().getGobletLevels().set(i,level+1);
+                }
+            }
+            else{
+                button.setEnable(false);
+            }
+            //Level
+            allLvL.get(i).getText().setText("LV."+Utility.NumberToString(level));
+            //Desc
+            if(i==3){
+                allDescription.get(i).getText().setText(descTemplete.get(i)+level*10+" "+increaseTemplete.get(i));
+                allIncrease.get(i).getText().setText(10+" "+increaseTemplete.get(i));
+            }
+            else{
+                allDescription.get(i).getText().setText(descTemplete.get(i)+(level+1));
+                allIncrease.get(i).getText().setText("1"+" "+increaseTemplete.get(i));
+            }
+
+            //Desc
+
+        }
     }
 }
 

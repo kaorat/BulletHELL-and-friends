@@ -47,6 +47,12 @@ public class Asset {
         public static Image buttonNavigateDNA;
         public static Image buttonNavigateHover;
         public static Image backgroundGameplay;
+        public static Image upgradeHeader;
+        public static Image playerHeader;
+        public static Image enemyHeader;
+        public static Image gobletHeader;
+        public static Image DNAHeader;
+
 
 
         static{
@@ -101,6 +107,13 @@ public class Asset {
             sheepiconUI=LoadImg("UI/Enemy/sheep.png");
             holyiconUI=LoadImg("UI/Currency/holy-grail.png");
             dnaiconUI=LoadImg("UI/Currency/dna.png");
+
+            upgradeHeader=LoadImg("UI/Header/upgradeHeader.png");
+            playerHeader=LoadImg("UI/Header/playerHeader.png");
+            enemyHeader=LoadImg("UI/Header/enemyHeader.png");
+            gobletHeader=LoadImg("UI/Header/gobletHeader.png");
+            DNAHeader=LoadImg("UI/Header/DNAHeader.png");
+
 
 
         }

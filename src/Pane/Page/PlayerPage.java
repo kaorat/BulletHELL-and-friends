@@ -32,8 +32,8 @@ public class PlayerPage extends GraphicEditor {
         create(new UISprite(Asset.UI.backgroundPlayerPage, new Transform(Utility.getGameScreenX(), 0, 0.3, 0.25), 50));
 
         //Header
-       create(new UISprite(new Text("Player",Utility.getGameFont(22 ), Color.BLACK),
-                new Transform(x+165,120),52));
+        create(new UISprite(Asset.UI.playerHeader, new Transform(Utility.getGameScreenX() + 86, 70, 0.24, 0.22), 52));
+
 
         // Create the button
         allButtons.add((UIButton) create(new UIButton(Asset.UI.upgradeButtonMeat, new Transform(Utility.getGameScreenX() + 310, 170 , 0.28, 0.27), 54 , ButtonType.UPGRADEMEAT)));
@@ -42,8 +42,8 @@ public class PlayerPage extends GraphicEditor {
         allPrice.add( (UISprite) create(new UISprite(new Text("100", Utility.getGameFont(13), Color.YELLOWGREEN),
                 new Transform(allButtons.get(0).getTransform().getPosX() + 32,
                         allButtons.get(0).getTransform().getPosY() + 23), 55)));
-        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 200, 192, 0.25, 0.25), 55)));
-        allDescription.add((UISprite) create(new UISprite(new Text("Damage : 2.4", Utility.getGameFont(11), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 58, 210, 0.25, 0.25), 55)));
+        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 200, 192, 0.25, 0.25), 55)));
+        allDescription.add((UISprite) create(new UISprite(new Text("Damage : 2.4", Utility.getGameFont(11), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 58, 210, 0.25, 0.25), 55)));
         allIncrease.add((UISprite) create(new UISprite(new Text("+0.25 Damage", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 213, 0.25, 0.25), 55)));
 
         // Create RifleFirerate
@@ -51,8 +51,8 @@ public class PlayerPage extends GraphicEditor {
         allPrice.add( (UISprite) create(new UISprite(new Text("100", Utility.getGameFont(13), Color.YELLOWGREEN),
                 new Transform(allButtons.get(1).getTransform().getPosX() + 32,
                         allButtons.get(1).getTransform().getPosY() + 23), 55)));
-        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 200, 192 + moveYButton, 0.25, 0.25), 55)));
-        allDescription.add((UISprite) create(new UISprite(new Text("Firerate : 2", Utility.getGameFont(11), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 58, 210 + moveYButton, 0.25, 0.25), 55)));
+        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 200, 192 + moveYButton, 0.25, 0.25), 55)));
+        allDescription.add((UISprite) create(new UISprite(new Text("Firerate : 2", Utility.getGameFont(11), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 58, 210 + moveYButton, 0.25, 0.25), 55)));
         allIncrease.add((UISprite) create(new UISprite(new Text("+0.25 Firerate", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 304, 213 + moveYButton, 0.25, 0.25), 55)));
 
         // Create Minimize
@@ -60,8 +60,8 @@ public class PlayerPage extends GraphicEditor {
         allPrice.add((UISprite) create(new UISprite(new Text("100", Utility.getGameFont(13), Color.YELLOWGREEN),
                 new Transform(allButtons.get(2).getTransform().getPosX() + 32,
                         allButtons.get(2).getTransform().getPosY() + 23), 55)));
-        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 160, 190 + moveYButton*2, 0.25, 0.25), 55)));
-        allDescription.add((UISprite) create(new UISprite(new Text("Hitbox size : 8", Utility.getGameFont(11), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 60, 210 + moveYButton*2, 0.25, 0.25), 55)));
+        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 160, 190 + moveYButton*2, 0.25, 0.25), 55)));
+        allDescription.add((UISprite) create(new UISprite(new Text("Hitbox size : 8", Utility.getGameFont(11), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 60, 210 + moveYButton*2, 0.25, 0.25), 55)));
         allIncrease.add((UISprite) create(new UISprite(new Text("+0.25 Minimize", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 340, 210 + moveYButton*2, 0.25, 0.25), 55)));
 
         // Create Dexterity
@@ -69,8 +69,8 @@ public class PlayerPage extends GraphicEditor {
         allPrice.add((UISprite) create(new UISprite(new Text("100", Utility.getGameFont(13), Color.YELLOWGREEN),
                 new Transform(allButtons.get(3).getTransform().getPosX() + 32,
                         allButtons.get(3).getTransform().getPosY() + 23), 55)));
-        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 160, 190 + moveYButton*3, 0.25, 0.25), 55)));
-        allDescription.add((UISprite) create(new UISprite(new Text("Dexterity : 2", Utility.getGameFont(11), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 58, 210 + moveYButton*3, 0.25, 0.25), 55)));
+        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 160, 190 + moveYButton*3, 0.25, 0.25), 55)));
+        allDescription.add((UISprite) create(new UISprite(new Text("Dexterity : 2", Utility.getGameFont(11), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 58, 210 + moveYButton*3, 0.25, 0.25), 55)));
         allIncrease.add((UISprite) create(new UISprite(new Text("+0.25 Dexterity", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 340, 210 + moveYButton*3, 0.25, 0.25), 55)));
 
         // Create Proficiency
@@ -78,8 +78,8 @@ public class PlayerPage extends GraphicEditor {
         allPrice.add((UISprite) create(new UISprite(new Text("100", Utility.getGameFont(13), Color.YELLOWGREEN),
                 new Transform(allButtons.get(4).getTransform().getPosX() + 32,
                         allButtons.get(4).getTransform().getPosY() + 23), 55)));
-        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 180, 190 + moveYButton*4, 0.25, 0.25), 55)));
-        allDescription.add((UISprite) create(new UISprite(new Text("Parts per graze : 2", Utility.getGameFont(11), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 58, 210 + moveYButton*4, 0.25, 0.25), 55)));
+        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 180, 190 + moveYButton*4, 0.25, 0.25), 55)));
+        allDescription.add((UISprite) create(new UISprite(new Text("Parts per graze : 2", Utility.getGameFont(11), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 58, 206 + moveYButton*4, 0.25, 0.25), 55)));
         allIncrease.add((UISprite) create(new UISprite(new Text("+1 part", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 325, 210 + moveYButton*4, 0.25, 0.25), 55)));
 
 

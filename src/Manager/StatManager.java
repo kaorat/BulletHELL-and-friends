@@ -1,24 +1,31 @@
 package Manager;
 
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import Utils.Updatable;
+
 
 public class StatManager implements Updatable {
    private static StatManager instance;
    private int coin;
    //TODO: every time, you get a coin -> increase totalCoin
-   private int totalCoin;
-   private int honeyLevel;
-   private int soul;
-   private int amber;
-   private double time;
-   private int completion;
-   private int death;
-
-   private int killed;
-
+    private int totalCoin;
+    private int dna;
+    private int honeyLevel;
+    private int soul;
+    private int amber;
+    private double time;
+    private int completion;
+    private int death;
+    private int killed;
+    private ArrayList<Integer> gobletLevels;
+    private ArrayList<Integer> dnaLevels;
     public StatManager(){
         setAmber(0);
-        setCoin(0);
+        setCoin(10000);
         setTotalCoin(0);
         setHoneyLevel(1);
         setCompletion(0);
@@ -26,6 +33,19 @@ public class StatManager implements Updatable {
         setKilled(0);
         setTime(0d);
         setSoul(0);
+        gobletLevels = new ArrayList<>(Arrays.asList(0,0,0,0,0));
+        dnaLevels = new ArrayList<>(Arrays.asList(0,0));
+    }
+    public void reset(){
+        while(totalCoin-honeyLevel*100>0){
+            totalCoin-=honeyLevel*100;
+            honeyLevel++;
+        }
+        setAmber(getAmber()+honeyLevel-1);
+        setCoin(0);
+        setTotalCoin(0);
+        setSoul(0);
+        setHoneyLevel(1);
     }
     public void addKilled(){
         killed+=1;
@@ -73,6 +93,14 @@ public class StatManager implements Updatable {
         this.amber = amber;
     }
 
+    public int getDna() {
+        return dna;
+    }
+
+    public void setDna(int dna) {
+        this.dna = dna;
+    }
+
     public void setCoin(int coin) {
         this.coin = coin;
     }
@@ -104,6 +132,22 @@ public class StatManager implements Updatable {
     public int getTotalCoin() { return totalCoin; }
 
     public void setTotalCoin(int totalCoin) { this.totalCoin = totalCoin; }
+
+    public ArrayList<Integer> getGobletLevels() {
+        return gobletLevels;
+    }
+
+    public void setGobletLevels(ArrayList<Integer> gobletLevels) {
+        this.gobletLevels = gobletLevels;
+    }
+
+    public ArrayList<Integer> getDnaLevels() {
+        return dnaLevels;
+    }
+
+    public void setDnaLevels(ArrayList<Integer> dnaLevels) {
+        this.dnaLevels = dnaLevels;
+    }
 
     public static StatManager getInstance() {
         if (instance ==null){

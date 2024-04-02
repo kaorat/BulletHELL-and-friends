@@ -23,7 +23,7 @@ public class MainPage extends GraphicEditor {
     private UIButton buttonSpecialDNA;
 
 
-    private int moveYButton = 75;
+    private int moveYButton = 70;
     private double x = Utility.getGameScreenX();
 
     public MainPage(GraphicsContext graphicsContext) {
@@ -31,18 +31,17 @@ public class MainPage extends GraphicEditor {
         //Background
         create(new UISprite(Asset.UI.mainBackground, new Transform(Utility.getGameScreenX(), 0, 0.3, 0.25), 50));
         //Header
-        create(new UISprite(Asset.UI.headerMain, new Transform(Utility.getGameScreenX() +119, 92, 0.7, 0.65), 53));
-        textHeader=(UISprite) create(new UISprite(new Text("Upgrade",Utility.getGameFont(22 ), Color.BLACK),
-                new Transform(x+155,120),52));
+        create(new UISprite(Asset.UI.upgradeHeader, new Transform(Utility.getGameScreenX() + 45, 75, 0.30, 0.28), 52));
+
 
         // Create the buttonPlayer
-        buttonPlayer = new UIButton(Asset.UI.buttonNavigatePlayer, new Transform(Utility.getGameScreenX() + 65, 160 , 0.26, 0.25), 54, ButtonType.NAVIGATORPLAYER);
+        buttonPlayer = new UIButton(Asset.UI.buttonNavigatePlayer, new Transform(Utility.getGameScreenX() + 60, 180 , 0.26, 0.25), 54, ButtonType.NAVIGATORPLAYER);
         // Create the buttonEnemy
-        buttonEnemy = new UIButton(Asset.UI.buttonNavigate, new Transform(Utility.getGameScreenX() + 65, 160 + moveYButton, 0.26, 0.25), 54 , ButtonType.NAVIGATORENEMY);
+        buttonEnemy = new UIButton(Asset.UI.buttonNavigate, new Transform(Utility.getGameScreenX() + 60, 180 + moveYButton, 0.26, 0.25), 54 , ButtonType.NAVIGATORENEMY);
         // Create the buttonGoblet
-        buttonGoblet = new UIButton(Asset.UI.buttonNavigate, new Transform(Utility.getGameScreenX() + 65, 160 + moveYButton*2, 0.26, 0.25), 54 , ButtonType.NAVIGATORGOBLET);
+        buttonGoblet = new UIButton(Asset.UI.buttonNavigate, new Transform(Utility.getGameScreenX() + 60, 180 + moveYButton*2, 0.26, 0.25), 54 , ButtonType.NAVIGATORGOBLET);
         // Create the buttonSpecialDNA
-        buttonSpecialDNA = new UIButton(Asset.UI.buttonNavigate, new Transform(Utility.getGameScreenX() + 65, 160 + moveYButton*3, 0.26, 0.25), 54 , ButtonType.NAVIGATORDNA);
+        buttonSpecialDNA = new UIButton(Asset.UI.buttonNavigate, new Transform(Utility.getGameScreenX() + 60, 180 + moveYButton*3, 0.26, 0.25), 54 , ButtonType.NAVIGATORDNA);
 
         // Add the button and text to the pane
         create(buttonPlayer);

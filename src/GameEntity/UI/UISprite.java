@@ -11,13 +11,13 @@ public class UISprite extends GameObject {
     private Image sprite;
     private Text text;
     //Image
-    public UISprite(Image sprite,Transform transform, int z) {
+    public UISprite(Image sprite,Transform transform, double z) {
         super(transform, z);
         this.sprite=sprite;
         type="image";
     }
     //Text
-    public UISprite(Text text, Transform transform, int z){
+    public UISprite(Text text, Transform transform, double z){
         super(transform,z);
         this.text=text;
         type="text";

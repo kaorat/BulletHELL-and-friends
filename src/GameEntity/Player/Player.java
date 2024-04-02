@@ -5,11 +5,15 @@ import GameEntity.Bullet.EnemyBullet;
 import GameEntity.Bullet.PlayerBullet;
 import GameEntity.GameObject;
 import Manager.BulletManager;
+import Manager.PlayerManager;
+import Manager.StatManager;
 import Utils.*;
 import javafx.geometry.BoundingBox;
+import javafx.geometry.Bounds;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
@@ -20,12 +24,13 @@ public class Player extends GameObject implements Shootable {
 
     private int hp;
     private double speed;
-    private long fireRate = 200;
+    private Bounds hitbox;
+//    private double fireRate;
     private long lastFireTime = 0;
 
-    public Player(Transform transform, int z) {
+    public Player(Transform transform, double z) {
         super(transform, z);
-        this.speed = 3.5;
+        this.speed = Config.PLAYER_SPEED_BASE;
         setImage(Asset.Game.player);
     }
 
@@ -41,57 +46,61 @@ public class Player extends GameObject implements Shootable {
         }
         if (this.transform.getPosY() + Config.PLAYER_HEIGHT > 700) {
             this.transform.setPosY(700 - Config.PLAYER_HEIGHT); ;
-            System.out.println(this.transform.getPosY());
         }
     }
 
     public void shoot() {
-        PlayerBullet bullet = new PlayerBullet(10, this, new Transform(this.transform.getPosX() + 50, this.transform.getPosY(), -90, 2, 2), 0);
-        PlayerBullet bullet2 = new PlayerBullet(10, this, new Transform(this.transform.getPosX(), this.transform.getPosY(), -90, 2, 2), 0);
-        BulletManager.getInstance().add(bullet);
-        BulletManager.getInstance().add(bullet2);
+        PlayerUtils.normal(this);
         AudioClip bulletSound = Asset.Audio.bulletSound;
         bulletSound.setVolume(0.1);
         bulletSound.play();
 //        System.out.println(BulletManager.getInstance().getBullets().size());
     }
+    public void drawHitbox(double offsetX, double offsetY){
+        hitbox = new BoundingBox(this.transform.getPosX() + offsetX, this.transform.getPosY() + offsetY, 25,25);
+    }
 
     @Override
     public void draw(GraphicsContext gc) {
-        gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 60, 60);
-        this.bounds = new BoundingBox(transform.getPosX()+20,transform.getPosY(),80,60);
+        drawHitbox(15,15);
         drawBounds(Config.PLAYER_OFFSET_WIDTH, Config.PLAYER_OFFSET_HEIGHT, Config.PLAYER_WIDTH, Config.PLAYER_HEIGHT);
+        gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 60, 60);
+        if(isShiftPressed()){
+            gc.setStroke(Color.GREENYELLOW);
+            gc.strokeRect(bounds.getMinX(),bounds.getMinY(),bounds.getWidth(),bounds.getHeight());
+            gc.setStroke(Color.ORANGERED);
+            gc.strokeRect(hitbox.getMinX(),hitbox.getMinY(),hitbox.getWidth(),hitbox.getHeight());
+        }
+        //Suchas Comment : will change to image graphic right?
+//        drawBounds(Config.PLAYER_OFFSET_WIDTH, Config.PLAYER_OFFSET_HEIGHT, Config.PLAYER_WIDTH, Config.PLAYER_HEIGHT);
     }
 
     public void controlAggressiveShoot() {
-        PlayerBullet bulletR = new PlayerBullet(10, this, new Transform(this.transform.getPosX() + 50, this.transform.getPosY() + 20, -70, 2, 2), 0);
-        PlayerBullet bulletL = new PlayerBullet(10, this, new Transform(this.transform.getPosX(), this.transform.getPosY() + 20, -110, 2, 2), 0);
-        // all direction
-        PlayerBullet bulletRU = new PlayerBullet(10, this, new Transform(this.transform.getPosX() + 50, this.transform.getPosY(), -50, 2, 2), 0);
-        PlayerBullet bulletLU = new PlayerBullet(10, this, new Transform(this.transform.getPosX(), this.transform.getPosY(), -130, 2, 2), 0);
-
-        BulletManager.getInstance().add(bulletR);
-        BulletManager.getInstance().add(bulletL);
-        BulletManager.getInstance().add(bulletRU);
-        BulletManager.getInstance().add(bulletLU);
+        PlayerUtils.earthQuake(this);
     }
 
     @Override
     public void onUpdate() {
-//        System.out.println("Player Update : " + isAPressed());
+        double fireRate = PlayerManager.getInstance().getBioticRifleFireRate() * 1000;
         long currentTime = System.currentTimeMillis();
-        // ---- !Suchas comment: Left Shift?? Gonna be pretty hard to balance na (Use only for slow and hitbox show)-----
         if (isShiftPressed()) {
-            fireRate = 80;
-            speed = 2.7;
+            speed = 8;
             if (currentTime - lastFireTime > fireRate) {
-                shoot();
-                controlAggressiveShoot();
+//                controlAggressiveShoot();
+                PlayerUtils.autoAim(this);
+                lastFireTime = currentTime;
+
+            }
+        } else if (isSlashPressed()) {
+            speed = 4;
+
+            if (currentTime - lastFireTime > fireRate) {
+                PlayerUtils.earthQuake(this);
                 lastFireTime = currentTime;
             }
-        }else{
-            fireRate = 200;
-            speed = 3.5;
+
+        }else {
+            speed = Config.PLAYER_SPEED_BASE;
             if (currentTime - lastFireTime > fireRate) {
                 shoot();
 
@@ -99,17 +108,26 @@ public class Player extends GameObject implements Shootable {
             }
         }
         Utility.controlUtility(this.transform, speed);
-        // ---- !Suchas comment: Could this be shorter? Lemme think-----
+
         checkOutOfBounds();
+
+        //Check collision with enemy bullet
         ArrayList<BaseBullet> bulletList = BulletManager.getInstance().getBullets();
         for (BaseBullet bullet : bulletList) {
                 if(bullet instanceof EnemyBullet){
-                    if(transform.checkCollide(this, bullet)){
+                    if(Transform.checkCollide(this.hitbox, bullet.getBounds())){
                     bullet.setDestroyed(true);
                 }
             }
         }
 
 
+    }
+
+//    public void setFireRate(double fireRate) {
+//        this.fireRate = fireRate;
+//    }
+    public void setSpeed(double speed) {
+        this.speed = speed;
     }
 }

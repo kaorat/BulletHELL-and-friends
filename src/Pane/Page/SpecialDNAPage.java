@@ -24,8 +24,8 @@ public class SpecialDNAPage extends GraphicEditor {
         create(new UISprite(Asset.UI.backgroundSpecialDNAPage, new Transform(Utility.getGameScreenX(), 0, 0.3, 0.25), 50));
 
         //Header
-        create(new UISprite(new Text("Special DNA",Utility.getGameFont(22 ), Color.BLACK),
-                new Transform(x+130,120),52));
+        create(new UISprite(Asset.UI.DNAHeader, new Transform(Utility.getGameScreenX() + 86, 70, 0.24, 0.22), 52));
+
 
         // Create the button
         allButtons.add((UIButton) create(new UIButton(Asset.UI.upgradeButtonDNA, new Transform(Utility.getGameScreenX() + 310, 180 , 0.28, 0.27), 54 , ButtonType.UPGRADEDNA)));

@@ -32,8 +32,8 @@ public class PlayerPage extends GraphicEditor {
         create(new UISprite(Asset.UI.backgroundPlayerPage, new Transform(Utility.getGameScreenX(), 0, 0.3, 0.25), 50));
 
         //Header
-       create(new UISprite(new Text("Player",Utility.getGameFont(22 ), Color.BLACK),
-                new Transform(x+165,120),52));
+        create(new UISprite(Asset.UI.playerHeader, new Transform(Utility.getGameScreenX() + 86, 70, 0.24, 0.22), 52));
+
 
         // Create the button
         allButtons.add((UIButton) create(new UIButton(Asset.UI.upgradeButtonMeat, new Transform(Utility.getGameScreenX() + 310, 170 , 0.28, 0.27), 54 , ButtonType.UPGRADEMEAT)));
@@ -106,7 +106,7 @@ public class PlayerPage extends GraphicEditor {
         if(allButtons.get(5).isPressed()) SceneManager.setCurrentPage(new MainPage(graphicsContext));
         for(int i=0;i<5;i++){
             //Variable
-            int level = PlayerManager.getInstance().getPlayerPerks().get(i+1);
+            int level = PlayerManager.getInstance().getPlayerPerks().get(i);
             int basePrice = Config.player_basePrices.get(i).intValue();
             int cost = (int)(basePrice * Math.pow(Config.player_priceIncrements.get(i),level));
             //Price
@@ -119,7 +119,8 @@ public class PlayerPage extends GraphicEditor {
                 button.setEnable(true);
                 if(button.isPressed()){
                     StatManager.getInstance().setCoin(coin-cost);
-                    PlayerManager.getInstance().getPlayerPerks().set(i+1,level+1);
+//                    PlayerManager.getInstance().getPlayerPerks().set(i+1,level+1);
+                    PlayerManager.getInstance().upgradeStat(i);
                 }
             }
             else{

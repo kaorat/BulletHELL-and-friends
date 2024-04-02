@@ -47,6 +47,12 @@ public class Asset {
         public static Image buttonNavigateDNA;
         public static Image buttonNavigateHover;
         public static Image backgroundGameplay;
+        public static Image upgradeHeader;
+        public static Image playerHeader;
+        public static Image enemyHeader;
+        public static Image gobletHeader;
+        public static Image DNAHeader;
+
 
 
         static{
@@ -102,18 +108,28 @@ public class Asset {
             holyiconUI=LoadImg("UI/Currency/holy-grail.png");
             dnaiconUI=LoadImg("UI/Currency/dna.png");
 
+            upgradeHeader=LoadImg("UI/Header/upgradeHeader.png");
+            playerHeader=LoadImg("UI/Header/playerHeader.png");
+            enemyHeader=LoadImg("UI/Header/enemyHeader.png");
+            gobletHeader=LoadImg("UI/Header/gobletHeader.png");
+            DNAHeader=LoadImg("UI/Header/DNAHeader.png");
+
+
+
         }
         private static Image LoadImg(String url){
             return new Image(ClassLoader.getSystemResource(url).toString());
         }
-
-
     }
+
+
 
     public static class Game{
         public static Image player;
         public static Image bullet;
+        public static Image rifleBullet;
         public static Image enemyBullet;
+        public static Image cowBullet;
         public static Image enemy;
         static{
             loadResource();
@@ -122,11 +138,15 @@ public class Asset {
         private static void loadResource() {
             player=Load("UI/kaosteak.png");
             bullet=Load("UI/Currency/Honey.png");
-            enemyBullet=Load("UI/firebullet.png");
+            rifleBullet=Load("UI/Bullet/RifleShot.png");
+
+            enemyBullet=Load("UI/Bullet/NormalShot.png");
+            cowBullet=Load("UI/CowBullet.png");
         }
         private static Image Load(String url){
             return new Image(ClassLoader.getSystemResource(url).toString());
         }
+
     }
     public static class Audio{
 
@@ -143,5 +163,6 @@ public class Asset {
         }
 
     }
+
 
 }

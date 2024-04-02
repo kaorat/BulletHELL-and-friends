@@ -1,10 +1,14 @@
 package Manager;
 
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class StatManager {
+import Utils.Updatable;
+
+
+public class StatManager implements Updatable {
    private static StatManager instance;
    private int coin;
    //TODO: every time, you get a coin -> increase totalCoin
@@ -21,9 +25,9 @@ public class StatManager {
     private ArrayList<Integer> dnaLevels;
     public StatManager(){
         setAmber(0);
+
         setCoin(10000);
-        setDna(0);
-        setTotalCoin(10000);
+        setTotalCoin(0);
         setHoneyLevel(1);
         setCompletion(0);
         setDeath(0);
@@ -49,6 +53,10 @@ public class StatManager {
     }
     public void addDeath(){
         death+=1;
+    }
+    public void addCoin(long coin){
+        this.coin+= (int) coin;
+        this.totalCoin+= (int) coin;
     }
     public void addCompletion(int percent){
         completion+=percent;
@@ -147,5 +155,14 @@ public class StatManager {
             instance = new StatManager();
         }
         return instance;
+    }
+    @Override
+    public String toString(){
+        return "Coin : "+coin+" Total Coin : "+totalCoin+" Honey Level : "+honeyLevel+" Soul : "+soul+" Amber : "+amber+" Time : "+time+" Completion : "+completion+" Death : "+death+" Killed : "+killed;
+    }
+
+    @Override
+    public void onUpdate() {
+//        System.out.println(toString());
     }
 }

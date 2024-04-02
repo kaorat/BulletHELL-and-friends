@@ -1,6 +1,7 @@
 package Utils;
 
 
+import GameEntity.GameObject;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import java.io.File;
@@ -85,6 +86,11 @@ public class Utility {
         } else if (isDPressed()) { // Move right
             transform.setRot(0);
             transform.translate(speed);
+        }
+    }
+    public static void isOutOfBounds(GameObject gameObject){
+        if(gameObject.getTransform().getPosY() < 0 || gameObject.getTransform().getPosY() > getScreenY() || gameObject.getTransform().getPosX() < 0 || gameObject.getTransform().getPosX() > getGameScreenX()){ // lower than the screen
+            gameObject.setDestroyed(true);
         }
     }
 }

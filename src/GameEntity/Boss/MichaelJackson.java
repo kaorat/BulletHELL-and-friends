@@ -29,7 +29,10 @@ public class MichaelJackson extends BaseBoss{
 
     @Override
     public void action() {
-
+        if(frame%1000==0){
+            transform.translateToPositionInMilliSecond(Math.random()*Utility.getGameScreenX(),Math.random()*60,4000);
+            System.out.println("YO");
+        }
     }
 
     @Override

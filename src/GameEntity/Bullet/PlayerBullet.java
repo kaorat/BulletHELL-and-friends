@@ -3,6 +3,7 @@ package GameEntity.Bullet;
 import GameEntity.GameObject;
 import Manager.BulletManager;
 import Manager.EnemyManager;
+import Manager.PlayerManager;
 import Utils.Asset;
 import Utils.Config;
 import Utils.Transform;
@@ -14,7 +15,7 @@ public class PlayerBullet extends BaseBullet {
     private double damage;
     public PlayerBullet(double speed, GameObject owner, Transform transform, double z,double damage,int graphic) {
         super(speed, owner, transform, z,Asset.Game.rifleBullet);
-        this.damage = Config.DAMAGE_BASE;
+        this.damage = PlayerManager.getInstance().getBioticRifleDamage();
         //setImage(Asset.Game.bullet);
     }
 

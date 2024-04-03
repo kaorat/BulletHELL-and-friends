@@ -51,9 +51,6 @@ public class Player extends GameObject implements Shootable {
 
     public void shoot() {
         PlayerUtils.normal(this);
-        AudioClip bulletSound = Asset.Audio.bulletSound;
-        bulletSound.setVolume(0.1);
-        bulletSound.play();
 //        System.out.println(BulletManager.getInstance().getBullets().size());
     }
     public void drawHitbox(){
@@ -92,27 +89,21 @@ public class Player extends GameObject implements Shootable {
                 PlayerUtils.autoAim(this);
                 lastFireTime = currentTime;
 
-            }
-        } else if (isSlashPressed()) {
-            speed = Config.PLAYER_SPEED_SHIFT;
+            } }
 
-            if (currentTime - lastFireTime > fireRate) {
-                PlayerUtils.earthQuake(this);
-                lastFireTime = currentTime;
-            }
+        else {
+                speed = Config.PLAYER_SPEED_BASE;
+                if (currentTime - lastFireTime > fireRate) {
+                    shoot();
 
-        }else {
-            speed = Config.PLAYER_SPEED_BASE;
-            if (currentTime - lastFireTime > fireRate) {
-                shoot();
-
-                lastFireTime = currentTime;
+                    lastFireTime = currentTime;
+                }
             }
-        }
+            PlayerUtils.teleport(this);
         Utility.controlUtility(this.transform, speed);
 
-        checkOutOfBounds();
 
+        checkOutOfBounds();
         //Check collision with enemy bullet
         ArrayList<BaseBullet> bulletList = BulletManager.getInstance().getBullets();
         for (BaseBullet bullet : bulletList) {

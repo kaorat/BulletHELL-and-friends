@@ -49,7 +49,7 @@ public class PlayerManager implements  Updatable {
 
     @Override
     public void onUpdate() {
-        System.out.println(toString());
+//        System.out.println(toString());
 
     }
 

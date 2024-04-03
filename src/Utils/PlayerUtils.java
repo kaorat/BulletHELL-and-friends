@@ -5,11 +5,19 @@ import GameEntity.Bullet.PlayerBullet;
 import GameEntity.Enemy.BaseEnemy;
 import GameEntity.Player.Player;
 import Manager.*;
+import input.InputUtility;
+import javafx.geometry.Point2D;
 import javafx.scene.media.AudioClip;
 
 import java.util.ArrayList;
 
 public class PlayerUtils {
+
+    private static long lastTRTime = 0;
+    private static long lastTLTime = 0;
+    private static long lastBRTime = 0;
+    private static long lastBLTime = 0;
+
     public static void normal(Player player){
         // player shooting pattern
         PlayerBullet bullet = new PlayerBullet(10, player, new Transform(player.getTransform().getPosX() + 50, player.getTransform().getPosY() + 20, -90, 1, 1), 0, PlayerManager.getInstance().getBioticRifleDamage(),1);
@@ -62,5 +70,26 @@ public class PlayerUtils {
         bulletSound.setVolume(0.1);
         bulletSound.play();
     }
+    public static void teleport(Player player){
+        long currentTime = System.currentTimeMillis();
+
+    if(InputUtility.isSlashPressed())
+    {
+       if(currentTime - lastTRTime > 1000){
+           Transform t = player.getTransform();
+           Point2D p = t.calculateTranslation(100);
+           t.setPosX(t.getPosX() + p.getX());
+           t.setPosY(t.getPosY() + p.getY());
+           lastTRTime = currentTime;
+           Track teleportSound = new Track(Asset.Audio.bulletSound);
+           teleportSound.setVolume(0.1);
+           teleportSound.play();
+       }
+
+    }
+
+    }
+
+
 
 }

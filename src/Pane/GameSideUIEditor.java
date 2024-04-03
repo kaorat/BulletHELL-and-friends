@@ -45,14 +45,6 @@ public class GameSideUIEditor extends GraphicEditor{
     }
 
     @Override
-    public void clear() {
-        for(GameObject gameObject : Monitored_Object){
-            gameObject.setDestroyed(true);
-        }
-        Monitored_Object.clear();
-    }
-
-    @Override
     public void onUpdate() {
         part.getText().setText(Utility.NumberToString(StatManager.getInstance().getCoin()));
         soul.getText().setText(Utility.NumberToString(StatManager.getInstance().getSoul()));

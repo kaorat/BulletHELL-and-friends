@@ -1,5 +1,6 @@
 package Manager;
 
+import GameEntity.Boss.BaseBoss;
 import GameEntity.GameObject;
 import Pane.GraphicEditor;
 import Utils.Updatable;

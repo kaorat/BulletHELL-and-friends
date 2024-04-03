@@ -8,6 +8,7 @@ public class Asset {
 
     public static class UI{
         public static Image baseBackground;
+        public static Image aPixel;
         public static Image mainBackground;
         public static Image buttonNavigate;
         public static Image spriteHover;
@@ -60,6 +61,8 @@ public class Asset {
         }
 
         private static void loadResource() {
+            //pixel
+            aPixel = LoadImg("UI/A pixel.png");
             //Background
             baseBackground=LoadImg("UI/Background/baseBackground.png");
             mainBackground=LoadImg("UI/Background/mainBackground.png");
@@ -131,6 +134,7 @@ public class Asset {
         public static Image enemyBullet;
         public static Image cowBullet;
         public static Image enemy;
+        public static Image michealJackson;
         static{
             loadResource();
         }
@@ -142,6 +146,8 @@ public class Asset {
 
             enemyBullet=Load("UI/Bullet/NormalShot.png");
             cowBullet=Load("UI/CowBullet.png");
+            michealJackson=Load("UI/Enemy/Disco.png");
+
         }
         private static Image Load(String url){
             return new Image(ClassLoader.getSystemResource(url).toString());

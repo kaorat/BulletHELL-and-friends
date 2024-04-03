@@ -1,11 +1,10 @@
 package Utils;
 
+import GameEntity.Boss.BaseBoss;
 import GameEntity.Bullet.PlayerBullet;
 import GameEntity.Enemy.BaseEnemy;
 import GameEntity.Player.Player;
-import Manager.BulletManager;
-import Manager.EnemyManager;
-import Manager.PlayerManager;
+import Manager.*;
 import javafx.scene.media.AudioClip;
 
 import java.util.ArrayList;
@@ -37,12 +36,24 @@ public class PlayerUtils {
     }
 
     public static void autoAim(Player player){
-        ArrayList<BaseEnemy> enemies = EnemyManager.getInstance().getEnemies();
-        if(enemies.isEmpty()){
-            return;
+        Transform tf = new Transform(0,0);
+        if(SceneManager.currentState== SceneManager.GameState.normal){
+            ArrayList<BaseEnemy> enemies = EnemyManager.getInstance().getEnemies();
+            if(enemies.isEmpty()){
+                return;
+            }
+            BaseEnemy enemy = enemies.get(0);
+            tf = enemy.getTransform();
         }
-        BaseEnemy enemy = enemies.get(0);
-        Transform tf = enemy.getTransform();
+        else{
+            BaseBoss boss = BossManager.getInstance().getBoss();
+            if(boss==null){
+                return;
+            }
+            tf = boss.getTransform();
+        }
+
+
         double rot = Transform.calculateAngleToTarget(player.getTransform(), tf);
         PlayerBullet bullet = new PlayerBullet(10, player, new Transform(player.getTransform().getPosX() + 25, player.getTransform().getPosY() + 20, rot, 1, 1), 0, PlayerManager.getInstance().getBioticRifleDamage(),1);
         BulletManager.getInstance().add(bullet);
@@ -50,6 +61,6 @@ public class PlayerUtils {
         AudioClip bulletSound = Asset.Audio.bulletSound;
         bulletSound.setVolume(0.1);
         bulletSound.play();
-        }
+    }
 
 }

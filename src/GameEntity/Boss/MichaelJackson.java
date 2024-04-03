@@ -1,11 +1,20 @@
 package GameEntity.Boss;
 
+import Utils.Asset;
 import Utils.Transform;
+import Utils.Utility;
+import input.InputUtility;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 public class MichaelJackson extends BaseBoss{
-    public MichaelJackson(int hp, int fireRate, int bulletSpeed, int bulletLength, Transform transform, double z) {
-        super(hp, fireRate, bulletSpeed, bulletLength,transform,z);
+
+    public MichaelJackson() {
+        super();
+        maxHp=1000;
+        hp=maxHp;
+        getTransform().setScl(0.15,0.15);
+        setImage(Asset.Game.michealJackson);
     }
 
     @Override
@@ -17,7 +26,15 @@ public class MichaelJackson extends BaseBoss{
     public void firing() {
 
     }
+
+    @Override
+    public void action() {
+
+    }
+
     @Override
     public void draw(GraphicsContext gc) {
+        Utility.DrawImage(gc,getImage(),transform);
+        drawBounds(0, 0);
     }
 }

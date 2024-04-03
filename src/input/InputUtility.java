@@ -1,5 +1,7 @@
 package input;
 
+import Manager.SceneManager;
+import Pane.Page.BossPage;
 import Pane.RootPane;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -13,6 +15,7 @@ public class InputUtility {
     private static boolean dPressed = false;
     private static boolean shiftPressed = false;
     private static boolean slashPressed = false;
+    private static boolean bPressed = false;
 
     public static boolean isWPressed() {
         return wPressed;
@@ -35,6 +38,10 @@ public class InputUtility {
     public static boolean isSlashPressed() {
         return slashPressed;
     }
+
+    public static boolean isbPressed() { return bPressed; }
+
+    public static void setbPressed(boolean bPressed) { InputUtility.bPressed = bPressed; }
 
     public static void setKey(Scene canvas) {
 //        canvas.requestFocus();
@@ -59,6 +66,9 @@ public class InputUtility {
                     break;
                 case SLASH:
                     slashPressed = true;
+                    break;
+                case B:
+                    bPressed = true;
                     break;
                 default:
                     break;
@@ -85,6 +95,9 @@ public class InputUtility {
                     break;
                 case SLASH:
                     slashPressed = false;
+                    break;
+                case B:
+                    bPressed = false;
                     break;
                 default:
                     break;

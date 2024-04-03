@@ -121,7 +121,6 @@ public class Player extends GameObject implements Shootable {
                     }
                     if(Transform.checkCollide(this.bounds, bullet.getBounds())){
                         StatManager.getInstance().addCoin(1);
-
                     }
             }
         }

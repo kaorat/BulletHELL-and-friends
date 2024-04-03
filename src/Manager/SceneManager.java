@@ -1,7 +1,10 @@
 package Manager;
 
 import Pane.*;
+import Utils.Asset;
+import Utils.Track;
 import Utils.Updatable;
+import javafx.scene.media.AudioClip;
 
 import java.util.ArrayList;
 
@@ -37,6 +40,9 @@ public class SceneManager {
         SceneManager.updatables.add(ItemManager.getInstance());
         SceneManager.updatables.add(StatManager.getInstance());
         currentState=GameState.normal;
+        Track.bgm.setCycleCount(AudioClip.INDEFINITE);
+        Track.bgm.setVolume(0.2);
+        Track.bgm.play();
     }
     public static void update(){
         for (Updatable updatable : updatables) {
@@ -59,6 +65,12 @@ public class SceneManager {
     public static void ActivatedBossPage(GraphicEditor bossPage){
         currentState=GameState.boss;
         SceneManager.bossPage=bossPage;
+
+        AudioClip bossBgm = Asset.Audio.bossFight1;
+        Track.bgm.stop();
+        Track.bossTheme.setCycleCount(AudioClip.INDEFINITE);
+        Track.bossTheme.setVolume(0.5);
+        Track.bossTheme.play();
         EnemyManager.getInstance().clearEnemy();
         BulletManager.getInstance().clearBullets();
     }
@@ -67,6 +79,10 @@ public class SceneManager {
         SceneManager.bossPage.clear();
         SceneManager.bossPage=null;
         BulletManager.getInstance().clearBullets();
+        Track.bossTheme.stop();
+        Track.bgm.setCycleCount(AudioClip.INDEFINITE);
+        Track.bgm.setVolume(0.2);
+        Track.bgm.play();
     }
 
 }

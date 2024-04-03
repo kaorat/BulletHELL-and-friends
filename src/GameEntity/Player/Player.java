@@ -51,18 +51,18 @@ public class Player extends GameObject implements Shootable {
 
     public void shoot() {
         PlayerUtils.normal(this);
-        AudioClip bulletSound = Asset.Audio.bulletSound;
-        bulletSound.setVolume(0.1);
-        bulletSound.play();
 //        System.out.println(BulletManager.getInstance().getBullets().size());
     }
-    public void drawHitbox(double offsetX, double offsetY){
-        hitbox = new BoundingBox(this.transform.getPosX() + offsetX, this.transform.getPosY() + offsetY, 10,10);
+    public void drawHitbox(){
+        double offset = (5 - PlayerManager.getInstance().getMinimize())/10;
+        double scale = PlayerManager.getInstance().getMinimize() /5;
+//        double offsetH = 0.25;
+        this.hitbox = new BoundingBox(transform.getPosX() + (offset * image.getWidth() * transform.getSclX()),transform.getPosY() + ( offset * image.getHeight() * transform.getSclY()), image.getWidth()* transform.getSclX() * scale, image.getHeight()* transform.getSclY() * scale);
     }
 
     @Override
     public void draw(GraphicsContext gc) {
-        drawHitbox((transform.getSclX()*getImage().getWidth())/4,(transform.getSclY()*getImage().getHeight())/4);
+        drawHitbox();
         drawBounds(0, 0);
         Utility.DrawImage(gc,getImage(),this.transform);
 //        gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 60, 60);
@@ -72,8 +72,6 @@ public class Player extends GameObject implements Shootable {
             gc.setStroke(Color.YELLOW);
             gc.strokeRect(hitbox.getMinX(),hitbox.getMinY(),hitbox.getWidth(),hitbox.getHeight());
         }
-        //Suchas Comment : will change to image graphic right?
-//        drawBounds(Config.PLAYER_OFFSET_WIDTH, Config.PLAYER_OFFSET_HEIGHT, Config.PLAYER_WIDTH, Config.PLAYER_HEIGHT);
     }
 
     public void controlAggressiveShoot() {
@@ -85,34 +83,28 @@ public class Player extends GameObject implements Shootable {
         double fireRate = PlayerManager.getInstance().getBioticRifleFireRate() * 1000;
         long currentTime = System.currentTimeMillis();
         if (isShiftPressed()) {
-            speed = 8;
+            speed = Config.PLAYER_SPEED_SHIFT;
             if (currentTime - lastFireTime > fireRate) {
 //                controlAggressiveShoot();
                 PlayerUtils.autoAim(this);
                 lastFireTime = currentTime;
 
-            }
-        } else if (isSlashPressed()) {
-            speed = 4;
+            } }
 
-            if (currentTime - lastFireTime > fireRate) {
-                PlayerUtils.earthQuake(this);
-                lastFireTime = currentTime;
-            }
+        else {
+                speed = Config.PLAYER_SPEED_BASE;
+                if (currentTime - lastFireTime > fireRate) {
+                    shoot();
 
-        }else {
-            speed = Config.PLAYER_SPEED_BASE;
-            if (currentTime - lastFireTime > fireRate) {
-                shoot();
-
-                lastFireTime = currentTime;
+                    lastFireTime = currentTime;
+                }
             }
-        }
+            PlayerUtils.teleport(this);
         Utility.controlUtility(this.transform, speed);
 
-        checkOutOfBounds();
 
-        //Check hitbox with enemy bullet
+        checkOutOfBounds();
+        //Check collision with enemy bullet
         ArrayList<BaseBullet> bulletList = BulletManager.getInstance().getBullets();
         for (BaseBullet bullet : bulletList) {
                 if(bullet instanceof EnemyBullet){
@@ -129,9 +121,6 @@ public class Player extends GameObject implements Shootable {
 
     }
 
-//    public void setFireRate(double fireRate) {
-//        this.fireRate = fireRate;
-//    }
     public void setSpeed(double speed) {
         this.speed = speed;
     }

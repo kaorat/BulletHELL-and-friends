@@ -13,7 +13,7 @@ public class MichaelJackson extends BaseBoss{
         super();
         maxHp=1000;
         hp=maxHp;
-        getTransform().setScl(0.15,0.15);
+        getTransform().setScl(0.6,0.6);
         setImage(Asset.Game.michealJackson);
     }
 

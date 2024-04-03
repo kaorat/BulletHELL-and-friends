@@ -22,13 +22,13 @@ public class BossPage extends GraphicEditor {
     public BossPage(GraphicsContext graphicsContext) {
         super(graphicsContext);
         //Background above main bg
-        time=60;
+        time=1000;
         lastframe=System.currentTimeMillis();
         boss = BossManager.getInstance().initBoss();
-        create(new UISprite(Asset.UI.mainBackground, new Transform(0, 0, 0.65, 0.5), -10));
+        create(new UISprite(Asset.UI.backgroundGameplay, new Transform(0, 0, 0.65, 0.5), -10));
         create(new UISprite(Asset.UI.headerMain,new Transform(20,35,2,0.3),70));
         hpBar = (UISprite) create(new UISprite(Asset.UI.aPixel,new Transform(65,36,490,11),75));
-        timer = (UISprite) create(new UISprite(new Text("60", Utility.getGameFont(30), Color.WHITE),new Transform(Utility.getGameScreenX()-50,50),76));
+        timer = (UISprite) create(new UISprite(new Text(Integer.toString(time), Utility.getGameFont(30), Color.WHITE),new Transform(Utility.getGameScreenX()-50,50),76));
     }
     @Override
     public void onUpdate() {

@@ -14,7 +14,7 @@ public class PlayerBullet extends BaseBullet {
     private double damage;
     public PlayerBullet(double speed, GameObject owner, Transform transform, double z,double damage,int graphic) {
         super(speed, owner, transform, z,Asset.Game.rifleBullet);
-        this.damage = damage;
+        this.damage = 100;
         //setImage(Asset.Game.bullet);
     }
 

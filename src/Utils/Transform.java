@@ -114,6 +114,13 @@ public class Transform {
     public void setSclY(double sclY) {
         this.sclY = sclY;
     }
-
+    public void setScl(double sclX,double sclY) {
+        this.sclX = sclX;
+        this.sclY = sclY;
+    }
+    public void setPos(double posX,double posY) {
+        this.posX = posX;
+        this.posY = posY;
+    }
 
 }

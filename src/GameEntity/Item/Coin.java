@@ -43,7 +43,7 @@ public class Coin extends BaseItem{ // this is 'parts drop', I just want to chan
     public void onPickup() {
         StatManager.getInstance().addCoin(amount);
 //        System.out.println(amount);
-        System.out.println(StatManager.getInstance().getCoin());
+//        System.out.println(StatManager.getInstance().getCoin());
         this.destroyed = true;
     }
 }

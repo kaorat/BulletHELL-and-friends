@@ -1,6 +1,7 @@
 package Manager;
 
 import Pane.*;
+import Pane.Page.BossPage;
 import Utils.Updatable;
 
 import java.util.ArrayList;
@@ -64,6 +65,7 @@ public class SceneManager {
     }
     public static void DeActivatedBossPage(){
         currentState=GameState.normal;
+        BossManager.getInstance().removeBoss();
         SceneManager.bossPage.clear();
         SceneManager.bossPage=null;
         BulletManager.getInstance().clearBullets();

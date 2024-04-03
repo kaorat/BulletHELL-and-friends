@@ -67,9 +67,9 @@ public class Transform {
         posY += translation.getY();
     }
     public void translateToPositionInMilliSecond(double x,double y,double frame){
-        System.out.println(x+" "+y);
+        //System.out.println(x+" "+y);
         rot=calculateAngleToTarget(new Transform(posX,posY),new Transform(x,y));
-        double speed = (calculateDistanceToTarget(new Transform(posX,posY),new Transform(x,y))/frame)*5;
+        double speed = (calculateDistanceToTarget(new Transform(posX,posY),new Transform(x,y))/frame)*6.8;
         Point2D translation = calculateTranslation(speed);
         double startFrame = System.currentTimeMillis();
         new AnimationTimer() {

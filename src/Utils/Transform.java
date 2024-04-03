@@ -1,5 +1,9 @@
 package Utils;
 
+import Manager.SceneManager;
+import Pane.RootPane;
+import input.MouseUtil;
+import javafx.animation.AnimationTimer;
 import javafx.geometry.BoundingBox;
 import javafx.geometry.Bounds;
 import GameEntity.GameObject;
@@ -62,7 +66,22 @@ public class Transform {
         posX += translation.getX();
         posY += translation.getY();
     }
-
+    public void translateToPositionInMilliSecond(double x,double y,double frame){
+        //System.out.println(x+" "+y);
+        rot=calculateAngleToTarget(new Transform(posX,posY),new Transform(x,y));
+        double speed = (calculateDistanceToTarget(new Transform(posX,posY),new Transform(x,y))/frame)*6.8;
+        Point2D translation = calculateTranslation(speed);
+        double startFrame = System.currentTimeMillis();
+        new AnimationTimer() {
+            public void handle(long now) {
+                if(System.currentTimeMillis()-startFrame>frame){
+                    this.stop();
+                }
+                posX += translation.getX();
+                posY += translation.getY();
+            }
+        }.start();
+    }
 
     public static boolean checkCollide(Bounds b1, Bounds b2){
         // draw here the bounds of the object

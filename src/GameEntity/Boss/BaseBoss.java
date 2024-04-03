@@ -4,6 +4,8 @@ import GameEntity.Bullet.BaseBullet;
 import GameEntity.Bullet.PlayerBullet;
 import GameEntity.GameObject;
 import Manager.BulletManager;
+import Manager.SceneManager;
+import Manager.StatManager;
 import Utils.Transform;
 import javafx.scene.canvas.GraphicsContext;
 
@@ -12,13 +14,13 @@ import java.util.ArrayList;
 public abstract class BaseBoss extends GameObject {
     protected double hp;
     protected double maxHp;
+    //142 = 1 sec (WTF)
     protected int frame;
-    protected double lastframetime;
     public BaseBoss(){
         //Pattern here
-        super(new Transform(100,50),20);
+        super(new Transform(800,0),20);
         frame=0;
-        lastframetime=System.currentTimeMillis();
+        transform.translateToPositionInMilliSecond(300,100,3000);
     }
 //    to set firing pattern for each boss
 
@@ -38,18 +40,22 @@ public abstract class BaseBoss extends GameObject {
         action();
         BulletManager bm = BulletManager.getInstance();
         ArrayList<BaseBullet> bulletList = bm.getBullets();
+        if(hp<=0){
+            //TODO:Tell StatManager that I'm defeated
+            StatManager.getInstance().setDna(StatManager.getInstance().getDna()+1);
+            SceneManager.DeActivatedBossPage();
+        }
         for (BaseBullet bullet : bulletList) {
             if (Transform.checkCollide(this.getBounds(), bullet.getBounds()) && bullet instanceof PlayerBullet) {
                 this.hp -= ((PlayerBullet)bullet).getDamage();
                 bullet.setDestroyed(true);
             }
         }
-        frame=(int)(System.currentTimeMillis()-lastframetime);
+        frame++;
         if(frame>1200000){
             frame%=120000;
-            lastframetime=System.currentTimeMillis();
         }
-        System.out.println(frame);
+
     }
 
     @Override

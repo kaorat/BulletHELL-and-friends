@@ -3,6 +3,7 @@ package Manager;
 import Pane.*;
 import Utils.Asset;
 import Utils.Track;
+import Pane.Page.BossPage;
 import Utils.Updatable;
 import javafx.scene.media.AudioClip;
 
@@ -76,6 +77,7 @@ public class SceneManager {
     }
     public static void DeActivatedBossPage(){
         currentState=GameState.normal;
+        BossManager.getInstance().removeBoss();
         SceneManager.bossPage.clear();
         SceneManager.bossPage=null;
         BulletManager.getInstance().clearBullets();

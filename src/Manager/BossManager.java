@@ -20,7 +20,7 @@ public class BossManager implements Updatable {
     }
 
     public BaseBoss initBoss(){
-        //Decide boss here
+        //TODO:Decide boss here
         this.boss = new MichaelJackson();
         GameObjectHolder.getInstance().add(this.boss);
         return this.boss;

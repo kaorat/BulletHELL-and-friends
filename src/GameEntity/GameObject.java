@@ -26,7 +26,7 @@ public abstract class GameObject {
     protected boolean visible,destroyed;
 
     public void drawBounds(double offsetW, double offsetH,double scaleX,double scaleY){
-        this.bounds = new BoundingBox(transform.getPosX() + offsetW,transform.getPosY() + offsetH, image.getWidth()* transform.getSclX()*scaleX, image.getHeight()* transform.getSclY()*scaleY);
+        this.bounds = new BoundingBox(transform.getPosX() + (offsetW * image.getWidth() * transform.getSclX()),transform.getPosY() + ( offsetH * image.getHeight() * transform.getSclY()), image.getWidth()* transform.getSclX()*scaleX, image.getHeight()* transform.getSclY()*scaleY);
     }
     public void drawBounds(double offsetW, double offsetH){
         this.bounds = new BoundingBox(transform.getPosX() + offsetW,transform.getPosY() + offsetH, image.getWidth()* transform.getSclX(), image.getHeight()* transform.getSclY());

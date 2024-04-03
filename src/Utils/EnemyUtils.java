@@ -73,7 +73,7 @@ public class EnemyUtils {
         // circular direction
         for(int i = 0; i <= quantity; i++){
             for(int j=1;j<=length;j++){
-                EnemyBullet bullet = new EnemyBullet(speed/j, cow, new Transform(cow.getTransform().getPosX() + 25, cow.getTransform().getPosY() + 20, (initRot + ( (double) (i * 360) /quantity ))%360, 1, 1), 0,0);
+                EnemyBullet bullet = new EnemyBullet(speed/j, cow, new Transform(cow.getTransform().getPosX() + 25, cow.getTransform().getPosY() + 20, (initRot + ( (double) (i * 360) /quantity ))%360, 1, 1), 35,0);
                 BulletManager.getInstance().add(bullet);
             }
             //TODO

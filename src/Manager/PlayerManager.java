@@ -49,7 +49,7 @@ public class PlayerManager implements  Updatable {
 
     @Override
     public void onUpdate() {
-//        System.out.println(toString());
+        System.out.println(toString());
 
     }
 
@@ -69,26 +69,28 @@ public class PlayerManager implements  Updatable {
 //        player.setFireRate(getBioticRifleFireRate()*1000);
     }
     public void upgradeStat(int index){
-
+        if(playerPerks.get(index) >= Config.player_maxLevels.get(index)){
+            return;
+        }
         playerPerks.set(index,playerPerks.get(index)+1);
 
         switch (index){
             case 0:
+
                 setBioticRifleDamage(getBioticRifleDamage()+Config.DAMAGE_UPGRADE);
 
                 break;
             case 1:
                 setBioticRifleFireRate(getBioticRifleFireRate()+Config.PLAYER_FIRE_RATE_UPGRADE);
-//                player.setFireRate(getBioticRifleFireRate()*1000);
                 break;
             case 2:
-                setMinimize(getMinimize()-Config.MINIMIZE_UPGRADE);
+                setMinimize(getMinimize() + Config.MINIMIZE_UPGRADE);
                 break;
             case 3:
-                setDexterity(getDexterity()+Config.DEXTERITY_UPGRADE);
+                setDexterity(getDexterity() + Config.DEXTERITY_UPGRADE);
                 break;
             case 4:
-                setProficiency(getProficiency()+Config.PROFICIENCY_UPGRADE);
+                setProficiency(getProficiency() + Config.PROFICIENCY_UPGRADE);
                 break;
         }
 

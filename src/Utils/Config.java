@@ -31,7 +31,7 @@ public class Config {
     public static final double AGILITY_MAX_LEVEL = 99;
 
     // Lethal Mutation : 3
-    public static final double ENEMY_BULLET_SPEED_BASE = 8;
+    public static final double ENEMY_BULLET_SPEED_BASE = 5;
     public static final double LETHAL_BULLET_SPEED_UPGRADE = 0.2;
     public static final double LETHAL_BASE_PRICE = 300;
     public static final double LETHAL_PRICE_INCREMENT = 1.2;//Power by level
@@ -79,7 +79,8 @@ public class Config {
 
     //TODO : Player
     //Player Speed
-    public static final double PLAYER_SPEED_BASE = 10;
+    public static final double PLAYER_SPEED_BASE = 6;
+    public static final double PLAYER_SPEED_SHIFT = 4;
     // no upgrade
 
 
@@ -88,21 +89,21 @@ public class Config {
     public static final double DAMAGE_UPGRADE = 0.25;
     public static final double DAMAGE_BASE_PRICE = 20;
     public static final double DAMAGE_PRICE_INCREMENT = 1.25;//Power by level
-    public static final double DAMAGE_MAX_LEVEL = 1000000;
+    public static final double DAMAGE_MAX_LEVEL = 50;//???????
 
     //Firerate
     public static final double PLAYER_FIRE_RATE_BASE = 0.5;
-    public static final double PLAYER_FIRE_RATE_UPGRADE = -0.005;
+    public static final double PLAYER_FIRE_RATE_UPGRADE = -0.01;
     public static final double PLAYER_FIRE_RATE_BASE_PRICE = 100;
     public static final double PLAYER_FIRE_RATE_PRICE_INCREMENT = 1.25;//Power by level
-    public static final double PLAYER_FIRE_RATE_MAX_LEVEL = 100;
+    public static final double PLAYER_FIRE_RATE_MAX_LEVEL = 35;
 
     //Minimize
     public static final double HITBOX_SIZE_BASE = 5;
-    public static final double MINIMIZE_UPGRADE = -0.05;
+    public static final double MINIMIZE_UPGRADE = -0.1;
     public static final double MINIMIZE_BASE_PRICE = 200;
     public static final double MINIMIZE_PRICE_INCREMENT = 1.25;//Power by level
-    public static final double MINIMIZE_MAX_LEVEL = 60;
+    public static final double MINIMIZE_MAX_LEVEL = 40;
 
     //DEXTERITY
     public static final double GRAZE_HITBOX_SIZE_BASE = 7;

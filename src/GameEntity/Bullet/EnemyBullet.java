@@ -27,9 +27,10 @@ public class EnemyBullet extends BaseBullet{
         // ---- Suchas comment: Calibration? that's okay-----
         //gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 10, 10);
         Utility.DrawImage(gc,getImage(),transform);
-        this.bounds = new BoundingBox(transform.getPosX(),transform.getPosY(),10,10); // manual offset calibration
-        gc.setStroke(Color.BLACK);
-        gc.strokeRect(bounds.getMinX(),bounds.getMinY(),bounds.getWidth(),bounds.getHeight());
+//        this.bounds = new BoundingBox(transform.getPosX(),transform.getPosY(),10,10); // manual offset calibration
+        drawBounds(0.25,0.25, 0.5, 0.5);
+//        gc.setStroke(Color.BLACK);
+//        gc.strokeRect(bounds.getMinX(),bounds.getMinY(),bounds.getWidth(),bounds.getHeight());
     }
 
     @Override

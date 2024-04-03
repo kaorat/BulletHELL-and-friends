@@ -1,7 +1,9 @@
 package Manager;
 
 import Pane.*;
+import Utils.Asset;
 import Utils.Updatable;
+import javafx.scene.media.AudioClip;
 
 import java.util.ArrayList;
 
@@ -59,6 +61,11 @@ public class SceneManager {
     public static void ActivatedBossPage(GraphicEditor bossPage){
         currentState=GameState.boss;
         SceneManager.bossPage=bossPage;
+
+        AudioClip bossBgm = Asset.Audio.bossFight1;
+        bossBgm.setCycleCount(AudioClip.INDEFINITE);
+        bossBgm.setVolume(0.35);
+        bossBgm.play();
         EnemyManager.getInstance().clearEnemy();
         BulletManager.getInstance().clearBullets();
     }

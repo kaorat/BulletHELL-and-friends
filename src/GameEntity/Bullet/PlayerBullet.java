@@ -14,7 +14,7 @@ public class PlayerBullet extends BaseBullet {
     private double damage;
     public PlayerBullet(double speed, GameObject owner, Transform transform, double z,double damage,int graphic) {
         super(speed, owner, transform, z,Asset.Game.rifleBullet);
-        this.damage = damage;
+        this.damage = Config.DAMAGE_BASE;
         //setImage(Asset.Game.bullet);
     }
 
@@ -36,6 +36,7 @@ public class PlayerBullet extends BaseBullet {
     @Override
     public void onUpdate() {
 //        transform.setRot(-90);
+
         transform.translate(speed);
 
         Utility.isOutOfBounds(this);

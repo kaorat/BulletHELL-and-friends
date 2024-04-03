@@ -7,8 +7,14 @@ import java.util.ArrayList;
 
 public class SceneManager {
     public static int currentScene;
+    public enum GameState{
+        normal,
+        boss
+    }
+    public static GameState currentState;
     public static ArrayList<Updatable> updatables=new ArrayList<>();
     private static GraphicEditor currentPage;
+    private static GraphicEditor bossPage;
 
     public static int getCurrentScene() {
         return currentScene;
@@ -30,6 +36,7 @@ public class SceneManager {
         SceneManager.updatables.add(PlayerManager.getInstance());
         SceneManager.updatables.add(ItemManager.getInstance());
         SceneManager.updatables.add(StatManager.getInstance());
+        currentState=GameState.normal;
     }
     public static void update(){
         for (Updatable updatable : updatables) {
@@ -37,6 +44,9 @@ public class SceneManager {
         }
         if(currentPage!=null) {
             currentPage.onUpdate();
+        }
+        if(bossPage!=null){
+            bossPage.onUpdate();
         }
     }
 
@@ -46,6 +56,17 @@ public class SceneManager {
         }
         SceneManager.currentPage = currentPage;
     }
-
+    public static void ActivatedBossPage(GraphicEditor bossPage){
+        currentState=GameState.boss;
+        SceneManager.bossPage=bossPage;
+        EnemyManager.getInstance().clearEnemy();
+        BulletManager.getInstance().clearBullets();
+    }
+    public static void DeActivatedBossPage(){
+        currentState=GameState.normal;
+        SceneManager.bossPage.clear();
+        SceneManager.bossPage=null;
+        BulletManager.getInstance().clearBullets();
+    }
 
 }

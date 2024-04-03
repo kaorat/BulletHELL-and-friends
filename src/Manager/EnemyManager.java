@@ -111,7 +111,7 @@ public class EnemyManager implements Updatable {
     public void onUpdate() {
 
         removeDestroyed();
-
+        if(SceneManager.currentState== SceneManager.GameState.boss) return;
         if (System.currentTimeMillis() - lastChickenSpawnTime > EnemyUtils.calculateSpawnRate(ChickenPerks.get(7))) {
             spawnEnemy(EnemyType.CHICKEN);
             lastChickenSpawnTime = System.currentTimeMillis();

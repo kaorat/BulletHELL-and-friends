@@ -40,6 +40,5 @@ public class PlayerBullet extends BaseBullet {
 
         Utility.isOutOfBounds(this);
 
-        BulletManager.getInstance().removeDestroyed();
     }
 }

@@ -1,9 +1,12 @@
 package Pane;
 
 import GameEntity.UI.UISprite;
+import Manager.SceneManager;
+import Pane.Page.BossPage;
 import Utils.Asset;
 import Utils.Transform;
 import Utils.Utility;
+import input.InputUtility;
 import javafx.scene.canvas.GraphicsContext;
 
 //Bullet hell game here (game box)
@@ -24,13 +27,18 @@ public class GameplayEditor extends GraphicEditor{
 //        create(new GameEntity.Player.Player(new Utils.Transform(200,400),30));
     }
 
-    @Override
-    public void clear() {
-
-    }
 
     @Override
     public void onUpdate() {
+        if(InputUtility.isbPressed()) {
+            if(SceneManager.currentState== SceneManager.GameState.normal){
+                SceneManager.ActivatedBossPage(new BossPage(this.graphicsContext));
+            }
+            else{
+                SceneManager.DeActivatedBossPage();
+            }
+            InputUtility.setbPressed(false);
+        }
 
     }
 }

@@ -3,15 +3,10 @@ package GameEntity.Enemy;
 import GameEntity.Bullet.BaseBullet;
 import GameEntity.Bullet.PlayerBullet;
 import GameEntity.GameObject;
-import GameEntity.Item.BaseItem;
-import GameEntity.Item.Coin;
 import Manager.BulletManager;
-import Manager.EnemyManager;
-import Manager.ItemManager;
 import Utils.EnemyType;
 import Utils.EnemyUtils;
 import Utils.Transform;
-import javafx.scene.canvas.GraphicsContext;
 
 import java.util.ArrayList;
 
@@ -53,7 +48,7 @@ public abstract class BaseEnemy extends GameObject {
     public abstract void firing();
     public abstract void action();
     public void ApplyStat(EnemyType type){
-        this.partDrop = 111111;
+        this.partDrop = 10;
         this.hp = EnemyUtils.calculateStat(type,1,Perks.get(1));
         this.fireRate = EnemyUtils.calculateStat(type,2,Perks.get(2));
         this.bulletSpeed = EnemyUtils.calculateStat(type,3,Perks.get(3));

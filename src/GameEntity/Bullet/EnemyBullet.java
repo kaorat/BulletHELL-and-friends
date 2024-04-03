@@ -42,6 +42,5 @@ public class EnemyBullet extends BaseBullet{
 //            transform.setRot(Transform.calculateAngleToTarget(this.transform, PlayerManager.getInstance().getPlayer().getTransform()));
         transform.translate(speed);
         Utility.isOutOfBounds(this);
-        BulletManager.getInstance().removeDestroyed();
     }
 }

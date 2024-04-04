@@ -13,9 +13,9 @@ import javafx.scene.image.Image;
 
 public class PlayerBullet extends BaseBullet {
     private double damage;
-    public PlayerBullet(double speed, GameObject owner, Transform transform, double z,double damage,int graphic) {
-        super(speed, owner, transform, z,Asset.Game.rifleBullet);
-        this.damage = PlayerManager.getInstance().getBioticRifleDamage();
+    public PlayerBullet(double speed, Transform transform, double z,double damage,int graphic) {
+        super(speed, transform, z,Asset.Game.rifleBullet);
+        this.damage = damage;
         //setImage(Asset.Game.bullet);
     }
 
@@ -37,8 +37,7 @@ public class PlayerBullet extends BaseBullet {
     @Override
     public void onUpdate() {
 //        transform.setRot(-90);
-
-        transform.translate(speed);
+        transform.translate();
 
         Utility.isOutOfBounds(this);
 

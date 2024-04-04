@@ -29,9 +29,6 @@ public abstract class BaseBoss extends GameObject {
     }
 
     public double getMaxHp() { return maxHp; }
-
-    public abstract void StartFiring();
-    public abstract void firing();
     public abstract void action();
 
     @Override

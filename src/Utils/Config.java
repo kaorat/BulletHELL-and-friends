@@ -41,9 +41,9 @@ public class Config {
     // Fuzzy Mutation : 4
     // Sheep multiply fire rate by n/10 , cow increase bullet number by n*6 , chicken increase bullet number (more shotgun) by n
     // bullet quantity
-    public static final double SHEEP_BULLET_QUANTITY_BASE = 1;
-    public static final double COW_BULLET_QUANTITY_BASE = 1;
-    public static final double CHICKEN_BULLET_QUANTITY_BASE = 1;
+    public static final double SHEEP_BULLET_QUANTITY_BASE = 10;
+    public static final double COW_BULLET_QUANTITY_BASE = 10;
+    public static final double CHICKEN_BULLET_QUANTITY_BASE = 10;
     public static final double FUZZY_BULLET_QUANTITY_UPGRADE = 1;
     public static final double FUZZY_BASE_PRICE = 200;
     public static final double FUZZY_PRICE_INCREMENT = 1.25;//Power by level
@@ -54,7 +54,7 @@ public class Config {
 
     // Elongation Sheep has no upgrade ?? : 5
     // chicken has no upgrade (random bullet spread)
-    public static final double BULLET_LENGTH_BASE = 1;
+    public static final double BULLET_LENGTH_BASE = 5;
     public static final double ELONGATION_BULLET_LENGTH_UPGRADE = 1;
     public static final double ELONGATION_BASE_PRICE = 800;
     public static final double ELONGATION_PRICE_INCREMENT = 1.25;//Power by level

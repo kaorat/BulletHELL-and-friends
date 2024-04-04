@@ -28,13 +28,7 @@ public class BossPage extends GraphicEditor {
         create(new UISprite(Asset.UI.backgroundGameplay, new Transform(0, 0, 0.65, 0.5), -10));
         create(new UISprite(Asset.UI.headerMain,new Transform(20,35,2,0.3),70));
         hpBar = (UISprite) create(new UISprite(Asset.UI.aPixel,new Transform(65,36,490,11),75));
-        timer = (UISprite) create(new UISprite(new Text(Integer.toString(time), Utility.getGameFont(30), Color.WHITE),new Transform(Utility.getGameScreenX()-50,50),76));
-        create(new UISprite(Asset.UI.aPixel,new Transform(100,100,1,20),75));
-        create(new UISprite(Asset.UI.aPixel,new Transform(200,100,1,20),75));
-        create(new UISprite(Asset.UI.aPixel,new Transform(300,100,1,20),75));
-        create(new UISprite(Asset.UI.aPixel,new Transform(400,100,1,20),75));
-        create(new UISprite(Asset.UI.aPixel,new Transform(500,100,1,20),75));
-        create(new UISprite(Asset.UI.aPixel,new Transform(600,100,1,20),75));
+        timer = (UISprite) create(new UISprite(new Text("60", Utility.getGameFont(30), Color.WHITE),new Transform(Utility.getGameScreenX()-50,50),76));
     }
     @Override
     public void onUpdate() {

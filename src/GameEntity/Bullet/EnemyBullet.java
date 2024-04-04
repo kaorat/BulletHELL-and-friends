@@ -15,8 +15,8 @@ import javafx.scene.paint.Color;
 
 
 public class EnemyBullet extends BaseBullet{
-    public EnemyBullet(double speed, GameObject owner, Transform transform, double z,int graphic) {
-        super(speed, owner,transform,z,Asset.Game.enemyBullet);
+    public EnemyBullet(double speed, Transform transform, double z,int graphic) {
+        super(speed, transform,z,Asset.Game.enemyBullet);
 
         //setImage(Asset.Game.enemyBullet);
     }
@@ -40,7 +40,7 @@ public class EnemyBullet extends BaseBullet{
 //        }
 //        if(!(this.owner instanceof Cow) && Transform.calculateDistanceToTarget(this.transform, PlayerManager.getInstance().getPlayer().getTransform()) > 400 && !isRotChanged) {
 //            transform.setRot(Transform.calculateAngleToTarget(this.transform, PlayerManager.getInstance().getPlayer().getTransform()));
-        transform.translate(speed);
+        transform.translate();
         Utility.isOutOfBounds(this);
     }
 }

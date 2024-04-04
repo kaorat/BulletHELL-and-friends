@@ -6,17 +6,6 @@ import javafx.scene.canvas.GraphicsContext;
 public class Boss1 extends BaseBoss{
     public Boss1() {
     }
-
-    @Override
-    public void StartFiring() {
-
-    }
-
-    @Override
-    public void firing() {
-
-    }
-
     @Override
     public void action() {
 

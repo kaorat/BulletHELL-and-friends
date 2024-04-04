@@ -7,15 +7,6 @@ public class KaoBoss extends BaseBoss{
     public KaoBoss() {
     }
 
-    @Override
-    public void StartFiring() {
-
-    }
-
-    @Override
-    public void firing() {
-
-    }
 
     @Override
     public void action() {

@@ -66,11 +66,11 @@ public class Transform {
     }
     private void Accelerate(){
         if(maxSpeed>speed && accel>0){
-            speed+=accel/142;
+            speed+=accel;
             if(speed>maxSpeed) speed=maxSpeed;
         }
         else if(maxSpeed<speed && accel<0){
-            speed-=accel/142;
+            speed+=accel;
             if(speed<maxSpeed) speed=maxSpeed;
         }
     }
@@ -106,9 +106,7 @@ public class Transform {
         // draw here the bounds of the object
         return b1.intersects(b2);
     }
-        public double getPosX() {
-        return posX;
-    }
+
 
     public static double calculateAngleToTarget(Transform from, Transform to) {
         return Math.toDegrees(Math.atan2(to.getPosY() - from.getPosY(), to.getPosX() - from.getPosX()));
@@ -116,7 +114,9 @@ public class Transform {
     public static double calculateDistanceToTarget(Transform from, Transform to) {
         return Math.sqrt(Math.pow(to.getPosX() - from.getPosX(), 2) + Math.pow(to.getPosY() - from.getPosY(), 2));
     }
-
+    public double getPosX() {
+        return posX;
+    }
     public void setPosX(double posX) {
         this.posX = posX;
     }

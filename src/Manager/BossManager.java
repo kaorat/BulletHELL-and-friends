@@ -1,6 +1,7 @@
 package Manager;
 
 import GameEntity.Boss.BaseBoss;
+import GameEntity.Boss.KaoBoss;
 import GameEntity.Boss.MichaelJackson;
 import Utils.Updatable;
 
@@ -21,7 +22,8 @@ public class BossManager implements Updatable {
 
     public BaseBoss initBoss(){
         //TODO:Decide boss here
-        this.boss = new MichaelJackson();
+//        this.boss = new MichaelJackson();
+        this.boss = new KaoBoss();
         GameObjectHolder.getInstance().add(this.boss);
         return this.boss;
     }

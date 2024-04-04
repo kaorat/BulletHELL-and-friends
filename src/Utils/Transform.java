@@ -1,5 +1,6 @@
 package Utils;
 
+import GameEntity.GameObject;
 import javafx.animation.AnimationTimer;
 import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
@@ -86,6 +87,7 @@ public class Transform {
         Point2D translation = calculateTranslation(speed);
         posX += translation.getX();
         posY += translation.getY();
+        Accelerate();
     }
     public void translateToPositionInMilliSecond(double x,double y,double frame){
         //System.out.println(x+" "+y);
@@ -121,6 +123,15 @@ public class Transform {
     public static double calculateDistanceToTarget(Transform from, Transform to) {
         return Math.sqrt(Math.pow(to.getPosX() - from.getPosX(), 2) + Math.pow(to.getPosY() - from.getPosY(), 2));
     }
+
+    public static Point2D centerPos(GameObject obj){
+        double x = obj.getTransform().getPosX() + (obj.getImage().getWidth()*obj.getTransform().getSclX())/2;
+        double y = obj.getTransform().getPosY() + (obj.getImage().getHeight()*obj.getTransform().getSclY())/2;
+        return new Point2D(x,y);
+    }
+
+
+
     public double getPosX() {
         return posX;
     }

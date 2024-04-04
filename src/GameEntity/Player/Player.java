@@ -130,4 +130,7 @@ public class Player extends GameObject implements Shootable {
     public void setSpeed(double speed) {
         this.speed = speed;
     }
+    public Bounds getHitbox() {
+        return hitbox;
+    }
 }

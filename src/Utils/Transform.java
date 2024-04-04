@@ -110,7 +110,12 @@ public class Transform {
         return b1.contains(b2);
     }
 
+    public static double calculateAngleToTarget(Transform from, Bounds to) {
+
+        return Math.toDegrees(Math.atan2(to.getMinY() - from.getPosY(), to.getMinX() - from.getPosX()));
+    }
     public static double calculateAngleToTarget(Transform from, Transform to) {
+
         return Math.toDegrees(Math.atan2(to.getPosY() - from.getPosY(), to.getPosX() - from.getPosX()));
     }
     public static double calculateDistanceToTarget(Transform from, Transform to) {

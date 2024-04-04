@@ -7,6 +7,7 @@ import GameEntity.Player.Player;
 import Manager.*;
 import input.InputUtility;
 import javafx.geometry.BoundingBox;
+import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
 import javafx.scene.media.AudioClip;
 
@@ -47,25 +48,25 @@ public class PlayerUtils {
     }
 
     public static void autoAim(Player player){
-        Transform tf = new Transform(0,0);
+        Bounds bounds = new BoundingBox(0,0,0,0);
         if(SceneManager.currentState== SceneManager.GameState.normal){
             ArrayList<BaseEnemy> enemies = EnemyManager.getInstance().getEnemies();
             if(enemies.isEmpty()){
                 return;
             }
             BaseEnemy enemy = enemies.get(0);
-            tf = enemy.getTransform();
+            bounds = enemy.getBounds();
         }
         else{
             BaseBoss boss = BossManager.getInstance().getBoss();
             if(boss==null){
                 return;
             }
-            tf = boss.getTransform();
+            bounds = boss.getBounds();
         }
 
 
-        double rot = Transform.calculateAngleToTarget(player.getTransform(), tf);
+        double rot = Transform.calculateAngleToTarget(player.getTransform(), bounds);
         PlayerBullet bullet = new PlayerBullet(10,new Transform(player.getTransform().getPosX() + 25, player.getTransform().getPosY() + 20, rot, 1, 1), 0, PlayerManager.getInstance().getBioticRifleDamage(),1);
         BulletManager.getInstance().add(bullet);
 

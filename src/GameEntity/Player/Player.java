@@ -25,7 +25,7 @@ public class Player extends GameObject implements Shootable {
     private int hp;
     private double speed;
     private Bounds hitbox;
-
+    private Bounds grazebox;
     public Bounds warpBox;
 //    private double fireRate;
     private long lastFireTime = 0;
@@ -61,10 +61,17 @@ public class Player extends GameObject implements Shootable {
 //        double offsetH = 0.25;
         this.hitbox = new BoundingBox(transform.getPosX() + (offset * image.getWidth() * transform.getSclX()),transform.getPosY() + ( offset * image.getHeight() * transform.getSclY()), image.getWidth()* transform.getSclX() * scale, image.getHeight()* transform.getSclY() * scale);
     }
+    public void drawGrazebox(){
+        double offset = -PlayerManager.getInstance().getDexterity() * 5 + (image.getWidth() * transform.getSclX())/2 -1;
+        double scale = PlayerManager.getInstance().getDexterity() /5;
+//        double offsetH = 0.25;
+        this.grazebox = new BoundingBox(transform.getPosX() + offset,transform.getPosY() + offset, image.getWidth()* transform.getSclX() * scale, image.getHeight()* transform.getSclY() * scale);
+    }
 
     @Override
     public void draw(GraphicsContext gc) {
         drawHitbox();
+        drawGrazebox();
         drawBounds(0, 0);
         Utility.DrawImage(gc,getImage(),this.transform);
 //        gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 60, 60);
@@ -74,7 +81,7 @@ public class Player extends GameObject implements Shootable {
         }
         if(isShiftPressed()){
             gc.setStroke(Color.GREENYELLOW);
-            gc.strokeRect(bounds.getMinX(),bounds.getMinY(),bounds.getWidth(),bounds.getHeight());
+            gc.strokeRect(grazebox.getMinX(),grazebox.getMinY(),grazebox.getWidth(),grazebox.getHeight());
             gc.setStroke(Color.YELLOW);
             gc.strokeRect(hitbox.getMinX(),hitbox.getMinY(),hitbox.getWidth(),hitbox.getHeight());
         }
@@ -115,10 +122,11 @@ public class Player extends GameObject implements Shootable {
         for (BaseBullet bullet : bulletList) {
                 if(bullet instanceof EnemyBullet){
                     if(Transform.checkCollide(this.hitbox, bullet.getBounds())){
-                    bullet.setDestroyed(true);
+                        bullet.setDestroyed(true);
                     }
-                    if(Transform.checkCollide(this.bounds, bullet.getBounds())){
-                        StatManager.getInstance().addCoin(1);
+                    if(Transform.checkCollide(this.grazebox, bullet.getBounds())&&!((EnemyBullet) bullet).isGrazed()){
+                        StatManager.getInstance().addCoin((long) PlayerManager.getInstance().getProficiency());
+                        ((EnemyBullet) bullet).setGrazed(true);
                     }
             }
         }

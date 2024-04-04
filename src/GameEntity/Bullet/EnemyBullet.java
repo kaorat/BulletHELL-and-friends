@@ -15,9 +15,10 @@ import javafx.scene.paint.Color;
 
 
 public class EnemyBullet extends BaseBullet{
+    private boolean isGrazed;
     public EnemyBullet(double speed, Transform transform, double z,int graphic) {
         super(speed, transform,z,Asset.Game.enemyBullet);
-
+        isGrazed=false;
         //setImage(Asset.Game.enemyBullet);
     }
 
@@ -43,5 +44,13 @@ public class EnemyBullet extends BaseBullet{
 //            transform.setRot(Transform.calculateAngleToTarget(this.transform, PlayerManager.getInstance().getPlayer().getTransform()));
         transform.translate();
         Utility.isOutOfBounds(this);
+    }
+
+    public boolean isGrazed() {
+        return isGrazed;
+    }
+
+    public void setGrazed(boolean grazed) {
+        isGrazed = grazed;
     }
 }

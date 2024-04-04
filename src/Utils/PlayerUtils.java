@@ -6,6 +6,7 @@ import GameEntity.Enemy.BaseEnemy;
 import GameEntity.Player.Player;
 import Manager.*;
 import input.InputUtility;
+import javafx.geometry.BoundingBox;
 import javafx.geometry.Point2D;
 import javafx.scene.media.AudioClip;
 
@@ -17,6 +18,8 @@ public class PlayerUtils {
     private static long lastTLTime = 0;
     private static long lastBRTime = 0;
     private static long lastBLTime = 0;
+    private static boolean slashPressed = false;
+    private static double factor = 0;
 
     public static void normal(Player player){
         // player shooting pattern
@@ -71,22 +74,27 @@ public class PlayerUtils {
         bulletSound.play();
     }
     public static void teleport(Player player){
+
         long currentTime = System.currentTimeMillis();
-
-    if(InputUtility.isSlashPressed())
-    {
-       if(currentTime - lastTRTime > 1000){
-           Transform t = player.getTransform();
-           Point2D p = t.calculateTranslation(100);
-           t.setPosX(t.getPosX() + p.getX());
-           t.setPosY(t.getPosY() + p.getY());
-           lastTRTime = currentTime;
-           Track teleportSound = new Track(Asset.Audio.bulletSound);
-           teleportSound.setVolume(0.1);
-           teleportSound.play();
-       }
-
-    }
+        Transform t = player.getTransform();
+        Point2D p = t.calculateTranslation(factor);
+        player.warpBox = new BoundingBox(t.getPosX() + p.getX() ,t.getPosY() + p.getY(),player.getImage().getWidth() * t.getSclX() ,player.getImage().getHeight() * t.getSclY());
+        if(InputUtility.isSlashPressed())
+        {
+            slashPressed = true;
+            factor += 5;
+            if(factor > 200) factor = 200;
+        }
+            if(slashPressed && !InputUtility.isSlashPressed()){
+                t.setPosX(t.getPosX() + p.getX());
+                t.setPosY(t.getPosY() + p.getY());
+                lastTRTime = currentTime;
+                Track teleportSound = new Track(Asset.Audio.bulletSound);
+                teleportSound.setVolume(0.1);
+                teleportSound.play();
+                factor = 0;
+                slashPressed = false;
+            }
 
     }
 

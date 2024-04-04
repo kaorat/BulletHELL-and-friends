@@ -18,7 +18,7 @@ public abstract class BaseBoss extends GameObject {
     protected int frame;
     public BaseBoss(){
         //Pattern here
-        super(new Transform(800,0),20);
+        super(new Transform(100,0),20);
         frame=0;
         transform.translateToPositionInMilliSecond(300,100,3000);
     }

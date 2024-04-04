@@ -15,7 +15,7 @@ public class MichaelJackson extends BaseBoss{
         maxHp=1000;
         hp=maxHp;
         ready=false;
-        getTransform().setScl(0.15,0.15);
+        getTransform().setScl(0.4,0.4);
         setImage(Asset.Game.michealJackson);
     }
 
@@ -45,6 +45,7 @@ public class MichaelJackson extends BaseBoss{
     @Override
     public void draw(GraphicsContext gc) {
         Utility.DrawImage(gc,getImage(),transform);
-        drawBounds(0, 0);
+        drawBounds(0.3, 0.3
+                , 0.3, 0.3);
     }
 }

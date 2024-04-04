@@ -25,6 +25,8 @@ public class Player extends GameObject implements Shootable {
     private int hp;
     private double speed;
     private Bounds hitbox;
+
+    public Bounds warpBox;
 //    private double fireRate;
     private long lastFireTime = 0;
 
@@ -66,6 +68,10 @@ public class Player extends GameObject implements Shootable {
         drawBounds(0, 0);
         Utility.DrawImage(gc,getImage(),this.transform);
 //        gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 60, 60);
+        if(isSlashPressed()){
+            gc.setStroke(Color.LIGHTYELLOW);
+            gc.strokeRect(warpBox.getMinX(),warpBox.getMinY(),warpBox.getWidth(),warpBox.getHeight());
+        }
         if(isShiftPressed()){
             gc.setStroke(Color.GREENYELLOW);
             gc.strokeRect(bounds.getMinX(),bounds.getMinY(),bounds.getWidth(),bounds.getHeight());
@@ -99,7 +105,7 @@ public class Player extends GameObject implements Shootable {
                     lastFireTime = currentTime;
                 }
             }
-            PlayerUtils.teleport(this);
+        PlayerUtils.teleport(this);
         Utility.controlUtility(this.transform, speed);
 
 

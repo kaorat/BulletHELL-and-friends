@@ -70,7 +70,7 @@ public class Asset {
             backgroundEnemyPage=LoadImg("UI/Background/backgroundEnemyPage.png");
             backgroundGobletPage=LoadImg("UI/Background/backgroundGobletPage.png");
             backgroundSpecialDNAPage=LoadImg("UI/Background/backgroundSpecialDNAPage.png");
-            backgroundGameplay=LoadImg("UI/Background/test.png");
+            backgroundGameplay=LoadImg("UI/Background/farmBg.png");
 
             //Button
             buttonNavigate=LoadImg("UI/Button/Navigate/buttonNavigate.png");
@@ -146,7 +146,8 @@ public class Asset {
 
             enemyBullet=Load("UI/Bullet/NormalShot.png");
             cowBullet=Load("UI/CowBullet.png");
-            michealJackson=Load("UI/Enemy/Disco.png");
+            michealJackson=Load("UI/Enemy/mc.png");
+
 
         }
         private static Image Load(String url){

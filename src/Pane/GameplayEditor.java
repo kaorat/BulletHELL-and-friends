@@ -16,7 +16,7 @@ public class GameplayEditor extends GraphicEditor{
         super(graphicsContext);
         //Background
 
-        create(new UISprite(Asset.UI.backgroundGameplay, new Transform(0, 0, 0.65, 0.5), -100));
+        create(new UISprite(Asset.UI.backgroundGameplay, new Transform(0, 0, 0.8, 0.7), -100));
 
 
 

@@ -22,7 +22,9 @@ public class PlayerBullet extends BaseBullet {
     public void draw(GraphicsContext gc) {
 
         //gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 10, 10);
+        gc.rotate(getTransform().getRot());
         Utility.DrawImage(gc,getImage(),transform);
+        gc.restore();
         drawBounds(0, 0);
 
     }

@@ -42,12 +42,14 @@ public abstract class BaseBoss extends GameObject {
             StatManager.getInstance().setDna(StatManager.getInstance().getDna()+1);
             SceneManager.DeActivatedBossPage();
         }
+        // check collision with player bullet
         for (BaseBullet bullet : bulletList) {
             if (Transform.checkCollide(this.getBounds(), bullet.getBounds()) && bullet instanceof PlayerBullet) {
                 this.hp -= ((PlayerBullet)bullet).getDamage();
                 bullet.setDestroyed(true);
             }
         }
+
         frame++;
         if(frame>1200000){
             frame%=120000;

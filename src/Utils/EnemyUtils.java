@@ -46,7 +46,7 @@ public class EnemyUtils {
 
     public static void SheepShootPattern(Sheep sheep,double speed,int quantity,int length){
 
-        double angleToP=Transform.calculateAngleToTarget(sheep.getTransform(), PlayerManager.getInstance().getPlayer().getTransform());
+        double angleToP=Transform.calculateAngleToTarget(sheep.getTransform(), PlayerManager.getInstance().getPlayer().getHitbox());
         int maxAngle = 10 * (quantity);
         if(quantity%2  == 0){
             for(int i=0;i<quantity;i++){

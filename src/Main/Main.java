@@ -49,6 +49,7 @@ public class Main extends Application {
                 //GameObjectHolder.getInstance().update();
                 //InputUtility.updateInputState();
                 MouseUtil.postUpdate();
+                System.out.println(Thread.activeCount());
             }
         };
         //just for testing bgm

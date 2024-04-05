@@ -2,10 +2,7 @@ package GameEntity.Boss;
 
 import GameEntity.Bullet.BaseBullet;
 import GameEntity.Bullet.EnemyBullet;
-import Utils.Asset;
-import Utils.BulletUtils;
-import Utils.Transform;
-import Utils.Utility;
+import Utils.*;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
@@ -21,7 +18,7 @@ public class KaoBoss extends BaseBoss{
     private boolean startRotate;
     private boolean startChaos;
     private List<Boolean> phase;
-    private List<EnemyBullet> bulletsBox;
+    private List<List<BaseBullet>> bulletsBox;
     private List<Boolean> circleRank;
     private List<Integer> circleAngle;
     private int angle1;
@@ -33,7 +30,7 @@ public class KaoBoss extends BaseBoss{
         hp=maxHp;
         ready=false;
         startRotate=false;
-        bulletsBox = new ArrayList<EnemyBullet>();
+        bulletsBox = new ArrayList<>();
         circleRank = Arrays.asList(false, false, false, false, false);
         phase = Arrays.asList(false, false, false, false, false);
         circleAngle = Arrays.asList(90, 92, 94, 96, 98);
@@ -48,55 +45,88 @@ public class KaoBoss extends BaseBoss{
     double x = Transform.centerPos(this).getX();
     double y = Transform.centerPos(this).getY();
 
-    for(int i = 0; i < circleAngle.size(); i++){
-        if(circleAngle.get(i)>=450||circleAngle.get(i)<=-450){
-            circleAngle.set(i,90);
-            circleRank.set(i, true);
-        }
-    }
+//    for(int i = 0; i < circleAngle.size(); i++){
+//        if(circleAngle.get(i)>=450||circleAngle.get(i)<=-450){
+//            circleAngle.set(i,90);
+//            circleRank.set(i, true);
+//        }
+//    }
 
 //        if(angle2>=720||angle2<=-720){
 //            angle2=0;
 //        }
 
         if(!ready) {
-            if(frame>600){
+            if(frame>200){
                 ready=true;
             }
             return;
         }
+//        if(circleRank.getLast() && !phase.get(0)) {
+//            phase.set(0, true);
+//            for(EnemyBullet bullet : bulletsBox) {
+//                BulletUtils.ChangeTrajectoryOnFrame(bullet, 0, bullet.getTransform().getRot(), 0.04, 4, 2500);
+//            }
+//        }
+//            circleRank = Arrays.asList(false, false, false, false, false);
+//            phase = Arrays.asList(false, false, false, false, false);
+//            circleAngle = Arrays.asList(90, 92, 94, 96, 98);
 
-        if(frame % 600 == 0) {
-            circleRank = Arrays.asList(false, false, false, false, false);
-            phase = Arrays.asList(false, false, false, false, false);
-            circleAngle = Arrays.asList(90, 92, 94, 96, 98);
+
+        for (int i = 0; i< bulletsBox.size();i++){
+            for(int j = bulletsBox.get(i).size() - 1; j>=0 ; j--){
+                double deg = 0.3;
+                bulletsBox.get(i).get(j).getTransform().setRot(bulletsBox.get(i).get(j).getTransform().getRot() + deg);
+                if(bulletsBox.get(i).get(j).getTransform().getRot() >= 360){
+                    bulletsBox.get(i).get(j).getTransform().setRot(0);
+                }if(bulletsBox.get(i).get(j).isDestroyed()){
+                    bulletsBox.get(i).remove(j);
+                }
+
+            }
         }
+//            Thread t = new Thread(() -> {
+                if(frame % 500 == 0) {
+                for(int i=0; i<40;i++){
 
-        if(frame % 4 == 0) {
-            for(int i = 0; i < circleRank.size(); i++) {
-                if(i == 0 || circleRank.get(i - 1)) {
-                    if(!circleRank.get(i)) {
-                        EnemyBullet pattern1 = (EnemyBullet) BulletUtils.Shoot(x, y, 4, circleAngle.get(i));
-                        bulletsBox.add(pattern1);
-                        BulletUtils.ChangeTrajectoryNow(pattern1, 1.5 + (i * 0.1), circleAngle.get(i), -0.01, 0);
-                        circleAngle.set(i, circleAngle.get(i) + 20);
+                    List<BaseBullet> bullets = BossUtils.circular(this, 90+(10*i), 2 + (i*0.10), 10, -0.05, 0);
+                    bulletsBox.add(bullets);
+                }
+                for(int i = 0; i < bulletsBox.size(); i++){
+                    for(int j = 0; j < bulletsBox.get(i).size(); j++){
+                            BulletUtils.ChangeTrajectoryOnFrame(bulletsBox.get(i).get(j), 0, bulletsBox.get(i).get(j).getTransform().getRot(), 0.04 + (i*0.01), 2, 4500);
                     }
                 }
-            }
-        }
-
-        if(circleRank.getLast() && !phase.get(0)) {
-            phase.set(0, true);
-            for(EnemyBullet bullet : bulletsBox) {
-                BulletUtils.ChangeTrajectoryOnFrame(bullet, 0, bullet.getTransform().getRot(), 0.02, 2, 2000);
-            }
-        }
+//                bulletsBox.clear();
+                }
+//            };
+//            t.start();
 
 
 
-        if(frame%3000==0){ // move randomly every 1 sec
-            transform.translateToPositionInMilliSecond((Math.random()*(Utility.getGameScreenX()-150))+50,(Math.random()*60)+50,4000);
-        }
+
+
+
+//        if(frame % 2 == 0) {
+//            for(int i = 0; i < circleRank.size(); i++) {
+//                if(i == 0 || circleRank.get(i - 1)) {
+//                    if(!circleRank.get(i)) {
+//                        EnemyBullet pattern1 = (EnemyBullet) BulletUtils.Shoot(x, y, 10, circleAngle.get(i));
+//                        bulletsBox.add(pattern1);
+//                        BulletUtils.ChangeTrajectoryNow(pattern1, 1.5 + (i * 0.1), circleAngle.get(i), -0.01, 0);
+//                        circleAngle.set(i, circleAngle.get(i) + 20);
+//                    }
+//                }
+//            }
+//        }
+
+
+
+
+//        if(frame%900==0){ // move randomly every 1 sec
+////            t.interrupt(); //forbidden moves;
+//            transform.translateToPositionInMilliSecond((Math.random()*(Utility.getGameScreenX()-150))+50,(Math.random()*60)+50,4000);
+//        }
         //rotate
     }
 

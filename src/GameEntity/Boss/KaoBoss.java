@@ -62,16 +62,6 @@ public class KaoBoss extends BaseBoss{
             }
             return;
         }
-//        if(circleRank.getLast() && !phase.get(0)) {
-//            phase.set(0, true);
-//            for(EnemyBullet bullet : bulletsBox) {
-//                BulletUtils.ChangeTrajectoryOnFrame(bullet, 0, bullet.getTransform().getRot(), 0.04, 4, 2500);
-//            }
-//        }
-//            circleRank = Arrays.asList(false, false, false, false, false);
-//            phase = Arrays.asList(false, false, false, false, false);
-//            circleAngle = Arrays.asList(90, 92, 94, 96, 98);
-
 
         for (int i = 0; i< bulletsBox.size();i++){
             for(int j = bulletsBox.get(i).size() - 1; j>=0 ; j--){
@@ -101,12 +91,6 @@ public class KaoBoss extends BaseBoss{
                 }
 //            };
 //            t.start();
-
-
-
-
-
-
 //        if(frame % 2 == 0) {
 //            for(int i = 0; i < circleRank.size(); i++) {
 //                if(i == 0 || circleRank.get(i - 1)) {
@@ -119,11 +103,13 @@ public class KaoBoss extends BaseBoss{
 //                }
 //            }
 //        }
+//            if(frame % 1001 == 0){
+//
+//            }
 
 
 
-
-//        if(frame%900==0){ // move randomly every 1 sec
+//        if(frame%600==0){ // move randomly every 1 sec
 ////            t.interrupt(); //forbidden moves;
 //            transform.translateToPositionInMilliSecond((Math.random()*(Utility.getGameScreenX()-150))+50,(Math.random()*60)+50,4000);
 //        }

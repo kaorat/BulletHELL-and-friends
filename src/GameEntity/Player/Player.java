@@ -28,11 +28,13 @@ public class Player extends GameObject implements Shootable {
     public Bounds warpBox;
 //    private double fireRate;
     private long lastFireTime = 0;
+    private Image activeImage;
 
     public Player(Transform transform, double z) {
         super(transform, z);
         this.speed = Config.PLAYER_SPEED_BASE;
-        setImage(Asset.Game.player);
+        setImage(Asset.UI.idle1);
+        activeImage = Asset.UI.idle1;
     }
 
     public void checkOutOfBounds() {
@@ -56,6 +58,7 @@ public class Player extends GameObject implements Shootable {
     }
     public void drawHitbox(){
         double offset = (5 - PlayerManager.getInstance().getMinimize())/10;
+//        System.out.println(offset);
         double scale = PlayerManager.getInstance().getMinimize() /5;
 //        double offsetH = 0.25;
         this.hitbox = new BoundingBox(transform.getPosX() + (offset * image.getWidth() * transform.getSclX()),transform.getPosY() + ( offset * image.getHeight() * transform.getSclY()), image.getWidth()* transform.getSclX() * scale, image.getHeight()* transform.getSclY() * scale);
@@ -71,18 +74,21 @@ public class Player extends GameObject implements Shootable {
     public void draw(GraphicsContext gc) {
         drawHitbox();
         drawGrazebox();
-        Utility.DrawImage(gc,getImage(),this.transform);
+        activeImage = Asset.UI.idle1;
 //        gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 60, 60);
         if(isSlashPressed()){
+            activeImage = Asset.UI.idle2;
             gc.setStroke(Color.LIGHTYELLOW);
             gc.strokeRect(warpBox.getMinX(),warpBox.getMinY(),warpBox.getWidth(),warpBox.getHeight());
         }
         if(isShiftPressed()){
+
             gc.setStroke(Color.GREENYELLOW);
             gc.strokeRect(bounds.getMinX(),bounds.getMinY(),bounds.getWidth(),bounds.getHeight());
             gc.setStroke(Color.YELLOW);
             gc.strokeRect(hitbox.getMinX(),hitbox.getMinY(),hitbox.getWidth(),hitbox.getHeight());
         }
+        Utility.DrawImage(gc,activeImage,this.transform);
     }
 
     public void controlAggressiveShoot() {
@@ -139,6 +145,9 @@ public class Player extends GameObject implements Shootable {
     }
     public Bounds getHitbox() {
         return hitbox;
+    }
+    public void setActiveImage(Image activeImage) {
+       this.activeImage = activeImage;
     }
 
 }

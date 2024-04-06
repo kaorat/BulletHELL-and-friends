@@ -102,8 +102,8 @@ public class Config {
     public static final double HITBOX_SIZE_BASE = 5;
     public static final double MINIMIZE_UPGRADE = -0.1;
     public static final double MINIMIZE_BASE_PRICE = 200;
-    public static final double MINIMIZE_PRICE_INCREMENT = 1.75;//Power by level
-    public static final double MINIMIZE_MAX_LEVEL = 35;
+    public static final double MINIMIZE_PRICE_INCREMENT = 1.35;//Power by level
+    public static final double MINIMIZE_MAX_LEVEL = 40;
 
     //DEXTERITY
     public static final double GRAZE_HITBOX_SIZE_BASE = 8;

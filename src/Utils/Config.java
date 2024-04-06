@@ -87,30 +87,30 @@ public class Config {
     //Damage
     public static final double DAMAGE_BASE = 1;
     public static final double DAMAGE_UPGRADE = 0.25;
-    public static final double DAMAGE_BASE_PRICE = 20;
-    public static final double DAMAGE_PRICE_INCREMENT = 1.25;//Power by level
-    public static final double DAMAGE_MAX_LEVEL = 50;//???????
+    public static final double DAMAGE_BASE_PRICE = 40;
+    public static final double DAMAGE_PRICE_INCREMENT = 1.5;//Power by level
+    public static final double DAMAGE_MAX_LEVEL = 100000;//???????
 
     //Firerate
     public static final double PLAYER_FIRE_RATE_BASE = 0.5;
     public static final double PLAYER_FIRE_RATE_UPGRADE = -0.01;
     public static final double PLAYER_FIRE_RATE_BASE_PRICE = 100;
-    public static final double PLAYER_FIRE_RATE_PRICE_INCREMENT = 1.25;//Power by level
-    public static final double PLAYER_FIRE_RATE_MAX_LEVEL = 35;
+    public static final double PLAYER_FIRE_RATE_PRICE_INCREMENT = 1.75;//Power by level
+    public static final double PLAYER_FIRE_RATE_MAX_LEVEL = 45;
 
     //Minimize
     public static final double HITBOX_SIZE_BASE = 5;
     public static final double MINIMIZE_UPGRADE = -0.1;
     public static final double MINIMIZE_BASE_PRICE = 200;
-    public static final double MINIMIZE_PRICE_INCREMENT = 1.25;//Power by level
-    public static final double MINIMIZE_MAX_LEVEL = 40;
+    public static final double MINIMIZE_PRICE_INCREMENT = 1.75;//Power by level
+    public static final double MINIMIZE_MAX_LEVEL = 35;
 
     //DEXTERITY
-    public static final double GRAZE_HITBOX_SIZE_BASE = 7;
-    public static final double DEXTERITY_UPGRADE = 0.05;
+    public static final double GRAZE_HITBOX_SIZE_BASE = 8;
+    public static final double DEXTERITY_UPGRADE = 0.1;
     public static final double DEXTERITY_BASE_PRICE = 100;
-    public static final double DEXTERITY_PRICE_INCREMENT = 1.25;//Power by level
-    public static final double DEXTERITY_MAX_LEVEL = 60;
+    public static final double DEXTERITY_PRICE_INCREMENT = 1.4;//Power by level
+    public static final double DEXTERITY_MAX_LEVEL = 100;
 
     //Proficiency
     public static final double PART_PER_GRAZE_BASE = 1;

@@ -15,12 +15,14 @@ import java.util.ArrayList;
 
 public class EnemyPage extends GraphicEditor {
     private ArrayList<UIButton> allButtons = new ArrayList<>(); //0-6 upgrade button 7 go back button
+    private final ArrayList<UIButton> unlockEnemy = new ArrayList<>();
     private ArrayList<UISprite> allPrice = new ArrayList<>();
     private ArrayList<UISprite> allLvL = new ArrayList<>();
     private ArrayList<UISprite> allDescription = new ArrayList<>();
     private ArrayList<UISprite> allIncrease = new ArrayList<>();
     private final ArrayList<String> descTemplete = new ArrayList<>();
     private final ArrayList<String> increaseTemplete = new ArrayList<>();
+    private UISprite partsDrop ;
     private int moveYButton = 70;
 
     private double x = Utility.getGameScreenX();
@@ -31,7 +33,14 @@ public class EnemyPage extends GraphicEditor {
         create(new UISprite(Asset.UI.backgroundEnemyPage, new Transform(Utility.getGameScreenX(), 0, 0.3, 0.25), 50));
 
         //Header
-        create(new UISprite(Asset.UI.enemyHeader, new Transform(Utility.getGameScreenX() + 86, 70, 0.24, 0.22), 52));
+        create(new UISprite(Asset.UI.enemyHeader, new Transform(Utility.getGameScreenX() + 120, 70, 0.19, 0.17), 52));
+        //UnlockEnemy
+        unlockEnemy.add((UIButton) create(new UIButton(Asset.UI.sheepUnlocked, new Transform(Utility.getGameScreenX() + 50, 130, 0.30, 0.26), 54 , ButtonType.UPGRADESHEEP)));
+        unlockEnemy.add((UIButton) create(new UIButton(Asset.UI.cowUnlocked, new Transform(Utility.getGameScreenX() + 160, 130, 0.30, 0.26), 54 , ButtonType.UPGRADECOW)));
+        unlockEnemy.add((UIButton) create(new UIButton(Asset.UI.chickenUnlocked, new Transform(Utility.getGameScreenX() + 270, 130, 0.30, 0.26), 54 , ButtonType.UPGRADECHICKEN)));
+        //Parts Drop
+        create(new UISprite(Asset.UI.partsDrop, new Transform(Utility.getGameScreenX() + 135, 170, 0.26, 0.21), 55));
+        partsDrop = (UISprite) create(new UISprite(new Text("Parts Drop: ", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 145, 187, 0.25, 0.25), 56));
 
 
         // Create the button
@@ -40,7 +49,7 @@ public class EnemyPage extends GraphicEditor {
         allPrice.add( (UISprite) create(new UISprite(new Text("100", Utility.getGameFont(12), Color.YELLOWGREEN),
                 new Transform(allButtons.get(0).getTransform().getPosX() + 32,
                         allButtons.get(0).getTransform().getPosY() + 21), 55)));
-        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 200, 217, 0.25, 0.25), 55)));
+        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 200, 217, 0.25, 0.25), 55)));
         allDescription.add((UISprite) create(new UISprite(new Text("Enemy’s HP : 0", Utility.getGameFont(11), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 62, 234, 0.25, 0.25), 55)));
         allIncrease.add((UISprite) create(new UISprite(new Text("0 HP", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 323, 231, 0.25, 0.25), 55)));
         allIncrease.add((UISprite) create(new UISprite(new Text("0 parts", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 315, 241, 0.25, 0.25), 55)));
@@ -51,7 +60,7 @@ public class EnemyPage extends GraphicEditor {
         allPrice.add( (UISprite) create(new UISprite(new Text("100", Utility.getGameFont(12), Color.YELLOWGREEN),
                 new Transform(allButtons.get(1).getTransform().getPosX() + 32,
                         allButtons.get(1).getTransform().getPosY() + 21), 55)));
-        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 188, 217 + moveYButton, 0.25, 0.25), 55)));
+        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 188, 217 + moveYButton, 0.25, 0.25), 55)));
         allDescription.add((UISprite) create(new UISprite(new Text("Enemy’s Fire rate : 0", Utility.getGameFont(10), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 62, 232 + moveYButton, 0.25, 0.25), 55)));
         allIncrease.add((UISprite) create(new UISprite(new Text("0 fire rate", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 230 + moveYButton*1, 0.25, 0.25), 55)));
         allIncrease.add((UISprite) create(new UISprite(new Text("0 parts", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 239 + moveYButton*1, 0.25, 0.25), 55)));
@@ -61,7 +70,7 @@ public class EnemyPage extends GraphicEditor {
         allPrice.add((UISprite) create(new UISprite(new Text("100", Utility.getGameFont(12), Color.YELLOWGREEN),
                 new Transform(allButtons.get(2).getTransform().getPosX() + 32,
                         allButtons.get(2).getTransform().getPosY() + 21), 55)));
-        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 228, 213 + moveYButton*2, 0.25, 0.25), 55)));
+        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 228, 213 + moveYButton*2, 0.25, 0.25), 55)));
         allDescription.add((UISprite) create(new UISprite(new Text("Bullet Speed : 0", Utility.getGameFont(11), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 62, 230 + moveYButton*2, 0.25, 0.25), 55)));
         allIncrease.add((UISprite) create(new UISprite(new Text("0 speed", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 229 + moveYButton*2, 0.25, 0.25), 55)));
         allIncrease.add((UISprite) create(new UISprite(new Text("0 parts", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 239 + moveYButton*2, 0.25, 0.25), 55)));
@@ -71,7 +80,7 @@ public class EnemyPage extends GraphicEditor {
         allPrice.add((UISprite) create(new UISprite(new Text("100", Utility.getGameFont(12), Color.YELLOWGREEN),
                 new Transform(allButtons.get(3).getTransform().getPosX() + 32,
                         allButtons.get(3).getTransform().getPosY() + 21), 55)));
-        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 220, 211 + moveYButton*3, 0.25, 0.25), 55)));
+        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 220, 211 + moveYButton*3, 0.25, 0.25), 55)));
         allDescription.add((UISprite) create(new UISprite(new Text("Bullet quantity : 0", Utility.getGameFont(11), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 62, 228 + moveYButton*3, 0.25, 0.25), 55)));
         allIncrease.add((UISprite) create(new UISprite(new Text("0 quantity", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 228 + moveYButton*3, 0.25, 0.25), 55)));
         allIncrease.add((UISprite) create(new UISprite(new Text("0 parts", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 239 + moveYButton*3, 0.25, 0.25), 55)));
@@ -81,7 +90,7 @@ public class EnemyPage extends GraphicEditor {
         allPrice.add((UISprite) create(new UISprite(new Text("100", Utility.getGameFont(12), Color.YELLOWGREEN),
                 new Transform(allButtons.get(4).getTransform().getPosX() + 32,
                         allButtons.get(4).getTransform().getPosY() + 21), 55)));
-        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 178, 209 + moveYButton*4, 0.25, 0.25), 55)));
+        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 178, 209 + moveYButton*4, 0.25, 0.25), 55)));
         allDescription.add((UISprite) create(new UISprite(new Text("Bullet length : 0", Utility.getGameFont(11), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 62, 226 + moveYButton*4, 0.25, 0.25), 55)));
         allIncrease.add((UISprite) create(new UISprite(new Text("0 length", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 225 + moveYButton*4, 0.25, 0.25), 55)));
         allIncrease.add((UISprite) create(new UISprite(new Text("0 parts", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 237 + moveYButton*4, 0.25, 0.25), 55)));
@@ -91,7 +100,7 @@ public class EnemyPage extends GraphicEditor {
         allPrice.add((UISprite) create(new UISprite(new Text("100", Utility.getGameFont(12), Color.YELLOWGREEN),
                 new Transform(allButtons.get(5).getTransform().getPosX() + 32,
                         allButtons.get(5).getTransform().getPosY() + 21), 55)));
-        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 200, 209 + moveYButton*5, 0.25, 0.25), 55)));
+        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 200, 209 + moveYButton*5, 0.25, 0.25), 55)));
         allDescription.add((UISprite) create(new UISprite(new Text("Chance to obtain soul : 0", Utility.getGameFont(11), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 62, 222 + moveYButton*5, 0.25, 0.25), 55)));
         allIncrease.add((UISprite) create(new UISprite(new Text("0% chances", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 228 + moveYButton*5, 0.25, 0.25), 55)));
 
@@ -100,7 +109,7 @@ public class EnemyPage extends GraphicEditor {
         allPrice.add((UISprite) create(new UISprite(new Text("100", Utility.getGameFont(12), Color.YELLOWGREEN),
                 new Transform(allButtons.get(6).getTransform().getPosX() + 32,
                         allButtons.get(6).getTransform().getPosY() + 21), 55)));
-        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 245, 203 + moveYButton*6, 0.25, 0.25), 55)));
+        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 245, 203 + moveYButton*6, 0.25, 0.25), 55)));
         allDescription.add((UISprite) create(new UISprite(new Text("Spawn time : 0", Utility.getGameFont(11), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 62, 222 + moveYButton*6, 0.25, 0.25), 55)));
         allIncrease.add((UISprite) create(new UISprite(new Text("0 s", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 330, 222 + moveYButton*6, 0.25, 0.25), 55)));
 
@@ -140,34 +149,7 @@ public class EnemyPage extends GraphicEditor {
     public void onUpdate() {
         int coin = StatManager.getInstance().getCoin();
         if(allButtons.get(8).isPressed()) SceneManager.setCurrentPage(new MainPage(graphicsContext));
-//        for(int i=0;i<8;i++){
-//            //Variable
-//            int level = PlayerManager.getInstance().getPlayerPerks().get(i+1);
-//            int basePrice = Config.enemy_basePrices.get(i).intValue();
-//            int cost = (int)(basePrice * Math.pow(Config.enemy_priceIncrements.get(i),level));
-//            //Price
-//            UISprite price = allPrice.get(i);
-//            price.getText().setText(Utility.NumberToString(cost));
-//            //Button
-//            UIButton button = allButtons.get(i);
-//
-//            if(coin > cost){
-//                button.setEnable(true);
-//                if(button.isPressed()){
-//                    StatManager.getInstance().setCoin(coin-cost);
-//                    PlayerManager.getInstance().getPlayerPerks().set(i+1,level+1);
-//                }
-//            }
-//            else{
-//                button.setEnable(false);
-//            }
-//            //Level
-//            allLvL.get(i).getText().setText("LV."+Utility.NumberToString(level));
-//            //Desc
-//            allDescription.get(i).getText().setText(descTemplete.get(i)+Utility.NumberToString(Config.player_baseValues.get(i)+((Config.player_upgradeValues.get(i))*level))+" "+increaseTemplete.get(i));
-//            //Desc
-//            allIncrease.get(i).getText().setText(Utility.NumberToString(Config.player_upgradeValues.get(i))+" "+increaseTemplete.get(i));
-//        }
+
     }
 }
 

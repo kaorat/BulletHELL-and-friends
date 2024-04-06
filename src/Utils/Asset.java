@@ -53,7 +53,48 @@ public class Asset {
         public static Image enemyHeader;
         public static Image gobletHeader;
         public static Image DNAHeader;
-
+        public static Image enemyLock;
+        public static Image enemyUnlockedHover;
+        public static Image sheepUnlocked;
+        public static Image cowUnlocked;
+        public static Image chickenUnlocked;
+        public static Image partsDrop;
+        public static Image WhiteSheepIdleRight;
+        public static Image WhiteCowIdleRight;
+        public static Image WhiteChickenIdleRight;
+        public static Image BlackSheepIdleRight;
+        public static Image BlackCowIdleRight;
+        public static Image BlackChickenIdleRight;
+        public static Image WhiteSheepIdleLeft;
+        public static Image WhiteCowIdleLeft;
+        public static Image WhiteChickenIdleLeft;
+        public static Image BlackSheepIdleLeft;
+        public static Image BlackCowIdleLeft;
+        public static Image BlackChickenIdleLeft;
+        public static Image BlackSheepAimRight;
+        public static Image BlackCowAimRight;
+        public static Image BlackChickenAimRight;
+        public static Image BlackSheepAimLeft;
+        public static Image BlackCowAimLeft;
+        public static Image BlackChickenAimLeft;
+        public static Image WhiteSheepAimRight;
+        public static Image WhiteCowAimRight;
+        public static Image WhiteChickenAimRight;
+        public static Image WhiteSheepAimLeft;
+        public static Image WhiteCowAimLeft;
+        public static Image WhiteChickenAimLeft;
+        public static Image BlackSheepShootRight;
+        public static Image BlackCowShootRight;
+        public static Image BlackChickenShootRight;
+        public static Image BlackSheepShootLeft;
+        public static Image BlackCowShootLeft;
+        public static Image BlackChickenShootLeft;
+        public static Image WhiteSheepShootRight;
+        public static Image WhiteCowShootRight;
+        public static Image WhiteChickenShootRight;
+        public static Image WhiteSheepShootLeft;
+        public static Image WhiteCowShootLeft;
+        public static Image WhiteChickenShootLeft;
 
 
         static{
@@ -101,6 +142,13 @@ public class Asset {
             upgradeChooseGobletPage=LoadImg("UI/UpgradeChoose/upgradeChooseGobletPage.png");
             upgradeChooseDNAPage=LoadImg("UI/UpgradeChoose/upgradeChooseDNAPage.png");
 
+            enemyLock=LoadImg("UI/Button/UnlockEnemy/enemyLock.png");
+            enemyUnlockedHover=LoadImg("UI/Button/UnlockEnemy/enemyUnlockedHover.png");
+            sheepUnlocked=LoadImg("UI/Button/UnlockEnemy/sheepUnlocked.png");
+            cowUnlocked=LoadImg("UI/Button/UnlockEnemy/cowUnlocked.png");
+            chickenUnlocked=LoadImg("UI/Button/UnlockEnemy/chickenUnlocked.png");
+            partsDrop=LoadImg("UI/Currency/partsDrop.png");
+
             headerMain=LoadImg("UI/headerMain.png");
             currencyBG=LoadImg("UI/Currency/currencyBG.png");
             partUI=LoadImg("UI/Currency/meat.png");
@@ -117,7 +165,44 @@ public class Asset {
             gobletHeader=LoadImg("UI/Header/gobletHeader.png");
             DNAHeader=LoadImg("UI/Header/DNAHeader.png");
 
+            WhiteSheepIdleRight=LoadImg("UI/Enemy/Idle/Right/WhiteSheepIdleRight.png");
+            WhiteCowIdleRight=LoadImg("UI/Enemy/Idle/Right/WhiteCowIdleRight.png");
+            WhiteChickenIdleRight=LoadImg("UI/Enemy/Idle/Right/WhiteChickenIdleRight.png");
+            BlackSheepIdleRight=LoadImg("UI/Enemy/Idle/Right/BlackSheepIdleRight.png");
+            BlackCowIdleRight=LoadImg("UI/Enemy/Idle/Right/BlackCowIdleRight.png");
+            BlackChickenIdleRight=LoadImg("UI/Enemy/Idle/Right/BlackChickenIdleRight.png");
+            WhiteSheepIdleLeft=LoadImg("UI/Enemy/Idle/Left/WhiteSheepIdleLeft.png");
+            WhiteCowIdleLeft=LoadImg("UI/Enemy/Idle/Left/WhiteCowIdleLeft.png");
+            WhiteChickenIdleLeft=LoadImg("UI/Enemy/Idle/Left/WhiteChickenIdleLeft.png");
+            BlackSheepIdleLeft=LoadImg("UI/Enemy/Idle/Left/BlackSheepIdleLeft.png");
+            BlackCowIdleLeft=LoadImg("UI/Enemy/Idle/Left/BlackCowIdleLeft.png");
+            BlackChickenIdleLeft=LoadImg("UI/Enemy/Idle/Left/BlackChickenIdleLeft.png");
 
+            WhiteSheepAimRight=LoadImg("UI/Enemy/Aim/Right/WhiteSheepAimRight.png");
+            WhiteCowAimRight=LoadImg("UI/Enemy/Aim/Right/WhiteCowAimRight.png");
+            WhiteChickenAimRight=LoadImg("UI/Enemy/Aim/Right/WhiteChickenAimRight.png");
+            BlackSheepAimRight=LoadImg("UI/Enemy/Aim/Right/BlackSheepAimRight.png");
+            BlackCowAimRight=LoadImg("UI/Enemy/Aim/Right/BlackCowAimRight.png");
+            BlackChickenAimRight=LoadImg("UI/Enemy/Aim/Right/BlackChickenAimRight.png");
+            WhiteSheepAimLeft=LoadImg("UI/Enemy/Aim/Left/WhiteSheepAimLeft.png");
+            WhiteCowAimLeft=LoadImg("UI/Enemy/Aim/Left/WhiteCowAimLeft.png");
+            WhiteChickenAimLeft=LoadImg("UI/Enemy/Aim/Left/WhiteChickenAimLeft.png");
+            BlackSheepAimLeft=LoadImg("UI/Enemy/Aim/Left/BlackSheepAimLeft.png");
+            BlackCowAimLeft=LoadImg("UI/Enemy/Aim/Left/BlackCowAimLeft.png");
+            BlackChickenAimLeft=LoadImg("UI/Enemy/Aim/Left/BlackChickenAimLeft.png");
+
+            WhiteSheepShootRight=LoadImg("UI/Enemy/Shoot/Right/WhiteSheepShootRight.png");
+            WhiteCowShootRight=LoadImg("UI/Enemy/Shoot/Right/WhiteCowShootRight.png");
+            WhiteChickenShootRight=LoadImg("UI/Enemy/Shoot/Right/WhiteChickenShootRight.png");
+            BlackSheepShootRight=LoadImg("UI/Enemy/Shoot/Right/BlackSheepShootRight.png");
+            BlackCowShootRight=LoadImg("UI/Enemy/Shoot/Right/BlackCowShootRight.png");
+            BlackChickenShootRight=LoadImg("UI/Enemy/Shoot/Right/BlackChickenShootRight.png");
+            WhiteSheepShootLeft=LoadImg("UI/Enemy/Shoot/Left/WhiteSheepShootLeft.png");
+            WhiteCowShootLeft=LoadImg("UI/Enemy/Shoot/Left/WhiteCowShootLeft.png");
+            WhiteChickenShootLeft=LoadImg("UI/Enemy/Shoot/Left/WhiteChickenShootLeft.png");
+            BlackSheepShootLeft=LoadImg("UI/Enemy/Shoot/Left/BlackSheepShootLeft.png");
+            BlackCowShootLeft=LoadImg("UI/Enemy/Shoot/Left/BlackCowShootLeft.png");
+            BlackChickenShootLeft=LoadImg("UI/Enemy/Shoot/Left/BlackChickenShootLeft.png");
 
         }
         private static Image LoadImg(String url){

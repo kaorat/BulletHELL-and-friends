@@ -56,6 +56,9 @@ public class UIButton extends UISprite {
             else if(buttonType == ButtonType.UPGRADEDNA){
                 setSprite(Asset.UI.upgradeButtonNoMoneyDNA);
             }
+            else if((buttonType == ButtonType.UPGRADESHEEP) || (buttonType == ButtonType.UPGRADECOW) || (buttonType == ButtonType.UPGRADECHICKEN) ){
+                setSprite(Asset.UI.enemyLock);
+            }
 
 
         }
@@ -84,6 +87,11 @@ public class UIButton extends UISprite {
                 else if(buttonType == ButtonType.BACK){
                     setSprite(Asset.UI.backButtonHover);
                 }
+                else if((buttonType == ButtonType.UPGRADESHEEP) || (buttonType == ButtonType.UPGRADECOW) || (buttonType == ButtonType.UPGRADECHICKEN) ){
+                    setSprite(Asset.UI.enemyUnlockedHover);
+                }
+
+
 
             }
             else{
@@ -112,6 +120,16 @@ public class UIButton extends UISprite {
                 else if(buttonType == ButtonType.UPGRADEDNA){
                     setSprite(Asset.UI.upgradeButtonDNA);
                 }
+                else if(buttonType == ButtonType.UPGRADESHEEP){
+                    setSprite(Asset.UI.sheepUnlocked);
+                }
+                else if(buttonType == ButtonType.UPGRADECOW){
+                    setSprite(Asset.UI.cowUnlocked);
+                }
+                else if(buttonType == ButtonType.UPGRADECHICKEN){
+                    setSprite(Asset.UI.chickenUnlocked);
+                }
+
 
             }
         }

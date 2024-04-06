@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class KaoBoss extends BaseBoss{
+public class KaoBoss extends BaseBoss {
 
     private boolean ready;
     private boolean startRotate;
@@ -26,15 +26,15 @@ public class KaoBoss extends BaseBoss{
 
     public KaoBoss() {
         super();
-        maxHp=1000;
-        hp=maxHp;
-        ready=false;
-        startRotate=false;
+        maxHp = 1000;
+        hp = maxHp;
+        ready = false;
+        startRotate = false;
         bulletsBox = new ArrayList<>();
         circleRank = Arrays.asList(false, false, false, false, false);
         phase = Arrays.asList(false, false, false, false, false);
         circleAngle = Arrays.asList(90, 92, 94, 96, 98);
-        getTransform().setScl(0.25,0.25);
+        getTransform().setScl(0.25, 0.25);
         setImage(Asset.Game.player);
 
     }
@@ -42,8 +42,8 @@ public class KaoBoss extends BaseBoss{
 
     @Override
     public void action() {
-    double x = Transform.centerPos(this).getX();
-    double y = Transform.centerPos(this).getY();
+        double x = Transform.centerPos(this).getX();
+        double y = Transform.centerPos(this).getY();
 
 //    for(int i = 0; i < circleAngle.size(); i++){
 //        if(circleAngle.get(i)>=450||circleAngle.get(i)<=-450){
@@ -56,41 +56,36 @@ public class KaoBoss extends BaseBoss{
 //            angle2=0;
 //        }
 
-        if(!ready) {
-            if(frame>200){
-                ready=true;
+        if (!ready) {
+            if (frame > 200) {
+                ready = true;
             }
             return;
         }
+        //TODO: define phases;
+        if (frame % 1500 == 0) {
 
-        for (int i = 0; i< bulletsBox.size();i++){
-            for(int j = bulletsBox.get(i).size() - 1; j>=0 ; j--){
-                double deg = 0.3;
-                bulletsBox.get(i).get(j).getTransform().setRot(bulletsBox.get(i).get(j).getTransform().getRot() + deg);
-                if(bulletsBox.get(i).get(j).getTransform().getRot() >= 360){
-                    bulletsBox.get(i).get(j).getTransform().setRot(0);
-                }if(bulletsBox.get(i).get(j).isDestroyed()){
-                    bulletsBox.get(i).remove(j);
-                }
+            for (int i = 0; i < Math.floor(Math.random() * 10) + 30; i++) {
 
+                List<BaseBullet> bullets = BossUtils.circular(this, 90 + (20 * i), 1.5 + (i * 0.08), 10, -0.05, 0);
+
+                bulletsBox.add(bullets);
             }
-        }
-//            Thread t = new Thread(() -> {
-                if(frame % 500 == 0) {
-                for(int i=0; i<40;i++){
+            for (int i = 0; i < bulletsBox.size(); i++) {
+                for (int j = 0; j < bulletsBox.get(i).size(); j++) {
+                    BulletUtils.ChangeTrajectoryOnFrame(bulletsBox.get(i).get(j), 0 + (0.005 * i), bulletsBox.get(i).get(j).getTransform().getRot(), 0.01 + (i * 0.005), 1, 6000 - (i * 120));
+                    BulletUtils.ChangeRotAndDestroyWithDuration(bulletsBox.get(i).get(j), 0.1, 0.002, 4,7000 - (i * 120), 10000);
+                }
+            }
 
-                    List<BaseBullet> bullets = BossUtils.circular(this, 90+(10*i), 2 + (i*0.10), 10, -0.05, 0);
-                    bulletsBox.add(bullets);
-                }
-                for(int i = 0; i < bulletsBox.size(); i++){
-                    for(int j = 0; j < bulletsBox.get(i).size(); j++){
-                            BulletUtils.ChangeTrajectoryOnFrame(bulletsBox.get(i).get(j), 0, bulletsBox.get(i).get(j).getTransform().getRot(), 0.04 + (i*0.01), 2, 4500);
-                    }
-                }
-//                bulletsBox.clear();
-                }
-//            };
-//            t.start();
+//            for (int i = 0; i < bulletsBox.size(); i++) {
+//                for (int j = bulletsBox.get(i).size() - 1; j >= 0; j--) {
+//                    BulletUtils.ChangeRotAndDestroyWithDuration(bulletsBox.get(i).get(j), 0.1, 0.01, 2,3000, 10000);
+//                }
+//            }
+            bulletsBox.clear();
+        }
+
 //        if(frame % 2 == 0) {
 //            for(int i = 0; i < circleRank.size(); i++) {
 //                if(i == 0 || circleRank.get(i - 1)) {
@@ -108,7 +103,6 @@ public class KaoBoss extends BaseBoss{
 //            }
 
 
-
 //        if(frame%600==0){ // move randomly every 1 sec
 ////            t.interrupt(); //forbidden moves;
 //            transform.translateToPositionInMilliSecond((Math.random()*(Utility.getGameScreenX()-150))+50,(Math.random()*60)+50,4000);
@@ -118,7 +112,7 @@ public class KaoBoss extends BaseBoss{
 
     @Override
     public void draw(GraphicsContext gc) {
-        Utility.DrawImage(gc,getImage(),transform);
+        Utility.DrawImage(gc, getImage(), transform);
         drawBounds(0, 0
                 , 1, 1);
         gc.setStroke(Color.YELLOW);

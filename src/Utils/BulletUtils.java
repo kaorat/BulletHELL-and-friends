@@ -56,4 +56,33 @@ public class BulletUtils {
             }
         }.start();
     }
+
+    public static void ChangeRotAndDestroyWithDuration(BaseBullet bullet,double angularRot, double accel, double maxSpeed, double phase1, double phase2) {
+        double startFrame = System.currentTimeMillis();
+
+        new AnimationTimer(){
+            public void handle(long now) {
+                if(System.currentTimeMillis()-startFrame<=phase1){
+//                    System.out.println("changing trajectory" + (System.currentTimeMillis() - startFrame));
+                    bullet.getTransform().setRot(bullet.getTransform().getRot()+angularRot);
+
+                    return;
+                }
+                if(System.currentTimeMillis()-startFrame<=phase2){
+//                    System.out.println("changing trajectory" + (System.currentTimeMillis() - startFrame));
+                    bullet.getTransform().setRot(bullet.getTransform().getRot()-(angularRot * 2));
+                    bullet.getTransform().setAccel(accel);
+                    bullet.getTransform().setMaxSpeed(maxSpeed);
+                    return;
+                }
+                bullet.setDestroyed(true);
+                this.stop();
+            }
+        }.start();
+
+    }
+
+
+
+
 }

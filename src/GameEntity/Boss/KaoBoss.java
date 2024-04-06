@@ -67,7 +67,7 @@ public class KaoBoss extends BaseBoss {
 
             for (int i = 0; i < Math.floor(Math.random() * 10) + 30; i++) {
 
-                List<BaseBullet> bullets = BossUtils.circular(this, 90 + (20 * i), 1.5 + (i * 0.08), 10, -0.05, 0);
+                List<BaseBullet> bullets = BossUtils.circular(this, 90 + (10 * i), 1.5 + (i * 0.08), 6, -0.05, 0);
 
                 bulletsBox.add(bullets);
             }
@@ -103,10 +103,10 @@ public class KaoBoss extends BaseBoss {
 //            }
 
 
-//        if(frame%600==0){ // move randomly every 1 sec
-////            t.interrupt(); //forbidden moves;
-//            transform.translateToPositionInMilliSecond((Math.random()*(Utility.getGameScreenX()-150))+50,(Math.random()*60)+50,4000);
-//        }
+        if(frame%1501==0){ // move randomly every 1 sec
+//            t.interrupt(); //forbidden moves;
+            transform.translateToPositionInMilliSecond((Math.random()*(Utility.getGameScreenX()-150))+50,0,4000);
+        }
         //rotate
     }
 

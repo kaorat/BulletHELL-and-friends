@@ -48,7 +48,7 @@ public class EnemyManager implements Updatable {
     public Transform randomTransform() {
         double x = (Math.random() * 640);
         double y = -60d;
-        return new Transform(x, y, 0, 0.1, 0.1);
+        return new Transform(x, y, 0, 0.3, 0.3);
     }
 
     public void spawnEnemy(EnemyType type) {

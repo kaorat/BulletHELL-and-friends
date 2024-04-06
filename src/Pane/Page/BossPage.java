@@ -25,7 +25,7 @@ public class BossPage extends GraphicEditor {
         time=1000;
         lastframe=System.currentTimeMillis();
         boss = BossManager.getInstance().initBoss();
-        create(new UISprite(Asset.UI.backgroundGameplay, new Transform(0, 0, 0.65, 0.5), -10));
+        create(new UISprite(Asset.UI.backgroundBoss, new Transform(0, 0, 0.65, 0.5), -10));
         create(new UISprite(Asset.UI.headerMain,new Transform(20,35,2,0.3),70));
         hpBar = (UISprite) create(new UISprite(Asset.UI.aPixel,new Transform(65,36,490,11),75));
         timer = (UISprite) create(new UISprite(new Text("60", Utility.getGameFont(30), Color.WHITE),new Transform(Utility.getGameScreenX()-50,50),76));

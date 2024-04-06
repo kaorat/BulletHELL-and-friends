@@ -12,7 +12,7 @@ public class Cow extends BaseEnemy{
 
     public Cow(Transform transform,double z) {
         super(transform,z);
-        setImage(Asset.UI.guniconUI);
+        setImage(Asset.Game.WhiteCowIdleLeft);
         Perks = EnemyManager.getInstance().getCowPerks();
         ApplyStat(EnemyType.COW);
 
@@ -34,17 +34,20 @@ public class Cow extends BaseEnemy{
         double renderTime = 16d ;
         if(state == States.DOWN) {
             downtime -= renderTime;
+            setImage(Asset.Game.WhiteCowAimLeft);
             transform.setRot(90);
             transform.translate(0.7);
             if(downtime <= 0) state = States.SHOOT;
         }
         if (state == States.SHOOT) {
             shootTime -= renderTime;
+            setImage(Asset.Game.WhiteCowShootLeft);
             firing();
             if(shootTime <= 0) state = States.UP;
         }
         if(state == States.UP) {
             uptime -= renderTime;
+            setImage(Asset.Game.WhiteCowIdleLeft);
             transform.setRot(270);
             transform.translate(0.7);
 

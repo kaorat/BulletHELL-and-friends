@@ -67,7 +67,6 @@ public class SceneManager {
         currentState=GameState.boss;
         SceneManager.bossPage=bossPage;
 
-        AudioClip bossBgm = Asset.Audio.bossFight1;
         Track.bgm.stop();
         Track.bossTheme.setCycleCount(AudioClip.INDEFINITE);
         Track.bossTheme.setVolume(0.5);

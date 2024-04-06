@@ -10,7 +10,7 @@ public class Sheep extends BaseEnemy{
 
     public Sheep(Transform transform,double z) {
         super(transform,z);
-        setImage(Asset.UI.sheepiconUI);
+        setImage(Asset.Game.WhiteSheepIdleLeft);
         Perks = EnemyManager.getInstance().getSheepPerks();
         ApplyStat(EnemyType.SHEEP);
 
@@ -31,17 +31,20 @@ public class Sheep extends BaseEnemy{
         double renderTime = 10d ;
         if(state == States.DOWN) {
             downtime -= renderTime;
+            setImage(Asset.Game.WhiteSheepAimLeft);
             transform.setRot(90);
             transform.translate(0.7);
             if(downtime <= 0) state = States.SHOOT;
         }
         if (state == States.SHOOT) {
             shootTime -= renderTime;
+            setImage(Asset.Game.WhiteSheepShootLeft);
             firing();
             if(shootTime <= 0) state = States.UP;
         }
         if(state == States.UP) {
             uptime -= renderTime;
+            setImage(Asset.Game.WhiteSheepIdleLeft);
             transform.setRot(270);
             transform.translate(0.7);
 

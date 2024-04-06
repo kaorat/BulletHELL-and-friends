@@ -48,6 +48,7 @@ public class Asset {
         public static Image buttonNavigateDNA;
         public static Image buttonNavigateHover;
         public static Image backgroundGameplay;
+        public static Image backgroundBoss;
         public static Image upgradeHeader;
         public static Image playerHeader;
         public static Image enemyHeader;
@@ -112,6 +113,7 @@ public class Asset {
             backgroundGobletPage=LoadImg("UI/Background/backgroundGobletPage.png");
             backgroundSpecialDNAPage=LoadImg("UI/Background/backgroundSpecialDNAPage.png");
             backgroundGameplay=LoadImg("UI/Background/farmBg.png");
+            backgroundBoss=LoadImg("UI/Background/test.png");
 
             //Button
             buttonNavigate=LoadImg("UI/Button/Navigate/buttonNavigate.png");

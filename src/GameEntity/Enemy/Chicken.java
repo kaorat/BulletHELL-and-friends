@@ -13,7 +13,7 @@ public class Chicken extends BaseEnemy{
 
     public Chicken(Transform transform,double z) {
         super(transform, z);
-        setImage(Asset.UI.soulUI);
+        setImage(Asset.Game.WhiteChickenShootRight);
         Perks = EnemyManager.getInstance().getChickenPerks();
         ApplyStat(EnemyType.CHICKEN);
 
@@ -24,7 +24,7 @@ public class Chicken extends BaseEnemy{
         // circular direction
         // utils got it
         long currentTime = System.currentTimeMillis();
-        if(currentTime - lastPatternTime > 120*fireRate*bulletQuantity){ // 5 seconds
+        if(currentTime - lastPatternTime > 1*fireRate*bulletQuantity){ // 5 seconds
             EnemyUtils.ChickenShootPattern(this,bulletSpeed);
             lastPatternTime = currentTime;
         }
@@ -36,17 +36,21 @@ public class Chicken extends BaseEnemy{
         double renderTime = 8d ;
         if(state == States.DOWN) {
             downtime -= renderTime;
+            setImage(Asset.Game.WhiteChickenAimRight);
             transform.setRot(90);
             transform.translate(0.7);
             if(downtime <= 0) state = States.SHOOT;
         }
         if (state == States.SHOOT) {
+           setImage(Asset.Game.WhiteChickenShootRight);
             shootTime -= renderTime;
             firing();
+
             if(shootTime <= 0) state = States.UP;
         }
         if(state == States.UP) {
             uptime -= renderTime;
+            setImage(Asset.Game.WhiteChickenIdleRight);
             transform.setRot(270);
             transform.translate(0.7);
 

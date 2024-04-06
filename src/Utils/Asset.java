@@ -220,22 +220,96 @@ public class Asset {
         public static Image cowBullet;
         public static Image enemy;
         public static Image michealJackson;
+        public static Image WhiteSheepIdleRight;
+        public static Image WhiteCowIdleRight;
+        public static Image WhiteChickenIdleRight;
+        public static Image BlackSheepIdleRight;
+        public static Image BlackCowIdleRight;
+        public static Image BlackChickenIdleRight;
+        public static Image WhiteSheepIdleLeft;
+        public static Image WhiteCowIdleLeft;
+        public static Image WhiteChickenIdleLeft;
+        public static Image BlackSheepIdleLeft;
+        public static Image BlackCowIdleLeft;
+        public static Image BlackChickenIdleLeft;
+        public static Image BlackSheepAimRight;
+        public static Image BlackCowAimRight;
+        public static Image BlackChickenAimRight;
+        public static Image BlackSheepAimLeft;
+        public static Image BlackCowAimLeft;
+        public static Image BlackChickenAimLeft;
+        public static Image WhiteSheepAimRight;
+        public static Image WhiteCowAimRight;
+        public static Image WhiteChickenAimRight;
+        public static Image WhiteSheepAimLeft;
+        public static Image WhiteCowAimLeft;
+        public static Image WhiteChickenAimLeft;
+        public static Image BlackSheepShootRight;
+        public static Image BlackCowShootRight;
+        public static Image BlackChickenShootRight;
+        public static Image BlackSheepShootLeft;
+        public static Image BlackCowShootLeft;
+        public static Image BlackChickenShootLeft;
+        public static Image WhiteSheepShootRight;
+        public static Image WhiteCowShootRight;
+        public static Image WhiteChickenShootRight;
+        public static Image WhiteSheepShootLeft;
+        public static Image WhiteCowShootLeft;
+        public static Image WhiteChickenShootLeft;
         static{
             loadResource();
         }
 
         private static void loadResource() {
-            player=Load("UI/kaosteak.png");
-            bullet=Load("UI/Currency/Honey.png");
-            rifleBullet=Load("UI/Bullet/RifleShot.png");
+            player=LoadImg("UI/kaosteak.png");
+            bullet=LoadImg("UI/Currency/Honey.png");
+            rifleBullet=LoadImg("UI/Bullet/RifleShot.png");
 
-            enemyBullet=Load("UI/Bullet/NormalShot.png");
-            cowBullet=Load("UI/CowBullet.png");
-            michealJackson=Load("UI/Enemy/mc.png");
+            enemyBullet=LoadImg("UI/Bullet/NormalShot.png");
+            cowBullet=LoadImg("UI/CowBullet.png");
+            michealJackson=LoadImg("UI/Enemy/mc.png");
 
+            WhiteSheepIdleRight=LoadImg("UI/Enemy/Idle/Right/WhiteSheepIdleRight.png");
+            WhiteCowIdleRight=LoadImg("UI/Enemy/Idle/Right/WhiteCowIdleRight.png");
+            WhiteChickenIdleRight=LoadImg("UI/Enemy/Idle/Right/WhiteChickenIdleRight.png");
+            BlackSheepIdleRight=LoadImg("UI/Enemy/Idle/Right/BlackSheepIdleRight.png");
+            BlackCowIdleRight=LoadImg("UI/Enemy/Idle/Right/BlackCowIdleRight.png");
+            BlackChickenIdleRight=LoadImg("UI/Enemy/Idle/Right/BlackChickenIdleRight.png");
+            WhiteSheepIdleLeft=LoadImg("UI/Enemy/Idle/Left/WhiteSheepIdleLeft.png");
+            WhiteCowIdleLeft=LoadImg("UI/Enemy/Idle/Left/WhiteCowIdleLeft.png");
+            WhiteChickenIdleLeft=LoadImg("UI/Enemy/Idle/Left/WhiteChickenIdleLeft.png");
+            BlackSheepIdleLeft=LoadImg("UI/Enemy/Idle/Left/BlackSheepIdleLeft.png");
+            BlackCowIdleLeft=LoadImg("UI/Enemy/Idle/Left/BlackCowIdleLeft.png");
+            BlackChickenIdleLeft=LoadImg("UI/Enemy/Idle/Left/BlackChickenIdleLeft.png");
+
+            WhiteSheepAimRight=LoadImg("UI/Enemy/Aim/Right/WhiteSheepAimRight.png");
+            WhiteCowAimRight=LoadImg("UI/Enemy/Aim/Right/WhiteCowAimRight.png");
+            WhiteChickenAimRight=LoadImg("UI/Enemy/Aim/Right/WhiteChickenAimRight.png");
+            BlackSheepAimRight=LoadImg("UI/Enemy/Aim/Right/BlackSheepAimRight.png");
+            BlackCowAimRight=LoadImg("UI/Enemy/Aim/Right/BlackCowAimRight.png");
+            BlackChickenAimRight=LoadImg("UI/Enemy/Aim/Right/BlackChickenAimRight.png");
+            WhiteSheepAimLeft=LoadImg("UI/Enemy/Aim/Left/WhiteSheepAimLeft.png");
+            WhiteCowAimLeft=LoadImg("UI/Enemy/Aim/Left/WhiteCowAimLeft.png");
+            WhiteChickenAimLeft=LoadImg("UI/Enemy/Aim/Left/WhiteChickenAimLeft.png");
+            BlackSheepAimLeft=LoadImg("UI/Enemy/Aim/Left/BlackSheepAimLeft.png");
+            BlackCowAimLeft=LoadImg("UI/Enemy/Aim/Left/BlackCowAimLeft.png");
+            BlackChickenAimLeft=LoadImg("UI/Enemy/Aim/Left/BlackChickenAimLeft.png");
+
+            WhiteSheepShootRight=LoadImg("UI/Enemy/Shoot/Right/WhiteSheepShootRight.png");
+            WhiteCowShootRight=LoadImg("UI/Enemy/Shoot/Right/WhiteCowShootRight.png");
+            WhiteChickenShootRight=LoadImg("UI/Enemy/Shoot/Right/WhiteChickenShootRight.png");
+            BlackSheepShootRight=LoadImg("UI/Enemy/Shoot/Right/BlackSheepShootRight.png");
+            BlackCowShootRight=LoadImg("UI/Enemy/Shoot/Right/BlackCowShootRight.png");
+            BlackChickenShootRight=LoadImg("UI/Enemy/Shoot/Right/BlackChickenShootRight.png");
+            WhiteSheepShootLeft=LoadImg("UI/Enemy/Shoot/Left/WhiteSheepShootLeft.png");
+            WhiteCowShootLeft=LoadImg("UI/Enemy/Shoot/Left/WhiteCowShootLeft.png");
+            WhiteChickenShootLeft=LoadImg("UI/Enemy/Shoot/Left/WhiteChickenShootLeft.png");
+            BlackSheepShootLeft=LoadImg("UI/Enemy/Shoot/Left/BlackSheepShootLeft.png");
+            BlackCowShootLeft=LoadImg("UI/Enemy/Shoot/Left/BlackCowShootLeft.png");
+            BlackChickenShootLeft=LoadImg("UI/Enemy/Shoot/Left/BlackChickenShootLeft.png");
 
         }
-        private static Image Load(String url){
+        private static Image LoadImg(String url){
             return new Image(ClassLoader.getSystemResource(url).toString());
         }
 

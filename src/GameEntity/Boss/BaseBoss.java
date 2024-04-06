@@ -19,7 +19,7 @@ public abstract class BaseBoss extends GameObject {
     public BaseBoss(){
         //Pattern here
         super(new Transform(250,-200),30);
-        frame=0;
+//        frame=0;
         transform.translateToPositionInMilliSecond(250,100,3000);
     }
 //    to set firing pattern for each boss

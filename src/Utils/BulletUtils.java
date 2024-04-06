@@ -70,9 +70,9 @@ public class BulletUtils {
                 }
                 if(System.currentTimeMillis()-startFrame<=phase2){
 //                    System.out.println("changing trajectory" + (System.currentTimeMillis() - startFrame));
-                    bullet.getTransform().setRot(bullet.getTransform().getRot()-(angularRot * 2));
-                    bullet.getTransform().setAccel(accel);
-                    bullet.getTransform().setMaxSpeed(maxSpeed);
+
+//                    bullet.getTransform().setAccel(accel);
+//                    bullet.getTransform().setMaxSpeed(maxSpeed);
                     return;
                 }
                 bullet.setDestroyed(true);

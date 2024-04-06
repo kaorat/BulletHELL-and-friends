@@ -37,6 +37,7 @@ public class KaoBoss extends BaseBoss {
         getTransform().setScl(0.25, 0.25);
         setImage(Asset.Game.player);
 
+        frame = 5000;
     }
 
 
@@ -45,17 +46,6 @@ public class KaoBoss extends BaseBoss {
         double x = Transform.centerPos(this).getX();
         double y = Transform.centerPos(this).getY();
 
-//    for(int i = 0; i < circleAngle.size(); i++){
-//        if(circleAngle.get(i)>=450||circleAngle.get(i)<=-450){
-//            circleAngle.set(i,90);
-//            circleRank.set(i, true);
-//        }
-//    }
-
-//        if(angle2>=720||angle2<=-720){
-//            angle2=0;
-//        }
-
         if (!ready) {
             if (frame > 200) {
                 ready = true;
@@ -63,49 +53,52 @@ public class KaoBoss extends BaseBoss {
             return;
         }
         //TODO: define phases;
-        if (frame % 1500 == 0) {
+        if(frame > 200  && frame <= 6000){
+            if (frame % 1500 == 0) {
 
-            for (int i = 0; i < Math.floor(Math.random() * 10) + 30; i++) {
+                for (int i = 0; i < Math.floor(Math.random() * 10) + 30; i++) {
 
-                List<BaseBullet> bullets = BossUtils.circular(this, 90 + (10 * i), 1.5 + (i * 0.08), 6, -0.05, 0);
+                    List<BaseBullet> bullets = BossUtils.circular(this, 90 + (10 * i), 1.5 + (i * 0.08), 6, -0.05, 0);
 
-                bulletsBox.add(bullets);
-            }
-            for (int i = 0; i < bulletsBox.size(); i++) {
-                for (int j = 0; j < bulletsBox.get(i).size(); j++) {
-                    BulletUtils.ChangeTrajectoryOnFrame(bulletsBox.get(i).get(j), 0 + (0.005 * i), bulletsBox.get(i).get(j).getTransform().getRot(), 0.01 + (i * 0.005), 1, 6000 - (i * 120));
-                    BulletUtils.ChangeRotAndDestroyWithDuration(bulletsBox.get(i).get(j), 0.1, 0.002, 4,7000 - (i * 120), 10000);
+                    bulletsBox.add(bullets);
                 }
+                for (int i = 0; i < bulletsBox.size(); i++) {
+                    for (int j = 0; j < bulletsBox.get(i).size(); j++) {
+                        BulletUtils.ChangeTrajectoryOnFrame(bulletsBox.get(i).get(j), 0 + (0.005 * i), bulletsBox.get(i).get(j).getTransform().getRot(), 0.01 + (i * 0.005), 1, 6000 - (i * 120));
+                        BulletUtils.ChangeRotAndDestroyWithDuration(bulletsBox.get(i).get(j), 0.1, 0.002, 4,7000 - (i * 120), 10000);
+                    }
+                }
+
+                bulletsBox.clear();
+            }
+//
+//            if(frame%1501==0){ // move randomly every 1 sec
+////            t.interrupt(); //forbidden moves;
+//                transform.translateToPositionInMilliSecond((Math.random()*(Utility.getGameScreenX()-150))+50,0,4000);
+//            }
+        }
+        if(frame > 6000 && frame < 30000){
+            if (frame % 1000 == 0) {
+                System.out.println("phase 2");
+                for(int i = 0; i < 30; i++){
+                    List<BaseBullet> bullets = BossUtils.circular(this, 90 + (i*10) , 0.3 + (i * 0.01), 10, 0.005, 3);
+                    bulletsBox.add(bullets);
+                }
+                for (int i = 0; i < bulletsBox.size(); i++) {
+                    for (int j = 0; j < bulletsBox.get(i).size(); j++) {
+//                        BulletUtils.ChangeTrajectoryOnFrame(bulletsBox.get(i).get(j), 0 + (0.005 * i), bulletsBox.get(i).get(j).getTransform().getRot(), 0.01 + (i * 0.005), 1, 3000 - (i * 100));
+                        BulletUtils.ChangeRotAndDestroyWithDuration(bulletsBox.get(i).get(j), 0.7, 0.002, 4,4000 - (i * 120), 10000);
+                    }
+                }
+
+
+                bulletsBox.clear();
             }
 
-//            for (int i = 0; i < bulletsBox.size(); i++) {
-//                for (int j = bulletsBox.get(i).size() - 1; j >= 0; j--) {
-//                    BulletUtils.ChangeRotAndDestroyWithDuration(bulletsBox.get(i).get(j), 0.1, 0.01, 2,3000, 10000);
-//                }
+//            if(frame%1501==0){ // move randomly every 1 sec
+////            t.interrupt(); //forbidden moves;
+//                transform.translateToPositionInMilliSecond((Math.random()*(Utility.getGameScreenX()-150))+50,0,4000);
 //            }
-            bulletsBox.clear();
-        }
-
-//        if(frame % 2 == 0) {
-//            for(int i = 0; i < circleRank.size(); i++) {
-//                if(i == 0 || circleRank.get(i - 1)) {
-//                    if(!circleRank.get(i)) {
-//                        EnemyBullet pattern1 = (EnemyBullet) BulletUtils.Shoot(x, y, 10, circleAngle.get(i));
-//                        bulletsBox.add(pattern1);
-//                        BulletUtils.ChangeTrajectoryNow(pattern1, 1.5 + (i * 0.1), circleAngle.get(i), -0.01, 0);
-//                        circleAngle.set(i, circleAngle.get(i) + 20);
-//                    }
-//                }
-//            }
-//        }
-//            if(frame % 1001 == 0){
-//
-//            }
-
-
-        if(frame%1501==0){ // move randomly every 1 sec
-//            t.interrupt(); //forbidden moves;
-            transform.translateToPositionInMilliSecond((Math.random()*(Utility.getGameScreenX()-150))+50,0,4000);
         }
         //rotate
     }

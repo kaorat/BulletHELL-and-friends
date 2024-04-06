@@ -52,7 +52,12 @@ public class Asset {
         public static Image enemyHeader;
         public static Image gobletHeader;
         public static Image DNAHeader;
-
+        public static Image enemyLock;
+        public static Image enemyUnlockedHover;
+        public static Image sheepUnlocked;
+        public static Image cowUnlocked;
+        public static Image chickenUnlocked;
+        public static Image partsDrop;
 
 
         static{
@@ -97,6 +102,13 @@ public class Asset {
             upgradeChooseEnemyPage=LoadImg("UI/UpgradeChoose/upgradeChooseEnemyPage.png");
             upgradeChooseGobletPage=LoadImg("UI/UpgradeChoose/upgradeChooseGobletPage.png");
             upgradeChooseDNAPage=LoadImg("UI/UpgradeChoose/upgradeChooseDNAPage.png");
+
+            enemyLock=LoadImg("UI/Button/UnlockEnemy/enemyLock.png");
+            enemyUnlockedHover=LoadImg("UI/Button/UnlockEnemy/enemyUnlockedHover.png");
+            sheepUnlocked=LoadImg("UI/Button/UnlockEnemy/sheepUnlocked.png");
+            cowUnlocked=LoadImg("UI/Button/UnlockEnemy/cowUnlocked.png");
+            chickenUnlocked=LoadImg("UI/Button/UnlockEnemy/chickenUnlocked.png");
+            partsDrop=LoadImg("UI/Currency/partsDrop.png");
 
             headerMain=LoadImg("UI/headerMain.png");
             currencyBG=LoadImg("UI/Currency/currencyBG.png");

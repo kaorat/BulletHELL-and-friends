@@ -96,6 +96,27 @@ public class Asset {
         public static Image WhiteSheepShootLeft;
         public static Image WhiteCowShootLeft;
         public static Image WhiteChickenShootLeft;
+        public static Image moveNorth;
+        public static Image moveSouth;
+        public static Image moveEast;
+        public static Image moveWest;
+        public static Image moveNorthEast;
+        public static Image moveNorthWest;
+        public static Image moveSouthEast;
+        public static Image moveSouthWest;
+        public static Image ultimate;
+        public static Image attackNE;
+        public static Image attackNW;
+        public static Image attackForward1;
+        public static Image attackForward2;
+        public static Image attackForward3;
+        public static Image attackForward4;
+        public static Image attacked;
+        public static Image beforeWarp;
+        public static Image dead;
+        public static Image idle1;
+        public static Image idle2;
+        public static Image idle3;
 
 
         static{
@@ -205,6 +226,30 @@ public class Asset {
             BlackSheepShootLeft=LoadImg("UI/Enemy/Shoot/Left/BlackSheepShootLeft.png");
             BlackCowShootLeft=LoadImg("UI/Enemy/Shoot/Left/BlackCowShootLeft.png");
             BlackChickenShootLeft=LoadImg("UI/Enemy/Shoot/Left/BlackChickenShootLeft.png");
+
+            moveNorth=LoadImg("UI/Player/Move/moveNorth.png");
+            moveSouth=LoadImg("UI/Player/Move/moveSouth.png");
+            moveEast=LoadImg("UI/Player/Move/moveEast.png");
+            moveWest=LoadImg("UI/Player/Move/moveWest.png");
+            moveNorthEast=LoadImg("UI/Player/Move/moveNorthEast.png");
+            moveNorthWest=LoadImg("UI/Player/Move/moveNorthWest.png");
+            moveSouthEast=LoadImg("UI/Player/Move/moveSouthEast.png");
+            moveSouthWest=LoadImg("UI/Player/Move/moveSouthWest.png");
+
+            ultimate=LoadImg("UI/Player/Attack/ultimate.png");
+            attackNE=LoadImg("UI/Player/Attack/attackNE.png");
+            attackNW=LoadImg("UI/Player/Attack/attackNW.png");
+            attackForward1=LoadImg("UI/Player/Attack/attackForward1.png");
+            attackForward2=LoadImg("UI/Player/Attack/attackForward2.png");
+            attackForward3=LoadImg("UI/Player/Attack/attackForward3.png");
+            attackForward4=LoadImg("UI/Player/Attack/attackForward4.png");
+
+            attacked=LoadImg("UI/Player/Other/attacked.png");
+            beforeWarp=LoadImg("UI/Player/Other/beforeWarp.png");
+            dead=LoadImg("UI/Player/Other/dead.png");
+            idle1=LoadImg("UI/Player/Other/idle1.png");
+            idle2=LoadImg("UI/Player/Other/idle2.png");
+            idle3=LoadImg("UI/Player/Other/idle3.png");
 
         }
         private static Image LoadImg(String url){

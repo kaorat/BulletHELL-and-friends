@@ -45,11 +45,11 @@ public class StatManager implements Updatable {
         if(totalCoin>entireHoneylevel*100){
             totalCoin-=entireHoneylevel*100;
             entireHoneylevel++;
-            honeyLevel++;
+            honeyLevel+=gobletLevels.get(0);
         }
     }
     public void reset(){
-        setAmber(getAmber()+(honeyLevel* gobletLevels.get(0)));
+        setAmber(getAmber()+(honeyLevel));
         setCoin(0);
         setTotalCoin(0);
         setSoul(0);

@@ -64,12 +64,16 @@ public class UIButton extends UISprite {
             }
 
 
+
         }
         else{
             if (MouseUtil.isPressed()&&hovered) {
                 // Draw pressed effect
                 if(buttonType == ButtonType.UPGRADEMEAT){
                     setSprite(Asset.UI.upgradeButtonPressedMeat);
+                }
+                else if(buttonType == ButtonType.BOSSCALLED){
+                    setSprite(Asset.UI.buttonBossPressed);
                 }
 
             }
@@ -95,6 +99,9 @@ public class UIButton extends UISprite {
                 }
                 else if (buttonType == ButtonType.GOBLET) {
                     setSprite(Asset.UI.buttonGobletHover);
+                }
+                else if(buttonType == ButtonType.BOSSCALLED){
+                    setSprite(Asset.UI.buttonBossHover);
                 }
 
 
@@ -136,6 +143,9 @@ public class UIButton extends UISprite {
                 }
                 else if(buttonType == ButtonType.GOBLET){
                     setSprite(Asset.UI.buttonGoblet);
+                }
+                else if(buttonType == ButtonType.BOSSCALLED){
+                    setSprite(Asset.UI.buttonBossNormal);
                 }
 
 

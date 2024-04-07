@@ -117,6 +117,14 @@ public class Asset {
         public static Image idle1;
         public static Image idle2;
         public static Image idle3;
+        public static Image goblet;
+        public static Image buttonGoblet;
+        public static Image buttonGobletHover;
+        public static Image buttonGobletDisabled;
+        public static Image backgroundStatus;
+        public static Image buttonBossHover;
+        public static Image buttonBossNormal;
+        public static Image buttonBossPressed;
 
 
         static{
@@ -250,6 +258,16 @@ public class Asset {
             idle1=LoadImg("UI/Player/Other/idle1.png");
             idle2=LoadImg("UI/Player/Other/idle2.png");
             idle3=LoadImg("UI/Player/Other/idle3.png");
+
+            goblet=LoadImg("UI/Currency/goblet.png");
+            buttonGoblet=LoadImg("UI/Button/Goblet/buttonGoblet.png");
+            buttonGobletHover=LoadImg("UI/Button/Goblet/buttonGobletHover.png");
+            buttonGobletDisabled=LoadImg("UI/Button/Goblet/buttonGobletDisabled.png");
+
+            backgroundStatus=LoadImg("UI/Status/backgroundStatus.png");
+            buttonBossHover=LoadImg("UI/Status/buttonBossHover.png");
+            buttonBossNormal=LoadImg("UI/Status/buttonBossNormal.png");
+            buttonBossPressed=LoadImg("UI/Status/buttonBossPressed.png");
 
         }
         private static Image LoadImg(String url){

@@ -46,7 +46,6 @@ public class BulletManager implements Updatable {
         for(GameObject bullet : bullets){
             bullet.setDestroyed(true);
         }
-        bullets.clear();
     }
 
     public ArrayList<BaseBullet> getBullets() {

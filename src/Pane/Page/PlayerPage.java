@@ -109,6 +109,12 @@ public class PlayerPage extends GraphicEditor {
             int level = PlayerManager.getInstance().getPlayerPerks().get(i);
             int basePrice = Config.player_basePrices.get(i).intValue();
             int cost = (int)(basePrice * Math.pow(Config.player_priceIncrements.get(i),level));
+            //Maxlevel
+            if(level>=Config.player_maxLevels.get(i)){
+                allPrice.get(i).getText().setText("MAX");
+                allButtons.get(i).setEnable(false);
+                continue;
+            }
             //Price
             UISprite price = allPrice.get(i);
             price.getText().setText(Utility.NumberToString(cost));

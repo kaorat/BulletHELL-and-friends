@@ -8,8 +8,8 @@ public class Config {
     //TODO
     // might need to make a base for each enemy type
     //Enemy Multiplier -> multiply hp and price
-    public static final int COW_MULTIPLIER = 100;
-    public static final int CHICKEN_MULTIPLIER = 1000;
+    public static final int COW_MULTIPLIER = 10;
+    public static final int CHICKEN_MULTIPLIER = 100;
 
     // Parts Drop
     public static final double PARTS_DROP_BASE = 10;
@@ -31,7 +31,7 @@ public class Config {
     public static final double AGILITY_MAX_LEVEL = 99;
 
     // Lethal Mutation : 3
-    public static final double ENEMY_BULLET_SPEED_BASE = 3;
+    public static final double ENEMY_BULLET_SPEED_BASE = 2;
     public static final double LETHAL_BULLET_SPEED_UPGRADE = 0.2;
     public static final double LETHAL_BASE_PRICE = 300;
     public static final double LETHAL_PRICE_INCREMENT = 1.2;//Power by level
@@ -41,9 +41,9 @@ public class Config {
     // Fuzzy Mutation : 4
     // Sheep multiply fire rate by n/10 , cow increase bullet number by n*6 , chicken increase bullet number (more shotgun) by n
     // bullet quantity
-    public static final double SHEEP_BULLET_QUANTITY_BASE = 2;
-    public static final double COW_BULLET_QUANTITY_BASE = 3;
-    public static final double CHICKEN_BULLET_QUANTITY_BASE = 10;
+    public static final double SHEEP_BULLET_QUANTITY_BASE = 0;
+    public static final double COW_BULLET_QUANTITY_BASE = 6;
+    public static final double CHICKEN_BULLET_QUANTITY_BASE = 1;
     public static final double FUZZY_BULLET_QUANTITY_UPGRADE = 1;
     public static final double FUZZY_BASE_PRICE = 200;
     public static final double FUZZY_PRICE_INCREMENT = 1.25;//Power by level
@@ -54,7 +54,7 @@ public class Config {
 
     // Elongation Sheep has no upgrade ?? : 5
     // chicken has no upgrade (random bullet spread)
-    public static final double BULLET_LENGTH_BASE = 5;
+    public static final double BULLET_LENGTH_BASE = 1;
     public static final double ELONGATION_BULLET_LENGTH_UPGRADE = 1;
     public static final double ELONGATION_BASE_PRICE = 800;
     public static final double ELONGATION_PRICE_INCREMENT = 1.25;//Power by level
@@ -64,7 +64,7 @@ public class Config {
 
 
     // Genetic Drift : 6
-    public static final double SOUL_CHANCE_BASE = 5;
+    public static final double SOUL_CHANCE_BASE = 0;
     public static final double GENETIC_SOUL_CHANCE_UPGRADE = 5;
     public static final double GENETIC_BASE_PRICE = 1000;
     public static final double GENETIC_PRICE_INCREMENT = 1.25;//Power by level

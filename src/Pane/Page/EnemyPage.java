@@ -2,6 +2,7 @@ package Pane.Page;
 
 import GameEntity.UI.UIButton;
 import GameEntity.UI.UISprite;
+import Manager.EnemyManager;
 import Manager.PlayerManager;
 import Manager.SceneManager;
 import Manager.StatManager;
@@ -20,15 +21,28 @@ public class EnemyPage extends GraphicEditor {
     private ArrayList<UISprite> allLvL = new ArrayList<>();
     private ArrayList<UISprite> allDescription = new ArrayList<>();
     private ArrayList<UISprite> allIncrease = new ArrayList<>();
+    private ArrayList<UISprite> allDropIncrease = new ArrayList<>();
     private final ArrayList<String> descTemplete = new ArrayList<>();
     private final ArrayList<String> increaseTemplete = new ArrayList<>();
+    private ArrayList<ArrayList<Integer>> enemiesPerks;
     private UISprite partsDrop ;
+    private int currentEnemy;
+    private ArrayList<Integer> enemyUnlockCost;
     private int moveYButton = 70;
 
     private double x = Utility.getGameScreenX();
 
     public EnemyPage(GraphicsContext graphicsContext) {
         super(graphicsContext);
+        currentEnemy=0;
+        enemiesPerks=new ArrayList<>();
+        enemiesPerks.add(EnemyManager.getInstance().getSheepPerks());
+        enemiesPerks.add(EnemyManager.getInstance().getCowPerks());
+        enemiesPerks.add(EnemyManager.getInstance().getChickenPerks());
+        enemyUnlockCost=new ArrayList<>();
+        enemyUnlockCost.add(0);
+        enemyUnlockCost.add(10000);
+        enemyUnlockCost.add(500000);
         //Background
         create(new UISprite(Asset.UI.backgroundEnemyPage, new Transform(Utility.getGameScreenX(), 0, 0.3, 0.25), 50));
 
@@ -52,7 +66,7 @@ public class EnemyPage extends GraphicEditor {
         allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 200, 217, 0.25, 0.25), 55)));
         allDescription.add((UISprite) create(new UISprite(new Text("Enemy’s HP : 0", Utility.getGameFont(11), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 62, 234, 0.25, 0.25), 55)));
         allIncrease.add((UISprite) create(new UISprite(new Text("0 HP", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 323, 231, 0.25, 0.25), 55)));
-        allIncrease.add((UISprite) create(new UISprite(new Text("0 parts", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 315, 241, 0.25, 0.25), 55)));
+        allDropIncrease.add((UISprite) create(new UISprite(new Text("0 parts", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 315, 241, 0.25, 0.25), 55)));
 
 
         // Create AgilityGene
@@ -60,20 +74,20 @@ public class EnemyPage extends GraphicEditor {
         allPrice.add( (UISprite) create(new UISprite(new Text("100", Utility.getGameFont(12), Color.YELLOWGREEN),
                 new Transform(allButtons.get(1).getTransform().getPosX() + 32,
                         allButtons.get(1).getTransform().getPosY() + 21), 55)));
-        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 188, 217 + moveYButton, 0.25, 0.25), 55)));
-        allDescription.add((UISprite) create(new UISprite(new Text("Enemy’s Fire rate : 0", Utility.getGameFont(10), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 62, 232 + moveYButton, 0.25, 0.25), 55)));
-        allIncrease.add((UISprite) create(new UISprite(new Text("0 fire rate", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 230 + moveYButton*1, 0.25, 0.25), 55)));
-        allIncrease.add((UISprite) create(new UISprite(new Text("0 parts", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 239 + moveYButton*1, 0.25, 0.25), 55)));
+        allLvL.add((UISprite) create(new UISprite(new Text("Lv.0", Utility.getGameFont(13), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 188, 217 + moveYButton, 0.25, 0.25), 55)));
+        allDescription.add((UISprite) create(new UISprite(new Text("Can't Upgrade", Utility.getGameFont(10), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 62, 232 + moveYButton, 0.25, 0.25), 55)));
+        allIncrease.add((UISprite) create(new UISprite(new Text("", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 230 + moveYButton*1, 0.25, 0.25), 55)));
+        allDropIncrease.add((UISprite) create(new UISprite(new Text("", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 239 + moveYButton*1, 0.25, 0.25), 55)));
 
         // Create LethalMutation
         allButtons.add((UIButton) create( new UIButton(Asset.UI.upgradeButtonMeat, new Transform(Utility.getGameScreenX() + 303, 190 + moveYButton*2, 0.28, 0.24), 54 , ButtonType.UPGRADEMEAT)));
         allPrice.add((UISprite) create(new UISprite(new Text("100", Utility.getGameFont(12), Color.YELLOWGREEN),
                 new Transform(allButtons.get(2).getTransform().getPosX() + 32,
                         allButtons.get(2).getTransform().getPosY() + 21), 55)));
-        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 228, 213 + moveYButton*2, 0.25, 0.25), 55)));
-        allDescription.add((UISprite) create(new UISprite(new Text("Bullet Speed : 0", Utility.getGameFont(11), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 62, 230 + moveYButton*2, 0.25, 0.25), 55)));
-        allIncrease.add((UISprite) create(new UISprite(new Text("0 speed", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 229 + moveYButton*2, 0.25, 0.25), 55)));
-        allIncrease.add((UISprite) create(new UISprite(new Text("0 parts", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 239 + moveYButton*2, 0.25, 0.25), 55)));
+        allLvL.add((UISprite) create(new UISprite(new Text("Lv.0", Utility.getGameFont(13), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 228, 213 + moveYButton*2, 0.25, 0.25), 55)));
+        allDescription.add((UISprite) create(new UISprite(new Text("Can't Upgrade", Utility.getGameFont(11), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 62, 230 + moveYButton*2, 0.25, 0.25), 55)));
+        allIncrease.add((UISprite) create(new UISprite(new Text("", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 229 + moveYButton*2, 0.25, 0.25), 55)));
+        allDropIncrease.add((UISprite) create(new UISprite(new Text("", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 239 + moveYButton*2, 0.25, 0.25), 55)));
 
         // Create FuzzyMutation
         allButtons.add((UIButton) create( new UIButton(Asset.UI.upgradeButtonMeat, new Transform(Utility.getGameScreenX() + 303, 188 + moveYButton*3, 0.28, 0.24), 54 , ButtonType.UPGRADEMEAT)));
@@ -83,17 +97,17 @@ public class EnemyPage extends GraphicEditor {
         allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 220, 211 + moveYButton*3, 0.25, 0.25), 55)));
         allDescription.add((UISprite) create(new UISprite(new Text("Bullet quantity : 0", Utility.getGameFont(11), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 62, 228 + moveYButton*3, 0.25, 0.25), 55)));
         allIncrease.add((UISprite) create(new UISprite(new Text("0 quantity", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 228 + moveYButton*3, 0.25, 0.25), 55)));
-        allIncrease.add((UISprite) create(new UISprite(new Text("0 parts", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 239 + moveYButton*3, 0.25, 0.25), 55)));
+        allDropIncrease.add((UISprite) create(new UISprite(new Text("0 parts", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 239 + moveYButton*3, 0.25, 0.25), 55)));
 
         // Create Elongation
         allButtons.add((UIButton) create( new UIButton(Asset.UI.upgradeButtonMeat, new Transform(Utility.getGameScreenX() + 303, 186 + moveYButton*4, 0.28, 0.24), 54 , ButtonType.UPGRADEMEAT)));
         allPrice.add((UISprite) create(new UISprite(new Text("100", Utility.getGameFont(12), Color.YELLOWGREEN),
                 new Transform(allButtons.get(4).getTransform().getPosX() + 32,
                         allButtons.get(4).getTransform().getPosY() + 21), 55)));
-        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 178, 209 + moveYButton*4, 0.25, 0.25), 55)));
-        allDescription.add((UISprite) create(new UISprite(new Text("Bullet length : 0", Utility.getGameFont(11), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 62, 226 + moveYButton*4, 0.25, 0.25), 55)));
-        allIncrease.add((UISprite) create(new UISprite(new Text("0 length", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 225 + moveYButton*4, 0.25, 0.25), 55)));
-        allIncrease.add((UISprite) create(new UISprite(new Text("0 parts", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 237 + moveYButton*4, 0.25, 0.25), 55)));
+        allLvL.add((UISprite) create(new UISprite(new Text("Lv.0", Utility.getGameFont(13), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 178, 209 + moveYButton*4, 0.25, 0.25), 55)));
+        allDescription.add((UISprite) create(new UISprite(new Text("Can't Upgrade", Utility.getGameFont(11), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 62, 226 + moveYButton*4, 0.25, 0.25), 55)));
+        allIncrease.add((UISprite) create(new UISprite(new Text("", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 225 + moveYButton*4, 0.25, 0.25), 55)));
+        allDropIncrease.add((UISprite) create(new UISprite(new Text("", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 237 + moveYButton*4, 0.25, 0.25), 55)));
 
         //Create GeneticDrift
         allButtons.add((UIButton) create( new UIButton(Asset.UI.upgradeButtonMeat, new Transform(Utility.getGameScreenX() + 303, 188 + moveYButton*5, 0.28, 0.24), 54 , ButtonType.UPGRADEMEAT)));
@@ -114,8 +128,8 @@ public class EnemyPage extends GraphicEditor {
         allIncrease.add((UISprite) create(new UISprite(new Text("0 s", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 330, 222 + moveYButton*6, 0.25, 0.25), 55)));
 
         //Unlock
-        create(new UISprite(new Text("Unlock Sheep ",Utility.getGameFont(18 ), Color.BLACK),
-                new Transform(x+100,685),52));
+        allDescription.add((UISprite) create(new UISprite(new Text("Unlock Sheep ",Utility.getGameFont(18 ), Color.BLACK),
+                new Transform(x+100,685),52)));
         allButtons.add((UIButton) create( new UIButton(Asset.UI.upgradeButtonMeat, new Transform(Utility.getGameScreenX() + 280, 665, 0.28, 0.24), 54 , ButtonType.UPGRADEMEAT)));
         allPrice.add((UISprite) create(new UISprite(new Text("100", Utility.getGameFont(12), Color.YELLOWGREEN),
                 new Transform(allButtons.get(7).getTransform().getPosX() + 32,
@@ -148,7 +162,98 @@ public class EnemyPage extends GraphicEditor {
     @Override
     public void onUpdate() {
         int coin = StatManager.getInstance().getCoin();
+        ArrayList<Integer> perks = enemiesPerks.get(currentEnemy);
+        partsDrop.getText().setText("Parts Drop: " + perks.get(0));
+        int multiplier = (currentEnemy==1?Config.COW_MULTIPLIER:1)*(currentEnemy==2?Config.CHICKEN_MULTIPLIER:1);
         if(allButtons.get(8).isPressed()) SceneManager.setCurrentPage(new MainPage(graphicsContext));
+
+        for(int i=2;i>0;i--){
+            if(!StatManager.getInstance().getEnemyUnlocked().get(i)){
+                unlockEnemy.get(i).setEnable(false);
+                allButtons.get(7).setVisible(true);
+                allDescription.get(7).getText().setText("Unlock "+(i==2?"Chicken":"")+(i==1?"Cow":""));
+                int cost = enemyUnlockCost.get(i);
+                allPrice.get(7).getText().setText(String.valueOf(cost));
+                if(coin>cost){
+                    allButtons.get(7).setEnable(true);
+                    if(allButtons.get(7).isPressed()){
+                        StatManager.getInstance().setCoin(coin-cost);
+                        StatManager.getInstance().getEnemyUnlocked().set(i,true);
+                        unlockEnemy.get(i).setEnable(true);
+                        allDescription.get(7).getText().setText("");
+                        allPrice.get(7).getText().setText("");
+                        allButtons.get(7).setVisible(false);
+                    }
+                }
+            }
+        }
+        for(int i=0;i<7;i++){
+            //Variable
+            int level = perks.get(i+1);
+            int basePrice = Config.enemy_basePrices.get(i+1).intValue()*multiplier;
+            int cost = (int)(basePrice * Math.pow(Config.enemy_priceIncrements.get(i+1),level));
+            if(level>=Config.enemy_maxLevels.get(i+1)||(i==4&&currentEnemy==2)){
+                allPrice.get(i).getText().setText("MAX");
+                allButtons.get(i).setEnable(false);
+                continue;
+            }
+            if(perks.get(4)<=0 && (i==1||i==2||i==4)){
+                allPrice.get(i).getText().setText("No");
+                allButtons.get(i).setEnable(false);
+                continue;
+            }
+            //Price
+            UISprite price = allPrice.get(i);
+            price.getText().setText(Utility.NumberToString(cost));
+            //Button
+            UIButton button = allButtons.get(i);
+
+            if(coin > cost){
+                    button.setEnable(true);
+                    if(button.isPressed()){
+                        StatManager.getInstance().setCoin(coin-cost);
+                        perks.set(i+1,perks.get(i+1)+1);
+                        perks.set(0,(int) (perks.get(0) + Config.enemy_dropUpgradeValues.get(i+1)));
+                    }
+
+            }
+            else{
+                button.setEnable(false);
+            }
+            //Level
+            allLvL.get(i).getText().setText("LV."+Utility.NumberToString(level));
+            //Desc
+            if(i==3){
+                int baseValue = (int)Config.SHEEP_BULLET_QUANTITY_BASE;
+                int upgradeValue = (int)Config.FUZZY_BULLET_QUANTITY_UPGRADE*level;
+                if(currentEnemy==1){
+                    baseValue = (int)Config.COW_BULLET_QUANTITY_BASE;
+                    upgradeValue = (int) Config.FUZZY_BULLET_QUANTITY_UPGRADE*4*level;
+                }
+                else if(currentEnemy==2){
+                    baseValue = (int)Config.CHICKEN_BULLET_QUANTITY_BASE*level;
+                }
+                allDescription.get(i).getText().setText(descTemplete.get(i)+Utility.NumberToString((baseValue+upgradeValue))+" "+increaseTemplete.get(i));
+            }
+            else{
+                allDescription.get(i).getText().setText(descTemplete.get(i)+Utility.NumberToString(Config.enemy_baseValues.get(i+1)+((Config.enemy_upgradeValues.get(i+1))*level))+" "+increaseTemplete.get(i));
+            }
+            //Desc
+            if(i==3){
+                allIncrease.get(i).getText().setText(Utility.NumberToString(Config.enemy_upgradeValues.get(i+1)+(currentEnemy==1?3:0))+" "+increaseTemplete.get(i));
+            }
+            else {
+                allIncrease.get(i).getText().setText(Utility.NumberToString(Config.enemy_upgradeValues.get(i+1))+" "+increaseTemplete.get(i));
+            }
+            if(i<=4){
+                allDropIncrease.get(i).getText().setText(Config.enemy_dropUpgradeValues.get(i+1)+" parts");
+            }
+        }
+        for(int i=0;i<3;i++){
+            if(unlockEnemy.get(i).isPressed()&&currentEnemy!=i){
+                currentEnemy=i;
+            }
+        }
 
     }
 }

@@ -24,7 +24,7 @@ public class Chicken extends BaseEnemy{
         // circular direction
         // utils got it
         long currentTime = System.currentTimeMillis();
-        if(currentTime - lastPatternTime > 1*fireRate*bulletQuantity){ // 5 seconds
+        if(currentTime - lastPatternTime > 1000*fireRate*bulletQuantity){ // 5 seconds
             EnemyUtils.ChickenShootPattern(this,bulletSpeed);
             lastPatternTime = currentTime;
         }

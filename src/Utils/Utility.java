@@ -2,6 +2,9 @@ package Utils;
 
 
 import GameEntity.GameObject;
+import Main.Main;
+import input.MouseUtil;
+import javafx.scene.Cursor;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.text.Font;
@@ -99,5 +102,14 @@ public class Utility {
     }
     public static void DrawImage(GraphicsContext gc,Image sprite, Transform transform){
         gc.drawImage(sprite, transform.getPosX(), transform.getPosY(), sprite.getWidth() * transform.getSclX(), sprite.getHeight() * transform.getSclY());
+    }
+    public static boolean checkHover(Transform transform,Image image){
+        boolean hover = MouseUtil.getMouseX() > transform.getPosX() && MouseUtil.getMouseX() < transform.getPosX()
+                + image.getWidth() * transform.getSclX() && MouseUtil.getMouseY() > transform.getPosY() &&
+                MouseUtil.getMouseY() < transform.getPosY() + image.getHeight() * transform.getSclY();
+        if(hover){
+            Main.getScene().setCursor(Cursor.cursor("HAND"));
+        }
+        return hover;
     }
 }

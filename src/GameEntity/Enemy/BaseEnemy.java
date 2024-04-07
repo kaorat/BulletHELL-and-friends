@@ -48,7 +48,7 @@ public abstract class BaseEnemy extends GameObject {
     public abstract void firing();
     public abstract void action();
     public void ApplyStat(EnemyType type){
-        this.partDrop = 10;
+        this.partDrop = Perks.get(0);
         this.hp = EnemyUtils.calculateStat(type,1,Perks.get(1));
         this.fireRate = EnemyUtils.calculateStat(type,2,Perks.get(2));
         this.bulletSpeed = EnemyUtils.calculateStat(type,3,Perks.get(3));
@@ -64,12 +64,14 @@ public abstract class BaseEnemy extends GameObject {
         //bullet collision
         BulletManager bm = BulletManager.getInstance();
         ArrayList<BaseBullet> bulletList = bm.getBullets();
+        if(this.hp<=0){
+            EnemyUtils.DropParts(transform.getPosX(),transform.getPosY(),partDrop);
+            this.setDestroyed(true);
+        }
         for (BaseBullet bullet : bulletList) {
             if (Transform.checkCollide(this.getBounds(), bullet.getBounds()) && bullet instanceof PlayerBullet) {
                 this.hp -= ((PlayerBullet)bullet).getDamage();
                 bullet.setDestroyed(true);
-                EnemyUtils.DropParts(transform.getPosX(),transform.getPosY(),partDrop);
-                this.setDestroyed(true);
             }
         }
 

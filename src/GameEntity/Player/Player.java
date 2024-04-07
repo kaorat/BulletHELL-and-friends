@@ -66,6 +66,7 @@ public class Player extends GameObject implements Shootable {
 
     public void shoot() {
         PlayerUtils.normal(this);
+//        Track.TECHNOSHOOT1.play();
 //        System.out.println(BulletManager.getInstance().getBullets().size());
     }
     public void drawHitbox(){
@@ -74,7 +75,7 @@ public class Player extends GameObject implements Shootable {
         this.hitbox = new BoundingBox(transform.getPosX() + (offset * image.getWidth() * transform.getSclX()),transform.getPosY() + ( offset * image.getHeight() * transform.getSclY()), image.getWidth()* transform.getSclX() * scale, image.getHeight()* transform.getSclY() * scale);
     }
     public void drawGrazebox(){
-        double offset = -PlayerManager.getInstance().getDexterity() * 5 + (image.getWidth() * transform.getSclX())/2 -1;
+        double offset = -PlayerManager.getInstance().getDexterity() * 5 + (image.getWidth() * transform.getSclX())/2 - 1;
         double scale = PlayerManager.getInstance().getDexterity() /5;
         this.bounds = new BoundingBox(transform.getPosX() + offset,transform.getPosY() + offset, image.getWidth()* transform.getSclX() * scale, image.getHeight()* transform.getSclY() * scale);
     }
@@ -110,6 +111,8 @@ public class Player extends GameObject implements Shootable {
         isDying=true;
         StatManager.getInstance().addDeath();
         double startFrame = System.currentTimeMillis();
+        Track.PLAYERDEAD.setVolume(0.5);
+        Track.PLAYERDEAD.play();
         new AnimationTimer() {
             public void handle(long now) {
                 if(System.currentTimeMillis()-startFrame>3000){

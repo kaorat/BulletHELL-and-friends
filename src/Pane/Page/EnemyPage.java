@@ -164,26 +164,42 @@ public class EnemyPage extends GraphicEditor {
         int multiplier = (currentEnemy==1?Config.COW_MULTIPLIER:1)*(currentEnemy==2?Config.CHICKEN_MULTIPLIER:1);
         if(allButtons.get(8).isPressed()) SceneManager.setCurrentPage(new MainPage(graphicsContext));
         allButtons.get(7).setVisible(false);
-        for(int i=2;i>0;i--){
-            if(!StatManager.getInstance().getEnemyUnlocked().get(i)){
-                unlockEnemy.get(i).setEnable(false);
+
+        if(!StatManager.getInstance().getEnemyUnlocked().get(2) && StatManager.getInstance().getEnemyUnlocked().get(1)){
+            unlockEnemy.get(2).setEnable(false);
+            allButtons.get(7).setVisible(true);
+            allDescription.get(7).getText().setText("Unlock "+ "Chicken");
+            int cost = enemyUnlockCost.get(2);
+            allPrice.get(7).getText().setText(String.valueOf(cost));
+            if(coin>cost){
+                allButtons.get(7).setEnable(true);
+                if(allButtons.get(7).isPressed()){
+                    StatManager.getInstance().setCoin(coin-cost);
+                    StatManager.getInstance().getEnemyUnlocked().set(2,true);
+                    unlockEnemy.get(2).setEnable(true);
+                    allDescription.get(7).getText().setText("");
+                    allPrice.get(7).getText().setText("");
+                    allButtons.get(7).setVisible(false);
+                }
+            }
+        }
+
+        if(!StatManager.getInstance().getEnemyUnlocked().get(1)){
+                unlockEnemy.get(1).setEnable(false);
                 allButtons.get(7).setVisible(true);
-                allDescription.get(7).getText().setText("Unlock "+(i==2?"Chicken":"")+(i==1?"Cow":""));
-                int cost = enemyUnlockCost.get(i);
+                allDescription.get(7).getText().setText("Unlock "+ "Cow");
+                int cost = enemyUnlockCost.get(1);
                 allPrice.get(7).getText().setText(String.valueOf(cost));
                 if(coin>cost){
                     allButtons.get(7).setEnable(true);
                     if(allButtons.get(7).isPressed()){
                         StatManager.getInstance().setCoin(coin-cost);
-                        StatManager.getInstance().getEnemyUnlocked().set(i,true);
-                        unlockEnemy.get(i).setEnable(true);
-                        allDescription.get(7).getText().setText("");
-                        allPrice.get(7).getText().setText("");
-                        allButtons.get(7).setVisible(false);
+                        StatManager.getInstance().getEnemyUnlocked().set(1,true);
+                        unlockEnemy.get(1).setEnable(true);
                     }
                 }
             }
-        }
+
         for(int i=0;i<7;i++){
             //Variable
             int level = perks.get(i+1);

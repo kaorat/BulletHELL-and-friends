@@ -82,7 +82,8 @@ public class PlayerUtils {
             if(slashPressed && !InputUtility.isSlashPressed()){
                 t.setPosX(t.getPosX() + p.getX());
                 t.setPosY(t.getPosY() + p.getY());
-                Track teleportSound = new Track(Asset.Audio.bulletSound);
+//                lastTRTime = currentTime;
+                Track teleportSound = new Track(Asset.Audio.warp);
                 teleportSound.setVolume(0.1);
                 teleportSound.play();
                 factor = 0;

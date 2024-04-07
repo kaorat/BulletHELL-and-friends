@@ -166,7 +166,6 @@ public class EnemyPage extends GraphicEditor {
         allButtons.get(7).setVisible(false);
 
         if(!StatManager.getInstance().getEnemyUnlocked().get(2) && StatManager.getInstance().getEnemyUnlocked().get(1)){
-            unlockEnemy.get(2).setEnable(false);
             allButtons.get(7).setVisible(true);
             allDescription.get(7).getText().setText("Unlock "+ "Chicken");
             int cost = enemyUnlockCost.get(2);
@@ -186,6 +185,7 @@ public class EnemyPage extends GraphicEditor {
 
         if(!StatManager.getInstance().getEnemyUnlocked().get(1)){
                 unlockEnemy.get(1).setEnable(false);
+                unlockEnemy.get(2).setEnable(false);
                 allButtons.get(7).setVisible(true);
                 allDescription.get(7).getText().setText("Unlock "+ "Cow");
                 int cost = enemyUnlockCost.get(1);

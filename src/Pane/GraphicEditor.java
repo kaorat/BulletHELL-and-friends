@@ -24,5 +24,5 @@ public abstract class GraphicEditor implements Updatable {
             gameObject.setDestroyed(true);
         }
         Monitored_Object.clear();
-    };
+    }
 }

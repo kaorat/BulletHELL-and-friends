@@ -29,16 +29,16 @@ public class UISprite extends GameObject {
         if(!visible) { return; }
         if(type.equals("image")) Utility.DrawImage(gc,sprite,transform);
         else if(type.equals("text")){
-            gc.setLineWidth(text.getLinewidth());
+            gc.setLineWidth(text.getLineWidth());
             gc.setFill(text.getFillColor());
             gc.setStroke(text.getStrokeColor());
             gc.setFont(text.getFont());
             gc.setTextAlign(text.getTextAlignment());
-            if(text.getMaxwidth() ==0){
+            if(text.getMaxWidth() ==0){
                 gc.fillText(text.getText(), transform.getPosX(), transform.getPosY());
             }
             else {
-                gc.fillText(text.getText(), transform.getPosX(), transform.getPosY(), text.getMaxwidth());
+                gc.fillText(text.getText(), transform.getPosX(), transform.getPosY(), text.getMaxWidth());
             }
         }
     }
@@ -48,9 +48,6 @@ public class UISprite extends GameObject {
 
     }
 
-    public String getType() {
-        return type;
-    }
 
     public Image getSprite() {
         return sprite;
@@ -64,7 +61,4 @@ public class UISprite extends GameObject {
         return text;
     }
 
-    public void setText(Text text) {
-        this.text = text;
-    }
 }

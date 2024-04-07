@@ -1,9 +1,7 @@
 package Manager;
 
 import GameEntity.Bullet.BaseBullet;
-import GameEntity.Bullet.PlayerBullet;
 import GameEntity.GameObject;
-import Utils.Asset;
 import Utils.Updatable;
 
 import java.util.ArrayList;
@@ -12,10 +10,10 @@ public class BulletManager implements Updatable {
 
     private static BulletManager instance;
 
-    private ArrayList<BaseBullet> bullets;
+    private final ArrayList<BaseBullet> bullets;
 
     private BulletManager() {
-        bullets = new ArrayList<BaseBullet>();
+        bullets = new ArrayList<>();
     }
 
     public static BulletManager getInstance() {
@@ -24,11 +22,6 @@ public class BulletManager implements Updatable {
         }
         return instance;
     }
-
-//    public void shoot() {
-//        PlayerBullet bullet = new PlayerBullet(10, null, null, 0);
-//        add(bullet);
-//    }
 
     public void add(BaseBullet bullet) {
         bullets.add(bullet);

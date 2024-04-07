@@ -27,9 +27,7 @@ public class Main extends Application {
             MouseUtil.setMouseY(e.getY());
             MouseUtil.setPressed(true);
         });
-        root.setOnMouseReleased(e -> {
-            MouseUtil.setPressed(false);
-        });
+        root.setOnMouseReleased(e -> MouseUtil.setPressed(false));
         root.setOnMouseMoved(e -> {
             MouseUtil.setMouseX(e.getX());
             MouseUtil.setMouseY(e.getY());
@@ -49,10 +47,7 @@ public class Main extends Application {
                 scene.setCursor(Cursor.cursor("DEFAULT"));
                 RootPane.paintComponent();
                 SceneManager.update();
-                //GameObjectHolder.getInstance().update();
-                //InputUtility.updateInputState();
                 MouseUtil.postUpdate();
-//                System.out.println(Thread.activeCount());
             }
         };
         //just for testing bgm

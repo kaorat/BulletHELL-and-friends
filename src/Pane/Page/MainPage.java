@@ -12,21 +12,11 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import Utils.ButtonType;
 public class MainPage extends GraphicEditor {
-    private UISprite textHeader;
-    private UISprite playerText;
-    private UISprite EnemyText;
-    private UISprite GobletText;
-    private UISprite SpecialDNAText;
-    private UIButton buttonPlayer;
-    private UIButton buttonEnemy;
-    private UIButton buttonGoblet;
-    private UIButton buttonSpecialDNA;
-    private UIButton buttonBossCalled;
+    private final UIButton buttonPlayer;
+    private final UIButton buttonEnemy;
+    private final UIButton buttonGoblet;
+    private final UIButton buttonSpecialDNA;
 
-
-
-    private int moveYButton = 60;
-    private double x = Utility.getGameScreenX();
 
     public MainPage(GraphicsContext graphicsContext) {
         super(graphicsContext);
@@ -39,13 +29,14 @@ public class MainPage extends GraphicEditor {
         // Create the buttonPlayer
         buttonPlayer = new UIButton(Asset.UI.buttonNavigatePlayer, new Transform(Utility.getGameScreenX() + 80, 180 , 0.22, 0.21), 54, ButtonType.NAVIGATORPLAYER);
         // Create the buttonEnemy
+        int moveYButton = 60;
         buttonEnemy = new UIButton(Asset.UI.buttonNavigate, new Transform(Utility.getGameScreenX() + 80, 180 + moveYButton, 0.22, 0.21), 54 , ButtonType.NAVIGATORENEMY);
         // Create the buttonGoblet
-        buttonGoblet = new UIButton(Asset.UI.buttonNavigate, new Transform(Utility.getGameScreenX() + 80, 180 + moveYButton*2, 0.22, 0.21), 54 , ButtonType.NAVIGATORGOBLET);
+        buttonGoblet = new UIButton(Asset.UI.buttonNavigate, new Transform(Utility.getGameScreenX() + 80, 180 + moveYButton *2, 0.22, 0.21), 54 , ButtonType.NAVIGATORGOBLET);
         // Create the buttonSpecialDNA
-        buttonSpecialDNA = new UIButton(Asset.UI.buttonNavigate, new Transform(Utility.getGameScreenX() + 80, 180 + moveYButton*3, 0.22, 0.21), 54 , ButtonType.NAVIGATORDNA);
+        buttonSpecialDNA = new UIButton(Asset.UI.buttonNavigate, new Transform(Utility.getGameScreenX() + 80, 180 + moveYButton *3, 0.22, 0.21), 54 , ButtonType.NAVIGATORDNA);
 
-        buttonBossCalled = new UIButton(Asset.UI.buttonBossNormal, new Transform(Utility.getGameScreenX() + 140, 415, 0.24, 0.24), 54 , ButtonType.BOSSCALLED);
+        UIButton buttonBossCalled = new UIButton(Asset.UI.buttonBossNormal, new Transform(Utility.getGameScreenX() + 140, 415, 0.24, 0.24), 54, ButtonType.BOSSCALLED);
 
         create(new UISprite(new Text("1 / 3", Utility.getGameFont(23), Color.BROWN) ,new Transform(Utility.getGameScreenX() + 190, 540, 0.25, 0.25), 55));
         create(new UISprite(new Text("Soul:    100", Utility.getGameFont(11), Color.BROWN) ,new Transform(Utility.getGameScreenX() + 180, 560, 0.25, 0.25), 55));

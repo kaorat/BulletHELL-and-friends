@@ -1,9 +1,7 @@
 package Manager;
 
 import Pane.*;
-import Utils.Asset;
 import Utils.Track;
-import Pane.Page.BossPage;
 import Utils.Updatable;
 import javafx.scene.media.AudioClip;
 
@@ -16,17 +14,13 @@ public class SceneManager {
         boss
     }
     public static GameState currentState;
-    public static ArrayList<Updatable> updatables=new ArrayList<>();
+    public static ArrayList<Updatable> updatables;
     private static GraphicEditor currentPage;
     private static GraphicEditor bossPage;
 
-    public static int getCurrentScene() {
-        return currentScene;
-    }
     public static void GotoGameScene(){
-
+        updatables=new ArrayList<>();
         currentScene=1;
-        SceneManager.updatables.clear();
         SceneManager.updatables.add(GameObjectHolder.getInstance());
 
         //GraphicEditor

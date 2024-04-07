@@ -11,8 +11,6 @@ import javafx.util.Pair;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static java.lang.Math.pow;
-
 public class PlayerManager implements  Updatable {
     private static PlayerManager instance;
     private Player player;
@@ -38,10 +36,6 @@ public class PlayerManager implements  Updatable {
         Player player = new Player(new Transform(Utility.getGameScreenX()/2-30,Utility.getScreenY()-100,0.2,0.2),25);
         this.player = player;
         GameObjectHolder.getInstance().add(player);
-    }
-
-    public void addWeapon(String weapon){
-
     }
 
 
@@ -82,8 +76,8 @@ public class PlayerManager implements  Updatable {
         setProficiency(Config.PART_PER_GRAZE_BASE);
         setBioticRifleFireRate(Config.PLAYER_FIRE_RATE_BASE);
         setMinimize(Config.HITBOX_SIZE_BASE);
-        playerPerks = new ArrayList<Integer>(Arrays.asList(0, 0, 0, 0, 0, 0));
-        this.weapon = new ArrayList<Pair<String, Integer>>();
+        playerPerks = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0, 0));
+        this.weapon = new ArrayList<>();
         weapon.add(new Pair<>("Neuron Missile", 0));
         //TODO: Config Player
 //        player.setFireRate(getBioticRifleFireRate()*1000);

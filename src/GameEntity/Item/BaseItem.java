@@ -2,8 +2,6 @@ package GameEntity.Item;
 
 import GameEntity.GameObject;
 import Utils.Transform;
-import Utils.Utility;
-import javafx.scene.canvas.GraphicsContext;
 
 public abstract class BaseItem extends GameObject {
 
@@ -14,7 +12,6 @@ public abstract class BaseItem extends GameObject {
 
        this.destroyed = false;
 
-//       this.visible = false;
    }
 
    public abstract void onPickup();

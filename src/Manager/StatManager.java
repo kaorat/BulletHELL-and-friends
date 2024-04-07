@@ -1,7 +1,5 @@
 package Manager;
 
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -11,26 +9,25 @@ import Utils.Updatable;
 public class StatManager implements Updatable {
    private static StatManager instance;
    private int coin;
-   //TODO: every time, you get a coin -> increase totalCoin
     private int totalCoin;
     private int dna;
     private int honeyLevel;
-    private int entireHoneylevel;
+    private int entireHoneyLevel;
     private int soul;
     private int amber;
     private double time;
-    private int completion;
+    private double completion;
     private int death;
     private int killed;
-    private ArrayList<Boolean> enemyUnlocked;
-    private ArrayList<Integer> gobletLevels;
-    private ArrayList<Integer> dnaLevels;
+    private final ArrayList<Boolean> enemyUnlocked;
+    private final ArrayList<Integer> gobletLevels;
+    private final ArrayList<Integer> dnaLevels;
     public StatManager(){
         setAmber(0);
         setCoin(10000000);
         setTotalCoin(10000000);
         setHoneyLevel(0);
-        setEntireHoneylevel(1);
+        setEntireHoneyLevel(1);
         setCompletion(0);
         setDeath(0);
         setKilled(0);
@@ -42,9 +39,9 @@ public class StatManager implements Updatable {
     }
     @Override
     public void onUpdate() {
-        if(totalCoin>entireHoneylevel*100){
-            totalCoin-=entireHoneylevel*100;
-            entireHoneylevel++;
+        if(totalCoin>entireHoneyLevel*100){
+            totalCoin-=entireHoneyLevel*100;
+            entireHoneyLevel++;
             honeyLevel++;
         }
     }
@@ -69,7 +66,7 @@ public class StatManager implements Updatable {
         this.coin+= (int) coin * gobletLevels.get(1);
         this.totalCoin+= (int) coin* gobletLevels.get(1);
     }
-    public void addCompletion(int percent){
+    public void addCompletion(double percent){
         completion+=percent;
     }
 
@@ -77,7 +74,7 @@ public class StatManager implements Updatable {
         return time;
     }
 
-    public int getCompletion() {
+    public double getCompletion() {
         return completion;
     }
 
@@ -133,12 +130,8 @@ public class StatManager implements Updatable {
         this.soul = soul;
     }
 
-    public int getEntireHoneylevel() {
-        return entireHoneylevel;
-    }
-
-    public void setEntireHoneylevel(int entireHoneylevel) {
-        this.entireHoneylevel = entireHoneylevel;
+    public void setEntireHoneyLevel(int entireHoneyLevel) {
+        this.entireHoneyLevel = entireHoneyLevel;
     }
 
     public void setTime(double time) {
@@ -149,15 +142,9 @@ public class StatManager implements Updatable {
         return enemyUnlocked;
     }
 
-    public void setEnemyUnlocked(ArrayList<Boolean> enemyUnlocked) {
-        this.enemyUnlocked = enemyUnlocked;
-    }
-
     public int getHoneyLevel() { return honeyLevel; }
 
     public void setHoneyLevel(int honeyLevel) { this.honeyLevel = honeyLevel; }
-
-    public int getTotalCoin() { return totalCoin; }
 
     public void setTotalCoin(int totalCoin) { this.totalCoin = totalCoin; }
 
@@ -165,16 +152,8 @@ public class StatManager implements Updatable {
         return gobletLevels;
     }
 
-    public void setGobletLevels(ArrayList<Integer> gobletLevels) {
-        this.gobletLevels = gobletLevels;
-    }
-
     public ArrayList<Integer> getDnaLevels() {
         return dnaLevels;
-    }
-
-    public void setDnaLevels(ArrayList<Integer> dnaLevels) {
-        this.dnaLevels = dnaLevels;
     }
 
     public static StatManager getInstance() {

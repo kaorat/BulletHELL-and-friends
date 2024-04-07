@@ -5,8 +5,8 @@ import Utils.*;
 import javafx.scene.canvas.GraphicsContext;
 
 public class Cow extends BaseEnemy{
-    private long lastPatternTime = 0;
-    private int initRot = 0;
+    private long lastPatternTime;
+    private int initRot;
 
 
 
@@ -15,7 +15,8 @@ public class Cow extends BaseEnemy{
         setImage(Asset.Game.WhiteCowIdleLeft);
         Perks = EnemyManager.getInstance().getCowPerks();
         ApplyStat(EnemyType.COW);
-
+        lastPatternTime=0;
+        initRot=0;
     }
 
     @Override
@@ -56,7 +57,6 @@ public class Cow extends BaseEnemy{
     }
     @Override
     public void draw(GraphicsContext gc) {
-        //gc.drawImage(getImage(),this.transform.getPosX(),this.transform.getPosY(), 60,60);
         Utility.DrawImage(gc,getImage(),transform);
         drawBounds(0,0);
     }

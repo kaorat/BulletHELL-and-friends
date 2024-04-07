@@ -9,7 +9,6 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import java.io.File;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
@@ -30,7 +29,6 @@ public class Utility {
             Font.loadFont(Utility.class.getResourceAsStream("/FONT/VeniteAdoremus-rgRBA.ttf"), size);
             return Font.font("Venite Adoremus", size);
         } catch (Exception e) {
-            e.printStackTrace();
             return Font.font("Arial", FontWeight.NORMAL, size);
         }
     }

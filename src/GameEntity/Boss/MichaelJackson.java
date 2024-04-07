@@ -1,20 +1,10 @@
 package GameEntity.Boss;
 
 import GameEntity.Bullet.BaseBullet;
-import GameEntity.Bullet.EnemyBullet;
-import Manager.BulletManager;
 import Utils.Asset;
 import Utils.BulletUtils;
-import Utils.Transform;
 import Utils.Utility;
-import input.InputUtility;
-import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
-
-import java.awt.geom.Point2D;
-import java.util.ArrayList;
 
 public class MichaelJackson extends BaseBoss{
     private boolean ready;
@@ -22,8 +12,7 @@ public class MichaelJackson extends BaseBoss{
     private boolean startChaos;
     private int angle1;
     private int angle2;
-    private double x;
-    private double y;
+
     public MichaelJackson() {
         super();
         maxHp=1000;
@@ -38,8 +27,8 @@ public class MichaelJackson extends BaseBoss{
 
     @Override
     public void action() {
-        x=getTransform().getPosX() +(getImage().getWidth()*getTransform().getSclX())/2;
-        y=getTransform().getPosY() +(getImage().getHeight()*getTransform().getSclY())/2;
+        double x = getTransform().getPosX() + (getImage().getWidth() * getTransform().getSclX()) / 2;
+        double y = getTransform().getPosY() + (getImage().getHeight() * getTransform().getSclY()) / 2;
         if(angle1>=720||angle1<=-720){
             angle1=0;
         }
@@ -59,13 +48,13 @@ public class MichaelJackson extends BaseBoss{
             startChaos=true;
         }
         if(frame%10==0){
-            BulletUtils.Shoot(x,y,2,angle1);
-            BaseBullet pattern1 = BulletUtils.Shoot(x,y,2,angle2);
+            BulletUtils.Shoot(x, y,2,angle1);
+            BaseBullet pattern1 = BulletUtils.Shoot(x, y,2,angle2);
             BulletUtils.ChangeTrajectoryNow(pattern1,2,angle2,-0.01,0);
             BulletUtils.ChangeTrajectoryOnFrame(pattern1,0,angle2,0.02,3,2000);
             if(startChaos){
-                BulletUtils.Shoot(x,y,2,angle1+90);
-                BaseBullet pattern2 = BulletUtils.Shoot(x,y,2,angle2-90);
+                BulletUtils.Shoot(x, y,2,angle1+90);
+                BaseBullet pattern2 = BulletUtils.Shoot(x, y,2,angle2-90);
                 BulletUtils.ChangeTrajectoryNow(pattern2,2,angle2-90,-0.01,0);
                 BulletUtils.ChangeTrajectoryOnFrame(pattern2,0,angle2-90,0.02,3,2000);
             }

@@ -6,9 +6,6 @@ import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
 
 public class Transform {
-    private static final String UI_FOLDER = "UI/";
-
-    // ---- Suchas comment: so 2 rots huh,one for visual, another for movement-----
     protected double posX,posY,rot,sclX,sclY,speed,maxSpeed,accel;
 
 
@@ -108,10 +105,6 @@ public class Transform {
         // draw here the bounds of the object
         return b1.intersects(b2);
     }
-    public static boolean checkContain(Bounds b1, Bounds b2){
-        return b1.contains(b2);
-    }
-
     public static double calculateAngleToTarget(Transform from, Bounds to) {
 
         return Math.toDegrees(Math.atan2(to.getMinY() - from.getPosY(), to.getMinX() - from.getPosX()));
@@ -174,11 +167,6 @@ public class Transform {
         this.sclX = sclX;
         this.sclY = sclY;
     }
-    public void setPos(double posX,double posY) {
-        this.posX = posX;
-        this.posY = posY;
-    }
-
     public double getSpeed() {
         return speed;
     }
@@ -186,17 +174,8 @@ public class Transform {
     public void setSpeed(double speed) {
         this.speed = speed;
     }
-
-    public double getMaxSpeed() {
-        return maxSpeed;
-    }
-
     public void setMaxSpeed(double maxSpeed) {
         this.maxSpeed = maxSpeed;
-    }
-
-    public double getAccel() {
-        return accel;
     }
 
     public void setAccel(double accel) {

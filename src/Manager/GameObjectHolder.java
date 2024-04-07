@@ -1,24 +1,18 @@
 package Manager;
 
-import GameEntity.Boss.BaseBoss;
 import GameEntity.GameObject;
-import Pane.GraphicEditor;
 import Utils.Updatable;
-import javafx.scene.image.Image;
-import javafx.scene.media.AudioClip;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-// ---- Suchas comment: This is manager too-----
 public class GameObjectHolder implements Updatable {
-    private static final GameObjectHolder instance = new GameObjectHolder();
-    private List<GameObject> entities;
-    private Comparator<GameObject> comparator;
+    private static GameObjectHolder instance;
+    private final List<GameObject> entities;
+    private final Comparator<GameObject> comparator;
 
     public GameObjectHolder() {
-        entities = new ArrayList<GameObject>();
+        entities = new ArrayList<>();
         comparator = (GameObject o1, GameObject o2) -> {
             if (o1.getZ() > o2.getZ())
                 return 1;
@@ -27,6 +21,9 @@ public class GameObjectHolder implements Updatable {
     }
 
     public static GameObjectHolder getInstance() {
+        if (instance == null) {
+            instance = new GameObjectHolder();
+        }
         return instance;
     }
     public void add(GameObject entity) {

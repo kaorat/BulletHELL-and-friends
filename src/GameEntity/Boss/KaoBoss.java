@@ -1,39 +1,25 @@
 package GameEntity.Boss;
 
 import GameEntity.Bullet.BaseBullet;
-import GameEntity.Bullet.EnemyBullet;
 import Utils.*;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 
 public class KaoBoss extends BaseBoss {
 
     private boolean ready;
-    private boolean startRotate;
-    private boolean startChaos;
-    private List<Boolean> phase;
-    private List<List<BaseBullet>> bulletsBox;
-    private List<Boolean> circleRank;
-    private List<Integer> circleAngle;
-    private int angle1;
-    private int angle2;
+    private final List<List<BaseBullet>> bulletsBox;
 
     public KaoBoss() {
         super();
         maxHp = 1000;
         hp = maxHp;
         ready = false;
-        startRotate = false;
         bulletsBox = new ArrayList<>();
-        circleRank = Arrays.asList(false, false, false, false, false);
-        phase = Arrays.asList(false, false, false, false, false);
-        circleAngle = Arrays.asList(90, 92, 94, 96, 98);
         getTransform().setScl(0.25, 0.25);
         setImage(Asset.Game.player);
 
@@ -43,8 +29,6 @@ public class KaoBoss extends BaseBoss {
 
     @Override
     public void action() {
-        double x = Transform.centerPos(this).getX();
-        double y = Transform.centerPos(this).getY();
 
         if (!ready) {
             if (frame > 200) {
@@ -65,17 +49,12 @@ public class KaoBoss extends BaseBoss {
                 for (int i = 0; i < bulletsBox.size(); i++) {
                     for (int j = 0; j < bulletsBox.get(i).size(); j++) {
                         BulletUtils.ChangeTrajectoryOnFrame(bulletsBox.get(i).get(j), 0 + (0.005 * i), bulletsBox.get(i).get(j).getTransform().getRot(), 0.01 + (i * 0.005), 1, 6000 - (i * 120));
-                        BulletUtils.ChangeRotAndDestroyWithDuration(bulletsBox.get(i).get(j), 0.1, 0.002, 4,7000 - (i * 120), 10000);
+                        BulletUtils.ChangeRotAndDestroyWithDuration(bulletsBox.get(i).get(j), 0.1, 7000 - (i * 120), 10000);
                     }
                 }
 
                 bulletsBox.clear();
             }
-//
-//            if(frame%1501==0){ // move randomly every 1 sec
-////            t.interrupt(); //forbidden moves;
-//                transform.translateToPositionInMilliSecond((Math.random()*(Utility.getGameScreenX()-150))+50,0,4000);
-//            }
         }
         //TODO: Phase 2
         if(frame > 6000 && frame < 30000){
@@ -87,20 +66,14 @@ public class KaoBoss extends BaseBoss {
                 for (int i = 0; i < bulletsBox.size(); i++) {
                     for (int j = 0; j < bulletsBox.get(i).size(); j++) {
 //                        BulletUtils.ChangeTrajectoryOnFrame(bulletsBox.get(i).get(j), 0 + (0.005 * i), bulletsBox.get(i).get(j).getTransform().getRot(), 0.01 + (i * 0.005), 1, 3000 - (i * 100));
-                        BulletUtils.ChangeRotAndDestroyWithDuration(bulletsBox.get(i).get(j), 0.7, 0.002, 4,4000 - (i * 120), 10000);
+                        BulletUtils.ChangeRotAndDestroyWithDuration(bulletsBox.get(i).get(j), 0.7, 4000 - (i * 120), 10000);
                     }
                 }
 
 
                 bulletsBox.clear();
             }
-
-//            if(frame%1501==0){ // move randomly every 1 sec
-////            t.interrupt(); //forbidden moves;
-//                transform.translateToPositionInMilliSecond((Math.random()*(Utility.getGameScreenX()-150))+50,50,4000);
-//            }
         }
-        //rotate
     }
 
     @Override

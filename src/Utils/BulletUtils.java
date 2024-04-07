@@ -4,18 +4,17 @@ import GameEntity.Bullet.BaseBullet;
 import GameEntity.Bullet.EnemyBullet;
 import Manager.BulletManager;
 import javafx.animation.AnimationTimer;
-import javafx.scene.image.Image;
 
 public class BulletUtils {
     //Enemy
     public static BaseBullet Shoot(double x, double y, double speed, double angle){
-        EnemyBullet bullet = new EnemyBullet(speed, new Transform(x, y, angle, 1, 1), 35,0);
+        EnemyBullet bullet = new EnemyBullet(speed, new Transform(x, y, angle, 1, 1), 35);
         BulletManager.getInstance().add(bullet);
         return bullet;
     }
-    public static BaseBullet Shoot(double x, double y, double speed, double angle,double accel,double maxspeed){
-        EnemyBullet bullet = new EnemyBullet(speed, new Transform(x, y, angle, 1, 1), 35,0);
-        bullet.getTransform().setMaxSpeed(maxspeed);
+    public static BaseBullet Shoot(double x, double y, double speed, double angle,double accel,double maxSpeed){
+        EnemyBullet bullet = new EnemyBullet(speed, new Transform(x, y, angle, 1, 1), 35);
+        bullet.getTransform().setMaxSpeed(maxSpeed);
         bullet.getTransform().setAccel(accel);
         BulletManager.getInstance().add(bullet);
         return bullet;
@@ -24,10 +23,10 @@ public class BulletUtils {
         bullet.getTransform().setSpeed(speed);
         bullet.getTransform().setRot(angle);
     }
-    public static void ChangeTrajectoryNow(BaseBullet bullet, double speed, double angle,double accel,double maxspeed){
+    public static void ChangeTrajectoryNow(BaseBullet bullet, double speed, double angle,double accel,double maxSpeed){
         bullet.getTransform().setSpeed(speed);
         bullet.getTransform().setRot(angle);
-        bullet.getTransform().setMaxSpeed(maxspeed);
+        bullet.getTransform().setMaxSpeed(maxSpeed);
         bullet.getTransform().setAccel(accel);
     }
     public static void ChangeTrajectoryOnFrame(BaseBullet bullet, double speed, double angle,double frame){
@@ -42,14 +41,14 @@ public class BulletUtils {
             }
         }.start();
     }
-    public static void ChangeTrajectoryOnFrame(BaseBullet bullet, double speed, double angle,double accel,double maxspeed,double frame){
+    public static void ChangeTrajectoryOnFrame(BaseBullet bullet, double speed, double angle,double accel,double maxSpeed,double frame){
         double startFrame = System.currentTimeMillis();
         new AnimationTimer() {
             public void handle(long now) {
                 if(System.currentTimeMillis()-startFrame>frame){
                     bullet.getTransform().setSpeed(speed);
                     bullet.getTransform().setRot(angle);
-                    bullet.getTransform().setMaxSpeed(maxspeed);
+                    bullet.getTransform().setMaxSpeed(maxSpeed);
                     bullet.getTransform().setAccel(accel);
                     this.stop();
                 }
@@ -57,7 +56,7 @@ public class BulletUtils {
         }.start();
     }
 
-    public static void ChangeRotAndDestroyWithDuration(BaseBullet bullet,double angularRot, double accel, double maxSpeed, double phase1, double phase2) {
+    public static void ChangeRotAndDestroyWithDuration(BaseBullet bullet, double angularRot, double phase1, double phase2) {
         double startFrame = System.currentTimeMillis();
 
         new AnimationTimer(){
@@ -69,10 +68,6 @@ public class BulletUtils {
                     return;
                 }
                 if(System.currentTimeMillis()-startFrame<=phase2){
-//                    System.out.println("changing trajectory" + (System.currentTimeMillis() - startFrame));
-
-//                    bullet.getTransform().setAccel(accel);
-//                    bullet.getTransform().setMaxSpeed(maxSpeed);
                     return;
                 }
                 bullet.setDestroyed(true);

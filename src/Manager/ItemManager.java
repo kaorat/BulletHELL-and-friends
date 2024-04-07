@@ -9,10 +9,10 @@ import java.util.ArrayList;
 public class ItemManager implements Updatable {
 
     private static ItemManager instance;
-    private ArrayList<BaseItem> items;
+    private final ArrayList<BaseItem> items;
 
     private ItemManager() {
-        items = new ArrayList<BaseItem>();
+        items = new ArrayList<>();
 
     }
 
@@ -40,9 +40,6 @@ public class ItemManager implements Updatable {
     @Override
     public void onUpdate() {
         removeDestroyed();
-//        for(BaseItem item : items){
-//            item.spawn();
-//        }
     }
     public void clearItems(){
         for(GameObject item : items){

@@ -17,10 +17,10 @@ public class Asset {
         public static Image partUI;
         public static Image soulUI;
         public static Image honeyUI;
-        public static Image guniconUI;
-        public static Image sheepiconUI;
-        public static Image holyiconUI;
-        public static Image dnaiconUI;
+        public static Image gunIconUI;
+        public static Image sheepIconUI;
+        public static Image holyIconUI;
+        public static Image dnaIconUI;
         public static Image headerMain;
         public static Image backButtonNormal;
         public static Image backButtonHover;
@@ -117,7 +117,6 @@ public class Asset {
         public static Image idle1;
         public static Image idle2;
         public static Image idle3;
-        public static Image die;
         public static Image goblet;
         public static Image buttonGoblet;
         public static Image buttonGobletHover;
@@ -186,10 +185,10 @@ public class Asset {
             partUI=LoadImg("UI/Currency/meat.png");
             soulUI=LoadImg("UI/Enemy/skull.png");
             honeyUI=LoadImg("UI/Currency/Honey.png");
-            guniconUI=LoadImg("UI/gun.png");
-            sheepiconUI=LoadImg("UI/Enemy/sheep.png");
-            holyiconUI=LoadImg("UI/Currency/holy-grail.png");
-            dnaiconUI=LoadImg("UI/Currency/dna.png");
+            gunIconUI=LoadImg("UI/gun.png");
+            sheepIconUI=LoadImg("UI/Enemy/sheep.png");
+            holyIconUI=LoadImg("UI/Currency/holy-grail.png");
+            dnaIconUI=LoadImg("UI/Currency/dna.png");
 
             upgradeHeader=LoadImg("UI/Header/upgradeHeader.png");
             playerHeader=LoadImg("UI/Header/playerHeader.png");

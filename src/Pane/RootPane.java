@@ -9,8 +9,8 @@ import javafx.scene.paint.Color;
 
 public class RootPane extends Canvas {
     private static RootPane instance;
-    private double width;
-    private double height;
+    private final double width;
+    private final double height;
 
     private RootPane(double width,double height) {
         ///////////////////////
@@ -39,9 +39,6 @@ public class RootPane extends Canvas {
                 entity.draw(gc);
             }
         }
-
-        // System.out.println("===============");
-        // System.out.println("===============");
 
     }
 }

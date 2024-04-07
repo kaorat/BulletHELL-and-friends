@@ -2,10 +2,8 @@ package Pane.Page;
 
 import GameEntity.UI.UIButton;
 import GameEntity.UI.UISprite;
-import Manager.PlayerManager;
 import Manager.SceneManager;
 import Manager.StatManager;
-import Pane.GameSideUIEditor;
 import Pane.GraphicEditor;
 import Utils.*;
 import javafx.scene.canvas.GraphicsContext;
@@ -14,10 +12,9 @@ import javafx.scene.paint.Color;
 import java.util.ArrayList;
 
 public class SpecialDNAPage extends GraphicEditor {
-    private ArrayList<UIButton> allButtons = new ArrayList<>(); //0-4 upgrade button 5 go back button
-    private ArrayList<UISprite> allPrice = new ArrayList<>();
-    private double x = Utility.getGameScreenX();
-    private int moveYButton = 70;
+    private final ArrayList<UIButton> allButtons = new ArrayList<>(); //0-4 upgrade button 5 go back button
+    private final ArrayList<UISprite> allPrice = new ArrayList<>();
+
     public SpecialDNAPage(GraphicsContext graphicsContext) {
         super(graphicsContext);
         //Background
@@ -35,7 +32,8 @@ public class SpecialDNAPage extends GraphicEditor {
                 new Transform(allButtons.get(0).getTransform().getPosX() + 32,
                         allButtons.get(0).getTransform().getPosY() + 23), 55)));
 
-        // Create RifleFirerate
+        // Create RifleFire rate
+        int moveYButton = 70;
         allButtons.add((UIButton) create( new UIButton(Asset.UI.upgradeButtonDNA, new Transform(Utility.getGameScreenX() + 310, 185 + moveYButton, 0.28, 0.27), 54 , ButtonType.UPGRADEDNA)));
         allPrice.add( (UISprite) create(new UISprite(new Text("100", Utility.getGameFont(13), Color.YELLOWGREEN),
                 new Transform(allButtons.get(1).getTransform().getPosX() + 32,

@@ -1,19 +1,13 @@
 package GameEntity.Bullet;
 
-import GameEntity.GameObject;
-import Manager.BulletManager;
-import Manager.EnemyManager;
-import Manager.PlayerManager;
 import Utils.Asset;
-import Utils.Config;
 import Utils.Transform;
 import Utils.Utility;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 
 public class PlayerBullet extends BaseBullet {
-    private double damage;
-    public PlayerBullet(double speed, Transform transform, double z,double damage,int graphic) {
+    private final double damage;
+    public PlayerBullet(double speed, Transform transform, double z,double damage) {
         super(speed, transform, z,Asset.Game.rifleBullet);
         this.damage = damage;
         //setImage(Asset.Game.bullet);
@@ -31,9 +25,6 @@ public class PlayerBullet extends BaseBullet {
         return damage;
     }
 
-    public void setDamage(double damage) {
-        this.damage = damage;
-    }
     @Override
     public void onUpdate() {
 //        transform.setRot(-90);

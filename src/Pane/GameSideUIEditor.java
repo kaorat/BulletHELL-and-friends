@@ -1,6 +1,5 @@
 package Pane;
 
-import GameEntity.GameObject;
 import GameEntity.UI.UISprite;
 import Manager.SceneManager;
 import Manager.StatManager;
@@ -15,9 +14,9 @@ import javafx.scene.text.TextAlignment;
 
 public class GameSideUIEditor extends GraphicEditor{
     protected double x;
-    private UISprite part;
-    private UISprite soul;
-    private UISprite honey;
+    private final UISprite part;
+    private final UISprite soul;
+    private final UISprite honey;
     public GameSideUIEditor(GraphicsContext graphicsContext ) {//Init
         super(graphicsContext);
         //set field

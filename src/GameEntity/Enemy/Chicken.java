@@ -1,22 +1,19 @@
 package GameEntity.Enemy;
 
-import GameEntity.Bullet.EnemyBullet;
-import Manager.BulletManager;
 import Manager.EnemyManager;
 import Utils.*;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 
 public class Chicken extends BaseEnemy{
 
-    private long lastPatternTime = 0;
+    private long lastPatternTime;
 
     public Chicken(Transform transform,double z) {
         super(transform, z);
         setImage(Asset.Game.WhiteChickenShootRight);
         Perks = EnemyManager.getInstance().getChickenPerks();
         ApplyStat(EnemyType.CHICKEN);
-
+        lastPatternTime=0;
     }
 
     @Override
@@ -60,7 +57,6 @@ public class Chicken extends BaseEnemy{
 
     @Override
     public void draw(GraphicsContext gc) {
-        //gc.drawImage(getImage(),this.transform.getPosX(),this.transform.getPosY(), 60,60);
         Utility.DrawImage(gc,getImage(),transform);
         drawBounds(0, 0);
     }

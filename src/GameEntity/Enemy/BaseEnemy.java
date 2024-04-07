@@ -4,6 +4,7 @@ import GameEntity.Bullet.BaseBullet;
 import GameEntity.Bullet.PlayerBullet;
 import GameEntity.GameObject;
 import Manager.BulletManager;
+import Manager.StatManager;
 import Utils.EnemyType;
 import Utils.EnemyUtils;
 import Utils.Transform;
@@ -24,7 +25,7 @@ public abstract class BaseEnemy extends GameObject {
     protected double uptime;
     protected double downtime;
     protected double shootTime;
-    protected long lastFireTime;
+
     protected enum States{
         UP,
         DOWN,
@@ -36,7 +37,7 @@ public abstract class BaseEnemy extends GameObject {
     public BaseEnemy(Transform transform,double z){
         super(transform, z);
 
-        this.fireRate = 700;// --Suchas Comment : PlaceHolder?
+        this.fireRate = 700;
         this.partDrop = 11;
         state = States.DOWN;
         downtime= Math.random() * 1000 + 1400;
@@ -67,6 +68,7 @@ public abstract class BaseEnemy extends GameObject {
         if(this.hp<=0){
             EnemyUtils.DropParts(transform.getPosX(),transform.getPosY(),partDrop);
             this.setDestroyed(true);
+            StatManager.getInstance().addKilled();
         }
         for (BaseBullet bullet : bulletList) {
             if (Transform.checkCollide(this.getBounds(), bullet.getBounds()) && bullet instanceof PlayerBullet) {
@@ -77,7 +79,4 @@ public abstract class BaseEnemy extends GameObject {
 
     }
 
-    public ArrayList<Integer> getPerks() {
-        return Perks;
-    }
 }

@@ -13,11 +13,8 @@ import javafx.scene.image.Image;
 public class UIButton extends UISprite {
     private boolean pressed;
     private boolean hovered;
-    private boolean clicked;
     private boolean enabled;
-    private Runnable onClickHandler;
-    private int clickCount = 0;
-    private ButtonType buttonType;
+    private final ButtonType buttonType;
 
 
     public UIButton(Image sprite, Transform transform, double z , ButtonType buttonType) {
@@ -31,19 +28,6 @@ public class UIButton extends UISprite {
     public boolean isPressed() {
         return pressed;
     }
-
-    public void setPressed(boolean pressed) {
-        this.pressed = pressed;
-    }
-
-    public boolean isHovered() {
-        return hovered;
-    }
-
-    public void setHovered(boolean hovered) {
-        this.hovered = hovered;
-    }
-
     @Override
     public void draw(GraphicsContext gc ) {
         if(!visible) { return; }
@@ -66,8 +50,6 @@ public class UIButton extends UISprite {
             else if(buttonType == ButtonType.GOBLET){
                 setSprite(Asset.UI.buttonGobletDisabled);
             }
-
-
 
         }
         else{
@@ -169,9 +151,6 @@ public class UIButton extends UISprite {
 
     public void setEnable(boolean enable) {
         this.enabled = enable;
-    }
-    public boolean isEnables(){
-        return enabled;
     }
 
 }

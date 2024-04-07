@@ -2,7 +2,6 @@ package GameEntity.Player;
 
 import GameEntity.Bullet.BaseBullet;
 import GameEntity.Bullet.EnemyBullet;
-import GameEntity.Bullet.PlayerBullet;
 import GameEntity.GameObject;
 import Manager.BulletManager;
 import Manager.PlayerManager;
@@ -13,22 +12,17 @@ import javafx.geometry.BoundingBox;
 import javafx.geometry.Bounds;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
 import static input.InputUtility.*;
-// ---- Suchas comment: Interface is unnecessary but okay-----
 public class Player extends GameObject implements Shootable {
-
-
-    private int hp;
     private double speed;
     private Bounds hitbox;
     public Bounds warpBox;
 //    private double fireRate;
-    private long lastFireTime = 0;
+    private long lastFireTime;
     private boolean isDying;
     private double iFrametime;
     private Image activeImage;
@@ -40,6 +34,7 @@ public class Player extends GameObject implements Shootable {
         activeImage = Asset.UI.idle1;
         iFrametime=355;
         isDying=false;
+        lastFireTime=0;
         IFrame();
     }
     private void IFrame(){
@@ -48,12 +43,7 @@ public class Player extends GameObject implements Shootable {
                 if(iFrametime<0){
                     this.stop();
                 }
-                if(iFrametime%36>=0&&iFrametime%36<=18){
-                    visible=false;
-                }
-                else {
-                    visible=true;
-                }
+                visible = !(iFrametime % 36 >= 0) || !(iFrametime % 36 <= 18);
                 iFrametime--;
             }
         }.start();
@@ -70,7 +60,7 @@ public class Player extends GameObject implements Shootable {
             this.transform.setPosY(0);
         }
         if (this.transform.getPosY() + transform.getSclY()*getImage().getHeight() > 700) {
-            this.transform.setPosY(700 - transform.getSclY()*getImage().getHeight()); ;
+            this.transform.setPosY(700 - transform.getSclY()*getImage().getHeight());
         }
     }
 
@@ -79,19 +69,13 @@ public class Player extends GameObject implements Shootable {
 //        System.out.println(BulletManager.getInstance().getBullets().size());
     }
     public void drawHitbox(){
-        //getMinimize is max 5, from 0
-//        double offset = (8 - PlayerManager.getInstance().getMinimize())/(10 + PlayerManager.getInstance().getMinimize());
-//        System.out.println(offset);
         double offset = (0.25 + 0.05*(5 - PlayerManager.getInstance().getMinimize()));
-//        System.out.println(image.getWidth());
         double scale = PlayerManager.getInstance().getMinimize() /10;
-//        double offsetH = 0.25;
         this.hitbox = new BoundingBox(transform.getPosX() + (offset * image.getWidth() * transform.getSclX()),transform.getPosY() + ( offset * image.getHeight() * transform.getSclY()), image.getWidth()* transform.getSclX() * scale, image.getHeight()* transform.getSclY() * scale);
     }
     public void drawGrazebox(){
         double offset = -PlayerManager.getInstance().getDexterity() * 5 + (image.getWidth() * transform.getSclX())/2 -1;
         double scale = PlayerManager.getInstance().getDexterity() /5;
-//        double offsetH = 0.25;
         this.bounds = new BoundingBox(transform.getPosX() + offset,transform.getPosY() + offset, image.getWidth()* transform.getSclX() * scale, image.getHeight()* transform.getSclY() * scale);
     }
 
@@ -101,7 +85,6 @@ public class Player extends GameObject implements Shootable {
         drawHitbox();
         drawGrazebox();
         activeImage = Asset.UI.idle1;
-//        gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 60, 60);
 
         if(isSlashPressed()){
             activeImage = Asset.UI.idle2;
@@ -125,6 +108,7 @@ public class Player extends GameObject implements Shootable {
     }
     private void Death(){
         isDying=true;
+        StatManager.getInstance().addDeath();
         double startFrame = System.currentTimeMillis();
         new AnimationTimer() {
             public void handle(long now) {
@@ -144,7 +128,6 @@ public class Player extends GameObject implements Shootable {
         if (isShiftPressed()) {
             speed = Config.PLAYER_SPEED_SHIFT;
             if (currentTime - lastFireTime > fireRate) {
-//                controlAggressiveShoot();
                 PlayerUtils.autoAim(this);
                 lastFireTime = currentTime;
 
@@ -164,7 +147,6 @@ public class Player extends GameObject implements Shootable {
 
         checkOutOfBounds();
         //Check collision with enemy bullet
-        //
         ArrayList<BaseBullet> bulletList = BulletManager.getInstance().getBullets();
         if(iFrametime>0) { return; }
         for (BaseBullet bullet : bulletList) {
@@ -179,19 +161,10 @@ public class Player extends GameObject implements Shootable {
                     }
             }
         }
-        //Check bounds with enemy bullets
-
-
     }
 
     public void setSpeed(double speed) {
         this.speed = speed;
-    }
-    public Bounds getHitbox() {
-        return hitbox;
-    }
-    public void setActiveImage(Image activeImage) {
-       this.activeImage = activeImage;
     }
 
 }

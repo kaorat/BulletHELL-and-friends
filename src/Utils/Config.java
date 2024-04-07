@@ -91,7 +91,7 @@ public class Config {
     public static final double DAMAGE_PRICE_INCREMENT = 1.5;//Power by level
     public static final double DAMAGE_MAX_LEVEL = 100000;//???????
 
-    //Firerate
+    //Fire rate
     public static final double PLAYER_FIRE_RATE_BASE = 0.5;
     public static final double PLAYER_FIRE_RATE_UPGRADE = -0.01;
     public static final double PLAYER_FIRE_RATE_BASE_PRICE = 100;
@@ -125,19 +125,19 @@ public class Config {
 
     // ArrayLists to store base values, upgrade values, and drop upgrade values
     //Enemy
-    public static ArrayList<Double> enemy_baseValues = new ArrayList<Double>();
-    public static ArrayList<Double> enemy_upgradeValues = new ArrayList<Double>();
-    public static ArrayList<Double> enemy_basePrices = new ArrayList<Double>();
-    public static ArrayList<Double> enemy_priceIncrements = new ArrayList<Double>();
-    public static ArrayList<Double> enemy_dropUpgradeValues = new ArrayList<Double>();
-    public static ArrayList<Double> enemy_maxLevels = new ArrayList<Double>();
+    public static ArrayList<Double> enemy_baseValues = new ArrayList<>();
+    public static ArrayList<Double> enemy_upgradeValues = new ArrayList<>();
+    public static ArrayList<Double> enemy_basePrices = new ArrayList<>();
+    public static ArrayList<Double> enemy_priceIncrements = new ArrayList<>();
+    public static ArrayList<Double> enemy_dropUpgradeValues = new ArrayList<>();
+    public static ArrayList<Double> enemy_maxLevels = new ArrayList<>();
 
     //Player
-    public static ArrayList<Double> player_baseValues = new ArrayList<Double>();
-    public static ArrayList<Double> player_upgradeValues = new ArrayList<Double>();
-    public static ArrayList<Double> player_basePrices = new ArrayList<Double>();
-    public static ArrayList<Double> player_priceIncrements = new ArrayList<Double>();
-    public static ArrayList<Double> player_maxLevels = new ArrayList<Double>();
+    public static ArrayList<Double> player_baseValues = new ArrayList<>();
+    public static ArrayList<Double> player_upgradeValues = new ArrayList<>();
+    public static ArrayList<Double> player_basePrices = new ArrayList<>();
+    public static ArrayList<Double> player_priceIncrements = new ArrayList<>();
+    public static ArrayList<Double> player_maxLevels = new ArrayList<>();
 
     // Initialize base, upgrade, and drop upgrade values
     static {
@@ -213,7 +213,7 @@ public class Config {
         player_priceIncrements.add(DAMAGE_PRICE_INCREMENT);
         player_maxLevels.add(DAMAGE_MAX_LEVEL);
 
-        //Firerate
+        //Fire rate
         player_baseValues.add(PLAYER_FIRE_RATE_BASE);
         player_upgradeValues.add(PLAYER_FIRE_RATE_UPGRADE);
         player_basePrices.add(PLAYER_FIRE_RATE_BASE_PRICE);
@@ -242,41 +242,5 @@ public class Config {
         player_maxLevels.add(PROFICIENCY_MAX_LEVEL);
     }
 
-
-//    //TODO : Image Config
-//    public static final double PLAYER_OFFSET_WIDTH = 0;
-//    public static final double PLAYER_OFFSET_HEIGHT = 0;
-//    public static final double PLAYER_WIDTH = 60;
-//    public static final double PLAYER_HEIGHT = 60;
-//
-//    public static final double CHICKEN_OFFSET_WIDTH = 0;
-//    public static final double CHICKEN_OFFSET_HEIGHT = 0;
-//    public static final double CHICKEN_WIDTH = 40;
-//    public static final double CHICKEN_HEIGHT = 60;
-//
-//    public static final double SHEEP_OFFSET_WIDTH = 0;
-//    public static final double SHEEP_OFFSET_HEIGHT = 0;
-//    public static final double SHEEP_WIDTH = 60;
-//    public static final double SHEEP_HEIGHT = 60;
-//
-//    public static final double COW_OFFSET_WIDTH = 0;
-//    public static final double COW_OFFSET_HEIGHT = 0;
-//    public static final double COW_WIDTH = 60;
-//    public static final double COW_HEIGHT = 60;
-//
-//    public static final double ENEMY_BULLET_OFFSET_WIDTH = 0;
-//    public static final double ENEMY_BULLET_OFFSET_HEIGHT = 0;
-//    public static final double ENEMY_BULLET_WIDTH = 2;
-//    public static final double ENEMY_BULLET_HEIGHT = 2;
-//
-//    public static final double PLAYER_BULLET_OFFSET_WIDTH = 0;
-//    public static final double PLAYER_BULLET_OFFSET_HEIGHT = 0;
-//    public static final double PLAYER_BULLET_WIDTH = 10;
-//    public static final double PLAYER_BULLET_HEIGHT = 10;
-//
-//    public static final double COIN_OFFSET_WIDTH = 0;
-//    public static final double COIN_OFFSET_HEIGHT = 0;
-//    public static final double COIN_WIDTH = 20;
-//    public static final double COIN_HEIGHT = 20;
 
 }

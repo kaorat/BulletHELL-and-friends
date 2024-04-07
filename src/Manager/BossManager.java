@@ -2,7 +2,6 @@ package Manager;
 
 import GameEntity.Boss.BaseBoss;
 import GameEntity.Boss.KaoBoss;
-import GameEntity.Boss.MichaelJackson;
 import Utils.Updatable;
 
 public class BossManager implements Updatable {
@@ -36,12 +35,4 @@ public class BossManager implements Updatable {
     public BaseBoss getBoss(){
         return boss;
     }
-
-    public boolean isBossSpawned(){
-        return boss != null;
-    }
-
-
-
-
 }

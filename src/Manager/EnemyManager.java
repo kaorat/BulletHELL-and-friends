@@ -1,14 +1,11 @@
 package Manager;
 
-import GameEntity.Bullet.BaseBullet;
-import GameEntity.Bullet.PlayerBullet;
 import GameEntity.Enemy.BaseEnemy;
 import GameEntity.Enemy.Chicken;
 import GameEntity.Enemy.Cow;
 import GameEntity.Enemy.Sheep;
 import Utils.*;
 
-import Manager.BulletManager;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -16,7 +13,7 @@ public class EnemyManager implements Updatable {
 
 
     private static EnemyManager instance;
-    private ArrayList<BaseEnemy> enemies;
+    private final ArrayList<BaseEnemy> enemies;
     private ArrayList<Integer> ChickenPerks;
     private ArrayList<Integer> SheepPerks;
     private ArrayList<Integer> CowPerks;
@@ -25,13 +22,8 @@ public class EnemyManager implements Updatable {
     private long lastSheepSpawnTime;
     private long lastCowSpawnTime;
 
-
-    private long chickenSpawnRate = 400;
-    private long sheepSpawnRate = 800;
-    private long cowSpawnRate = 1000;
-
     private EnemyManager() {
-        enemies = new ArrayList<BaseEnemy>();
+        enemies = new ArrayList<>();
         //singleton , 10 is the starting part drop rate
         reset();
 
@@ -82,23 +74,6 @@ public class EnemyManager implements Updatable {
     // parts drop is still messed up!!!!
     // 0 is the drop rate, 1-7 are the perks
 
-    public void upgradePerks(EnemyType type, int index){ //index should be between 1-7
-        if(index == 0) return;
-        if(type == EnemyType.CHICKEN){
-            ChickenPerks.set(index, ChickenPerks.get(index) + 1);
-            ChickenPerks.set(0, (int) (ChickenPerks.get(0) + Config.enemy_dropUpgradeValues.get(index)));
-        }
-        else if(type == EnemyType.SHEEP){
-            SheepPerks.set(index, SheepPerks.get(index) + 1);
-            SheepPerks.set(0, (int) (SheepPerks.get(0) + Config.enemy_dropUpgradeValues.get(index)));
-        }
-        else if(type == EnemyType.COW){
-            CowPerks.set(index, CowPerks.get(index) + 1);
-            CowPerks.set(0, (int) (CowPerks.get(0) + Config.enemy_dropUpgradeValues.get(index)));
-        }
-
-    }
-
 
     public void clearEnemy() {
         for(BaseEnemy e : enemies){
@@ -139,9 +114,9 @@ public class EnemyManager implements Updatable {
 
 
     public void reset(){
-        ChickenPerks = new ArrayList<Integer>(Arrays.asList((int)Config.PARTS_DROP_BASE*Config.CHICKEN_MULTIPLIER, 0, 0, 0, 0, 0, 0, 0));
-        SheepPerks = new ArrayList<Integer>(Arrays.asList((int)Config.PARTS_DROP_BASE, 0, 0, 0, 0, 0, 0, 0));
-        CowPerks = new ArrayList<Integer>(Arrays.asList((int)Config.PARTS_DROP_BASE*Config.COW_MULTIPLIER, 0, 0, 0, 0, 0, 0, 0));
+        ChickenPerks = new ArrayList<>(Arrays.asList((int) Config.PARTS_DROP_BASE * Config.CHICKEN_MULTIPLIER, 0, 0, 0, 0, 0, 0, 0));
+        SheepPerks = new ArrayList<>(Arrays.asList((int) Config.PARTS_DROP_BASE, 0, 0, 0, 0, 0, 0, 0));
+        CowPerks = new ArrayList<>(Arrays.asList((int) Config.PARTS_DROP_BASE * Config.COW_MULTIPLIER, 0, 0, 0, 0, 0, 0, 0));
         clearEnemy();
     }
 
@@ -159,55 +134,6 @@ public class EnemyManager implements Updatable {
 
     public ArrayList<Integer> getCowPerks() {
         return CowPerks;
-    }
-
-
-    public long getLastChickenSpawnTime() {
-        return lastChickenSpawnTime;
-    }
-
-    public void setLastChickenSpawnTime(long lastChickenSpawnTime) {
-        this.lastChickenSpawnTime = lastChickenSpawnTime;
-    }
-
-    public long getLastSheepSpawnTime() {
-        return lastSheepSpawnTime;
-    }
-
-    public void setLastSheepSpawnTime(long lastSheepSpawnTime) {
-        this.lastSheepSpawnTime = lastSheepSpawnTime;
-    }
-
-    public long getLastCowSpawnTime() {
-        return lastCowSpawnTime;
-    }
-
-    public void setLastCowSpawnTime(long lastCowSpawnTime) {
-        this.lastCowSpawnTime = lastCowSpawnTime;
-    }
-
-    public long getChickenSpawnRate() {
-        return chickenSpawnRate;
-    }
-
-    public void setChickenSpawnRate(long chickenSpawnRate) {
-        this.chickenSpawnRate = chickenSpawnRate;
-    }
-
-    public long getSheepSpawnRate() {
-        return sheepSpawnRate;
-    }
-
-    public void setSheepSpawnRate(long sheepSpawnRate) {
-        this.sheepSpawnRate = sheepSpawnRate;
-    }
-
-    public long getCowSpawnRate() {
-        return cowSpawnRate;
-    }
-
-    public void setCowSpawnRate(long cowSpawnRate) {
-        this.cowSpawnRate = cowSpawnRate;
     }
 
 }

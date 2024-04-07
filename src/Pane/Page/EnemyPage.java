@@ -165,27 +165,29 @@ public class EnemyPage extends GraphicEditor {
         if(allButtons.get(8).isPressed()) SceneManager.setCurrentPage(new MainPage(graphicsContext));
         allButtons.get(7).setVisible(false);
 
-        if(!StatManager.getInstance().getEnemyUnlocked().get(2) && StatManager.getInstance().getEnemyUnlocked().get(1)){
-            allButtons.get(7).setVisible(true);
-            allDescription.get(7).getText().setText("Unlock "+ "Chicken");
-            int cost = enemyUnlockCost.get(2);
-            allPrice.get(7).getText().setText(String.valueOf(cost));
-            if(coin>cost){
-                allButtons.get(7).setEnable(true);
-                if(allButtons.get(7).isPressed()){
-                    StatManager.getInstance().setCoin(coin-cost);
-                    StatManager.getInstance().getEnemyUnlocked().set(2,true);
-                    unlockEnemy.get(2).setEnable(true);
-                    allDescription.get(7).getText().setText("");
-                    allPrice.get(7).getText().setText("");
-                    allButtons.get(7).setVisible(false);
+        if(!StatManager.getInstance().getEnemyUnlocked().get(2)){
+            unlockEnemy.get(2).setEnable(false);
+            if(StatManager.getInstance().getEnemyUnlocked().get(1)){
+                allButtons.get(7).setVisible(true);
+                allDescription.get(7).getText().setText("Unlock "+ "Chicken");
+                int cost = enemyUnlockCost.get(2);
+                allPrice.get(7).getText().setText(String.valueOf(cost));
+                if(coin>cost){
+                    allButtons.get(7).setEnable(true);
+                    if(allButtons.get(7).isPressed()){
+                        StatManager.getInstance().setCoin(coin-cost);
+                        StatManager.getInstance().getEnemyUnlocked().set(2,true);
+                        unlockEnemy.get(2).setEnable(true);
+                        allDescription.get(7).getText().setText("");
+                        allPrice.get(7).getText().setText("");
+                        allButtons.get(7).setVisible(false);
+                    }
                 }
             }
         }
 
         if(!StatManager.getInstance().getEnemyUnlocked().get(1)){
                 unlockEnemy.get(1).setEnable(false);
-                unlockEnemy.get(2).setEnable(false);
                 allButtons.get(7).setVisible(true);
                 allDescription.get(7).getText().setText("Unlock "+ "Cow");
                 int cost = enemyUnlockCost.get(1);

@@ -4,6 +4,8 @@ import GameEntity.Player.Player;
 import Utils.Config;
 import Utils.Transform;
 import Utils.Updatable;
+import Utils.Utility;
+import javafx.animation.AnimationTimer;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
@@ -33,7 +35,7 @@ public class PlayerManager implements  Updatable {
     }
 
     private void addPlayer(){
-        Player player = new Player(new Transform(200,400,0.2,0.2),25);
+        Player player = new Player(new Transform(Utility.getGameScreenX()/2-30,Utility.getScreenY()-100,0.2,0.2),25);
         this.player = player;
         GameObjectHolder.getInstance().add(player);
     }
@@ -50,9 +52,24 @@ public class PlayerManager implements  Updatable {
     @Override
     public void onUpdate() {
 //        System.out.println(toString());
-
+        if(player==null) { return; }
+        if(player.isDestroyed()){
+            player=null;
+            respawnDelay();
+        }
     }
-
+    private void respawnDelay(){
+        double startFrame = System.currentTimeMillis();
+        double respawnTime =3000;
+        new AnimationTimer() {
+            public void handle(long now) {
+                if(System.currentTimeMillis()-startFrame>respawnTime){
+                    addPlayer();
+                    this.stop();
+                }
+            }
+        }.start();
+    }
     // what is reset?
     //Suchas Answer : Prestege
     public void reset(){

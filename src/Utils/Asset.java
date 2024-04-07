@@ -117,6 +117,7 @@ public class Asset {
         public static Image idle1;
         public static Image idle2;
         public static Image idle3;
+        public static Image die;
         public static Image goblet;
         public static Image buttonGoblet;
         public static Image buttonGobletHover;

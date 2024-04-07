@@ -128,10 +128,10 @@ public class EnemyPage extends GraphicEditor {
         allIncrease.add((UISprite) create(new UISprite(new Text("0 s", Utility.getGameFont(9), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 330, 222 + moveYButton*6, 0.25, 0.25), 55)));
 
         //Unlock
-        allDescription.add((UISprite) create(new UISprite(new Text("Unlock Sheep ",Utility.getGameFont(18 ), Color.BLACK),
+        allDescription.add((UISprite) create(new UISprite(new Text("",Utility.getGameFont(18 ), Color.BLACK),
                 new Transform(x+100,685),52)));
         allButtons.add((UIButton) create( new UIButton(Asset.UI.upgradeButtonMeat, new Transform(Utility.getGameScreenX() + 280, 665, 0.28, 0.24), 54 , ButtonType.UPGRADEMEAT)));
-        allPrice.add((UISprite) create(new UISprite(new Text("100", Utility.getGameFont(12), Color.YELLOWGREEN),
+        allPrice.add((UISprite) create(new UISprite(new Text("", Utility.getGameFont(12), Color.YELLOWGREEN),
                 new Transform(allButtons.get(7).getTransform().getPosX() + 32,
                         allButtons.get(7).getTransform().getPosY() + 21), 55)));
 
@@ -166,7 +166,7 @@ public class EnemyPage extends GraphicEditor {
         partsDrop.getText().setText("Parts Drop: " + perks.get(0));
         int multiplier = (currentEnemy==1?Config.COW_MULTIPLIER:1)*(currentEnemy==2?Config.CHICKEN_MULTIPLIER:1);
         if(allButtons.get(8).isPressed()) SceneManager.setCurrentPage(new MainPage(graphicsContext));
-
+        allButtons.get(7).setVisible(false);
         for(int i=2;i>0;i--){
             if(!StatManager.getInstance().getEnemyUnlocked().get(i)){
                 unlockEnemy.get(i).setEnable(false);

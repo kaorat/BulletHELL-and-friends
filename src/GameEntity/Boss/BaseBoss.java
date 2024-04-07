@@ -51,7 +51,6 @@ public abstract class BaseBoss extends GameObject {
         }
 
         frame++;
-        System.out.println(frame);
         if(frame>1200000){
             frame=0;
         }

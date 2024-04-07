@@ -2,10 +2,11 @@ package GameEntity.Enemy;
 
 import Manager.EnemyManager;
 import Utils.*;
+import input.MouseUtil;
 import javafx.scene.canvas.GraphicsContext;
 
 public class Sheep extends BaseEnemy{
-
+    private int clicktime;
     private long lastPatternTime = 0;
 
     public Sheep(Transform transform,double z) {
@@ -13,13 +14,13 @@ public class Sheep extends BaseEnemy{
         setImage(Asset.UI.sheepiconUI);
         Perks = EnemyManager.getInstance().getSheepPerks();
         ApplyStat(EnemyType.SHEEP);
-
+        clicktime=0;
     }
 
     @Override
     public void firing() {
         long currentTime = System.currentTimeMillis();
-        if(currentTime - lastPatternTime > 1000){
+        if(currentTime - lastPatternTime > 1000*fireRate){
             EnemyUtils.SheepShootPattern(this,bulletSpeed,bulletQuantity,bulletLength);
             lastPatternTime = currentTime;
         }
@@ -46,6 +47,13 @@ public class Sheep extends BaseEnemy{
             transform.translate(0.7);
 
             if(uptime <= 0) destroyed = true;
+        }
+        boolean click= Utility.checkHover(getTransform(),getImage()) && MouseUtil.isActivated();
+        if(click){
+            clicktime++;
+        }
+        if(clicktime>=10){
+            hp=0;
         }
     }
 

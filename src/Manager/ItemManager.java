@@ -1,5 +1,6 @@
 package Manager;
 
+import GameEntity.GameObject;
 import GameEntity.Item.BaseItem;
 import Utils.Updatable;
 
@@ -42,5 +43,10 @@ public class ItemManager implements Updatable {
 //        for(BaseItem item : items){
 //            item.spawn();
 //        }
+    }
+    public void clearItems(){
+        for(GameObject item : items){
+            item.setDestroyed(true);
+        }
     }
 }

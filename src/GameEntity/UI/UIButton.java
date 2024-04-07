@@ -1,9 +1,12 @@
 package GameEntity.UI;
 
+import Main.Main;
 import Utils.Asset;
 import Utils.ButtonType;
+import Utils.Utility;
 import input.MouseUtil;
 import Utils.Transform;
+import javafx.scene.Cursor;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
@@ -43,6 +46,7 @@ public class UIButton extends UISprite {
 
     @Override
     public void draw(GraphicsContext gc ) {
+        if(!visible) { return; }
 
         // Add button-specific drawing logic here, such as highlighting when hovered or pressed
         if(!enabled){
@@ -74,6 +78,7 @@ public class UIButton extends UISprite {
 
             }
             else if (hovered) {
+                Main.getScene().setCursor(Cursor.cursor("HAND"));
                 // Draw  hover
                 if(buttonType == ButtonType.UPGRADEMEAT){
                     setSprite(Asset.UI.upgradeButtonHoverMeat);
@@ -147,9 +152,7 @@ public class UIButton extends UISprite {
 
     @Override
     public void onUpdate() {
-        hovered = MouseUtil.getMouseX() > getTransform().getPosX() && MouseUtil.getMouseX() < getTransform().getPosX()
-                + getSprite().getWidth() * getTransform().getSclX() && MouseUtil.getMouseY() > getTransform().getPosY() &&
-                MouseUtil.getMouseY() < getTransform().getPosY() + getSprite().getHeight() * getTransform().getSclY();
+        hovered = enabled&&Utility.checkHover(getTransform(),getSprite());
         pressed = MouseUtil.isActivated() && hovered;
 //        System.out.println(clickCount);
     }

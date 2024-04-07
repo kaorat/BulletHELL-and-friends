@@ -24,7 +24,8 @@ public class GobletPage extends GraphicEditor {
     private final ArrayList<String> descTemplete = new ArrayList<>();
     private final ArrayList<String> increaseTemplete = new ArrayList<>();
     private int moveYButton = 70;
-    UISprite goblet;
+    private UISprite goblet;
+    private UIButton gobletButton;
 
     private double x = Utility.getGameScreenX();
 
@@ -87,7 +88,7 @@ public class GobletPage extends GraphicEditor {
         //Goblet
         create(new UISprite(Asset.UI.goblet, new Transform(Utility.getGameScreenX() + 160, 500, 0.25, 0.25), 54));
         goblet = (UISprite) create(new UISprite(new Text("100", Utility.getGameFont(13), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 210, 545, 0.25, 0.25), 55));
-        allButtons.add((UIButton) create( new UIButton(Asset.UI.buttonGoblet, new Transform(Utility.getGameScreenX() + 140, 650, 0.23, 0.21), 54 , ButtonType.GOBLET)));
+        gobletButton = ((UIButton) create( new UIButton(Asset.UI.buttonGoblet, new Transform(Utility.getGameScreenX() + 140, 650, 0.23, 0.21), 54 , ButtonType.GOBLET)));
         create(new UISprite(new Text("Resets Parts, Soul, Upgrade", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 135, 705, 0.25, 0.25), 55));
 
 
@@ -116,11 +117,16 @@ public class GobletPage extends GraphicEditor {
     @Override
     public void onUpdate() {
         int amber = StatManager.getInstance().getAmber();
-        if(allButtons.get(6).isPressed()) SceneManager.setCurrentPage(new MainPage(graphicsContext));
+        if(allButtons.get(5).isPressed()) SceneManager.setCurrentPage(new MainPage(graphicsContext));
         for(int i=0;i<5;i++){
             //Variable
             int level = StatManager.getInstance().getGobletLevels().get(i);
             int cost = (int) (10*(Math.pow(2,level)));
+            if(level>=10){
+                allPrice.get(i).getText().setText("MAX");
+                allButtons.get(i).setEnable(false);
+                continue;
+            }
             //Price
             UISprite price = allPrice.get(i);
             price.getText().setText(Utility.NumberToString(cost));
@@ -151,6 +157,17 @@ public class GobletPage extends GraphicEditor {
 
             //Desc
 
+        }
+        //Reset
+        goblet.getText().setText(String.valueOf(StatManager.getInstance().getHoneyLevel()));
+        if(StatManager.getInstance().getHoneyLevel()>0){
+            gobletButton.setEnable(true);
+            if(gobletButton.isPressed()){
+                StatManager.getInstance().reset();
+            }
+        }
+        else {
+            gobletButton.setEnable(false);
         }
     }
 }

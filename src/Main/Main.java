@@ -6,6 +6,7 @@ import input.MouseUtil;
 import Utils.Utility;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.AudioClip;
@@ -17,6 +18,7 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+    private static Scene scene;
     @Override
     public void start(Stage primaryStage) {
         SceneManager.GotoGameScene();
@@ -38,7 +40,7 @@ public class Main extends Application {
             MouseUtil.setMouseX(e.getX());
             MouseUtil.setMouseY(e.getY());
         });
-        Scene scene = new Scene(root, Utility.getScreenX(), Utility.getScreenY());
+        scene = new Scene(root, Utility.getScreenX(), Utility.getScreenY());
         InputUtility.setKey(scene);
         primaryStage.setTitle("Funny BulletHell Game");
         primaryStage.setScene(scene);
@@ -46,6 +48,7 @@ public class Main extends Application {
         primaryStage.show();
         AnimationTimer animation = new AnimationTimer() {
             public void handle(long now) {
+                scene.setCursor(Cursor.cursor("DEFAULT"));
                 RootPane.paintComponent();
                 SceneManager.update();
                 //GameObjectHolder.getInstance().update();
@@ -59,5 +62,9 @@ public class Main extends Application {
 //        bgm.setVolume(0.05);
 //        bgm.play();
         animation.start();
+    }
+
+    public static Scene getScene() {
+        return scene;
     }
 }

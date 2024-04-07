@@ -26,6 +26,7 @@ public class UISprite extends GameObject {
     //Updatable Text
     @Override
     public void draw(GraphicsContext gc) {
+        if(!visible) { return; }
         if(type.equals("image")) Utility.DrawImage(gc,sprite,transform);
         else if(type.equals("text")){
             gc.setLineWidth(text.getLinewidth());

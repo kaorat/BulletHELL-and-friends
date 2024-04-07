@@ -2,6 +2,7 @@ package Manager;
 
 import GameEntity.Bullet.BaseBullet;
 import GameEntity.Bullet.PlayerBullet;
+import GameEntity.GameObject;
 import Utils.Asset;
 import Utils.Updatable;
 
@@ -42,7 +43,9 @@ public class BulletManager implements Updatable {
     }
 
     public void clearBullets() {
-        bullets.clear();
+        for(GameObject bullet : bullets){
+            bullet.setDestroyed(true);
+        }
     }
 
     public ArrayList<BaseBullet> getBullets() {

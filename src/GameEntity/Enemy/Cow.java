@@ -21,7 +21,7 @@ public class Cow extends BaseEnemy{
     @Override
     public void firing() {
         long currentTime = System.currentTimeMillis();
-        if(currentTime - lastPatternTime > 1500){ // 5 seconds
+        if(currentTime - lastPatternTime > 1000*fireRate){ // 5 seconds
             EnemyUtils.CowShootPattern(this,initRot, bulletSpeed,bulletQuantity,bulletLength);
             initRot+=10;
             lastPatternTime = currentTime;

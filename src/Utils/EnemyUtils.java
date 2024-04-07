@@ -17,7 +17,7 @@ public class EnemyUtils {
         double stat;
         if(index == 4){
             if(type==EnemyType.COW){
-                stat = (Config.COW_BULLET_QUANTITY_BASE + (Config.enemy_upgradeValues.get(index)*level));
+                stat = (Config.COW_BULLET_QUANTITY_BASE + (Config.enemy_upgradeValues.get(index)*level*4));
             }
             else if(type==EnemyType.CHICKEN){
                 stat = (Config.CHICKEN_BULLET_QUANTITY_BASE + (Config.enemy_upgradeValues.get(index)*level));
@@ -47,11 +47,11 @@ public class EnemyUtils {
     public static void SheepShootPattern(Sheep sheep,double speed,int quantity,int length){
 
         double angleToP=Transform.calculateAngleToTarget(sheep.getTransform(), PlayerManager.getInstance().getPlayer().getTransform());
-        int maxAngle = 10 * (quantity);
+        int maxAngle = 10 * (quantity-1);
         if(quantity%2  == 0){
             for(int i=0;i<quantity;i++){
                 for(int j=1;j<=length;j++){
-                    EnemyBullet bullet = new EnemyBullet(speed/j, sheep, new Transform(sheep.getTransform().getPosX() + 25, sheep.getTransform().getPosY() + 20, angleToP - (double) (maxAngle / 2) + ((double) (i * maxAngle) /quantity), 1, 1), 35,0);
+                    EnemyBullet bullet = new EnemyBullet(speed-(speed*(j-1)/length), sheep, new Transform(sheep.getTransform().getPosX() + 25, sheep.getTransform().getPosY() + 20, angleToP - (double) (maxAngle / 2) + ((double) (i * maxAngle) /quantity), 1, 1), 35,0);
                     BulletManager.getInstance().add(bullet);
                 }
 
@@ -59,7 +59,7 @@ public class EnemyUtils {
         }else{
             for(int i=0;i<quantity;i++){
                 for(int j=1;j<=length;j++){
-                    EnemyBullet bullet = new EnemyBullet(speed/j, sheep, new Transform(sheep.getTransform().getPosX() + 25, sheep.getTransform().getPosY() + 20, angleToP - (double) (maxAngle / quantity ) + ((double) (i * maxAngle) /quantity), 1, 1), 35,0);
+                    EnemyBullet bullet = new EnemyBullet(speed-(speed*(j-1)/length), sheep, new Transform(sheep.getTransform().getPosX() + 25, sheep.getTransform().getPosY() + 20, angleToP - (double) (maxAngle / quantity ) + ((double) (i * maxAngle) /quantity), 1, 1), 35,0);
                     BulletManager.getInstance().add(bullet);
                 }
 
@@ -73,7 +73,7 @@ public class EnemyUtils {
         // circular direction
         for(int i = 0; i <= quantity; i++){
             for(int j=1;j<=length;j++){
-                EnemyBullet bullet = new EnemyBullet(speed/j, cow, new Transform(cow.getTransform().getPosX() + 25, cow.getTransform().getPosY() + 20, (initRot + ( (double) (i * 360) /quantity ))%360, 1, 1), 0,0);
+                EnemyBullet bullet = new EnemyBullet(speed-(speed*(j-1)/length), cow, new Transform(cow.getTransform().getPosX() + 25, cow.getTransform().getPosY() + 20, (initRot + ( (double) (i * 360) /quantity ))%360, 1, 1), 0,0);
                 BulletManager.getInstance().add(bullet);
             }
             //TODO

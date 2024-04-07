@@ -139,6 +139,7 @@ public class Config {
     public static ArrayList<Double> player_priceIncrements = new ArrayList<Double>();
     public static ArrayList<Double> player_maxLevels = new ArrayList<Double>();
 
+
     // Initialize base, upgrade, and drop upgrade values
     static {
         // Parts Drop (no need , all zero)

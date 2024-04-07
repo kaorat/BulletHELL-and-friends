@@ -21,6 +21,8 @@ public class Sheep extends BaseEnemy{
     public void firing() {
         long currentTime = System.currentTimeMillis();
         if(currentTime - lastPatternTime > 1000*fireRate){
+            Track.TECHNOSHOOT1.setVolume(0.1);
+            if(bulletQuantity > 0) Track.TECHNOSHOOT1.play();
             EnemyUtils.SheepShootPattern(this,bulletSpeed,bulletQuantity,bulletLength);
             lastPatternTime = currentTime;
         }
@@ -64,6 +66,7 @@ public class Sheep extends BaseEnemy{
     public void draw(GraphicsContext gc) {
         //gc.drawImage(getImage(),this.transform.getPosX(),this.transform.getPosY(), 60,60);
         Utility.DrawImage(gc,getImage(),transform);
+        drawHpBar(gc, EnemyType.SHEEP);
         drawBounds(0,0);
 
     }

@@ -7,6 +7,8 @@ import Manager.BulletManager;
 import Utils.EnemyType;
 import Utils.EnemyUtils;
 import Utils.Transform;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
@@ -55,6 +57,14 @@ public abstract class BaseEnemy extends GameObject {
         this.bulletQuantity = (int)EnemyUtils.calculateStat(type,4,Perks.get(4));
         this.bulletLength = (int)EnemyUtils.calculateStat(type,5,Perks.get(5));
         this.soulChance = EnemyUtils.calculateStat(type,6,Perks.get(6)) ;
+    }
+    public void drawHpBar(GraphicsContext gc, EnemyType type){
+        //TODO
+//        gc.setStroke(Color.RED);
+        gc.setFill(Color.RED);
+        gc.fillRect(transform.getPosX(),transform.getPosY()-7,(this.hp/EnemyUtils.calculateStat(type, 1 ,Perks.get(1))) * 80,5); // hard coded (image width varies)
+
+
     }
     @Override
     public void onUpdate() { //from animationTimer

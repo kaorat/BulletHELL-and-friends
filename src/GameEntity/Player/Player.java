@@ -76,6 +76,7 @@ public class Player extends GameObject implements Shootable {
 
     public void shoot() {
         PlayerUtils.normal(this);
+//        Track.TECHNOSHOOT1.play();
 //        System.out.println(BulletManager.getInstance().getBullets().size());
     }
     public void drawHitbox(){
@@ -126,6 +127,8 @@ public class Player extends GameObject implements Shootable {
     private void Death(){
         isDying=true;
         double startFrame = System.currentTimeMillis();
+        Track.PLAYERDEAD.setVolume(0.5);
+        Track.PLAYERDEAD.play();
         new AnimationTimer() {
             public void handle(long now) {
                 if(System.currentTimeMillis()-startFrame>3000){

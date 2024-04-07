@@ -58,6 +58,7 @@ public class Cow extends BaseEnemy{
     public void draw(GraphicsContext gc) {
         //gc.drawImage(getImage(),this.transform.getPosX(),this.transform.getPosY(), 60,60);
         Utility.DrawImage(gc,getImage(),transform);
+        drawHpBar(gc,EnemyType.COW);
         drawBounds(0,0);
     }
 }

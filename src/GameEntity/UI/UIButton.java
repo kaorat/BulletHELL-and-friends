@@ -59,6 +59,9 @@ public class UIButton extends UISprite {
             else if((buttonType == ButtonType.UPGRADESHEEP) || (buttonType == ButtonType.UPGRADECOW) || (buttonType == ButtonType.UPGRADECHICKEN) ){
                 setSprite(Asset.UI.enemyLock);
             }
+            else if(buttonType == ButtonType.GOBLET){
+                setSprite(Asset.UI.buttonGobletDisabled);
+            }
 
 
         }
@@ -90,7 +93,9 @@ public class UIButton extends UISprite {
                 else if((buttonType == ButtonType.UPGRADESHEEP) || (buttonType == ButtonType.UPGRADECOW) || (buttonType == ButtonType.UPGRADECHICKEN) ){
                     setSprite(Asset.UI.enemyUnlockedHover);
                 }
-
+                else if (buttonType == ButtonType.GOBLET) {
+                    setSprite(Asset.UI.buttonGobletHover);
+                }
 
 
             }
@@ -128,6 +133,9 @@ public class UIButton extends UISprite {
                 }
                 else if(buttonType == ButtonType.UPGRADECHICKEN){
                     setSprite(Asset.UI.chickenUnlocked);
+                }
+                else if(buttonType == ButtonType.GOBLET){
+                    setSprite(Asset.UI.buttonGoblet);
                 }
 
 

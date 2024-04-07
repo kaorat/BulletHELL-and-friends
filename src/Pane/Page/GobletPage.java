@@ -24,6 +24,7 @@ public class GobletPage extends GraphicEditor {
     private final ArrayList<String> descTemplete = new ArrayList<>();
     private final ArrayList<String> increaseTemplete = new ArrayList<>();
     private int moveYButton = 70;
+    UISprite goblet;
 
     private double x = Utility.getGameScreenX();
 
@@ -43,7 +44,7 @@ public class GobletPage extends GraphicEditor {
         allPrice.add( (UISprite) create(new UISprite(new Text("100", Utility.getGameFont(13), Color.YELLOWGREEN),
                 new Transform(allButtons.get(0).getTransform().getPosX() + 32,
                         allButtons.get(0).getTransform().getPosY() + 23), 55)));
-        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 220, 192, 0.25, 0.25), 55)));
+        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 220, 192, 0.25, 0.25), 55)));
         allDescription.add((UISprite) create(new UISprite(new Text("Goblet conversion rate : 0", Utility.getGameFont(11), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 58, 210, 0.25, 0.25), 55)));
         allIncrease.add((UISprite) create(new UISprite(new Text("+0 rate", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 310, 213, 0.25, 0.25), 55)));
 
@@ -52,7 +53,7 @@ public class GobletPage extends GraphicEditor {
         allPrice.add( (UISprite) create(new UISprite(new Text("100", Utility.getGameFont(13), Color.YELLOWGREEN),
                 new Transform(allButtons.get(1).getTransform().getPosX() + 32,
                         allButtons.get(1).getTransform().getPosY() + 23), 55)));
-        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 230, 192 + moveYButton, 0.25, 0.25), 55)));
+        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 230, 192 + moveYButton, 0.25, 0.25), 55)));
         allDescription.add((UISprite) create(new UISprite(new Text("Parts obtain multiplier : 0", Utility.getGameFont(11), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 58, 210 + moveYButton, 0.25, 0.25), 55)));
         allIncrease.add((UISprite) create(new UISprite(new Text("+0 multiplier", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 304, 213 + moveYButton, 0.25, 0.25), 55)));
 
@@ -61,7 +62,7 @@ public class GobletPage extends GraphicEditor {
         allPrice.add((UISprite) create(new UISprite(new Text("100", Utility.getGameFont(13), Color.YELLOWGREEN),
                 new Transform(allButtons.get(2).getTransform().getPosX() + 32,
                         allButtons.get(2).getTransform().getPosY() + 23), 55)));
-        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 250, 190 + moveYButton*2, 0.25, 0.25), 55)));
+        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 250, 190 + moveYButton*2, 0.25, 0.25), 55)));
         allDescription.add((UISprite) create(new UISprite(new Text("Damage multiplier : 0", Utility.getGameFont(11), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 60, 210 + moveYButton*2, 0.25, 0.25), 55)));
         allIncrease.add((UISprite) create(new UISprite(new Text("+0 multiplier", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 320 , 210 + moveYButton*2, 0.25, 0.25), 55)));
 
@@ -70,7 +71,7 @@ public class GobletPage extends GraphicEditor {
         allPrice.add((UISprite) create(new UISprite(new Text("100", Utility.getGameFont(13), Color.YELLOWGREEN),
                 new Transform(allButtons.get(3).getTransform().getPosX() + 32,
                         allButtons.get(3).getTransform().getPosY() + 23), 55)));
-        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 235, 190 + moveYButton*3, 0.25, 0.25), 55)));
+        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 235, 190 + moveYButton*3, 0.25, 0.25), 55)));
         allDescription.add((UISprite) create(new UISprite(new Text("Multiple Spawn Chance : ", Utility.getGameFont(11), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 58, 210 + moveYButton*3, 0.25, 0.25), 55)));
         allIncrease.add((UISprite) create(new UISprite(new Text("+0% chance", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 320, 210 + moveYButton*3, 0.25, 0.25), 55)));
 
@@ -79,9 +80,18 @@ public class GobletPage extends GraphicEditor {
         allPrice.add((UISprite) create(new UISprite(new Text("100", Utility.getGameFont(13), Color.YELLOWGREEN),
                 new Transform(allButtons.get(4).getTransform().getPosX() + 32,
                         allButtons.get(4).getTransform().getPosY() + 23), 55)));
-        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 210, 188 + moveYButton*4, 0.25, 0.25), 55)));
+        allLvL.add((UISprite) create(new UISprite(new Text("Lv.1", Utility.getGameFont(13), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 210, 188 + moveYButton*4, 0.25, 0.25), 55)));
         allDescription.add((UISprite) create(new UISprite(new Text("Chance to obtain soul : ", Utility.getGameFont(11), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 58, 210 + moveYButton*4, 0.25, 0.25), 55)));
         allIncrease.add((UISprite) create(new UISprite(new Text("+0 multiplier", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 325, 210 + moveYButton*4, 0.25, 0.25), 55)));
+
+        //Goblet
+        create(new UISprite(Asset.UI.goblet, new Transform(Utility.getGameScreenX() + 160, 500, 0.25, 0.25), 54));
+        goblet = (UISprite) create(new UISprite(new Text("100", Utility.getGameFont(13), Color.BLACK) ,new Transform(Utility.getGameScreenX() + 210, 545, 0.25, 0.25), 55));
+        allButtons.add((UIButton) create( new UIButton(Asset.UI.buttonGoblet, new Transform(Utility.getGameScreenX() + 140, 650, 0.23, 0.21), 54 , ButtonType.GOBLET)));
+        create(new UISprite(new Text("Resets Parts, Soul, Upgrade", Utility.getGameFont(10), Color.WHITE) ,new Transform(Utility.getGameScreenX() + 135, 705, 0.25, 0.25), 55));
+
+
+
 
 
         // Create the button
@@ -106,7 +116,7 @@ public class GobletPage extends GraphicEditor {
     @Override
     public void onUpdate() {
         int amber = StatManager.getInstance().getAmber();
-        if(allButtons.get(5).isPressed()) SceneManager.setCurrentPage(new MainPage(graphicsContext));
+        if(allButtons.get(6).isPressed()) SceneManager.setCurrentPage(new MainPage(graphicsContext));
         for(int i=0;i<5;i++){
             //Variable
             int level = StatManager.getInstance().getGobletLevels().get(i);

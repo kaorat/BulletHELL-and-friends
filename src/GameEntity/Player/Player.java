@@ -57,9 +57,13 @@ public class Player extends GameObject implements Shootable {
 //        System.out.println(BulletManager.getInstance().getBullets().size());
     }
     public void drawHitbox(){
-        double offset = (5 - PlayerManager.getInstance().getMinimize())/10;
+        //getMinimize is max 5, from 0
+//        double offset = (8 - PlayerManager.getInstance().getMinimize())/(10 + PlayerManager.getInstance().getMinimize());
 //        System.out.println(offset);
-        double scale = PlayerManager.getInstance().getMinimize() /5;
+        double offset = (0.25 + 0.05*(5 - PlayerManager.getInstance().getMinimize()));
+        System.out.println(offset);
+//        System.out.println(image.getWidth());
+        double scale = PlayerManager.getInstance().getMinimize() /10;
 //        double offsetH = 0.25;
         this.hitbox = new BoundingBox(transform.getPosX() + (offset * image.getWidth() * transform.getSclX()),transform.getPosY() + ( offset * image.getHeight() * transform.getSclY()), image.getWidth()* transform.getSclX() * scale, image.getHeight()* transform.getSclY() * scale);
     }
@@ -76,19 +80,22 @@ public class Player extends GameObject implements Shootable {
         drawGrazebox();
         activeImage = Asset.UI.idle1;
 //        gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 60, 60);
+
         if(isSlashPressed()){
             activeImage = Asset.UI.idle2;
             gc.setStroke(Color.LIGHTYELLOW);
             gc.strokeRect(warpBox.getMinX(),warpBox.getMinY(),warpBox.getWidth(),warpBox.getHeight());
         }
+
+        Utility.DrawImage(gc,activeImage,this.transform);
+
         if(isShiftPressed()){
 
             gc.setStroke(Color.GREENYELLOW);
             gc.strokeRect(bounds.getMinX(),bounds.getMinY(),bounds.getWidth(),bounds.getHeight());
-            gc.setStroke(Color.YELLOW);
+            gc.setStroke(Color.RED);
             gc.strokeRect(hitbox.getMinX(),hitbox.getMinY(),hitbox.getWidth(),hitbox.getHeight());
         }
-        Utility.DrawImage(gc,activeImage,this.transform);
     }
 
     public void controlAggressiveShoot() {

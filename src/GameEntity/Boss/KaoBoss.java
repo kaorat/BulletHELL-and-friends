@@ -37,7 +37,7 @@ public class KaoBoss extends BaseBoss {
         getTransform().setScl(0.25, 0.25);
         setImage(Asset.Game.player);
 
-        frame = 5000;
+//        frame = 6001;
     }
 
 
@@ -52,7 +52,7 @@ public class KaoBoss extends BaseBoss {
             }
             return;
         }
-        //TODO: define phases;
+        //TODO: phase 1 (i don't like it);
         if(frame > 200  && frame <= 6000){
             if (frame % 1500 == 0) {
 
@@ -77,9 +77,9 @@ public class KaoBoss extends BaseBoss {
 //                transform.translateToPositionInMilliSecond((Math.random()*(Utility.getGameScreenX()-150))+50,0,4000);
 //            }
         }
+        //TODO: Phase 2
         if(frame > 6000 && frame < 30000){
             if (frame % 1000 == 0) {
-                System.out.println("phase 2");
                 for(int i = 0; i < 30; i++){
                     List<BaseBullet> bullets = BossUtils.circular(this, 90 + (i*10) , 0.3 + (i * 0.01), 10, 0.005, 3);
                     bulletsBox.add(bullets);
@@ -97,7 +97,7 @@ public class KaoBoss extends BaseBoss {
 
 //            if(frame%1501==0){ // move randomly every 1 sec
 ////            t.interrupt(); //forbidden moves;
-//                transform.translateToPositionInMilliSecond((Math.random()*(Utility.getGameScreenX()-150))+50,0,4000);
+//                transform.translateToPositionInMilliSecond((Math.random()*(Utility.getGameScreenX()-150))+50,50,4000);
 //            }
         }
         //rotate

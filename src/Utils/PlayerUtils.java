@@ -90,7 +90,7 @@ public class PlayerUtils {
                 t.setPosX(t.getPosX() + p.getX());
                 t.setPosY(t.getPosY() + p.getY());
                 lastTRTime = currentTime;
-                Track teleportSound = new Track(Asset.Audio.bulletSound);
+                Track teleportSound = new Track(Asset.Audio.warp);
                 teleportSound.setVolume(0.1);
                 teleportSound.play();
                 factor = 0;

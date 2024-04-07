@@ -381,9 +381,10 @@ public class Asset {
     }
     public static class Audio{
 
-        public static AudioClip bulletSound;
         public static AudioClip bgm;
         public static AudioClip bossFight1;
+        public static AudioClip bulletSound;
+        public static AudioClip warp;
 
         static{
             loadResource();
@@ -393,7 +394,9 @@ public class Asset {
             bulletSound = new AudioClip(ClassLoader.getSystemResource("AUDIO/bullet.wav").toString());
             bgm = new AudioClip(ClassLoader.getSystemResource("AUDIO/scope.wav").toString());
             bossFight1 = new AudioClip(ClassLoader.getSystemResource("AUDIO/bossfight1.wav").toString());
+            warp = new AudioClip(ClassLoader.getSystemResource("AUDIO/warp.wav").toString());
         }
+
 
     }
 

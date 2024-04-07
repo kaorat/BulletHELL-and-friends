@@ -68,7 +68,7 @@ public class Player extends GameObject implements Shootable {
         this.hitbox = new BoundingBox(transform.getPosX() + (offset * image.getWidth() * transform.getSclX()),transform.getPosY() + ( offset * image.getHeight() * transform.getSclY()), image.getWidth()* transform.getSclX() * scale, image.getHeight()* transform.getSclY() * scale);
     }
     public void drawGrazebox(){
-        double offset = -PlayerManager.getInstance().getDexterity() * 5 + (image.getWidth() * transform.getSclX())/2 -1;
+        double offset = -PlayerManager.getInstance().getDexterity() * 5 + (image.getWidth() * transform.getSclX())/2 - 1;
         double scale = PlayerManager.getInstance().getDexterity() /5;
 //        double offsetH = 0.25;
         this.bounds = new BoundingBox(transform.getPosX() + offset,transform.getPosY() + offset, image.getWidth()* transform.getSclX() * scale, image.getHeight()* transform.getSclY() * scale);

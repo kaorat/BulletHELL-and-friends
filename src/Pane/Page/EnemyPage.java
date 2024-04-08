@@ -181,6 +181,7 @@ public class EnemyPage extends GraphicEditor {
                         allDescription.get(7).getText().setText("");
                         allPrice.get(7).getText().setText("");
                         allButtons.get(7).setVisible(false);
+                        StatManager.getInstance().addCompletion(2.5);
                     }
                 }
             }
@@ -198,6 +199,7 @@ public class EnemyPage extends GraphicEditor {
                         StatManager.getInstance().setCoin(coin-cost);
                         StatManager.getInstance().getEnemyUnlocked().set(1,true);
                         unlockEnemy.get(1).setEnable(true);
+                        StatManager.getInstance().addCompletion(2.5);
                     }
                 }
             }
@@ -212,7 +214,7 @@ public class EnemyPage extends GraphicEditor {
                 allButtons.get(i).setEnable(false);
                 continue;
             }
-            if(perks.get(4)<=0 && (i==1||i==2||i==4)){
+            if(perks.get(4)<=0 && currentEnemy==0 && (i==1||i==2||i==4)){
                 allPrice.get(i).getText().setText("No");
                 allButtons.get(i).setEnable(false);
                 continue;
@@ -251,14 +253,14 @@ public class EnemyPage extends GraphicEditor {
                 allDescription.get(i).getText().setText(descTemplate.get(i)+Utility.NumberToString((baseValue+upgradeValue))+" "+increaseTemplate.get(i));
             }
             else{
-                allDescription.get(i).getText().setText(descTemplate.get(i)+Utility.NumberToString(Config.enemy_baseValues.get(i+1)+((Config.enemy_upgradeValues.get(i+1))*level))+" "+increaseTemplate.get(i));
+                allDescription.get(i).getText().setText(descTemplate.get(i)+Utility.NumberToString((Config.enemy_baseValues.get(i+1)+((Config.enemy_upgradeValues.get(i+1))*level))*(i==0?multiplier:1))+" "+increaseTemplate.get(i));
             }
-            //Desc
+            //Increase
             if(i==3){
                 allIncrease.get(i).getText().setText(Utility.NumberToString(Config.enemy_upgradeValues.get(i+1)+(currentEnemy==1?3:0))+" "+increaseTemplate.get(i));
             }
             else {
-                allIncrease.get(i).getText().setText(Utility.NumberToString(Config.enemy_upgradeValues.get(i+1))+" "+increaseTemplate.get(i));
+                allIncrease.get(i).getText().setText(Utility.NumberToString(Config.enemy_upgradeValues.get(i+1)*(i==0?multiplier:1))+" "+increaseTemplate.get(i));
             }
             if(i<=4){
                 allDropIncrease.get(i).getText().setText(Config.enemy_dropUpgradeValues.get(i+1)+" parts");

@@ -16,19 +16,8 @@ public class GameplayEditor extends GraphicEditor{
 
         create(new UISprite(Asset.UI.backgroundGameplay, new Transform(0, 0, 0.8, 0.7), -100));
     }
-
-
     @Override
     public void onUpdate() {
-        if(InputUtility.isbPressed()) {
-            if(SceneManager.currentState== SceneManager.GameState.normal){
-                SceneManager.ActivatedBossPage(new BossPage(this.graphicsContext));
-            }
-            else{
-                SceneManager.DeActivatedBossPage();
-            }
-            InputUtility.setbPressed(false);
-        }
 
     }
 }

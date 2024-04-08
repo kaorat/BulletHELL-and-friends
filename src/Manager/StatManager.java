@@ -15,27 +15,31 @@ public class StatManager implements Updatable {
     private int entireHoneyLevel;
     private int soul;
     private int amber;
-    private double time;
+    private long time;
     private double completion;
     private int death;
     private int killed;
     private final ArrayList<Boolean> enemyUnlocked;
     private final ArrayList<Integer> gobletLevels;
     private final ArrayList<Integer> dnaLevels;
+    private int bossDefeated;
+    private long initTime;
     public StatManager(){
         setAmber(0);
-        setCoin(1000000);
-        setTotalCoin(10000000);
+        setCoin(200);
+        setTotalCoin(0);
         setHoneyLevel(0);
         setEntireHoneyLevel(1);
         setCompletion(0);
         setDeath(0);
         setKilled(0);
-        setTime(0d);
+        setTime(0);
         setSoul(0);
         gobletLevels = new ArrayList<>(Arrays.asList(1,1,1,0,1));
         dnaLevels = new ArrayList<>(Arrays.asList(0,0));
         enemyUnlocked = new ArrayList<>(Arrays.asList(true,false,false));
+        bossDefeated = 0;
+        initTime = System.currentTimeMillis();
     }
     @Override
     public void onUpdate() {
@@ -44,6 +48,7 @@ public class StatManager implements Updatable {
             entireHoneyLevel++;
             honeyLevel++;
         }
+        time = System.currentTimeMillis()-initTime;
     }
     public void reset(){
         setAmber(getAmber()+(honeyLevel* gobletLevels.get(0)));
@@ -70,7 +75,7 @@ public class StatManager implements Updatable {
         completion+=percent;
     }
 
-    public double getTime() {
+    public long getTime() {
         return time;
     }
 
@@ -106,6 +111,12 @@ public class StatManager implements Updatable {
         return dna;
     }
 
+    public int getBossDefeated() {
+        return bossDefeated;
+    }
+    public void setBossDefeated(int bossDefeated) {
+        this.bossDefeated = bossDefeated;
+    }
     public void setDna(int dna) {
         this.dna = dna;
     }
@@ -134,7 +145,7 @@ public class StatManager implements Updatable {
         this.entireHoneyLevel = entireHoneyLevel;
     }
 
-    public void setTime(double time) {
+    public void setTime(long time) {
         this.time = time;
     }
 

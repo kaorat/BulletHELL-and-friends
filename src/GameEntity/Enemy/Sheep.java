@@ -6,7 +6,7 @@ import input.MouseUtil;
 import javafx.scene.canvas.GraphicsContext;
 
 public class Sheep extends BaseEnemy{
-    private int clickTime;
+    private long maxHp;
     private long lastPatternTime;
 
     public Sheep(Transform transform,double z) {
@@ -14,8 +14,8 @@ public class Sheep extends BaseEnemy{
         setImage(Asset.Game.WhiteSheepIdleLeft);
         Perks = EnemyManager.getInstance().getSheepPerks();
         ApplyStat(EnemyType.SHEEP);
-        clickTime=0;
         lastPatternTime=0;
+        maxHp= (long) hp;
     }
 
     @Override
@@ -56,10 +56,7 @@ public class Sheep extends BaseEnemy{
         }
         boolean click= Utility.checkHover(getTransform(),getImage()) && MouseUtil.isActivated();
         if(click){
-            clickTime++;
-        }
-        if(clickTime>=10){
-            hp=0;
+            hp-= (double) maxHp /10;
         }
     }
 

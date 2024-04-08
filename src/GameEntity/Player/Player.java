@@ -2,10 +2,10 @@ package GameEntity.Player;
 
 import GameEntity.Bullet.BaseBullet;
 import GameEntity.Bullet.EnemyBullet;
+import GameEntity.Enemy.BaseEnemy;
 import GameEntity.GameObject;
-import Manager.BulletManager;
-import Manager.PlayerManager;
-import Manager.StatManager;
+import GameEntity.Item.Coin;
+import Manager.*;
 import Utils.*;
 import javafx.animation.AnimationTimer;
 import javafx.geometry.BoundingBox;
@@ -142,25 +142,32 @@ public class Player extends GameObject implements Shootable {
 
 
         checkOutOfBounds();
+        AutoCollect();
         //Check collision with enemy bullet
         ArrayList<BaseBullet> bulletList = BulletManager.getInstance().getBullets();
+        ArrayList<BaseEnemy> enemies = EnemyManager.getInstance().getEnemies();
         if(iFrametime>0) { return; }
         for (BaseBullet bullet : bulletList) {
-                if(bullet instanceof EnemyBullet){
-                    if(Transform.checkCollide(this.hitbox, bullet.getBounds())){
-                        bullet.setDestroyed(true);
-                        Death();
-                    }
-                    if(Transform.checkCollide(this.bounds, bullet.getBounds())&&!((EnemyBullet) bullet).isGrazed()){
-                        StatManager.getInstance().addCoin((long) PlayerManager.getInstance().getProficiency());
-                        ((EnemyBullet) bullet).setGrazed(true);
-                    }
+            if(bullet instanceof EnemyBullet){
+                if(Transform.checkCollide(this.hitbox, bullet.getBounds())){
+                    bullet.setDestroyed(true);
+                    Death();
+                }
+                if(Transform.checkCollide(this.bounds, bullet.getBounds())&&!((EnemyBullet) bullet).isGrazed()){
+                    ItemManager.getInstance().add(new Coin(bullet.getTransform().getPosX(), bullet.getTransform().getPosY(),0.04, (long) PlayerManager.getInstance().getProficiency(),false));
+                    ((EnemyBullet) bullet).setGrazed(true);
+                }
             }
         }
     }
 
     public void setSpeed(double speed) {
         this.speed = speed;
+    }
+    private void AutoCollect(){
+        if(this.transform.getPosY()<=175){
+            ItemManager.getInstance().activateAutoCollect();
+        }
     }
 
 }

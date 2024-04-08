@@ -1,6 +1,7 @@
 package Utils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class Config {
@@ -16,7 +17,7 @@ public class Config {
 
     // Calcium Gene : 1
     public static final double ENEMY_HP_BASE = 10;
-    public static final double CALC_G_HP_UPGRADE = 5;
+    public static final double CALC_G_HP_UPGRADE = 2.5;
     public static final double CALC_G_BASE_PRICE = 30;
     public static final double CALC_G_PRICE_INCREMENT = 1.25;//Power by level
     public static final double CALC_G_PARTS_DROP_UPGRADE = 2;
@@ -139,6 +140,7 @@ public class Config {
     public static ArrayList<Double> player_priceIncrements = new ArrayList<>();
     public static ArrayList<Double> player_maxLevels = new ArrayList<>();
 
+    public static ArrayList<Long> boss_soulRequire;
 
     // Initialize base, upgrade, and drop upgrade values
     static {
@@ -241,6 +243,9 @@ public class Config {
         player_basePrices.add(PROFICIENCY_BASE_PRICE);
         player_priceIncrements.add(PROFICIENCY_PRICE_INCREMENT);
         player_maxLevels.add(PROFICIENCY_MAX_LEVEL);
+
+        //Boss
+        boss_soulRequire = new ArrayList<>(Arrays.asList(200L,500L,2000L,10000L));
     }
 
 

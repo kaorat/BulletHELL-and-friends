@@ -133,7 +133,7 @@ public class GobletPage extends GraphicEditor {
                 if(button.isPressed()){
                     StatManager.getInstance().setAmber(amber-cost);
                     StatManager.getInstance().getGobletLevels().set(i,level+1);
-                    StatManager.getInstance().addCompletion(2.5);
+                    StatManager.getInstance().addCompletion(3);
                 }
             }
             else{

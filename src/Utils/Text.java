@@ -8,7 +8,7 @@ public class Text {
     private String text;
     private final Font font;
 
-    private final Color fillColor;//default black
+    private Color fillColor;//default black
     private final Color strokeColor;//default black
     private final double lineWidth;//default 2
 
@@ -60,6 +60,9 @@ public class Text {
 
     public double getMaxWidth() {
         return maxWidth;
+    }
+    public void setFillColor(Color color){
+        fillColor=color;
     }
 
     public TextAlignment getTextAlignment() {

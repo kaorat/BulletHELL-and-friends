@@ -58,6 +58,7 @@ public class Chicken extends BaseEnemy{
     @Override
     public void draw(GraphicsContext gc) {
         Utility.DrawImage(gc,getImage(),transform);
+        drawHpBar(gc,EnemyType.CHICKEN);
         drawBounds(0, 0);
     }
 

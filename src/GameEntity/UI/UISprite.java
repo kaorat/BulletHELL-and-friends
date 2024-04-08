@@ -34,7 +34,7 @@ public class UISprite extends GameObject {
             gc.setStroke(text.getStrokeColor());
             gc.setFont(text.getFont());
             gc.setTextAlign(text.getTextAlignment());
-            if(text.getMaxWidth() ==0){
+            if(text.getMaxWidth() == 0){
                 gc.fillText(text.getText(), transform.getPosX(), transform.getPosY());
             }
             else {

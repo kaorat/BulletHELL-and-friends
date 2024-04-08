@@ -24,7 +24,7 @@ public class StatManager implements Updatable {
     private final ArrayList<Integer> dnaLevels;
     public StatManager(){
         setAmber(0);
-        setCoin(10000000);
+        setCoin(1000000);
         setTotalCoin(10000000);
         setHoneyLevel(0);
         setEntireHoneyLevel(1);

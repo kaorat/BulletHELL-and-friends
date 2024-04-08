@@ -1,6 +1,7 @@
 package GameEntity.Boss;
 
 import GameEntity.Bullet.BaseBullet;
+import Manager.BulletManager;
 import Manager.PlayerManager;
 import Utils.*;
 import javafx.scene.canvas.GraphicsContext;
@@ -15,6 +16,7 @@ public class KaoBoss extends BaseBoss {
 
     private boolean ready;
     private int leftRight=1;
+    private boolean clearPhase;
     private final List<List<BaseBullet>> bulletsBox;
 
     public KaoBoss() {
@@ -25,6 +27,7 @@ public class KaoBoss extends BaseBoss {
         bulletsBox = new ArrayList<>();
         getTransform().setScl(0.25, 0.25);
         setImage(Asset.Game.player);
+        clearPhase=false;
 
 //        frame = 6001;
     }
@@ -38,6 +41,10 @@ public class KaoBoss extends BaseBoss {
                 ready = true;
             }
             return;
+        }
+        if(!clearPhase&&hp<=5000){
+            BulletManager.getInstance().clearBullets();
+            clearPhase=true;
         }
         //TODO: phase 1
         if(hp>5000){
@@ -69,6 +76,7 @@ public class KaoBoss extends BaseBoss {
                 bulletsBox.clear();
             }
         }
+        //Phase 2
         else{
             if (frame % 500 == 0) {
                 int rando = (int)(Math.random()*90);

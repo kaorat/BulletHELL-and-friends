@@ -18,7 +18,7 @@ public class BossPage extends GraphicEditor {
     public BossPage(GraphicsContext graphicsContext) {
         super(graphicsContext);
         //Background above main bg
-        time=1000;
+        time=100;
         lastFrame=System.currentTimeMillis();
         boss = BossManager.getInstance().initBoss();
         create(new UISprite(Asset.UI.backgroundBoss, new Transform(0, 0, 0.65, 0.5), -10));

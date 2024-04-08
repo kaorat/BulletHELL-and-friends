@@ -147,7 +147,7 @@ public class GobletPage extends GraphicEditor {
                 allIncrease.get(i).getText().setText(10+" "+ increaseTemplate.get(i));
             }
             else{
-                allDescription.get(i).getText().setText(descTemplate.get(i)+(level+1));
+                allDescription.get(i).getText().setText(descTemplate.get(i)+(level));
                 allIncrease.get(i).getText().setText("1"+" "+ increaseTemplate.get(i));
             }
 

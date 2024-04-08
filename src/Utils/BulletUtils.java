@@ -67,10 +67,6 @@ public class BulletUtils {
 
                     return;
                 }
-                if(System.currentTimeMillis()-startFrame<=phase2){
-                    return;
-                }
-                bullet.setDestroyed(true);
                 this.stop();
             }
         }.start();

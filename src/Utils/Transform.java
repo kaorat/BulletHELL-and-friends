@@ -106,7 +106,6 @@ public class Transform {
         return b1.intersects(b2);
     }
     public static double calculateAngleToTarget(Transform from, Bounds to) {
-
         return Math.toDegrees(Math.atan2(to.getMinY() - from.getPosY(), to.getMinX() - from.getPosX()));
     }
     public static double calculateAngleToTarget(Transform from, Transform to) {

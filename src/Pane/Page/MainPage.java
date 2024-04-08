@@ -73,6 +73,7 @@ public class MainPage extends GraphicEditor {
         soulRequireText.getText().setText("Soul : "+soulRequire);
         if(buttonBossCalled.isPressed() && SceneManager.currentState== SceneManager.GameState.boss){
             SceneManager.DeActivatedBossPage();
+            return;
         }
         if(StatManager.getInstance().getSoul()>=soulRequire){
             soulRequireText.getText().setFillColor(Color.BLACK);

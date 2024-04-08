@@ -57,6 +57,10 @@ public class Coin extends BaseItem{ // this is 'parts drop', I just want to chan
         Utility.isOutOfBounds(this);
         if(!canObtain) { return; }
         if(autoCollected) {
+            if(PlayerManager.getInstance().getPlayer()!=null) {
+                autoCollected = false;
+                return;
+            }
             transform.setRot(Transform.calculateAngleToTarget(getTransform(), PlayerManager.getInstance().getPlayer().getTransform()));
         }
         if(Transform.checkCollide(this.getBounds(), PlayerManager.getInstance().getPlayer().getBounds())){

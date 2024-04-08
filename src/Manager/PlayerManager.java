@@ -72,9 +72,9 @@ public class PlayerManager implements  Updatable {
         }
         addPlayer();
         setDexterity(Config.GRAZE_HITBOX_SIZE_BASE);
-        setBioticRifleDamage(Config.DAMAGE_BASE*StatManager.getInstance().getGobletLevels().get(2));
+        setBioticRifleDamage(Config.DAMAGE_BASE);
         setProficiency(Config.PART_PER_GRAZE_BASE);
-        setBioticRifleFireRate(Config.PLAYER_FIRE_RATE_BASE);
+        setBioticRifleFireRate(0.05);
         setMinimize(Config.HITBOX_SIZE_BASE);
         playerPerks = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0, 0));
         this.weapon = new ArrayList<>();
@@ -90,7 +90,7 @@ public class PlayerManager implements  Updatable {
 
         switch (index){
             case 0:
-                setBioticRifleDamage(getBioticRifleDamage()+Config.DAMAGE_UPGRADE*StatManager.getInstance().getGobletLevels().get(2));
+                setBioticRifleDamage(getBioticRifleDamage()+Config.DAMAGE_UPGRADE);
                 break;
             case 1:
                 setBioticRifleFireRate(getBioticRifleFireRate()+Config.PLAYER_FIRE_RATE_UPGRADE);

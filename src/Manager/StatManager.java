@@ -25,16 +25,16 @@ public class StatManager implements Updatable {
     private int bossDefeated;
     private long initTime;
     public StatManager(){
-        setAmber(0);
-        setCoin(200);
-        setTotalCoin(0);
+        setAmber(100000);
+        setCoin(1000000000);
+        setTotalCoin(1000000000);
         setHoneyLevel(0);
         setEntireHoneyLevel(1);
         setCompletion(0);
         setDeath(0);
         setKilled(0);
         setTime(0);
-        setSoul(0);
+        setSoul(100000000);
         gobletLevels = new ArrayList<>(Arrays.asList(1,1,1,0,1));
         dnaLevels = new ArrayList<>(Arrays.asList(0,0));
         enemyUnlocked = new ArrayList<>(Arrays.asList(true,false,false));
@@ -114,8 +114,8 @@ public class StatManager implements Updatable {
     public int getBossDefeated() {
         return bossDefeated;
     }
-    public void setBossDefeated(int bossDefeated) {
-        this.bossDefeated = bossDefeated;
+    public void BossDefeated() {
+        this.bossDefeated++;
     }
     public void setDna(int dna) {
         this.dna = dna;

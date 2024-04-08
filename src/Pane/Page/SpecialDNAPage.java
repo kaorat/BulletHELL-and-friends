@@ -65,7 +65,7 @@ public class SpecialDNAPage extends GraphicEditor {
             //Button
             UIButton button = allButtons.get(i);
 
-            if(dna > cost){
+            if(dna >= cost){
                 button.setEnable(true);
                 if(button.isPressed()){
                     StatManager.getInstance().setAmber(dna-cost);

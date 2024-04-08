@@ -205,7 +205,7 @@ public class EnemyPage extends GraphicEditor {
             //Button
             UIButton button = allButtons.get(i);
 
-            if(coin > cost){
+            if(coin >= cost){
                     button.setEnable(true);
                     if(button.isPressed()){
                         StatManager.getInstance().setCoin(coin-cost);

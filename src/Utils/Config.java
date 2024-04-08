@@ -18,23 +18,23 @@ public class Config {
     public static final double ENEMY_HP_BASE = 10;
     public static final double CALC_G_HP_UPGRADE = 5;
     public static final double CALC_G_BASE_PRICE = 30;
-    public static final double CALC_G_PRICE_INCREMENT = 1.2;//Power by level
+    public static final double CALC_G_PRICE_INCREMENT = 1.25;//Power by level
     public static final double CALC_G_PARTS_DROP_UPGRADE = 2;
     public static final double CALC_G_MAX_LEVEL = 1000000;
 
     // Agility Gene : 2
     public static final double ENEMY_FIRE_RATE_BASE=5;
     public static final double AGILITY_FIRE_RATE_UPGRADE = -0.1;
-    public static final double AGILITY_BASE_PRICE = 400;
-    public static final double AGILITY_PRICE_INCREMENT = 1.2;//Power by level
+    public static final double AGILITY_BASE_PRICE = 120;
+    public static final double AGILITY_PRICE_INCREMENT = 1.5;//Power by level
     public static final double AGILITY_PARTS_DROP_UPGRADE = 5;
     public static final double AGILITY_MAX_LEVEL = 99;
 
     // Lethal Mutation : 3
     public static final double ENEMY_BULLET_SPEED_BASE = 2;
     public static final double LETHAL_BULLET_SPEED_UPGRADE = 0.2;
-    public static final double LETHAL_BASE_PRICE = 300;
-    public static final double LETHAL_PRICE_INCREMENT = 1.2;//Power by level
+    public static final double LETHAL_BASE_PRICE = 200;
+    public static final double LETHAL_PRICE_INCREMENT = 1.5;//Power by level
     public static final double LETHAL_PARTS_DROP_UPGRADE = 5;
     public static final double LETHAL_MAX_LEVEL = 1000;
 
@@ -46,7 +46,7 @@ public class Config {
     public static final double CHICKEN_BULLET_QUANTITY_BASE = 1;
     public static final double FUZZY_BULLET_QUANTITY_UPGRADE = 1;
     public static final double FUZZY_BASE_PRICE = 200;
-    public static final double FUZZY_PRICE_INCREMENT = 1.25;//Power by level
+    public static final double FUZZY_PRICE_INCREMENT = 1.75;//Power by level
     public static final double FUZZY_PARTS_DROP_UPGRADE = 10;
     public static final double FUZZY_MAX_LEVEL = 1000;
 
@@ -56,8 +56,8 @@ public class Config {
     // chicken has no upgrade (random bullet spread)
     public static final double BULLET_LENGTH_BASE = 1;
     public static final double ELONGATION_BULLET_LENGTH_UPGRADE = 1;
-    public static final double ELONGATION_BASE_PRICE = 800;
-    public static final double ELONGATION_PRICE_INCREMENT = 1.25;//Power by level
+    public static final double ELONGATION_BASE_PRICE = 500;
+    public static final double ELONGATION_PRICE_INCREMENT = 1.75;//Power by level
     public static final double ELONGATION_PARTS_DROP_UPGRADE = 10;
     public static final double ELONGATION_MAX_LEVEL = 1000;
 
@@ -67,14 +67,14 @@ public class Config {
     public static final double SOUL_CHANCE_BASE = 0;
     public static final double GENETIC_SOUL_CHANCE_UPGRADE = 5;
     public static final double GENETIC_BASE_PRICE = 1000;
-    public static final double GENETIC_PRICE_INCREMENT = 1.25;//Power by level
+    public static final double GENETIC_PRICE_INCREMENT = 1.5;//Power by level
     public static final double GENETIC_MAX_LEVEL = 20;
 
     // Fast Reproduction : 7
     public static final double SPAWN_TIME_BASE = 3;
     public static final double REPRODUCTION_SPAWN_TIME_UPGRADE = -0.05;
-    public static final double REPRODUCTION_BASE_PRICE = 300;
-    public static final double REPRODUCTION_PRICE_INCREMENT = 1.25;//Power by level
+    public static final double REPRODUCTION_BASE_PRICE = 100;
+    public static final double REPRODUCTION_PRICE_INCREMENT = 1.5;//Power by level
     public static final double REPRODUCTION_MAX_LEVEL = 75;
 
     //TODO : Player
@@ -102,14 +102,14 @@ public class Config {
     public static final double HITBOX_SIZE_BASE = 5;
     public static final double MINIMIZE_UPGRADE = -0.1;
     public static final double MINIMIZE_BASE_PRICE = 200;
-    public static final double MINIMIZE_PRICE_INCREMENT = 1.35;//Power by level
+    public static final double MINIMIZE_PRICE_INCREMENT = 1.5;//Power by level
     public static final double MINIMIZE_MAX_LEVEL = 30;
 
     //DEXTERITY
     public static final double GRAZE_HITBOX_SIZE_BASE = 8;
     public static final double DEXTERITY_UPGRADE = 0.1;
     public static final double DEXTERITY_BASE_PRICE = 100;
-    public static final double DEXTERITY_PRICE_INCREMENT = 1.4;//Power by level
+    public static final double DEXTERITY_PRICE_INCREMENT = 1.5;//Power by level
     public static final double DEXTERITY_MAX_LEVEL = 100;
 
     //Proficiency

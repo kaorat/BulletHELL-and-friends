@@ -95,9 +95,6 @@ public class Player extends GameObject implements Shootable {
         Utility.DrawImage(gc,activeImage,this.transform);
 
         if(isShiftPressed()){
-
-            gc.setStroke(Color.GREENYELLOW);
-            gc.strokeRect(bounds.getMinX(),bounds.getMinY(),bounds.getWidth(),bounds.getHeight());
             gc.setStroke(Color.RED);
             gc.strokeRect(hitbox.getMinX(),hitbox.getMinY(),hitbox.getWidth(),hitbox.getHeight());
         }
@@ -127,20 +124,16 @@ public class Player extends GameObject implements Shootable {
         long currentTime = System.currentTimeMillis();
         if (isShiftPressed()) {
             speed = Config.PLAYER_SPEED_SHIFT;
-            if (currentTime - lastFireTime > fireRate) {
-                PlayerUtils.autoAim(this);
-                lastFireTime = currentTime;
-
-            } }
+        }
 
         else {
                 speed = Config.PLAYER_SPEED_BASE;
-                if (currentTime - lastFireTime > fireRate) {
-                    shoot();
+        }
+        if (currentTime - lastFireTime > fireRate) {
+            shoot();
 
-                    lastFireTime = currentTime;
-                }
-            }
+            lastFireTime = currentTime;
+        }
         PlayerUtils.teleport(this);
         Utility.controlUtility(this.transform, speed);
 

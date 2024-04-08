@@ -128,7 +128,7 @@ public class GobletPage extends GraphicEditor {
             //Button
             UIButton button = allButtons.get(i);
 
-            if(amber > cost){
+            if(amber >= cost){
                 button.setEnable(true);
                 if(button.isPressed()){
                     StatManager.getInstance().setAmber(amber-cost);

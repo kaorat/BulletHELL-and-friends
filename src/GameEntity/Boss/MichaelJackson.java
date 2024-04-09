@@ -25,7 +25,7 @@ public class MichaelJackson extends BaseBoss{
 
     public MichaelJackson() {
         super();
-        maxHp=8001;
+        maxHp=240000;
         hp=maxHp;
         ready=false;
         startRotate=false;
@@ -38,7 +38,7 @@ public class MichaelJackson extends BaseBoss{
     @Override
     public void action() {
         double x = getTransform().getPosX() + (getImage().getWidth() * getTransform().getSclX()) / 2;
-        double y = getTransform().getPosY() + (getImage().getHeight() * getTransform().getSclY()) / 2;
+        double y = getTransform().getPosY() + (getImage().getHeight() * getTransform().getSclY()) / 2 -25;
         if(angle1>=720||angle1<=-720){
             angle1=0;
         }
@@ -79,7 +79,7 @@ public class MichaelJackson extends BaseBoss{
             }
         }
         //frame2
-        if(hp<=16000){
+        if(hp<=160000){
             if(frame%10==0){
                 BulletUtils.Shoot(x, y,3,Math.random()*90+225);
             }
@@ -89,7 +89,7 @@ public class MichaelJackson extends BaseBoss{
             }
 
         }
-        if(hp<=8000){
+        if(hp<=80000){
             if(frame%568==200){
                 ArrayList<BaseBullet> pattern3 = new ArrayList<>();
 
@@ -104,7 +104,7 @@ public class MichaelJackson extends BaseBoss{
                     }
                 }
                 for(BaseBullet bullet : pattern3){
-                    BulletUtils.ChangeTrajectoryOnFrame(bullet,0,true,0.04,Math.random()*3+1,1500);
+                    BulletUtils.ChangeTrajectoryOnFrame(bullet,0,(leftRight)*(30)+Math.random()*60+60,0.04,Math.random()*3+1,1500);
                 }
                 leftRight=leftRight==1?-1:1;
             }

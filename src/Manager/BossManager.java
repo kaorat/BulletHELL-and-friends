@@ -1,6 +1,7 @@
 package Manager;
 
 import GameEntity.Boss.BaseBoss;
+import GameEntity.Boss.DragonKing;
 import GameEntity.Boss.KaoBoss;
 import GameEntity.Boss.MichaelJackson;
 import Utils.Updatable;
@@ -30,7 +31,9 @@ public class BossManager implements Updatable {
             case 1:{
                 this.boss = new MichaelJackson();
             }
-            //case 2:
+            case 2:{
+                this.boss = new DragonKing();
+            }
             //case 3:
         }
 

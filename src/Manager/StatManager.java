@@ -25,20 +25,20 @@ public class StatManager implements Updatable {
     private int bossDefeated;
     private long initTime;
     public StatManager(){
-        setAmber(100000);
-        setCoin(1000000000);
-        setTotalCoin(1000000000);
+        setAmber(0);
+        setCoin(10000000);
+        setTotalCoin(0);
         setHoneyLevel(0);
         setEntireHoneyLevel(1);
         setCompletion(0);
         setDeath(0);
         setKilled(0);
         setTime(0);
-        setSoul(100000000);
+        setSoul(100000);
         gobletLevels = new ArrayList<>(Arrays.asList(1,1,1,0,1));
         dnaLevels = new ArrayList<>(Arrays.asList(0,0));
         enemyUnlocked = new ArrayList<>(Arrays.asList(true,false,false));
-        bossDefeated = 1;
+        bossDefeated = 2;
         initTime = System.currentTimeMillis();
     }
     @Override

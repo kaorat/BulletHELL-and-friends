@@ -74,7 +74,7 @@ public class PlayerManager implements  Updatable {
         setDexterity(Config.GRAZE_HITBOX_SIZE_BASE);
         setBioticRifleDamage(Config.DAMAGE_BASE);
         setProficiency(Config.PART_PER_GRAZE_BASE);
-        setBioticRifleFireRate(0.05);
+        setBioticRifleFireRate(Config.PLAYER_FIRE_RATE_BASE);
         setMinimize(Config.HITBOX_SIZE_BASE);
         playerPerks = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0, 0));
         this.weapon = new ArrayList<>();

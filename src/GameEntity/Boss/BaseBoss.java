@@ -52,6 +52,7 @@ public abstract class BaseBoss extends GameObject {
         }
 
         frame++;
+        hp-=maxHp/12000;
         if(frame>1200000){
             frame=0;
         }

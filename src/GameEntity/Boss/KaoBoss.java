@@ -62,7 +62,7 @@ public class KaoBoss extends BaseBoss {
 
                 bulletsBox.clear();
             }
-            if (frame % 1500 == 0) {
+            if (frame % 1000 == 500) {
                 for(int i = 0; i < 30; i++){
                     List<BaseBullet> bullets = BossUtils.circular(this, angleToP - 20 + (i*10) , 0.3 + (i * 0.01), 10, 0.005, 3);
                     bulletsBox.add(bullets);

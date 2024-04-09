@@ -24,7 +24,7 @@ public class Config {
     public static final double CALC_G_MAX_LEVEL = 1000000;
 
     // Agility Gene : 2
-    public static final double ENEMY_FIRE_RATE_BASE=5;
+    public static final double ENEMY_FIRE_RATE_BASE=4.5;
     public static final double AGILITY_FIRE_RATE_UPGRADE = -0.1;
     public static final double AGILITY_BASE_PRICE = 120;
     public static final double AGILITY_PRICE_INCREMENT = 1.5;//Power by level
@@ -32,8 +32,8 @@ public class Config {
     public static final double AGILITY_MAX_LEVEL = 99;
 
     // Lethal Mutation : 3
-    public static final double ENEMY_BULLET_SPEED_BASE = 2;
-    public static final double LETHAL_BULLET_SPEED_UPGRADE = 0.2;
+    public static final double ENEMY_BULLET_SPEED_BASE = 1;
+    public static final double LETHAL_BULLET_SPEED_UPGRADE = 0.1;
     public static final double LETHAL_BASE_PRICE = 200;
     public static final double LETHAL_PRICE_INCREMENT = 1.5;//Power by level
     public static final double LETHAL_PARTS_DROP_UPGRADE = 5;
@@ -81,7 +81,7 @@ public class Config {
     //TODO : Player
     //Player Speed
     public static final double PLAYER_SPEED_BASE = 3;
-    public static final double PLAYER_SPEED_SHIFT = 2;
+    public static final double PLAYER_SPEED_SHIFT = 1.5;
     // no upgrade
 
 

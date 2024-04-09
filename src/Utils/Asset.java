@@ -321,6 +321,7 @@ public class Asset {
         public static Image WhiteSheepShootLeft;
         public static Image WhiteCowShootLeft;
         public static Image WhiteChickenShootLeft;
+        public static Image toothless;
         static{
             loadResource();
         }
@@ -372,6 +373,8 @@ public class Asset {
             BlackSheepShootLeft=LoadImg("UI/Enemy/Shoot/Left/BlackSheepShootLeft.png");
             BlackCowShootLeft=LoadImg("UI/Enemy/Shoot/Left/BlackCowShootLeft.png");
             BlackChickenShootLeft=LoadImg("UI/Enemy/Shoot/Left/BlackChickenShootLeft.png");
+
+            toothless=LoadImg("UI/toothless.png");
 
         }
         private static Image LoadImg(String url){

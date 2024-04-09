@@ -87,7 +87,7 @@ public class Player extends GameObject implements Shootable {
         drawGrazebox();
         activeImage = Asset.UI.idle1;
 
-        if(isSlashPressed()){
+        if(isSlashPressed()&&warpBox!=null){
             activeImage = Asset.UI.idle2;
             gc.setStroke(Color.LIGHTYELLOW);
             gc.strokeRect(warpBox.getMinX(),warpBox.getMinY(),warpBox.getWidth(),warpBox.getHeight());

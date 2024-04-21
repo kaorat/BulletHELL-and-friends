@@ -2,7 +2,7 @@ package GameEntity.Enemy;
 
 import Manager.EnemyManager;
 import Utils.*;
-import input.MouseUtil;
+import Input.MouseUtil;
 import javafx.scene.canvas.GraphicsContext;
 
 public class Sheep extends BaseEnemy {

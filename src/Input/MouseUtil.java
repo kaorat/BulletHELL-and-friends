@@ -1,4 +1,4 @@
-package input;
+package Input;
 
 public class MouseUtil {
     private static double mouseX;

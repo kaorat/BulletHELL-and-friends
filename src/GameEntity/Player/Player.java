@@ -16,8 +16,8 @@ import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
-import static input.InputUtility.isShiftPressed;
-import static input.InputUtility.isSlashPressed;
+import static Input.InputUtility.isShiftPressed;
+import static Input.InputUtility.isSlashPressed;
 
 public class Player extends GameObject implements Shootable {
     public Bounds warpBox;

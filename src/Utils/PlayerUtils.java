@@ -5,7 +5,7 @@ import GameEntity.Bullet.PlayerBullet;
 import GameEntity.Enemy.BaseEnemy;
 import GameEntity.Player.Player;
 import Manager.*;
-import input.InputUtility;
+import Input.InputUtility;
 import javafx.geometry.BoundingBox;
 import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;

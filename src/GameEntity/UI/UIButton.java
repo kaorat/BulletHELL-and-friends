@@ -5,7 +5,7 @@ import Utils.Asset;
 import Utils.ButtonType;
 import Utils.Transform;
 import Utils.Utility;
-import input.MouseUtil;
+import Input.MouseUtil;
 import javafx.scene.Cursor;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;

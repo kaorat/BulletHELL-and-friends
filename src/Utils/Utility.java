@@ -3,7 +3,7 @@ package Utils;
 
 import GameEntity.GameObject;
 import Main.Main;
-import input.MouseUtil;
+import Input.MouseUtil;
 import javafx.scene.Cursor;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -13,7 +13,7 @@ import javafx.scene.text.FontWeight;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-import static input.InputUtility.*;
+import static Input.InputUtility.*;
 
 public class Utility {
     public static double getScreenX() {

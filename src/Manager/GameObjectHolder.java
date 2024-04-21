@@ -6,6 +6,7 @@ import Utils.Updatable;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+
 public class GameObjectHolder implements Updatable {
     private static GameObjectHolder instance;
     private final List<GameObject> entities;
@@ -26,6 +27,7 @@ public class GameObjectHolder implements Updatable {
         }
         return instance;
     }
+
     public void add(GameObject entity) {
 //        System.out.println("add");
         entities.add(entity);

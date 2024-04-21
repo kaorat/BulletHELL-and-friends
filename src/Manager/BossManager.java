@@ -7,8 +7,9 @@ import Utils.Updatable;
 public class BossManager implements Updatable {
     private static BossManager instance;
     private BaseBoss boss;
+
     public static BossManager getInstance() {
-        if (instance == null){
+        if (instance == null) {
             instance = new BossManager();
         }
         return instance;
@@ -19,7 +20,7 @@ public class BossManager implements Updatable {
 
     }
 
-    public BaseBoss initBoss(){
+    public BaseBoss initBoss() {
         //TODO:Decide boss here
 //        this.boss = new MichaelJackson();
         this.boss = new KaoBoss();
@@ -27,12 +28,12 @@ public class BossManager implements Updatable {
         return this.boss;
     }
 
-    public void removeBoss(){
+    public void removeBoss() {
         this.boss.setDestroyed(true);
         this.boss = null;
     }
 
-    public BaseBoss getBoss(){
+    public BaseBoss getBoss() {
         return boss;
     }
 }

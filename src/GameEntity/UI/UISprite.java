@@ -11,33 +11,37 @@ public class UISprite extends GameObject {
     private final String type;
     private Image sprite;
     private Text text;
+
     //Image
-    public UISprite(Image sprite,Transform transform, double z) {
+    public UISprite(Image sprite, Transform transform, double z) {
         super(transform, z);
-        this.sprite=sprite;
-        type="image";
+        this.sprite = sprite;
+        type = "image";
     }
+
     //Text
-    public UISprite(Text text, Transform transform, double z){
-        super(transform,z);
-        this.text=text;
-        type="text";
+    public UISprite(Text text, Transform transform, double z) {
+        super(transform, z);
+        this.text = text;
+        type = "text";
     }
+
     //Updatable Text
     @Override
     public void draw(GraphicsContext gc) {
-        if(!visible) { return; }
-        if(type.equals("image")) Utility.DrawImage(gc,sprite,transform);
-        else if(type.equals("text")){
+        if (!visible) {
+            return;
+        }
+        if (type.equals("image")) Utility.DrawImage(gc, sprite, transform);
+        else if (type.equals("text")) {
             gc.setLineWidth(text.getLineWidth());
             gc.setFill(text.getFillColor());
             gc.setStroke(text.getStrokeColor());
             gc.setFont(text.getFont());
             gc.setTextAlign(text.getTextAlignment());
-            if(text.getMaxWidth() == 0){
+            if (text.getMaxWidth() == 0) {
                 gc.fillText(text.getText(), transform.getPosX(), transform.getPosY());
-            }
-            else {
+            } else {
                 gc.fillText(text.getText(), transform.getPosX(), transform.getPosY(), text.getMaxWidth());
             }
         }

@@ -27,16 +27,22 @@ public class InputUtility {
     public static boolean isDPressed() {
         return dPressed;
     }
+
     public static boolean isShiftPressed() {
         return shiftPressed;
     }
+
     public static boolean isSlashPressed() {
         return slashPressed;
     }
 
-    public static boolean isbPressed() { return bPressed; }
+    public static boolean isbPressed() {
+        return bPressed;
+    }
 
-    public static void setbPressed(boolean bPressed) { InputUtility.bPressed = bPressed; }
+    public static void setbPressed(boolean bPressed) {
+        InputUtility.bPressed = bPressed;
+    }
 
     public static void setKey(Scene canvas) {
 //        canvas.requestFocus();

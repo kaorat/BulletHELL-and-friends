@@ -5,33 +5,32 @@ import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 
 public class Text {
-    private String text;
     private final Font font;
-
-    private Color fillColor;//default black
     private final Color strokeColor;//default black
     private final double lineWidth;//default 2
-
     private final double maxWidth;//if null be 0
     private final TextAlignment textAlignment;
+    private String text;
+    private Color fillColor;//default black
 
     public Text(String text, Font font, Color fillColor) {
         this.text = text;
         this.font = font;
         this.fillColor = fillColor;
-        this.strokeColor=Color.BLACK;
-        lineWidth=2;
-        maxWidth=0;
-        this.textAlignment=TextAlignment.LEFT;
+        this.strokeColor = Color.BLACK;
+        lineWidth = 2;
+        maxWidth = 0;
+        this.textAlignment = TextAlignment.LEFT;
     }
-    public Text(String text, Font font, Color fillColor,TextAlignment textAlignment) {
+
+    public Text(String text, Font font, Color fillColor, TextAlignment textAlignment) {
         this.text = text;
         this.font = font;
         this.fillColor = fillColor;
-        this.strokeColor=Color.BLACK;
-        lineWidth=2;
-        maxWidth=0;
-        this.textAlignment=textAlignment;
+        this.strokeColor = Color.BLACK;
+        lineWidth = 2;
+        maxWidth = 0;
+        this.textAlignment = textAlignment;
     }
 
     public String getText() {
@@ -50,6 +49,10 @@ public class Text {
         return fillColor;
     }
 
+    public void setFillColor(Color color) {
+        fillColor = color;
+    }
+
     public Color getStrokeColor() {
         return strokeColor;
     }
@@ -60,9 +63,6 @@ public class Text {
 
     public double getMaxWidth() {
         return maxWidth;
-    }
-    public void setFillColor(Color color){
-        fillColor=color;
     }
 
     public TextAlignment getTextAlignment() {

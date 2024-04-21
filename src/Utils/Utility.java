@@ -9,21 +9,25 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 import static input.InputUtility.*;
 
 public class Utility {
-    public static double getScreenX(){
+    public static double getScreenX() {
         return 1080;
     }
-    public static double getScreenY(){
+
+    public static double getScreenY() {
         return 720;
     }
-    public static double getGameScreenX(){
+
+    public static double getGameScreenX() {
         return 640;
     }
+
     public static Font getGameFont(double size) {
         try {
             Font.loadFont(Utility.class.getResourceAsStream("/FONT/VeniteAdoremus-rgRBA.ttf"), size);
@@ -34,33 +38,34 @@ public class Utility {
     }
 
 
-    public static String NumberToString(double i){
-        if(i>=Math.pow(10,12)) {
-            return BigDecimal.valueOf(i / Math.pow(10, 12)).setScale(2, RoundingMode.DOWN) +"T";
+    public static String NumberToString(double i) {
+        if (i >= Math.pow(10, 12)) {
+            return BigDecimal.valueOf(i / Math.pow(10, 12)).setScale(2, RoundingMode.DOWN) + "T";
         }
-        if(i>=Math.pow(10,9)) {
-            return BigDecimal.valueOf(i / Math.pow(10, 9)).setScale(2, RoundingMode.DOWN) +"B";
+        if (i >= Math.pow(10, 9)) {
+            return BigDecimal.valueOf(i / Math.pow(10, 9)).setScale(2, RoundingMode.DOWN) + "B";
         }
-        if(i>=Math.pow(10,6)) {
-            return BigDecimal.valueOf(i / Math.pow(10, 6)).setScale(2, RoundingMode.DOWN) +"M";
+        if (i >= Math.pow(10, 6)) {
+            return BigDecimal.valueOf(i / Math.pow(10, 6)).setScale(2, RoundingMode.DOWN) + "M";
         }
-        if(i>Math.pow(10,3)) {
-            return BigDecimal.valueOf(i / Math.pow(10, 3)).setScale(2, RoundingMode.DOWN) +"K";
+        if (i > Math.pow(10, 3)) {
+            return BigDecimal.valueOf(i / Math.pow(10, 3)).setScale(2, RoundingMode.DOWN) + "K";
         }
         return String.valueOf(i);
     }
-    public static String NumberToString(long i){
-        if(i>=Math.pow(10,12)) {
-            return BigDecimal.valueOf(i / Math.pow(10, 12)).setScale(2, RoundingMode.DOWN) +"T";
+
+    public static String NumberToString(long i) {
+        if (i >= Math.pow(10, 12)) {
+            return BigDecimal.valueOf(i / Math.pow(10, 12)).setScale(2, RoundingMode.DOWN) + "T";
         }
-        if(i>=Math.pow(10,9)) {
-            return BigDecimal.valueOf(i / Math.pow(10, 9)).setScale(2, RoundingMode.DOWN) +"B";
+        if (i >= Math.pow(10, 9)) {
+            return BigDecimal.valueOf(i / Math.pow(10, 9)).setScale(2, RoundingMode.DOWN) + "B";
         }
-        if(i>=Math.pow(10,6)) {
-            return BigDecimal.valueOf(i / Math.pow(10, 6)).setScale(2, RoundingMode.DOWN) +"M";
+        if (i >= Math.pow(10, 6)) {
+            return BigDecimal.valueOf(i / Math.pow(10, 6)).setScale(2, RoundingMode.DOWN) + "M";
         }
-        if(i>Math.pow(10,3)) {
-            return BigDecimal.valueOf(i / Math.pow(10, 3)).setScale(2, RoundingMode.DOWN) +"K";
+        if (i > Math.pow(10, 3)) {
+            return BigDecimal.valueOf(i / Math.pow(10, 3)).setScale(2, RoundingMode.DOWN) + "K";
         }
         return String.valueOf(i);
     }
@@ -93,19 +98,22 @@ public class Utility {
             transform.translate(speed);
         }
     }
-    public static void isOutOfBounds(GameObject gameObject){
-        if(gameObject.getTransform().getPosY() < -20 || gameObject.getTransform().getPosY() > getScreenY()+20 || gameObject.getTransform().getPosX() < -20 || gameObject.getTransform().getPosX() > getGameScreenX()+20){ // lower than the screen
+
+    public static void isOutOfBounds(GameObject gameObject) {
+        if (gameObject.getTransform().getPosY() < -20 || gameObject.getTransform().getPosY() > getScreenY() + 20 || gameObject.getTransform().getPosX() < -20 || gameObject.getTransform().getPosX() > getGameScreenX() + 20) { // lower than the screen
             gameObject.setDestroyed(true);
         }
     }
-    public static void DrawImage(GraphicsContext gc,Image sprite, Transform transform){
+
+    public static void DrawImage(GraphicsContext gc, Image sprite, Transform transform) {
         gc.drawImage(sprite, transform.getPosX(), transform.getPosY(), sprite.getWidth() * transform.getSclX(), sprite.getHeight() * transform.getSclY());
     }
-    public static boolean checkHover(Transform transform,Image image){
+
+    public static boolean checkHover(Transform transform, Image image) {
         boolean hover = MouseUtil.getMouseX() > transform.getPosX() && MouseUtil.getMouseX() < transform.getPosX()
                 + image.getWidth() * transform.getSclX() && MouseUtil.getMouseY() > transform.getPosY() &&
                 MouseUtil.getMouseY() < transform.getPosY() + image.getHeight() * transform.getSclY();
-        if(hover){
+        if (hover) {
             Main.getScene().setCursor(Cursor.cursor("HAND"));
         }
         return hover;

@@ -1,7 +1,10 @@
 package GameEntity.Boss;
 
 import GameEntity.Bullet.BaseBullet;
-import Utils.*;
+import Utils.Asset;
+import Utils.BossUtils;
+import Utils.BulletUtils;
+import Utils.Utility;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -11,8 +14,8 @@ import java.util.List;
 
 public class KaoBoss extends BaseBoss {
 
-    private boolean ready;
     private final List<List<BaseBullet>> bulletsBox;
+    private boolean ready;
 
     public KaoBoss() {
         super();
@@ -37,7 +40,7 @@ public class KaoBoss extends BaseBoss {
             return;
         }
         //TODO: phase 1 (i don't like it);
-        if(frame > 200  && frame <= 6000){
+        if (frame > 200 && frame <= 6000) {
             if (frame % 1500 == 0) {
 
                 for (int i = 0; i < Math.floor(Math.random() * 10) + 30; i++) {
@@ -57,10 +60,10 @@ public class KaoBoss extends BaseBoss {
             }
         }
         //TODO: Phase 2
-        if(frame > 6000 && frame < 30000){
+        if (frame > 6000 && frame < 30000) {
             if (frame % 1000 == 0) {
-                for(int i = 0; i < 30; i++){
-                    List<BaseBullet> bullets = BossUtils.circular(this, 90 + (i*10) , 0.3 + (i * 0.01), 10, 0.005, 3);
+                for (int i = 0; i < 30; i++) {
+                    List<BaseBullet> bullets = BossUtils.circular(this, 90 + (i * 10), 0.3 + (i * 0.01), 10, 0.005, 3);
                     bulletsBox.add(bullets);
                 }
                 for (int i = 0; i < bulletsBox.size(); i++) {

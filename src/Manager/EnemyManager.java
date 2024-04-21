@@ -44,15 +44,13 @@ public class EnemyManager implements Updatable {
     }
 
     public void spawnEnemy(EnemyType type) {
-        if(type == EnemyType.CHICKEN && StatManager.getInstance().getEnemyUnlocked().get(2)){
+        if (type == EnemyType.CHICKEN && StatManager.getInstance().getEnemyUnlocked().get(2)) {
             BaseEnemy enemy = new Chicken(randomTransform(), Math.random());
             add(enemy);
-        }
-        else if(type == EnemyType.SHEEP){
+        } else if (type == EnemyType.SHEEP) {
             BaseEnemy enemy = new Sheep(randomTransform(), Math.random());
             add(enemy);
-        }
-        else if(type == EnemyType.COW&& StatManager.getInstance().getEnemyUnlocked().get(1)){
+        } else if (type == EnemyType.COW && StatManager.getInstance().getEnemyUnlocked().get(1)) {
             BaseEnemy enemy = new Cow(randomTransform(), Math.random());
             add(enemy);
         }
@@ -76,7 +74,7 @@ public class EnemyManager implements Updatable {
 
 
     public void clearEnemy() {
-        for(BaseEnemy e : enemies){
+        for (BaseEnemy e : enemies) {
             e.setDestroyed(true);
         }
         enemies.clear();
@@ -86,24 +84,24 @@ public class EnemyManager implements Updatable {
     public void onUpdate() {
 
         removeDestroyed();
-        if(SceneManager.currentState== SceneManager.GameState.boss) return;
+        if (SceneManager.currentState == SceneManager.GameState.boss) return;
         if (System.currentTimeMillis() - lastChickenSpawnTime > EnemyUtils.calculateSpawnRate(ChickenPerks.get(7))) {
             spawnEnemy(EnemyType.CHICKEN);
-            if(StatManager.getInstance().getGobletLevels().get(3)*10>Math.random()*100){
+            if (StatManager.getInstance().getGobletLevels().get(3) * 10 > Math.random() * 100) {
                 spawnEnemy(EnemyType.CHICKEN);
             }
             lastChickenSpawnTime = System.currentTimeMillis();
         }
         if (System.currentTimeMillis() - lastSheepSpawnTime > EnemyUtils.calculateSpawnRate(SheepPerks.get(7))) {
             spawnEnemy(EnemyType.SHEEP);
-            if(StatManager.getInstance().getGobletLevels().get(3)*10>Math.random()*100){
+            if (StatManager.getInstance().getGobletLevels().get(3) * 10 > Math.random() * 100) {
                 spawnEnemy(EnemyType.SHEEP);
             }
             lastSheepSpawnTime = System.currentTimeMillis();
         }
         if (System.currentTimeMillis() - lastCowSpawnTime > EnemyUtils.calculateSpawnRate(CowPerks.get(7))) {
             spawnEnemy(EnemyType.COW);
-            if(StatManager.getInstance().getGobletLevels().get(3)*10>Math.random()*100){
+            if (StatManager.getInstance().getGobletLevels().get(3) * 10 > Math.random() * 100) {
                 spawnEnemy(EnemyType.COW);
             }
             lastCowSpawnTime = System.currentTimeMillis();
@@ -113,7 +111,7 @@ public class EnemyManager implements Updatable {
     }
 
 
-    public void reset(){
+    public void reset() {
         ChickenPerks = new ArrayList<>(Arrays.asList((int) Config.PARTS_DROP_BASE * Config.CHICKEN_MULTIPLIER, 0, 0, 0, 0, 0, 0, 0));
         SheepPerks = new ArrayList<>(Arrays.asList((int) Config.PARTS_DROP_BASE, 0, 0, 0, 0, 0, 0, 0));
         CowPerks = new ArrayList<>(Arrays.asList((int) Config.PARTS_DROP_BASE * Config.COW_MULTIPLIER, 0, 0, 0, 0, 0, 0, 0));

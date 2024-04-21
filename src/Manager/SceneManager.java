@@ -1,6 +1,9 @@
 package Manager;
 
-import Pane.*;
+import Pane.GameSideUIEditor;
+import Pane.GameplayEditor;
+import Pane.GraphicEditor;
+import Pane.RootPane;
 import Utils.Track;
 import Utils.Updatable;
 import javafx.scene.media.AudioClip;
@@ -9,18 +12,14 @@ import java.util.ArrayList;
 
 public class SceneManager {
     public static int currentScene;
-    public enum GameState{
-        normal,
-        boss
-    }
     public static GameState currentState;
     public static ArrayList<Updatable> updatables;
     private static GraphicEditor currentPage;
     private static GraphicEditor bossPage;
 
-    public static void GotoGameScene(){
-        updatables=new ArrayList<>();
-        currentScene=1;
+    public static void GotoGameScene() {
+        updatables = new ArrayList<>();
+        currentScene = 1;
         SceneManager.updatables.add(GameObjectHolder.getInstance());
 
         //GraphicEditor
@@ -34,32 +33,34 @@ public class SceneManager {
         SceneManager.updatables.add(PlayerManager.getInstance());
         SceneManager.updatables.add(ItemManager.getInstance());
         SceneManager.updatables.add(StatManager.getInstance());
-        currentState=GameState.normal;
+        currentState = GameState.normal;
         Track.BGM.setCycleCount(AudioClip.INDEFINITE);
         Track.BGM.setVolume(0.05);
         Track.BGM.play();
     }
-    public static void update(){
+
+    public static void update() {
         for (Updatable updatable : updatables) {
             updatable.onUpdate();
         }
-        if(currentPage!=null) {
+        if (currentPage != null) {
             currentPage.onUpdate();
         }
-        if(bossPage!=null){
+        if (bossPage != null) {
             bossPage.onUpdate();
         }
     }
 
     public static void setCurrentPage(GraphicEditor currentPage) {
-        if(SceneManager.currentPage != null){
+        if (SceneManager.currentPage != null) {
             SceneManager.currentPage.clear();
         }
         SceneManager.currentPage = currentPage;
     }
-    public static void ActivatedBossPage(GraphicEditor bossPage){
-        currentState=GameState.boss;
-        SceneManager.bossPage=bossPage;
+
+    public static void ActivatedBossPage(GraphicEditor bossPage) {
+        currentState = GameState.boss;
+        SceneManager.bossPage = bossPage;
 
         Track.BGM.stop();
         Track.BOSSTHEME.setCycleCount(AudioClip.INDEFINITE);
@@ -68,16 +69,22 @@ public class SceneManager {
         EnemyManager.getInstance().clearEnemy();
         BulletManager.getInstance().clearBullets();
     }
-    public static void DeActivatedBossPage(){
-        currentState=GameState.normal;
+
+    public static void DeActivatedBossPage() {
+        currentState = GameState.normal;
         BossManager.getInstance().removeBoss();
         SceneManager.bossPage.clear();
-        SceneManager.bossPage=null;
+        SceneManager.bossPage = null;
         BulletManager.getInstance().clearBullets();
         Track.BOSSTHEME.stop();
         Track.BGM.setCycleCount(AudioClip.INDEFINITE);
         Track.BGM.setVolume(0.2);
         Track.BGM.play();
+    }
+
+    public enum GameState {
+        normal,
+        boss
     }
 
 }

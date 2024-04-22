@@ -38,7 +38,7 @@ public abstract class BaseBoss extends GameObject {
         //Update on child node
         action();
         frame++;
-        frame = (frame > 142000) ? frame : 0;
+        frame = (frame > 142000) ? 0 : frame;
         //// check collision with player bullet
         ArrayList<BaseBullet> bulletList = BulletManager.getInstance().getBullets();
         for (BaseBullet bullet : bulletList) {

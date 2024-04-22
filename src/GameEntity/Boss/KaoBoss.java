@@ -29,7 +29,7 @@ public class KaoBoss extends BaseBoss {
     public void action() {
         int angleToP = (int) ((PlayerManager.getInstance().getPlayer() != null) ? Transform.calculateAngleToTarget(getTransform(), PlayerManager.getInstance().getPlayer().getTransform()) : 90);
         if (!ready) {
-            if (frame > 200) {
+            if (frame > 600) {
                 ready = true;
             }
             return;

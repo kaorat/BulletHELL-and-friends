@@ -37,12 +37,16 @@ public class DragonKing extends BaseBoss {
         }
 
         // Phase 1
-        if (hp >= 1000000 && frame % 800 == 0) {
-            choosingPattern(1, 3);
+        if (hp >= 1000000) {
+            if(frame % 800 == 0){
+                choosingPattern(1, 3);
+            }
         }
         // Phase 2
-        else if (hp >= 500000 && frame % 700 == 0) {
-            choosingPattern(2, 2);
+        else if (hp >= 500000) {
+            if(frame % 700 == 0){
+                choosingPattern(2, 2);
+            }
         }
         // Phase 3
         else if (frame % 600 == 0) {
@@ -80,7 +84,7 @@ public class DragonKing extends BaseBoss {
     @Override
     public void draw(GraphicsContext gc) {
         Utility.drawImage(gc, getImage(), transform);
-        drawBounds(0.3, 0.3, 0.3, 0.3);
+        drawBounds(0, 0, 1, 1);
     }
 
     // Bullet barrage emerge from below

@@ -51,7 +51,7 @@ public class MichaelJackson extends BaseBoss{
             }
             return;
         }
-        if(!clearPhase&&hp<=8000){
+        if(!clearPhase&&hp<=80000){
             BulletManager.getInstance().clearBullets();
             clearPhase=true;
         }

@@ -30,11 +30,18 @@ public class BossManager implements Updatable {
             }
             case 1:{
                 this.boss = new MichaelJackson();
+                break;
             }
             case 2:{
                 this.boss = new DragonKing();
+                break;
             }
-            //case 3:
+            case 3:{
+                GameObjectHolder.getInstance().add(new KaoBoss());
+                GameObjectHolder.getInstance().add(new MichaelJackson());
+                this.boss = new DragonKing();
+                break;
+            }
         }
 
         GameObjectHolder.getInstance().add(this.boss);

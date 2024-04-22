@@ -65,9 +65,15 @@ public class MainPage extends GraphicEditor {
     @Override
     public void onUpdate() {
         SetTime();
+        NavigateButton();
         completionText.getText().setText(StatManager.getInstance().getCompletion()+"%");
         killedText.getText().setText(StatManager.getInstance().getKilled()+"");
         deathText.getText().setText(StatManager.getInstance().getDeath()+"");
+        if(StatManager.getInstance().getBossDefeated()>3){
+            bossCountText.getText().setText("Complete");
+            soulRequireText.getText().setText("Soul : 0");
+            return;
+        }
         bossCountText.getText().setText((StatManager.getInstance().getBossDefeated()+1)+" / 4");
         long soulRequire = Config.boss_soulRequire.get(StatManager.getInstance().getBossDefeated());
         soulRequireText.getText().setText("Soul : "+soulRequire);
@@ -85,7 +91,7 @@ public class MainPage extends GraphicEditor {
         else {
             soulRequireText.getText().setFillColor(Color.BROWN);
         }
-        NavigateButton();
+
 
     }
     private void SetTime(){

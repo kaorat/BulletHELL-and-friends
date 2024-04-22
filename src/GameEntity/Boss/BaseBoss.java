@@ -42,7 +42,6 @@ public abstract class BaseBoss extends GameObject {
         BulletManager bm = BulletManager.getInstance();
         ArrayList<BaseBullet> bulletList = bm.getBullets();
         if (hp <= 0) {
-            //TODO:Tell StatManager that I'm defeated
             StatManager.getInstance().BossDefeated();
             StatManager.getInstance().setDna(StatManager.getInstance().getDna() + 1);
             SceneManager.DeActivatedBossPage();

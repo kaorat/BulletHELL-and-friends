@@ -68,12 +68,12 @@ public class MainPage extends GraphicEditor {
         completionText.getText().setText(StatManager.getInstance().getCompletion()+"%");
         killedText.getText().setText(StatManager.getInstance().getKilled()+"");
         deathText.getText().setText(StatManager.getInstance().getDeath()+"");
-        if(StatManager.getInstance().getBossDefeated()>3){
+        if(StatManager.getInstance().getBossDefeated()>2){
             bossCountText.getText().setText("Complete");
             soulRequireText.getText().setText("Soul : 0");
             return;
         }
-        bossCountText.getText().setText((StatManager.getInstance().getBossDefeated()+1)+" / 4");
+        bossCountText.getText().setText((StatManager.getInstance().getBossDefeated()+1)+" / 3");
         long soulRequire = Config.boss_soulRequire.get(StatManager.getInstance().getBossDefeated());
         soulRequireText.getText().setText("Soul : " + soulRequire);
         if (buttonBossCalled.isPressed() && SceneManager.currentState == SceneManager.GameState.boss) {

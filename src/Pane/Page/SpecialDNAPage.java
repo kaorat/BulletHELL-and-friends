@@ -53,24 +53,23 @@ public class SpecialDNAPage extends GraphicEditor {
         if (allButtons.get(2).isPressed()) SceneManager.setCurrentPage(new MainPage(graphicsContext));
         for (int i = 0; i < 2; i++) {
             //Variable
-            int level = StatManager.getInstance().getGobletLevels().get(i);
+            int level = StatManager.getInstance().getDnaLevels().get(i);
             UISprite price = allPrice.get(i);
             if (level > 0) {
                 price.getText().setText("OBTAINED");
                 continue;
             }
-            int cost = level + 1;
             //Price
 
-            price.getText().setText(Utility.NumberToString(cost));
+            price.getText().setText("1");
             //Button
             UIButton button = allButtons.get(i);
 
-            if (dna >= cost) {
+            if (dna >= 1) {
                 button.setEnable(true);
                 if (button.isPressed()) {
-                    StatManager.getInstance().setAmber(dna - cost);
-                    StatManager.getInstance().getGobletLevels().set(i, level + 1);
+                    StatManager.getInstance().setDna(dna - 1);
+                    StatManager.getInstance().getDnaLevels().set(i, level + 1);
                 }
             } else {
                 button.setEnable(false);

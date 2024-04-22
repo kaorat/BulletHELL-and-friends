@@ -281,6 +281,8 @@ public class Asset {
         public static Image player;
         public static Image bullet;
         public static Image rifleBullet;
+        public static Image laserBullet;
+        public static Image missileBullet;
         public static Image enemyBullet;
         public static Image cowBullet;
         public static Image enemy;
@@ -321,6 +323,7 @@ public class Asset {
         public static Image WhiteSheepShootLeft;
         public static Image WhiteCowShootLeft;
         public static Image WhiteChickenShootLeft;
+        public static Image toothless;
 
         static {
             loadResource();
@@ -330,10 +333,13 @@ public class Asset {
             player = LoadImg("UI/kaosteak.png");
             bullet = LoadImg("UI/Currency/Honey.png");
             rifleBullet = LoadImg("UI/Bullet/RifleShot.png");
+            laserBullet = LoadImg("UI/Bullet/Laser.png");
+            missileBullet = LoadImg("UI/Bullet/Missile.png");
 
             enemyBullet = LoadImg("UI/Bullet/NormalShot.png");
             cowBullet = LoadImg("UI/CowBullet.png");
             michealJackson = LoadImg("UI/Enemy/mc.png");
+            toothless = LoadImg("UI/toothless.png");
 
             WhiteSheepIdleRight = LoadImg("UI/Enemy/Idle/Right/WhiteSheepIdleRight.png");
             WhiteCowIdleRight = LoadImg("UI/Enemy/Idle/Right/WhiteCowIdleRight.png");

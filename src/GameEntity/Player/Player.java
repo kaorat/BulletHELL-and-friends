@@ -15,6 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static Input.InputUtility.isShiftPressed;
 import static Input.InputUtility.isSlashPressed;
@@ -24,7 +25,7 @@ public class Player extends GameObject implements Shootable {
     private double speed;
     private Bounds hitbox;
     //    private double fireRate;
-    private long lastFireTime;
+    private ArrayList<Long> lastFireTime;
     private boolean isDying;
     private double iFrametime;
     private Image activeImage;
@@ -36,7 +37,7 @@ public class Player extends GameObject implements Shootable {
         activeImage = Asset.UI.idle1;
         iFrametime = 355;
         isDying = false;
-        lastFireTime = 0;
+        lastFireTime = new ArrayList<>(Arrays.asList(0L,0L,0L));
         IFrame();
     }
 
@@ -68,7 +69,20 @@ public class Player extends GameObject implements Shootable {
     }
 
     public void shoot() {
-        PlayerUtils.normal(this);
+        double fireRate = PlayerManager.getInstance().getBioticRifleFireRate() * 1000;
+        long currentTime = System.currentTimeMillis();
+        if (currentTime - lastFireTime.get(0) > fireRate) {
+            PlayerUtils.normal(this);
+            lastFireTime.set(0,currentTime);
+        }
+        if (StatManager.getInstance().getDnaLevels().get(0)>0 && currentTime - lastFireTime.get(1) > fireRate*5) {
+            PlayerUtils.autoAim(this);
+            lastFireTime.set(1,currentTime);
+        }
+        if(StatManager.getInstance().getDnaLevels().get(1)>0 && currentTime - lastFireTime.get(2) > 30){
+            PlayerUtils.Laser(this);
+            lastFireTime.set(2,currentTime);
+        }
 //        Track.TECHNOSHOOT1.play();
 //        System.out.println(BulletManager.getInstance().getBullets().size());
     }
@@ -108,10 +122,6 @@ public class Player extends GameObject implements Shootable {
         }
     }
 
-    public void controlAggressiveShoot() {
-        PlayerUtils.earthQuake(this);
-    }
-
     private void Death() {
         isDying = true;
         StatManager.getInstance().addDeath();
@@ -134,18 +144,13 @@ public class Player extends GameObject implements Shootable {
         if (isDying) {
             return;
         }
-        double fireRate = PlayerManager.getInstance().getBioticRifleFireRate() * 1000;
-        long currentTime = System.currentTimeMillis();
+
         if (isShiftPressed()) {
             speed = Config.PLAYER_SPEED_SHIFT;
         } else {
             speed = Config.PLAYER_SPEED_BASE;
         }
-        if (currentTime - lastFireTime > fireRate) {
-            shoot();
-
-            lastFireTime = currentTime;
-        }
+        shoot();
         PlayerUtils.teleport(this);
         Utility.controlUtility(this.transform, speed);
 

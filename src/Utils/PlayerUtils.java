@@ -20,33 +20,20 @@ public class PlayerUtils {
     public static void normal(Player player){
         double damage = PlayerManager.getInstance().getBioticRifleDamage()*StatManager.getInstance().getGobletLevels().get(2);
         // player shooting pattern
-        PlayerBullet bullet = new PlayerBullet(10, new Transform(player.getTransform().getPosX() + 50, player.getTransform().getPosY() + 20, -90, 1, 1), 0, damage);
-        PlayerBullet bullet2 = new PlayerBullet(10, new Transform(player.getTransform().getPosX(), player.getTransform().getPosY() + 20, -90, 1, 1), 0, damage);
+        PlayerBullet bullet = new PlayerBullet(10, new Transform(player.getTransform().getPosX() + 50, player.getTransform().getPosY() + 20, -90, 1, 1), 0, damage,Asset.Game.rifleBullet);
+        PlayerBullet bullet2 = new PlayerBullet(10, new Transform(player.getTransform().getPosX(), player.getTransform().getPosY() + 20, -90, 1, 1), 0, damage,Asset.Game.rifleBullet);
         BulletManager.getInstance().add(bullet);
         BulletManager.getInstance().add(bullet2);
     }
-
-    public static void twin(Player player){
-        double damage = PlayerManager.getInstance().getBioticRifleDamage()*StatManager.getInstance().getGobletLevels().get(2);
+    public static void Laser(Player player) {
         // player shooting pattern
-        for(int i = 0; i < 4; i++){
-            PlayerBullet bullet = new PlayerBullet(10, new Transform(player.getTransform().getPosX() + 25 * i, player.getTransform().getPosY() + 20, -90, 1, 1), 0,damage);
-            BulletManager.getInstance().add(bullet);
-        }
-    }
-
-    public static void earthQuake(Player player) {
-        // player shooting pattern
-        double damage = PlayerManager.getInstance().getBioticRifleDamage()*StatManager.getInstance().getGobletLevels().get(2);
-        for(int i = 0; i < 10; i++){
-            //TODO
-            PlayerBullet bullet = new PlayerBullet(10,new Transform(player.getTransform().getPosX() + 50, player.getTransform().getPosY() + 20, -180 + i * 20, 1, 1), 0, damage);
-            BulletManager.getInstance().add(bullet);
-        }
+        double damage = PlayerManager.getInstance().getBioticRifleDamage()*StatManager.getInstance().getGobletLevels().get(2)/4;
+        PlayerBullet bullet = new PlayerBullet(20,new Transform(player.getTransform().getPosX()+20, player.getTransform().getPosY() + 20, -90, 1.5, 2.6), 0, damage,Asset.Game.laserBullet);
+        BulletManager.getInstance().add(bullet);
     }
 
     public static void autoAim(Player player){
-        double damage = PlayerManager.getInstance().getBioticRifleDamage()*StatManager.getInstance().getGobletLevels().get(2);
+        double damage = PlayerManager.getInstance().getBioticRifleDamage()*StatManager.getInstance().getGobletLevels().get(2)*2;
         Bounds bounds;
         if (SceneManager.currentState == SceneManager.GameState.normal) {
             ArrayList<BaseEnemy> enemies = EnemyManager.getInstance().getEnemies();
@@ -64,9 +51,12 @@ public class PlayerUtils {
         }
 
 
-        double rot = Transform.calculateAngleToTarget(player.getTransform(), bounds);
-        PlayerBullet bullet = new PlayerBullet(10,new Transform(player.getTransform().getPosX() + 25, player.getTransform().getPosY() + 20, rot, 1, 1), 0, damage);
+        PlayerBullet bullet = new PlayerBullet(5,new Transform(player.getTransform().getPosX() + 75, player.getTransform().getPosY() + 20, 0, 1, 1), 0, damage,Asset.Game.missileBullet);
+        bullet.getTransform().setRot(Transform.calculateAngleToTarget(bullet.getTransform(), bounds));
+        PlayerBullet bullet2 = new PlayerBullet(5,new Transform(player.getTransform().getPosX() - 25, player.getTransform().getPosY() + 20, 0, 1, 1), 0, damage,Asset.Game.missileBullet);
+        bullet2.getTransform().setRot(Transform.calculateAngleToTarget(bullet2.getTransform(), bounds));
         BulletManager.getInstance().add(bullet);
+        BulletManager.getInstance().add(bullet2);
 
         AudioClip bulletSound = Asset.Audio.bulletSound;
         bulletSound.setVolume(0.1);

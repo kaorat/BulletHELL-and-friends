@@ -27,16 +27,17 @@ public class StatManager implements Updatable {
 
     public StatManager() {
         setAmber(0);
-        setCoin(200);
+        setCoin(0);
         setTotalCoin(0);
         setHoneyLevel(0);
         setEntireHoneyLevel(1);
+        setDna(0);
         setCompletion(0);
         setDeath(0);
         setKilled(0);
         setTime(0);
         setSoul(0);
-        gobletLevels = new ArrayList<>(Arrays.asList(1, 1, 1, 0, 1));
+        gobletLevels = new ArrayList<>(Arrays.asList(1, 1, 1, 1, 1));
         dnaLevels = new ArrayList<>(Arrays.asList(0, 0));
         enemyUnlocked = new ArrayList<>(Arrays.asList(true, false, false));
         bossDefeated = 0;
@@ -52,8 +53,8 @@ public class StatManager implements Updatable {
 
     @Override
     public void onUpdate() {
-        if (totalCoin > entireHoneyLevel * 100) {
-            totalCoin -= entireHoneyLevel * 100;
+        if (totalCoin > entireHoneyLevel * 80) {
+            totalCoin -= entireHoneyLevel * 80;
             entireHoneyLevel++;
             honeyLevel++;
         }
@@ -63,7 +64,6 @@ public class StatManager implements Updatable {
     public void reset() {
         setAmber(getAmber() + (honeyLevel * gobletLevels.get(0)));
         setCoin(0);
-        setTotalCoin(0);
         setSoul(0);
         setHoneyLevel(0);
         PlayerManager.getInstance().reset();
@@ -144,6 +144,9 @@ public class StatManager implements Updatable {
     public void setSoul(int soul) {
         this.soul = soul;
     }
+    public void addSoul() {
+        soul++;
+    }
 
     public int getDna() {
         return dna;
@@ -192,6 +195,7 @@ public class StatManager implements Updatable {
     public String toString() {
         return "Coin : " + coin + " Total Coin : " + totalCoin + " Honey Level : " + honeyLevel + " Soul : " + soul + " Amber : " + amber + " Time : " + time + " Completion : " + completion + " Death : " + death + " Killed : " + killed;
     }
+
 
 
 }

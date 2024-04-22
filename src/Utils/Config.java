@@ -64,7 +64,7 @@ public class Config {
 
     // Genetic Drift : 6
     public static final double SOUL_CHANCE_BASE = 0;
-    public static final double GENETIC_SOUL_CHANCE_UPGRADE = 5;
+    public static final double GENETIC_SOUL_CHANCE_UPGRADE = 2;
     public static final double GENETIC_BASE_PRICE = 1000;
     public static final double GENETIC_PRICE_INCREMENT = 1.5;//Power by level
     public static final double GENETIC_MAX_LEVEL = 20;
@@ -85,7 +85,7 @@ public class Config {
 
     //Damage
     public static final double DAMAGE_BASE = 1;
-    public static final double DAMAGE_UPGRADE = 0.25;
+    public static final double DAMAGE_UPGRADE = 0.5;
     public static final double DAMAGE_BASE_PRICE = 40;
     public static final double DAMAGE_PRICE_INCREMENT = 1.5;//Power by level
     public static final double DAMAGE_MAX_LEVEL = 100000;//???????

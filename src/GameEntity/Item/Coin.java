@@ -52,9 +52,6 @@ public class Coin extends BaseItem { // this is 'parts drop', I just want to cha
         //gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 20, 20);
         Utility.DrawImage(gc, getImage(), transform);
         drawBounds(0, 0);
-        gc.setStroke(javafx.scene.paint.Color.GREENYELLOW);
-        gc.strokeRect(bounds.getMinX(), bounds.getMinY(), bounds.getWidth(), bounds.getHeight());
-
     }
 
     @Override

@@ -127,29 +127,6 @@ public class Transform {
         }.start();
     }
 
-    public static boolean checkCollide(Bounds b1, Bounds b2){
-        // draw here the bounds of the object
-        return b1.intersects(b2);
-    }
-    public static double calculateAngleToTarget(Transform from, Bounds to) {
-        return Math.toDegrees(Math.atan2(to.getMinY() - from.getPosY(), to.getMinX() - from.getPosX()));
-    }
-    public static double calculateAngleToTarget(Transform from, Transform to) {
-
-        return Math.toDegrees(Math.atan2(to.getPosY() - from.getPosY(), to.getPosX() - from.getPosX()));
-    }
-    public static double calculateDistanceToTarget(Transform from, Transform to) {
-        return Math.sqrt(Math.pow(to.getPosX() - from.getPosX(), 2) + Math.pow(to.getPosY() - from.getPosY(), 2));
-    }
-
-    public static Point2D centerPos(GameObject obj){
-        double x = obj.getTransform().getPosX() + (obj.getImage().getWidth()*obj.getTransform().getSclX())/2;
-        double y = obj.getTransform().getPosY() + (obj.getImage().getHeight()*obj.getTransform().getSclY())/2;
-        return new Point2D(x,y);
-    }
-
-
-
     public double getPosX() {
         return posX;
     }

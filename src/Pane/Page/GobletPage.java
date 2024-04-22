@@ -114,7 +114,7 @@ public class GobletPage extends GraphicEditor {
         for (int i = 0; i < 5; i++) {
             //Variable
             int level = StatManager.getInstance().getGobletLevels().get(i);
-            int cost = (int) (10 * (Math.pow(2, level)));
+            int cost = (int) (10 * (Math.pow(2, level-1)));
             if (level >= 10) {
                 allPrice.get(i).getText().setText("MAX");
                 allButtons.get(i).setEnable(false);

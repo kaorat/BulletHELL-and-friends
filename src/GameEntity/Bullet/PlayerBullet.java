@@ -4,12 +4,13 @@ import Utils.Asset;
 import Utils.Transform;
 import Utils.Utility;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 
 public class PlayerBullet extends BaseBullet {
     private final double damage;
 
-    public PlayerBullet(double speed, Transform transform, double z, double damage) {
-        super(speed, transform, z, Asset.Game.rifleBullet);
+    public PlayerBullet(double speed, Transform transform, double z, double damage, Image graphic) {
+        super(speed, transform, z, graphic);
         this.damage = damage;
         //setImage(Asset.Game.bullet);
     }

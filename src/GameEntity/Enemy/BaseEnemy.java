@@ -3,7 +3,10 @@ package GameEntity.Enemy;
 import GameEntity.Bullet.BaseBullet;
 import GameEntity.Bullet.PlayerBullet;
 import GameEntity.GameObject;
+import GameEntity.Item.Coin;
+import GameEntity.Item.Soul;
 import Manager.BulletManager;
+import Manager.ItemManager;
 import Manager.StatManager;
 import Utils.EnemyType;
 import Utils.EnemyUtils;
@@ -12,6 +15,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public abstract class BaseEnemy extends GameObject {
 
@@ -52,7 +56,7 @@ public abstract class BaseEnemy extends GameObject {
         this.bulletSpeed = EnemyUtils.calculateStat(type, 3, Perks.get(3));
         this.bulletQuantity = (int) EnemyUtils.calculateStat(type, 4, Perks.get(4));
         this.bulletLength = (int) EnemyUtils.calculateStat(type, 5, Perks.get(5));
-        this.soulChance = EnemyUtils.calculateStat(type, 6, Perks.get(6));
+        this.soulChance = EnemyUtils.calculateStat(type, 6, Perks.get(6))*StatManager.getInstance().getGobletLevels().get(4);
     }
 
     public void drawHpBar(GraphicsContext gc, EnemyType type) {
@@ -74,6 +78,9 @@ public abstract class BaseEnemy extends GameObject {
         ArrayList<BaseBullet> bulletList = bm.getBullets();
         if (this.hp <= 0) {
             EnemyUtils.DropParts(transform.getPosX(), transform.getPosY(), partDrop);
+            if(Math.random()*100<=soulChance){
+                ItemManager.getInstance().add(new Soul(transform.getPosX(), transform.getPosY()));
+            }
             this.setDestroyed(true);
             StatManager.getInstance().addKilled();
         }

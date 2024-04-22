@@ -85,7 +85,7 @@ public class Config {
 
     //Damage
     public static final double DAMAGE_BASE = 1;
-    public static final double DAMAGE_UPGRADE = 0.5;
+    public static final double DAMAGE_UPGRADE = 0.25;
     public static final double DAMAGE_BASE_PRICE = 40;
     public static final double DAMAGE_PRICE_INCREMENT = 1.5;//Power by level
     public static final double DAMAGE_MAX_LEVEL = 100000;//???????

@@ -56,13 +56,13 @@ public class StatManager implements Updatable {
         if (totalCoin > entireHoneyLevel * 80) {
             totalCoin -= entireHoneyLevel * 80;
             entireHoneyLevel++;
-            honeyLevel++;
+            honeyLevel+=gobletLevels.get(0);
         }
         time = System.currentTimeMillis() - initTime;
     }
 
     public void reset() {
-        setAmber(getAmber() + (honeyLevel * gobletLevels.get(0)));
+        setAmber(getAmber());
         setCoin(0);
         setSoul(0);
         setHoneyLevel(0);

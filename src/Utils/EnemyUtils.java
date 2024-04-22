@@ -24,7 +24,7 @@ public class EnemyUtils {
         } else {
             stat = (Config.enemy_baseValues.get(index) + (Config.enemy_upgradeValues.get(index) * level));
             if (index == 1) {
-                stat *= (type == EnemyType.COW ? Config.COW_MULTIPLIER : 1) * (type == EnemyType.CHICKEN ? Config.CHICKEN_MULTIPLIER : 1);
+                stat *= (type == EnemyType.COW ? 3 : 1) * (type == EnemyType.CHICKEN ? 5 : 1);
             }
         }
 

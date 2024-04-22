@@ -96,7 +96,7 @@ public class PlayerManager implements Updatable {
 
         switch (index) {
             case 0:
-                setBioticRifleDamage(getBioticRifleDamage());
+                setBioticRifleDamage(getBioticRifleDamage() + Config.DAMAGE_UPGRADE);
                 break;
             case 1:
                 setBioticRifleFireRate(getBioticRifleFireRate() + Config.PLAYER_FIRE_RATE_UPGRADE);

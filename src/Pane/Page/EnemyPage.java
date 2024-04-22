@@ -36,8 +36,8 @@ public class EnemyPage extends GraphicEditor {
         enemiesPerks.add(EnemyManager.getInstance().getChickenPerks());
         enemyUnlockCost = new ArrayList<>();
         enemyUnlockCost.add(0);
-        enemyUnlockCost.add(10000);
-        enemyUnlockCost.add(500000);
+        enemyUnlockCost.add(5000);
+        enemyUnlockCost.add(20000);
         //Background
         create(new UISprite(Asset.UI.backgroundEnemyPage, new Transform(Utility.getGameScreenX(), 0, 0.3, 0.25), 50));
 

@@ -5,7 +5,7 @@ import GameEntity.Bullet.PlayerBullet;
 import GameEntity.Enemy.BaseEnemy;
 import GameEntity.Player.Player;
 import Manager.*;
-import input.InputUtility;
+import Input.InputUtility;
 import javafx.geometry.BoundingBox;
 import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
@@ -34,7 +34,8 @@ public class PlayerUtils {
             BulletManager.getInstance().add(bullet);
         }
     }
-    public static void earthQuake(Player player){
+
+    public static void earthQuake(Player player) {
         // player shooting pattern
         double damage = PlayerManager.getInstance().getBioticRifleDamage()*StatManager.getInstance().getGobletLevels().get(2);
         for(int i = 0; i < 10; i++){
@@ -47,17 +48,16 @@ public class PlayerUtils {
     public static void autoAim(Player player){
         double damage = PlayerManager.getInstance().getBioticRifleDamage()*StatManager.getInstance().getGobletLevels().get(2);
         Bounds bounds;
-        if(SceneManager.currentState== SceneManager.GameState.normal){
+        if (SceneManager.currentState == SceneManager.GameState.normal) {
             ArrayList<BaseEnemy> enemies = EnemyManager.getInstance().getEnemies();
-            if(enemies.isEmpty()){
+            if (enemies.isEmpty()) {
                 return;
             }
             BaseEnemy enemy = enemies.get(0);
             bounds = enemy.getBounds();
-        }
-        else{
+        } else {
             BaseBoss boss = BossManager.getInstance().getBoss();
-            if(boss==null){
+            if (boss == null) {
                 return;
             }
             bounds = boss.getBounds();
@@ -72,29 +72,28 @@ public class PlayerUtils {
         bulletSound.setVolume(0.1);
         bulletSound.play();
     }
-    public static void teleport(Player player){
+
+    public static void teleport(Player player) {
         Transform t = player.getTransform();
         Point2D p = t.calculateTranslation(factor);
-        player.warpBox = new BoundingBox(t.getPosX() + p.getX() ,t.getPosY() + p.getY(),player.getImage().getWidth() * t.getSclX() ,player.getImage().getHeight() * t.getSclY());
-        if(InputUtility.isSlashPressed())
-        {
+        player.warpBox = new BoundingBox(t.getPosX() + p.getX(), t.getPosY() + p.getY(), player.getImage().getWidth() * t.getSclX(), player.getImage().getHeight() * t.getSclY());
+        if (InputUtility.isSlashPressed()) {
             slashPressed = true;
             factor += 5;
-            if(factor > 200) factor = 200;
+            if (factor > 200) factor = 200;
         }
-            if(slashPressed && !InputUtility.isSlashPressed()){
-                t.setPosX(t.getPosX() + p.getX());
-                t.setPosY(t.getPosY() + p.getY());
+        if (slashPressed && !InputUtility.isSlashPressed()) {
+            t.setPosX(t.getPosX() + p.getX());
+            t.setPosY(t.getPosY() + p.getY());
 //                lastTRTime = currentTime;
-                Track teleportSound = new Track(Asset.Audio.warp);
-                teleportSound.setVolume(0.1);
-                teleportSound.play();
-                factor = 0;
-                slashPressed = false;
-            }
+            Track teleportSound = new Track(Asset.Audio.warp);
+            teleportSound.setVolume(0.1);
+            teleportSound.play();
+            factor = 0;
+            slashPressed = false;
+        }
 
     }
-
 
 
 }

@@ -7,8 +7,9 @@ import javafx.scene.canvas.GraphicsContext;
 
 public class PlayerBullet extends BaseBullet {
     private final double damage;
-    public PlayerBullet(double speed, Transform transform, double z,double damage) {
-        super(speed, transform, z,Asset.Game.rifleBullet);
+
+    public PlayerBullet(double speed, Transform transform, double z, double damage) {
+        super(speed, transform, z, Asset.Game.rifleBullet);
         this.damage = damage;
         //setImage(Asset.Game.bullet);
     }
@@ -17,10 +18,11 @@ public class PlayerBullet extends BaseBullet {
     public void draw(GraphicsContext gc) {
 
         //gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 10, 10);
-        Utility.DrawImage(gc,getImage(),transform);
+        Utility.DrawImage(gc, getImage(), transform);
         drawBounds(0, 0);
 
     }
+
     public double getDamage() {
         return damage;
     }

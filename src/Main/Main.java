@@ -1,27 +1,33 @@
 package Main;
 
 import Manager.SceneManager;
-import input.MouseUtil;
+import Pane.RootPane;
 import Utils.Utility;
+import Input.InputUtility;
+import Input.MouseUtil;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import Pane.RootPane;
-import input.InputUtility;
 
 public class Main extends Application {
+    private static Scene scene;
+
     public static void main(String[] args) {
         launch(args);
     }
-    private static Scene scene;
+
+    public static Scene getScene() {
+        return scene;
+    }
+
     @Override
     public void start(Stage primaryStage) {
         SceneManager.GotoGameScene();
         StackPane root = new StackPane();
-        root.getChildren().add(RootPane.getRootPane(Utility.getScreenX(),Utility.getScreenY()));
+        root.getChildren().add(RootPane.getRootPane(Utility.getScreenX(), Utility.getScreenY()));
         root.setOnMousePressed(e -> {
             MouseUtil.setMouseX(e.getX());
             MouseUtil.setMouseY(e.getY());
@@ -53,9 +59,5 @@ public class Main extends Application {
         //just for testing bgm
 
         animation.start();
-    }
-
-    public static Scene getScene() {
-        return scene;
     }
 }

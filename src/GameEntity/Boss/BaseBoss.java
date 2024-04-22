@@ -16,11 +16,12 @@ public abstract class BaseBoss extends GameObject {
     protected double maxHp;
     //142 = 1 sec (WTF)
     protected int frame;
-    public BaseBoss(){
+
+    public BaseBoss() {
         //Pattern here
-        super(new Transform(250,-200),30);
+        super(new Transform(250, -200), 30);
 //        frame=0;
-        transform.translateToPositionInMilliSecond(250,100,3000);
+        transform.translateToPositionInMilliSecond(250, 100, 3000);
     }
 //    to set firing pattern for each boss
 
@@ -28,7 +29,10 @@ public abstract class BaseBoss extends GameObject {
         return hp;
     }
 
-    public double getMaxHp() { return maxHp; }
+    public double getMaxHp() {
+        return maxHp;
+    }
+
     public abstract void action();
 
     @Override
@@ -37,24 +41,23 @@ public abstract class BaseBoss extends GameObject {
         action();
         BulletManager bm = BulletManager.getInstance();
         ArrayList<BaseBullet> bulletList = bm.getBullets();
-        if(hp<=0){
+        if (hp <= 0) {
             //TODO:Tell StatManager that I'm defeated
             StatManager.getInstance().BossDefeated();
-            StatManager.getInstance().setDna(StatManager.getInstance().getDna()+1);
+            StatManager.getInstance().setDna(StatManager.getInstance().getDna() + 1);
             SceneManager.DeActivatedBossPage();
         }
         // check collision with player bullet
         for (BaseBullet bullet : bulletList) {
             if (Transform.checkCollide(this.getBounds(), bullet.getBounds()) && bullet instanceof PlayerBullet) {
-                this.hp -= ((PlayerBullet)bullet).getDamage();
+                this.hp -= ((PlayerBullet) bullet).getDamage();
                 bullet.setDestroyed(true);
             }
         }
 
         frame++;
-        hp-=maxHp/12000;
-        if(frame>1200000){
-            frame=0;
+        if (frame > 1200000) {
+            frame = 0;
         }
 
     }

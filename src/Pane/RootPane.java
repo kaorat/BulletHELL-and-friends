@@ -12,24 +12,26 @@ public class RootPane extends Canvas {
     private final double width;
     private final double height;
 
-    private RootPane(double width,double height) {
+    private RootPane(double width, double height) {
         ///////////////////////
         super(width, height);
-        this.width=width;
-        this.height=height;
+        this.width = width;
+        this.height = height;
         this.setVisible(true);
     }
 
     public static RootPane getRootPane() {
         if (instance == null)
-            instance = new RootPane(Utility.getScreenX(),Utility.getScreenY());
+            instance = new RootPane(Utility.getScreenX(), Utility.getScreenY());
         return instance;
     }
-    public static RootPane getRootPane(double width,double height) {
+
+    public static RootPane getRootPane(double width, double height) {
         if (instance == null)
-            instance = new RootPane(width,height);
+            instance = new RootPane(width, height);
         return instance;
     }
+
     public static void paintComponent() {
         GraphicsContext gc = RootPane.getRootPane().getGraphicsContext2D();
         gc.setFill(Color.BLACK);

@@ -1,11 +1,10 @@
-package input;
+package Input;
 
 public class MouseUtil {
     private static double mouseX;
     private static double mouseY;
     private static boolean isPressed;
     private static boolean activated;
-
 
 
     public static double getMouseX() {
@@ -24,13 +23,6 @@ public class MouseUtil {
         MouseUtil.mouseY = mouseY;
     }
 
-    public static void setPressed(boolean pressed) {
-        if(!pressed && isPressed) {
-            activated=true;
-        }
-        isPressed = pressed;
-    }
-
     public static boolean isActivated() {
         return activated;
     }
@@ -39,8 +31,15 @@ public class MouseUtil {
         return isPressed;
     }
 
+    public static void setPressed(boolean pressed) {
+        if (!pressed && isPressed) {
+            activated = true;
+        }
+        isPressed = pressed;
+    }
+
     public static void postUpdate() {
-        activated= false;
+        activated = false;
 
     }
 

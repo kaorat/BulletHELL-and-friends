@@ -42,12 +42,12 @@ public class MichaelJackson extends BaseBoss{
         if(angle1>=720||angle1<=-720){
             angle1=0;
         }
-        if(angle2>=720||angle2<=-720){
-            angle2=0;
+        if (angle2 >= 720 || angle2 <= -720) {
+            angle2 = 0;
         }
-        if(!ready) {
-            if(frame>600){
-                ready=true;
+        if (!ready) {
+            if (frame > 600) {
+                ready = true;
             }
             return;
         }
@@ -58,8 +58,8 @@ public class MichaelJackson extends BaseBoss{
         if(!startRotate && frame>800) {
             startRotate=true;
         }
-        if(!startChaos && frame>1600) {
-            startChaos=true;
+        if (!startChaos && frame > 1600) {
+            startChaos = true;
         }
         //phase1
         if(frame%10==0){
@@ -73,9 +73,9 @@ public class MichaelJackson extends BaseBoss{
                 BulletUtils.ChangeTrajectoryNow(pattern2,2,angle2-90,-0.01,0);
                 BulletUtils.ChangeTrajectoryOnFrame(pattern2,0,angle2-90,0.02,3,2000);
             }
-            if(startRotate){
-                angle1-=10;
-                angle2+=10;
+            if (startRotate) {
+                angle1 -= 10;
+                angle2 += 10;
             }
         }
         //frame2
@@ -146,9 +146,10 @@ public class MichaelJackson extends BaseBoss{
             }
         }.start();
     }
+
     @Override
     public void draw(GraphicsContext gc) {
-        Utility.DrawImage(gc,getImage(),transform);
+        Utility.DrawImage(gc, getImage(), transform);
         drawBounds(0.3, 0.3
                 , 0.3, 0.3);
     }

@@ -22,21 +22,24 @@ public class BulletUtils {
         BulletManager.getInstance().add(bullet);
         return bullet;
     }
-    public static void ChangeTrajectoryNow(BaseBullet bullet, double speed, double angle){
+
+    public static void ChangeTrajectoryNow(BaseBullet bullet, double speed, double angle) {
         bullet.getTransform().setSpeed(speed);
         bullet.getTransform().setRot(angle);
     }
-    public static void ChangeTrajectoryNow(BaseBullet bullet, double speed, double angle,double accel,double maxSpeed){
+
+    public static void ChangeTrajectoryNow(BaseBullet bullet, double speed, double angle, double accel, double maxSpeed) {
         bullet.getTransform().setSpeed(speed);
         bullet.getTransform().setRot(angle);
         bullet.getTransform().setMaxSpeed(maxSpeed);
         bullet.getTransform().setAccel(accel);
     }
-    public static void ChangeTrajectoryOnFrame(BaseBullet bullet, double speed, double angle,double frame){
+
+    public static void ChangeTrajectoryOnFrame(BaseBullet bullet, double speed, double angle, double frame) {
         double startFrame = System.currentTimeMillis();
         new AnimationTimer() {
             public void handle(long now) {
-                if(System.currentTimeMillis()-startFrame>frame){
+                if (System.currentTimeMillis() - startFrame > frame) {
                     bullet.getTransform().setSpeed(speed);
                     bullet.getTransform().setRot(angle);
                     this.stop();
@@ -44,11 +47,12 @@ public class BulletUtils {
             }
         }.start();
     }
-    public static void ChangeTrajectoryOnFrame(BaseBullet bullet, double speed, double angle,double accel,double maxSpeed,double frame){
+
+    public static void ChangeTrajectoryOnFrame(BaseBullet bullet, double speed, double angle, double accel, double maxSpeed, double frame) {
         double startFrame = System.currentTimeMillis();
         new AnimationTimer() {
             public void handle(long now) {
-                if(System.currentTimeMillis()-startFrame>frame){
+                if (System.currentTimeMillis() - startFrame > frame) {
                     bullet.getTransform().setSpeed(speed);
                     bullet.getTransform().setRot(angle);
                     bullet.getTransform().setMaxSpeed(maxSpeed);
@@ -81,11 +85,11 @@ public class BulletUtils {
     public static void ChangeRotAndDestroyWithDuration(BaseBullet bullet, double angularRot, double phase1, double phase2) {
         double startFrame = System.currentTimeMillis();
 
-        new AnimationTimer(){
+        new AnimationTimer() {
             public void handle(long now) {
-                if(System.currentTimeMillis()-startFrame<=phase1){
+                if (System.currentTimeMillis() - startFrame <= phase1) {
 //                    System.out.println("changing trajectory" + (System.currentTimeMillis() - startFrame));
-                    bullet.getTransform().setRot(bullet.getTransform().getRot()+angularRot);
+                    bullet.getTransform().setRot(bullet.getTransform().getRot() + angularRot);
 
                     return;
                 }
@@ -94,8 +98,6 @@ public class BulletUtils {
         }.start();
 
     }
-
-
 
 
 }

@@ -52,7 +52,6 @@ public class Config {
     public static final double FUZZY_MAX_LEVEL = 1000;
 
 
-
     // Elongation Sheep has no upgrade ?? : 5
     // chicken has no upgrade (random bullet spread)
     public static final double BULLET_LENGTH_BASE = 1;
@@ -61,7 +60,6 @@ public class Config {
     public static final double ELONGATION_PRICE_INCREMENT = 1.75;//Power by level
     public static final double ELONGATION_PARTS_DROP_UPGRADE = 10;
     public static final double ELONGATION_MAX_LEVEL = 1000;
-
 
 
     // Genetic Drift : 6
@@ -245,7 +243,7 @@ public class Config {
         player_maxLevels.add(PROFICIENCY_MAX_LEVEL);
 
         //Boss
-        boss_soulRequire = new ArrayList<>(Arrays.asList(200L,500L,2000L,10000L));
+        boss_soulRequire = new ArrayList<>(Arrays.asList(200L, 500L, 2000L, 10000L));
     }
 
 

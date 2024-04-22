@@ -18,8 +18,7 @@ public class Soul extends BaseItem {
     }
     @Override
     public void draw(GraphicsContext gc) {
-        //gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 20, 20);
-        Utility.DrawImage(gc, getImage(), transform);
+        Utility.drawImage(gc, getImage(), transform);
         drawBounds(0, 0);
     }
 
@@ -30,7 +29,6 @@ public class Soul extends BaseItem {
         if (Transform.checkCollide(this.getBounds(), PlayerManager.getInstance().getPlayer().getBounds())) {
             onPickup();
         }
-
     }
 
     @Override

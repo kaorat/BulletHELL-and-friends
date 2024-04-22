@@ -32,7 +32,7 @@ public class UISprite extends GameObject {
         if (!visible) {
             return;
         }
-        if (type.equals("image")) Utility.DrawImage(gc, sprite, transform);
+        if (type.equals("image")) Utility.drawImage(gc, sprite, transform);
         else if (type.equals("text")) {
             gc.setLineWidth(text.getLineWidth());
             gc.setFill(text.getFillColor());
@@ -49,7 +49,6 @@ public class UISprite extends GameObject {
 
     @Override
     public void onUpdate() {
-
     }
 
 

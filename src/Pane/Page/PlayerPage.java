@@ -114,7 +114,7 @@ public class PlayerPage extends GraphicEditor {
             }
             //Price
             UISprite price = allPrice.get(i);
-            price.getText().setText(Utility.NumberToString(cost));
+            price.getText().setText(Utility.numberToString(cost));
             //Button
             UIButton button = allButtons.get(i);
 
@@ -129,11 +129,11 @@ public class PlayerPage extends GraphicEditor {
                 button.setEnable(false);
             }
             //Level
-            allLvL.get(i).getText().setText("LV." + Utility.NumberToString(level));
+            allLvL.get(i).getText().setText("LV." + Utility.numberToString(level));
             //Desc
-            allDescription.get(i).getText().setText(descTemplate.get(i) + Utility.NumberToString(Config.player_baseValues.get(i) + ((Config.player_upgradeValues.get(i)) * level)) + " " + increaseTemplate.get(i));
+            allDescription.get(i).getText().setText(descTemplate.get(i) + Utility.numberToString(Config.player_baseValues.get(i) + ((Config.player_upgradeValues.get(i)) * level)) + " " + increaseTemplate.get(i));
             //Desc
-            allIncrease.get(i).getText().setText(Utility.NumberToString(Config.player_upgradeValues.get(i)) + " " + increaseTemplate.get(i));
+            allIncrease.get(i).getText().setText(Utility.numberToString(Config.player_upgradeValues.get(i)) + " " + increaseTemplate.get(i));
         }
     }
 }

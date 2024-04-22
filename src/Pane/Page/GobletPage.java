@@ -122,7 +122,7 @@ public class GobletPage extends GraphicEditor {
             }
             //Price
             UISprite price = allPrice.get(i);
-            price.getText().setText(Utility.NumberToString(cost));
+            price.getText().setText(Utility.numberToString(cost));
             //Button
             UIButton button = allButtons.get(i);
 
@@ -137,7 +137,7 @@ public class GobletPage extends GraphicEditor {
                 button.setEnable(false);
             }
             //Level
-            allLvL.get(i).getText().setText("LV." + Utility.NumberToString(level));
+            allLvL.get(i).getText().setText("LV." + Utility.numberToString(level));
             //Desc
             if (i == 3) {
                 allDescription.get(i).getText().setText(descTemplate.get(i) + level * 10 + " " + increaseTemplate.get(i));

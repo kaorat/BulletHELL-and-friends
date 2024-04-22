@@ -46,9 +46,9 @@ public class GameSideUIEditor extends GraphicEditor {
 
     @Override
     public void onUpdate() {
-        part.getText().setText(Utility.NumberToString(StatManager.getInstance().getCoin()));
-        soul.getText().setText(Utility.NumberToString(StatManager.getInstance().getSoul()));
-        honey.getText().setText(Utility.NumberToString(StatManager.getInstance().getAmber()));
+        part.getText().setText(Utility.numberToString(StatManager.getInstance().getCoin()));
+        soul.getText().setText(Utility.numberToString(StatManager.getInstance().getSoul()));
+        honey.getText().setText(Utility.numberToString(StatManager.getInstance().getAmber()));
     }
 
 

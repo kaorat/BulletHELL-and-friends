@@ -25,7 +25,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        SceneManager.GotoGameScene();
+        SceneManager.gotoGameScene();
         StackPane root = new StackPane();
         root.getChildren().add(RootPane.getRootPane(Utility.getScreenX(), Utility.getScreenY()));
         root.setOnMousePressed(e -> {
@@ -56,8 +56,6 @@ public class Main extends Application {
                 MouseUtil.postUpdate();
             }
         };
-        //just for testing bgm
-
         animation.start();
     }
 }

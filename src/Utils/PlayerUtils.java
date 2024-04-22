@@ -49,8 +49,6 @@ public class PlayerUtils {
             }
             bounds = boss.getBounds();
         }
-
-
         PlayerBullet bullet = new PlayerBullet(5,new Transform(player.getTransform().getPosX() + 75, player.getTransform().getPosY() + 20, 0, 1, 1), 0, damage,Asset.Game.missileBullet);
         bullet.getTransform().setRot(Transform.calculateAngleToTarget(bullet.getTransform(), bounds));
         PlayerBullet bullet2 = new PlayerBullet(5,new Transform(player.getTransform().getPosX() - 25, player.getTransform().getPosY() + 20, 0, 1, 1), 0, damage,Asset.Game.missileBullet);
@@ -75,7 +73,6 @@ public class PlayerUtils {
         if (slashPressed && !InputUtility.isSlashPressed()) {
             t.setPosX(t.getPosX() + p.getX());
             t.setPosY(t.getPosY() + p.getY());
-//                lastTRTime = currentTime;
             Track teleportSound = new Track(Asset.Audio.warp);
             teleportSound.setVolume(0.1);
             teleportSound.play();

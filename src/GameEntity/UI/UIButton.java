@@ -110,8 +110,6 @@ public class UIButton extends UISprite {
                 } else if (buttonType == ButtonType.BOSSCALLED) {
                     setSprite(Asset.UI.buttonBossNormal);
                 }
-
-
             }
         }
 

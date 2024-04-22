@@ -16,8 +16,7 @@ public class EnemyBullet extends BaseBullet {
 
     @Override
     public void draw(GraphicsContext gc) {
-
-        Utility.DrawImage(gc, getImage(), transform);
+        Utility.drawImage(gc, getImage(), transform);
         drawBounds(0.25, 0.25, 0.5, 0.5);
     }
 

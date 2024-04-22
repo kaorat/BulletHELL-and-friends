@@ -39,7 +39,6 @@ public class PlayerManager implements Updatable {
         GameObjectHolder.getInstance().add(player);
     }
 
-
     public Player getPlayer() {
         return player;
     }
@@ -69,8 +68,6 @@ public class PlayerManager implements Updatable {
         }.start();
     }
 
-    // what is reset?
-    //Suchas Answer : Prestege
     public void reset() {
         if (player != null) {
             player.setDestroyed(true);
@@ -84,8 +81,6 @@ public class PlayerManager implements Updatable {
         playerPerks = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0, 0));
         this.weapon = new ArrayList<>();
         weapon.add(new Pair<>("Neuron Missile", 0));
-        //TODO: Config Player
-//        player.setFireRate(getBioticRifleFireRate()*1000);
     }
 
     public void upgradeStat(int index) {
@@ -111,7 +106,6 @@ public class PlayerManager implements Updatable {
                 setProficiency(getProficiency() + Config.PROFICIENCY_UPGRADE);
                 break;
         }
-
     }
 
 

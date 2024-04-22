@@ -87,7 +87,7 @@ public class Transform {
         return new Point2D(deltaX, deltaY); // translations
     }
 
-    private void Accelerate() {
+    private void accelerate() {
         if (maxSpeed > speed && accel > 0) {
             speed += accel;
             if (speed > maxSpeed) speed = maxSpeed;
@@ -101,7 +101,7 @@ public class Transform {
         Point2D translation = calculateTranslation(speed);
         posX += translation.getX();
         posY += translation.getY();
-        Accelerate();
+        accelerate();
     }
 
     public void translate(double speed) {
@@ -109,7 +109,7 @@ public class Transform {
         Point2D translation = calculateTranslation(speed);
         posX += translation.getX();
         posY += translation.getY();
-        Accelerate();
+        accelerate();
     }
 
     public void translateToPositionInMilliSecond(double x, double y, double frame) {

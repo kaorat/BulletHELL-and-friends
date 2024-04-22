@@ -17,7 +17,8 @@ public class SceneManager {
     private static GraphicEditor currentPage;
     private static GraphicEditor bossPage;
 
-    public static void GotoGameScene() {
+    //Setup all class to holder to update every frame
+    public static void gotoGameScene() {
         updatables = new ArrayList<>();
         currentScene = 1;
         SceneManager.updatables.add(GameObjectHolder.getInstance());

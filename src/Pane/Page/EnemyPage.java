@@ -222,7 +222,7 @@ public class EnemyPage extends GraphicEditor {
             }
             //Price
             UISprite price = allPrice.get(i);
-            price.getText().setText(Utility.NumberToString(cost));
+            price.getText().setText(Utility.numberToString(cost));
             //Button
             UIButton button = allButtons.get(i);
 
@@ -238,7 +238,7 @@ public class EnemyPage extends GraphicEditor {
                 button.setEnable(false);
             }
             //Level
-            allLvL.get(i).getText().setText("LV." + Utility.NumberToString(level));
+            allLvL.get(i).getText().setText("LV." + Utility.numberToString(level));
             //Desc
             if (i == 3) {
                 int baseValue = 0;
@@ -249,15 +249,15 @@ public class EnemyPage extends GraphicEditor {
                 } else if (currentEnemy == 2) {
                     baseValue = (int) Config.CHICKEN_BULLET_QUANTITY_BASE * level;
                 }
-                allDescription.get(i).getText().setText(descTemplate.get(i) + Utility.NumberToString((baseValue + upgradeValue)) + " " + increaseTemplate.get(i));
+                allDescription.get(i).getText().setText(descTemplate.get(i) + Utility.numberToString((baseValue + upgradeValue)) + " " + increaseTemplate.get(i));
             } else {
-                allDescription.get(i).getText().setText(descTemplate.get(i) + Utility.NumberToString((Config.enemy_baseValues.get(i + 1) + ((Config.enemy_upgradeValues.get(i + 1)) * level)) * (i == 0 ? multiplier : 1)) + " " + increaseTemplate.get(i));
+                allDescription.get(i).getText().setText(descTemplate.get(i) + Utility.numberToString((Config.enemy_baseValues.get(i + 1) + ((Config.enemy_upgradeValues.get(i + 1)) * level)) * (i == 0 ? multiplier : 1)) + " " + increaseTemplate.get(i));
             }
             //Increase
             if (i == 3) {
-                allIncrease.get(i).getText().setText(Utility.NumberToString(Config.enemy_upgradeValues.get(i + 1) + (currentEnemy == 1 ? 3 : 0)) + " " + increaseTemplate.get(i));
+                allIncrease.get(i).getText().setText(Utility.numberToString(Config.enemy_upgradeValues.get(i + 1) + (currentEnemy == 1 ? 3 : 0)) + " " + increaseTemplate.get(i));
             } else {
-                allIncrease.get(i).getText().setText(Utility.NumberToString(Config.enemy_upgradeValues.get(i + 1) * (i == 0 ? multiplier : 1)) + " " + increaseTemplate.get(i));
+                allIncrease.get(i).getText().setText(Utility.numberToString(Config.enemy_upgradeValues.get(i + 1) * (i == 0 ? multiplier : 1)) + " " + increaseTemplate.get(i));
             }
             if (i <= 4) {
                 allDropIncrease.get(i).getText().setText(Config.enemy_dropUpgradeValues.get(i + 1) + " parts");

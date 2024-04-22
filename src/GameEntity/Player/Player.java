@@ -2,7 +2,6 @@ package GameEntity.Player;
 
 import GameEntity.Bullet.BaseBullet;
 import GameEntity.Bullet.EnemyBullet;
-import GameEntity.Enemy.BaseEnemy;
 import GameEntity.GameObject;
 import GameEntity.Item.Coin;
 import Manager.*;
@@ -25,7 +24,7 @@ public class Player extends GameObject implements Shootable {
     private double speed;
     private Bounds hitbox;
     //    private double fireRate;
-    private ArrayList<Long> lastFireTime;
+    private final ArrayList<Long> lastFireTime;
     private boolean isDying;
     private double iFrametime;
     private Image activeImage;
@@ -38,10 +37,10 @@ public class Player extends GameObject implements Shootable {
         iFrametime = 355;
         isDying = false;
         lastFireTime = new ArrayList<>(Arrays.asList(0L,0L,0L));
-        IFrame();
+        iFrame();
     }
 
-    private void IFrame() {
+    private void iFrame() {
         new AnimationTimer() {
             public void handle(long now) {
                 if (iFrametime < 0) {
@@ -73,18 +72,16 @@ public class Player extends GameObject implements Shootable {
         long currentTime = System.currentTimeMillis();
         if (currentTime - lastFireTime.get(0) > fireRate) {
             PlayerUtils.normal(this);
-            lastFireTime.set(0,currentTime);
+            lastFireTime.set(0, currentTime);
         }
-        if (StatManager.getInstance().getDnaLevels().get(0)>0 && currentTime - lastFireTime.get(1) > fireRate*5) {
+        if (StatManager.getInstance().getDnaLevels().get(0) > 0 && currentTime - lastFireTime.get(1) > fireRate*5) {
             PlayerUtils.autoAim(this);
-            lastFireTime.set(1,currentTime);
+            lastFireTime.set(1, currentTime);
         }
-        if(StatManager.getInstance().getDnaLevels().get(1)>0 && currentTime - lastFireTime.get(2) > 30){
+        if(StatManager.getInstance().getDnaLevels().get(1) > 0 && currentTime - lastFireTime.get(2) > 30){
             PlayerUtils.Laser(this);
-            lastFireTime.set(2,currentTime);
+            lastFireTime.set(2, currentTime);
         }
-//        Track.TECHNOSHOOT1.play();
-//        System.out.println(BulletManager.getInstance().getBullets().size());
     }
 
     public void drawHitbox() {
@@ -107,14 +104,13 @@ public class Player extends GameObject implements Shootable {
         drawHitbox();
         drawGrazebox();
         activeImage = Asset.UI.idle1;
-
-        if(isSlashPressed()&&warpBox!=null){
+        if(isSlashPressed() && warpBox != null){
             activeImage = Asset.UI.idle2;
             gc.setStroke(Color.LIGHTYELLOW);
             gc.strokeRect(warpBox.getMinX(), warpBox.getMinY(), warpBox.getWidth(), warpBox.getHeight());
         }
         if (isDying) activeImage = Asset.UI.attacked;
-        Utility.DrawImage(gc, activeImage, this.transform);
+        Utility.drawImage(gc, activeImage, this.transform);
 
         if (isShiftPressed()) {
             gc.setStroke(Color.RED);
@@ -144,7 +140,6 @@ public class Player extends GameObject implements Shootable {
         if (isDying) {
             return;
         }
-
         if (isShiftPressed()) {
             speed = Config.PLAYER_SPEED_SHIFT;
         } else {
@@ -153,13 +148,10 @@ public class Player extends GameObject implements Shootable {
         shoot();
         PlayerUtils.teleport(this);
         Utility.controlUtility(this.transform, speed);
-
-
         checkOutOfBounds();
-        AutoCollect();
+        autoCollect();
         //Check collision with enemy bullet
         ArrayList<BaseBullet> bulletList = BulletManager.getInstance().getBullets();
-        ArrayList<BaseEnemy> enemies = EnemyManager.getInstance().getEnemies();
         if (iFrametime > 0) {
             return;
         }
@@ -181,7 +173,7 @@ public class Player extends GameObject implements Shootable {
         this.speed = speed;
     }
 
-    private void AutoCollect() {
+    private void autoCollect() {
         if (this.transform.getPosY() <= 175) {
             ItemManager.getInstance().activateAutoCollect();
         }

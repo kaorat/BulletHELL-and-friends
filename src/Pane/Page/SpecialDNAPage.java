@@ -21,7 +21,7 @@ public class SpecialDNAPage extends GraphicEditor {
         create(new UISprite(Asset.UI.backgroundSpecialDNAPage, new Transform(Utility.getGameScreenX(), 0, 0.3, 0.25), 50));
 
         //Header
-        create(new UISprite(Asset.UI.DNAHeader, new Transform(Utility.getGameScreenX() + 86, 70, 0.24, 0.22), 52));
+        create(new UISprite(Asset.UI.dnaHeader, new Transform(Utility.getGameScreenX() + 86, 70, 0.24, 0.22), 52));
 
 
         // Create the button

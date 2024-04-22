@@ -11,9 +11,9 @@ public class Sheep extends BaseEnemy {
 
     public Sheep(Transform transform, double z) {
         super(transform, z);
-        setImage(Asset.Game.WhiteSheepIdleLeft);
-        Perks = EnemyManager.getInstance().getSheepPerks();
-        ApplyStat(EnemyType.SHEEP);
+        setImage(Asset.Game.whiteSheepIdleLeft);
+        perks = EnemyManager.getInstance().getSheepPerks();
+        applyStat(EnemyType.SHEEP);
         lastPatternTime = 0;
         maxHp = (long) hp;
     }
@@ -24,7 +24,7 @@ public class Sheep extends BaseEnemy {
         if (currentTime - lastPatternTime > 1000 * fireRate) {
             Track.TECHNOSHOOT1.setVolume(0.1);
             if (bulletQuantity > 0) Track.TECHNOSHOOT1.play();
-            EnemyUtils.SheepShootPattern(this, bulletSpeed, bulletQuantity, bulletLength);
+            EnemyUtils.activateSheepShootPattern(this, bulletSpeed, bulletQuantity, bulletLength);
             lastPatternTime = currentTime;
         }
     }
@@ -35,20 +35,20 @@ public class Sheep extends BaseEnemy {
         double renderTime = 10d;
         if (state == States.DOWN) {
             downtime -= renderTime;
-            setImage(Asset.Game.WhiteSheepAimLeft);
+            setImage(Asset.Game.whiteSheepAimLeft);
             transform.setRot(90);
             transform.translate(0.7);
             if (downtime <= 0) state = States.SHOOT;
         }
         if (state == States.SHOOT) {
             shootTime -= renderTime;
-            setImage(Asset.Game.WhiteSheepShootLeft);
+            setImage(Asset.Game.whiteSheepShootLeft);
             firing();
             if (shootTime <= 0) state = States.UP;
         }
         if (state == States.UP) {
             uptime -= renderTime;
-            setImage(Asset.Game.WhiteSheepIdleLeft);
+            setImage(Asset.Game.whiteSheepIdleLeft);
             transform.setRot(270);
             transform.translate(0.7);
 
@@ -62,7 +62,7 @@ public class Sheep extends BaseEnemy {
 
     @Override
     public void draw(GraphicsContext gc) {
-        Utility.DrawImage(gc, getImage(), transform);
+        Utility.drawImage(gc, getImage(), transform);
         drawHpBar(gc, EnemyType.SHEEP);
         drawBounds(0, 0);
 

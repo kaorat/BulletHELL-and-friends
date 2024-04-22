@@ -10,19 +10,17 @@ public class Chicken extends BaseEnemy {
 
     public Chicken(Transform transform, double z) {
         super(transform, z);
-        setImage(Asset.Game.WhiteChickenShootRight);
-        Perks = EnemyManager.getInstance().getChickenPerks();
-        ApplyStat(EnemyType.CHICKEN);
+        setImage(Asset.Game.whiteChickenShootRight);
+        perks = EnemyManager.getInstance().getChickenPerks();
+        applyStat(EnemyType.CHICKEN);
         lastPatternTime = 0;
     }
 
     @Override
     public void firing() {
-        // circular direction
-        // utils got it
         long currentTime = System.currentTimeMillis();
         if (currentTime - lastPatternTime > 1000 * fireRate * bulletQuantity) { // 5 seconds
-            EnemyUtils.ChickenShootPattern(this, bulletSpeed);
+            EnemyUtils.activateChickenShootPattern(this, bulletSpeed);
             lastPatternTime = currentTime;
         }
 
@@ -33,13 +31,13 @@ public class Chicken extends BaseEnemy {
         double renderTime = 8d;
         if (state == States.DOWN) {
             downtime -= renderTime;
-            setImage(Asset.Game.WhiteChickenAimRight);
+            setImage(Asset.Game.whiteChickenAimRight);
             transform.setRot(90);
             transform.translate(0.7);
             if (downtime <= 0) state = States.SHOOT;
         }
         if (state == States.SHOOT) {
-            setImage(Asset.Game.WhiteChickenShootRight);
+            setImage(Asset.Game.whiteChickenShootRight);
             shootTime -= renderTime;
             firing();
 
@@ -47,7 +45,7 @@ public class Chicken extends BaseEnemy {
         }
         if (state == States.UP) {
             uptime -= renderTime;
-            setImage(Asset.Game.WhiteChickenIdleRight);
+            setImage(Asset.Game.whiteChickenIdleRight);
             transform.setRot(270);
             transform.translate(0.7);
 
@@ -57,7 +55,7 @@ public class Chicken extends BaseEnemy {
 
     @Override
     public void draw(GraphicsContext gc) {
-        Utility.DrawImage(gc, getImage(), transform);
+        Utility.drawImage(gc, getImage(), transform);
         drawHpBar(gc, EnemyType.CHICKEN);
         drawBounds(0, 0);
     }

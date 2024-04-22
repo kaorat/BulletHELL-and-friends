@@ -16,7 +16,7 @@ public abstract class BaseItem extends GameObject {
 
     }
 
-    public void AutoCollect() {
+    public void autoCollect() {
         autoCollected = true;
         transform.setSpeed(4);
     }

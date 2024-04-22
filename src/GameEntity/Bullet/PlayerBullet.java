@@ -1,6 +1,5 @@
 package GameEntity.Bullet;
 
-import Utils.Asset;
 import Utils.Transform;
 import Utils.Utility;
 import javafx.scene.canvas.GraphicsContext;
@@ -19,7 +18,7 @@ public class PlayerBullet extends BaseBullet {
     public void draw(GraphicsContext gc) {
 
         //gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 10, 10);
-        Utility.DrawImage(gc, getImage(), transform);
+        Utility.drawImage(gc, getImage(), transform);
         drawBounds(0, 0);
 
     }
@@ -30,7 +29,6 @@ public class PlayerBullet extends BaseBullet {
 
     @Override
     public void onUpdate() {
-//        transform.setRot(-90);
         transform.translate();
 
         Utility.isOutOfBounds(this);

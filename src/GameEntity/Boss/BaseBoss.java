@@ -14,16 +14,15 @@ import java.util.ArrayList;
 public abstract class BaseBoss extends GameObject {
     protected double hp;
     protected double maxHp;
-    //142 = 1 sec (WTF)
     protected int frame;
+    //Start pattern
+    protected boolean ready;
 
     public BaseBoss() {
-        //Pattern here
         super(new Transform(250, -200), 30);
-//        frame=0;
+        //Move boss to center screen
         transform.translateToPositionInMilliSecond(250, 100, 3000);
     }
-//    to set firing pattern for each boss
 
     public double getHp() {
         return hp;
@@ -32,21 +31,16 @@ public abstract class BaseBoss extends GameObject {
     public double getMaxHp() {
         return maxHp;
     }
-
-    public abstract void action();
+    public abstract void action();//Update on child node
 
     @Override
     public void onUpdate() {
-        //bullet collision
+        //Update on child node
         action();
-        BulletManager bm = BulletManager.getInstance();
-        ArrayList<BaseBullet> bulletList = bm.getBullets();
-        if (hp <= 0) {
-            StatManager.getInstance().BossDefeated();
-            StatManager.getInstance().setDna(StatManager.getInstance().getDna() + 1);
-            SceneManager.DeActivatedBossPage();
-        }
-        // check collision with player bullet
+        frame++;
+        frame = (frame > 142000) ? frame : 0;
+        //// check collision with player bullet
+        ArrayList<BaseBullet> bulletList = BulletManager.getInstance().getBullets();
         for (BaseBullet bullet : bulletList) {
             if (Transform.checkCollide(this.getBounds(), bullet.getBounds()) && bullet instanceof PlayerBullet) {
                 this.hp -= ((PlayerBullet) bullet).getDamage();
@@ -54,9 +48,10 @@ public abstract class BaseBoss extends GameObject {
             }
         }
 
-        frame++;
-        if (frame > 1200000) {
-            frame = 0;
+        if (hp <= 0) {
+            StatManager.getInstance().BossDefeated();
+            StatManager.getInstance().setDna(StatManager.getInstance().getDna() + 1);
+            SceneManager.DeActivatedBossPage();
         }
 
     }

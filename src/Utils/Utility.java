@@ -38,7 +38,7 @@ public class Utility {
     }
 
 
-    public static String NumberToString(double i) {
+    public static String numberToString(double i) {
         if (i >= Math.pow(10, 12)) {
             return BigDecimal.valueOf(i / Math.pow(10, 12)).setScale(2, RoundingMode.DOWN) + "T";
         }
@@ -54,7 +54,7 @@ public class Utility {
         return String.valueOf(i);
     }
 
-    public static String NumberToString(long i) {
+    public static String numberToString(long i) {
         if (i >= Math.pow(10, 12)) {
             return BigDecimal.valueOf(i / Math.pow(10, 12)).setScale(2, RoundingMode.DOWN) + "T";
         }
@@ -105,7 +105,7 @@ public class Utility {
         }
     }
 
-    public static void DrawImage(GraphicsContext gc, Image sprite, Transform transform) {
+    public static void drawImage(GraphicsContext gc, Image sprite, Transform transform) {
         gc.drawImage(sprite, transform.getPosX(), transform.getPosY(), sprite.getWidth() * transform.getSclX(), sprite.getHeight() * transform.getSclY());
     }
 

@@ -34,13 +34,13 @@ public class EnemyUtils {
     public static double calculateSpawnRate(int level) {
         return 1000 * (Config.SPAWN_TIME_BASE + (Config.REPRODUCTION_SPAWN_TIME_UPGRADE * level));
     }
-
-    public static void ChickenShootPattern(Chicken chicken, double speed) {
+    //spread pattern
+    public static void activateChickenShootPattern(Chicken chicken, double speed) {
         EnemyBullet bullet = new EnemyBullet(speed, new Transform(chicken.getTransform().getPosX() + 25, chicken.getTransform().getPosY() + 20, (Math.random() * 360), 1, 1), 35);
         BulletManager.getInstance().add(bullet);
     }
-
-    public static void SheepShootPattern(Sheep sheep, double speed, int quantity, int length) {
+    //shotgun pattern
+    public static void activateSheepShootPattern(Sheep sheep, double speed, int quantity, int length) {
         if (PlayerManager.getInstance().getPlayer() == null) {
             return;
         }
@@ -66,21 +66,19 @@ public class EnemyUtils {
 
     }
 
-
-    public static void CowShootPattern(Cow cow, int initRot, double speed, int quantity, int length) {
+    //circular pattern
+    public static void activateCowShootPattern(Cow cow, int initRot, double speed, int quantity, int length) {
         // circular direction
         for (int i = 0; i <= quantity; i++) {
             for (int j = 1; j <= length; j++) {
                 EnemyBullet bullet = new EnemyBullet(speed - (speed * (j - 1) / length), new Transform(cow.getTransform().getPosX() + 25, cow.getTransform().getPosY() + 20, (initRot + ((double) (i * 360) / quantity)) % 360, 1, 1), 0);
                 BulletManager.getInstance().add(bullet);
             }
-            //TODO
-
         }
 
     }
 
-    public static void DropParts(double ox, double oy, long parts) {
+    public static void dropParts(double ox, double oy, long parts) {
         double x;
         double y;
         while (parts >= 10000) {

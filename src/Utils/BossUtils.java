@@ -17,7 +17,7 @@ public class BossUtils {
         List<BaseBullet> bullets = new ArrayList<>();
         for (int i = 0; i <= quantity; i++) {
             EnemyBullet bullet = new EnemyBullet(speed, new Transform(x, y, (initRot + ((double) (i * 360) / quantity)) % 360, 1, 1), 27);
-            BulletUtils.ChangeTrajectoryNow(bullet, speed, (initRot + ((double) (i * 360) / quantity)) % 360, accel, maxSpeed);
+            BulletUtils.changeTrajectoryNow(bullet, speed, (initRot + ((double) (i * 360) / quantity)) % 360, accel, maxSpeed);
             BulletManager.getInstance().add(bullet);
             bullets.add(bullet);
 

@@ -50,7 +50,7 @@ public class Coin extends BaseItem { // this is 'parts drop', I just want to cha
     @Override
     public void draw(GraphicsContext gc) {
         //gc.drawImage(getImage(), this.transform.getPosX(), this.transform.getPosY(), 20, 20);
-        Utility.DrawImage(gc, getImage(), transform);
+        Utility.drawImage(gc, getImage(), transform);
         drawBounds(0, 0);
     }
 
@@ -59,11 +59,8 @@ public class Coin extends BaseItem { // this is 'parts drop', I just want to cha
         transform.translate();
         Utility.isOutOfBounds(this);
         if(!canObtain) { return; }
-        if(PlayerManager.getInstance().getPlayer()==null) {
-            autoCollected = false;
-            return;
-        }
-        if(autoCollected) {
+        //item homes to player
+        if(autoCollected && PlayerManager.getInstance().getPlayer()!=null) {
             transform.setRot(Transform.calculateAngleToTarget(getTransform(), PlayerManager.getInstance().getPlayer().getTransform()));
         }
         if (Transform.checkCollide(this.getBounds(), PlayerManager.getInstance().getPlayer().getBounds())) {
@@ -75,8 +72,6 @@ public class Coin extends BaseItem { // this is 'parts drop', I just want to cha
     @Override
     public void onPickup() {
         StatManager.getInstance().addCoin(amount);
-//        System.out.println(amount);
-//        System.out.println(StatManager.getInstance().getCoin());
         this.destroyed = true;
     }
 }

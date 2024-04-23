@@ -159,7 +159,7 @@ public class EnemyPage extends GraphicEditor {
 
     @Override
     public void onUpdate() {
-        int coin = StatManager.getInstance().getCoin();
+        long coin = StatManager.getInstance().getCoin();
         ArrayList<Integer> perks = enemiesPerks.get(currentEnemy);
         partsDrop.getText().setText("Parts Drop: " + perks.get(0));
         int multiplier = (currentEnemy == 1 ? Config.COW_MULTIPLIER : 1) * (currentEnemy == 2 ? Config.CHICKEN_MULTIPLIER : 1);

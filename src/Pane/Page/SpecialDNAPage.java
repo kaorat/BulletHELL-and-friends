@@ -49,7 +49,7 @@ public class SpecialDNAPage extends GraphicEditor {
 
     @Override
     public void onUpdate() {
-        int dna = StatManager.getInstance().getDna();
+        long dna = StatManager.getInstance().getDna();
         if (allButtons.get(2).isPressed()) SceneManager.setCurrentPage(new MainPage(graphicsContext));
         for (int i = 0; i < 2; i++) {
             //Variable

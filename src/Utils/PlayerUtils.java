@@ -24,6 +24,9 @@ public class PlayerUtils {
         PlayerBullet bullet2 = new PlayerBullet(10, new Transform(player.getTransform().getPosX(), player.getTransform().getPosY() + 20, -90, 1, 1), 0, damage,Asset.Game.rifleBullet);
         BulletManager.getInstance().add(bullet);
         BulletManager.getInstance().add(bullet2);
+        AudioClip bulletSound = Asset.Audio.rifleShoot;
+        bulletSound.setVolume(0.1);
+        bulletSound.play();
     }
     public static void Laser(Player player) {
         // player shooting pattern
@@ -49,14 +52,12 @@ public class PlayerUtils {
             }
             bounds = boss.getBounds();
         }
-        PlayerBullet bullet = new PlayerBullet(5,new Transform(player.getTransform().getPosX() + 75, player.getTransform().getPosY() + 20, 0, 1, 1), 0, damage,Asset.Game.missileBullet);
-        bullet.getTransform().setRot(Transform.calculateAngleToTarget(bullet.getTransform(), bounds));
-        PlayerBullet bullet2 = new PlayerBullet(5,new Transform(player.getTransform().getPosX() - 25, player.getTransform().getPosY() + 20, 0, 1, 1), 0, damage,Asset.Game.missileBullet);
-        bullet2.getTransform().setRot(Transform.calculateAngleToTarget(bullet2.getTransform(), bounds));
-        BulletManager.getInstance().add(bullet);
-        BulletManager.getInstance().add(bullet2);
-
-        AudioClip bulletSound = Asset.Audio.bulletSound;
+        for(int i=0;i<2;i++){
+            PlayerBullet bullet = new PlayerBullet(5,new Transform(player.getTransform().getPosX() + 75 - i*100, player.getTransform().getPosY() + 20, 0, 1, 1), 0, damage,Asset.Game.missileBullet);
+            bullet.getTransform().setRot(Transform.calculateAngleToTarget(bullet.getTransform(), bounds));
+            BulletManager.getInstance().add(bullet);
+        }
+        AudioClip bulletSound = Asset.Audio.missileShoot;
         bulletSound.setVolume(0.1);
         bulletSound.play();
     }
@@ -74,12 +75,11 @@ public class PlayerUtils {
             t.setPosX(t.getPosX() + p.getX());
             t.setPosY(t.getPosY() + p.getY());
             Track teleportSound = new Track(Asset.Audio.warp);
-            teleportSound.setVolume(0.1);
+            teleportSound.setVolume(1);
             teleportSound.play();
             factor = 0;
             slashPressed = false;
         }
-
     }
 
 

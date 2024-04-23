@@ -11,13 +11,13 @@ public class StatManager implements Updatable {
     private final ArrayList<Boolean> enemyUnlocked;
     private final ArrayList<Integer> gobletLevels;
     private final ArrayList<Integer> dnaLevels;
-    private int coin;
-    private int totalCoin;
-    private int dna;
-    private int honeyLevel;
-    private int entireHoneyLevel;
-    private int soul;
-    private int amber;
+    private long coin;
+    private long totalCoin;
+    private long dna;
+    private long honeyLevel;
+    private long entireHoneyLevel;
+    private long soul;
+    private long amber;
     private long time;
     private double completion;
     private int death;
@@ -27,11 +27,11 @@ public class StatManager implements Updatable {
 
     public StatManager() {
         setAmber(0);
-        setCoin(0);
+        setCoin(1000000000000000000L);
         setTotalCoin(0);
         setHoneyLevel(0);
         setEntireHoneyLevel(1);
-        setDna(0);
+        setDna(2);
         setCompletion(0);
         setDeath(0);
         setKilled(0);
@@ -81,8 +81,8 @@ public class StatManager implements Updatable {
     }
 
     public void addCoin(long coin) {
-        this.coin += (int) coin * gobletLevels.get(1);
-        this.totalCoin += (int) coin * gobletLevels.get(1);
+        this.coin += coin * gobletLevels.get(1);
+        this.totalCoin += coin * gobletLevels.get(1);
     }
 
     public void addCompletion(double percent) {
@@ -121,38 +121,38 @@ public class StatManager implements Updatable {
         this.killed = killed;
     }
 
-    public int getAmber() {
+    public long getAmber() {
         return amber;
     }
 
-    public void setAmber(int amber) {
+    public void setAmber(long amber) {
         this.amber = amber;
     }
 
-    public int getCoin() {
+    public long getCoin() {
         return coin;
     }
 
-    public void setCoin(int coin) {
+    public void setCoin(long coin) {
         this.coin = coin;
     }
 
-    public int getSoul() {
+    public long getSoul() {
         return soul;
     }
 
-    public void setSoul(int soul) {
+    public void setSoul(long soul) {
         this.soul = soul;
     }
     public void addSoul() {
         soul++;
     }
 
-    public int getDna() {
+    public long getDna() {
         return dna;
     }
 
-    public void setDna(int dna) {
+    public void setDna(long dna) {
         this.dna = dna;
     }
 
@@ -163,7 +163,7 @@ public class StatManager implements Updatable {
         this.bossDefeated++;
     }
 
-    public void setEntireHoneyLevel(int entireHoneyLevel) {
+    public void setEntireHoneyLevel(long entireHoneyLevel) {
         this.entireHoneyLevel = entireHoneyLevel;
     }
 
@@ -171,15 +171,15 @@ public class StatManager implements Updatable {
         return enemyUnlocked;
     }
 
-    public int getHoneyLevel() {
+    public long getHoneyLevel() {
         return honeyLevel;
     }
 
-    public void setHoneyLevel(int honeyLevel) {
+    public void setHoneyLevel(long honeyLevel) {
         this.honeyLevel = honeyLevel;
     }
 
-    public void setTotalCoin(int totalCoin) {
+    public void setTotalCoin(long totalCoin) {
         this.totalCoin = totalCoin;
     }
 

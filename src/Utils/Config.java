@@ -29,7 +29,7 @@ public class Config {
     public static final double AGILITY_BASE_PRICE = 120;
     public static final double AGILITY_PRICE_INCREMENT = 1.5;//Power by level
     public static final double AGILITY_PARTS_DROP_UPGRADE = 5;
-    public static final double AGILITY_MAX_LEVEL = 99;
+    public static final double AGILITY_MAX_LEVEL = 101;
 
     // Lethal Mutation : 3
     public static final double ENEMY_BULLET_SPEED_BASE = 1;
@@ -67,14 +67,14 @@ public class Config {
     public static final double GENETIC_SOUL_CHANCE_UPGRADE = 2;
     public static final double GENETIC_BASE_PRICE = 1000;
     public static final double GENETIC_PRICE_INCREMENT = 1.5;//Power by level
-    public static final double GENETIC_MAX_LEVEL = 20;
+    public static final double GENETIC_MAX_LEVEL = 21;
 
     // Fast Reproduction : 7
     public static final double SPAWN_TIME_BASE = 3;
     public static final double REPRODUCTION_SPAWN_TIME_UPGRADE = -0.05;
     public static final double REPRODUCTION_BASE_PRICE = 100;
     public static final double REPRODUCTION_PRICE_INCREMENT = 1.5;//Power by level
-    public static final double REPRODUCTION_MAX_LEVEL = 75;
+    public static final double REPRODUCTION_MAX_LEVEL = 60;
 
     //TODO : Player
     //Player Speed
@@ -95,28 +95,28 @@ public class Config {
     public static final double PLAYER_FIRE_RATE_UPGRADE = -0.01;
     public static final double PLAYER_FIRE_RATE_BASE_PRICE = 100;
     public static final double PLAYER_FIRE_RATE_PRICE_INCREMENT = 1.75;//Power by level
-    public static final double PLAYER_FIRE_RATE_MAX_LEVEL = 45;
+    public static final double PLAYER_FIRE_RATE_MAX_LEVEL = 47;
 
     //Minimize
     public static final double HITBOX_SIZE_BASE = 5;
     public static final double MINIMIZE_UPGRADE = -0.1;
     public static final double MINIMIZE_BASE_PRICE = 200;
     public static final double MINIMIZE_PRICE_INCREMENT = 1.5;//Power by level
-    public static final double MINIMIZE_MAX_LEVEL = 30;
+    public static final double MINIMIZE_MAX_LEVEL = 31;
 
     //DEXTERITY
     public static final double GRAZE_HITBOX_SIZE_BASE = 8;
     public static final double DEXTERITY_UPGRADE = 0.1;
     public static final double DEXTERITY_BASE_PRICE = 100;
     public static final double DEXTERITY_PRICE_INCREMENT = 1.5;//Power by level
-    public static final double DEXTERITY_MAX_LEVEL = 100;
+    public static final double DEXTERITY_MAX_LEVEL = 101;
 
     //Proficiency
     public static final double PART_PER_GRAZE_BASE = 1;
     public static final double PROFICIENCY_UPGRADE = 1;
     public static final double PROFICIENCY_BASE_PRICE = 1000;
     public static final double PROFICIENCY_PRICE_INCREMENT = 2;//Power by level
-    public static final double PROFICIENCY_MAX_LEVEL = 100;
+    public static final double PROFICIENCY_MAX_LEVEL = 101;
 
     //Goblet galore->10*level soul->level others->2^level
     //cost (level+1)!

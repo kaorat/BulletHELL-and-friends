@@ -99,7 +99,7 @@ public class PlayerPage extends GraphicEditor {
 
     @Override
     public void onUpdate() {
-        int coin = StatManager.getInstance().getCoin();
+        long coin = StatManager.getInstance().getCoin();
         if (allButtons.get(5).isPressed()) SceneManager.setCurrentPage(new MainPage(graphicsContext));
         for (int i = 0; i < 5; i++) {
             //Variable

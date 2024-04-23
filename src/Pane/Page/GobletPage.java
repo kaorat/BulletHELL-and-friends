@@ -109,7 +109,7 @@ public class GobletPage extends GraphicEditor {
 
     @Override
     public void onUpdate() {
-        int amber = StatManager.getInstance().getAmber();
+        long amber = StatManager.getInstance().getAmber();
         if (allButtons.get(5).isPressed()) SceneManager.setCurrentPage(new MainPage(graphicsContext));
         for (int i = 0; i < 5; i++) {
             //Variable

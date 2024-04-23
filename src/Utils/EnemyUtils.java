@@ -79,35 +79,25 @@ public class EnemyUtils {
     }
 
     public static void dropParts(double ox, double oy, long parts) {
-        double x;
-        double y;
+        double x = (80 * (Math.random() - 0.25)) + ox;
+        double y = (30 * (Math.random() - 0.25)) + oy;
         while (parts >= 10000) {
-            x = (80 * (Math.random() - 0.25)) + ox;
-            y = (30 * (Math.random() - 0.25)) + oy;
             ItemManager.getInstance().add(new Coin(x, y, 0.08, 10000));
             parts -= 10000;
         }
         while (parts >= 1000) {
-            x = (80 * (Math.random() - 0.25)) + ox;
-            y = (30 * (Math.random() - 0.25)) + oy;
             ItemManager.getInstance().add(new Coin(x, y, 0.07, 1000));
             parts -= 1000;
         }
         while (parts >= 100) {
-            x = (80 * (Math.random() - 0.25)) + ox;
-            y = (30 * (Math.random() - 0.25)) + oy;
             ItemManager.getInstance().add(new Coin(x, y, 0.06, 100));
             parts -= 100;
         }
         while (parts >= 10) {
-            x = (80 * (Math.random() - 0.25)) + ox;
-            y = (30 * (Math.random() - 0.25)) + oy;
             ItemManager.getInstance().add(new Coin(x, y, 0.05, 10));
             parts -= 10;
         }
         while (parts > 0) {
-            x = (80 * (Math.random() - 0.25)) + ox;
-            y = (30 * (Math.random() - 0.25)) + oy;
             ItemManager.getInstance().add(new Coin(x, y, 0.04, 1));
             parts -= 1;
         }

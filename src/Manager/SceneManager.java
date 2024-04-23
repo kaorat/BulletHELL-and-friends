@@ -36,7 +36,7 @@ public class SceneManager {
         SceneManager.updatables.add(StatManager.getInstance());
         currentState = GameState.normal;
         Track.BGM.setCycleCount(AudioClip.INDEFINITE);
-        Track.BGM.setVolume(0.05);
+        Track.BGM.setVolume(0.5);
         Track.BGM.play();
     }
 

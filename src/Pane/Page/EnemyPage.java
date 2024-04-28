@@ -173,6 +173,7 @@ public class EnemyPage extends GraphicEditor {
                 allDescription.get(7).getText().setText("Unlock " + "Chicken");
                 int cost = enemyUnlockCost.get(2);
                 allPrice.get(7).getText().setText(String.valueOf(cost));
+                allButtons.get(7).setEnable(false);
                 if (coin > cost) {
                     allButtons.get(7).setEnable(true);
                     if (allButtons.get(7).isPressed()) {

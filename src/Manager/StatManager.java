@@ -161,6 +161,7 @@ public class StatManager implements Updatable {
     }
     public void BossDefeated() {
         this.bossDefeated++;
+        StatManager.getInstance().addCompletion(5);
     }
 
     public void setEntireHoneyLevel(long entireHoneyLevel) {

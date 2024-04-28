@@ -182,7 +182,7 @@ public class EnemyPage extends GraphicEditor {
                         allDescription.get(7).getText().setText("");
                         allPrice.get(7).getText().setText("");
                         allButtons.get(7).setVisible(false);
-                        StatManager.getInstance().addCompletion(2.5);
+                        StatManager.getInstance().addCompletion(5);
                     }
                 }
             }
@@ -200,7 +200,7 @@ public class EnemyPage extends GraphicEditor {
                     StatManager.getInstance().setCoin(coin - cost);
                     StatManager.getInstance().getEnemyUnlocked().set(1, true);
                     unlockEnemy.get(1).setEnable(true);
-                    StatManager.getInstance().addCompletion(2.5);
+                    StatManager.getInstance().addCompletion(5);
                 }
             }
         }

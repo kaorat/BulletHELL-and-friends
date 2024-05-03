@@ -16,6 +16,7 @@ public abstract class BaseBoss extends GameObject {
     protected double maxHp;
     protected int frame;
     //Start pattern
+    protected long lastFrameTime = 0;
     protected boolean ready;
 
     public BaseBoss() {
@@ -36,8 +37,13 @@ public abstract class BaseBoss extends GameObject {
     @Override
     public void onUpdate() {
         //Update on child node
-        action();
-        frame++;
+        long currentTime = System.nanoTime();
+
+        if (currentTime - lastFrameTime > (1000000000 / 120)) {
+            frame++;
+            action();
+            lastFrameTime = currentTime;
+        }
         frame = (frame > 142000) ? 0 : frame;
         //// check collision with player bullet
         ArrayList<BaseBullet> bulletList = BulletManager.getInstance().getBullets();

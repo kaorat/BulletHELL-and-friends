@@ -34,7 +34,7 @@ public class Player extends GameObject implements Shootable {
         this.speed = Config.PLAYER_SPEED_BASE;
         setImage(Asset.UI.idle1);
         activeImage = Asset.UI.idle1;
-        iFrametime = 355;
+        iFrametime = 24;
         isDying = false;
         lastFireTime = new ArrayList<>(Arrays.asList(0L,0L,0L));
         iFrame();
@@ -46,8 +46,8 @@ public class Player extends GameObject implements Shootable {
                 if (iFrametime < 0) {
                     this.stop();
                 }
-                visible = !(iFrametime % 36 >= 0) || !(iFrametime % 36 <= 18);
-                iFrametime--;
+                visible = !(iFrametime % 4 >= 0) || !(iFrametime % 4 < 2);
+                iFrametime -= Config.deltaTime*10;
             }
         }.start();
     }

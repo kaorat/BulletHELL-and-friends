@@ -10,7 +10,10 @@ public class Chicken extends BaseEnemy {
 
     public Chicken(Transform transform, double z) {
         super(transform, z);
-        setImage(Asset.Game.whiteChickenShootRight);
+        sprites.add(Asset.Game.whiteChickenAimRight);
+        sprites.add(Asset.Game.whiteChickenShootRight);
+        sprites.add(Asset.Game.whiteChickenIdleRight);
+        setImage(sprites.get(0));
         perks = EnemyManager.getInstance().getChickenPerks();
         applyStat(EnemyType.CHICKEN);
         lastPatternTime = 0;
@@ -28,29 +31,7 @@ public class Chicken extends BaseEnemy {
 
     @Override
     public void action() {
-        double renderTime = 8d;
-        if (state == States.DOWN) {
-            downtime -= renderTime;
-            setImage(Asset.Game.whiteChickenAimRight);
-            transform.setRot(90);
-            transform.translate(0.7);
-            if (downtime <= 0) state = States.SHOOT;
-        }
-        if (state == States.SHOOT) {
-            setImage(Asset.Game.whiteChickenShootRight);
-            shootTime -= renderTime;
-            firing();
 
-            if (shootTime <= 0) state = States.UP;
-        }
-        if (state == States.UP) {
-            uptime -= renderTime;
-            setImage(Asset.Game.whiteChickenIdleRight);
-            transform.setRot(270);
-            transform.translate(0.7);
-
-            if (uptime <= 0) destroyed = true;
-        }
     }
 
     @Override

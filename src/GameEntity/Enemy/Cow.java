@@ -11,7 +11,10 @@ public class Cow extends BaseEnemy {
 
     public Cow(Transform transform, double z) {
         super(transform, z);
-        setImage(Asset.Game.whiteCowIdleLeft);
+        sprites.add(Asset.Game.whiteCowAimLeft);
+        sprites.add(Asset.Game.whiteCowShootLeft);
+        sprites.add(Asset.Game.whiteCowIdleLeft);
+        setImage(sprites.get(0));
         perks = EnemyManager.getInstance().getCowPerks();
         applyStat(EnemyType.COW);
         lastPatternTime = 0;
@@ -31,29 +34,6 @@ public class Cow extends BaseEnemy {
 
     @Override
     public void action() {
-
-        double renderTime = 16d;
-        if (state == States.DOWN) {
-            downtime -= renderTime;
-            setImage(Asset.Game.whiteCowAimLeft);
-            transform.setRot(90);
-            transform.translate(0.7);
-            if (downtime <= 0) state = States.SHOOT;
-        }
-        if (state == States.SHOOT) {
-            shootTime -= renderTime;
-            setImage(Asset.Game.whiteCowShootLeft);
-            firing();
-            if (shootTime <= 0) state = States.UP;
-        }
-        if (state == States.UP) {
-            uptime -= renderTime;
-            setImage(Asset.Game.whiteCowIdleLeft);
-            transform.setRot(270);
-            transform.translate(0.7);
-
-            if (uptime <= 0) destroyed = true;
-        }
     }
 
     @Override

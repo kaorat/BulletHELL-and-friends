@@ -36,7 +36,7 @@ public class StatManager implements Updatable {
         setDeath(0);
         setKilled(0);
         setTime(0);
-        setSoul(0);
+        setSoul(100000);
         gobletLevels = new ArrayList<>(Arrays.asList(1, 1, 1, 1, 1));
         dnaLevels = new ArrayList<>(Arrays.asList(0, 0));
         enemyUnlocked = new ArrayList<>(Arrays.asList(true, false, false));

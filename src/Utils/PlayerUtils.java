@@ -68,8 +68,8 @@ public class PlayerUtils {
         player.warpBox = new BoundingBox(t.getPosX() + p.getX(), t.getPosY() + p.getY(), player.getImage().getWidth() * t.getSclX(), player.getImage().getHeight() * t.getSclY());
         if (InputUtility.isSlashPressed()) {
             slashPressed = true;
-            factor += 5;
-            if (factor > 200) factor = 200;
+            factor += 4;
+            if (factor > 150) factor = 150;
         }
         if (slashPressed && !InputUtility.isSlashPressed()) {
             t.setPosX(t.getPosX() + p.getX());

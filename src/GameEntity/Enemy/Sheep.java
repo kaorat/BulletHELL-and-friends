@@ -11,8 +11,11 @@ public class Sheep extends BaseEnemy {
 
     public Sheep(Transform transform, double z) {
         super(transform, z);
-        setImage(Asset.Game.whiteSheepIdleLeft);
         perks = EnemyManager.getInstance().getSheepPerks();
+        sprites.add(perks.get(4) > 0 ? Asset.Game.whiteSheepAimLeft:Asset.Game.whiteSheepIdleLeft);
+        sprites.add(perks.get(4) > 0 ? Asset.Game.whiteSheepShootLeft:Asset.Game.whiteSheepIdleLeft);
+        sprites.add(Asset.Game.whiteSheepIdleLeft);
+        setImage(sprites.get(0));
         applyStat(EnemyType.SHEEP);
         lastPatternTime = 0;
         maxHp = (long) hp;
@@ -31,29 +34,6 @@ public class Sheep extends BaseEnemy {
 
     @Override
     public void action() {
-
-        double renderTime = 10d;
-        if (state == States.DOWN) {
-            downtime -= renderTime;
-            setImage(Asset.Game.whiteSheepAimLeft);
-            transform.setRot(90);
-            transform.translate(0.7);
-            if (downtime <= 0) state = States.SHOOT;
-        }
-        if (state == States.SHOOT) {
-            shootTime -= renderTime;
-            setImage(Asset.Game.whiteSheepShootLeft);
-            firing();
-            if (shootTime <= 0) state = States.UP;
-        }
-        if (state == States.UP) {
-            uptime -= renderTime;
-            setImage(Asset.Game.whiteSheepIdleLeft);
-            transform.setRot(270);
-            transform.translate(0.7);
-
-            if (uptime <= 0) destroyed = true;
-        }
         boolean click = Utility.checkHover(getTransform(), getImage()) && MouseUtil.isActivated();
         if (click) {
             hp -= (double) maxHp / 10;

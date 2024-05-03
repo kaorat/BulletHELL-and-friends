@@ -6,6 +6,7 @@ import GameEntity.GameObject;
 import Manager.BulletManager;
 import Manager.SceneManager;
 import Manager.StatManager;
+import Utils.Config;
 import Utils.Transform;
 import javafx.scene.canvas.GraphicsContext;
 
@@ -17,6 +18,7 @@ public abstract class BaseBoss extends GameObject {
     protected int frame;
     //Start pattern
     protected boolean ready;
+    protected double fpsCal;
 
     public BaseBoss() {
         super(new Transform(250, -200), 30);
@@ -39,6 +41,7 @@ public abstract class BaseBoss extends GameObject {
         action();
         frame++;
         frame = (frame > 142000) ? 0 : frame;
+        fpsCal = 1.0 / Config.fpsCalibration;
         //// check collision with player bullet
         ArrayList<BaseBullet> bulletList = BulletManager.getInstance().getBullets();
         for (BaseBullet bullet : bulletList) {
@@ -53,7 +56,6 @@ public abstract class BaseBoss extends GameObject {
             StatManager.getInstance().setDna(StatManager.getInstance().getDna() + 1);
             SceneManager.DeActivatedBossPage();
         }
-
     }
 
     @Override

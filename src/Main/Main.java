@@ -2,6 +2,7 @@ package Main;
 
 import Manager.SceneManager;
 import Pane.RootPane;
+import Utils.Config;
 import Utils.Utility;
 import Input.InputUtility;
 import Input.MouseUtil;
@@ -22,6 +23,8 @@ public class Main extends Application {
     public static Scene getScene() {
         return scene;
     }
+    private long lastSecFrameTime;
+    private long framePast;
 
     @Override
     public void start(Stage primaryStage) {
@@ -48,8 +51,28 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();
+        //Fps
+        lastSecFrameTime = System.currentTimeMillis();
+        framePast = 144;
+        Config.fpsCalibration = 1;
+        Config.deltaTime = 1.0 / 144;
         AnimationTimer animation = new AnimationTimer() {
             public void handle(long now) {
+                //fps limit
+                if(System.currentTimeMillis() - lastSecFrameTime >= 1000){
+                    if(framePast%10>3 && framePast%10<=8){
+                        framePast = (framePast / 10) * 10 + 5;
+                    }
+                    else{
+                        framePast = (framePast / 10) * 10;
+                    }
+                    Config.fpsCalibration = (144.0 / framePast);
+                    Config.deltaTime = 1.0 / framePast;
+                    framePast = 0;
+                    lastSecFrameTime = System.currentTimeMillis();
+                }
+                framePast++;
+                //update
                 scene.setCursor(Cursor.cursor("DEFAULT"));
                 RootPane.paintComponent();
                 SceneManager.update();

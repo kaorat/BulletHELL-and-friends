@@ -50,14 +50,10 @@ public class BulletUtils {
                 if (System.currentTimeMillis() - startFrame <= phase1) {
 //                    System.out.println("changing trajectory" + (System.currentTimeMillis() - startFrame));
                     bullet.getTransform().setRot(bullet.getTransform().getRot() + angularRot);
-
                     return;
                 }
                 this.stop();
             }
         }.start();
-
     }
-
-
 }

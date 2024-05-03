@@ -65,7 +65,7 @@ public class SpecialDNAPage extends GraphicEditor {
             int level = StatManager.getInstance().getDnaLevels().get(i);
             UISprite price = allPrice.get(i);
             if (level > 0) {
-                price.getText().setText("OBTAINED");
+                price.getText().setText("Ok !");
                 continue;
             }
             //Price

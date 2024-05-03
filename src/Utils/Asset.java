@@ -14,6 +14,8 @@ public class Asset {
         public static Image partUI;
         public static Image soulUI;
         public static Image honeyUI;
+        public static Image dnaUI;
+        public static Image dnablackUI;
         public static Image headerMain;
         public static Image backButtonNormal;
         public static Image backButtonHover;
@@ -121,6 +123,8 @@ public class Asset {
             partUI = LoadImg("UI/Currency/meat.png");
             soulUI = LoadImg("UI/Enemy/skull.png");
             honeyUI = LoadImg("UI/Currency/Honey.png");
+            dnaUI = LoadImg("UI/Currency/dna.png");
+            dnablackUI = LoadImg("UI/Currency/dnablack.png");
 
             upgradeHeader = LoadImg("UI/Header/upgradeHeader.png");
             playerHeader = LoadImg("UI/Header/playerHeader.png");

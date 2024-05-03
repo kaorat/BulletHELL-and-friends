@@ -27,9 +27,11 @@ public class KaoBoss extends BaseBoss {
 
     @Override
     public void action() {
+//        System.out.println(fpsCal);
+        System.out.println(frame);
         int angleToP = (int) ((PlayerManager.getInstance().getPlayer() != null) ? Transform.calculateAngleToTarget(getTransform(), PlayerManager.getInstance().getPlayer().getTransform()) : 90);
         if (!ready) {
-            if (frame > 600) {
+            if (frame > (int)(fpsCal * 600)) {
                 ready = true;
             }
             return;
@@ -38,24 +40,29 @@ public class KaoBoss extends BaseBoss {
             BulletManager.getInstance().clearBullets();
             clearPhase = true;
         }
+
         //phase 1
         if (hp > 5000) {
-            if (frame % 1000 == 0) {
+            if (frame % (int)(fpsCal * 2000) == 0) {
                 sendSlowTwister(angleToP, 1);
             }
-            if (frame % 1000 == 500) {
+            if (frame % (int)(fpsCal * 2000) == (int)(fpsCal * 1000)) {
                 sendFastTwister(angleToP);
                 leftRight = leftRight == 1 ? -1 : 1;
             }
         }
         // Phase 2
         else {
-            if (frame % 500 == 0) {
-                sendSlowTwister(angleToP,2);
-            }
-            if (frame % 800 == 0) {
+//            if (frame % (int)(fpsCal * 1000) == 0) {
+//                sendSlowTwister(angleToP,2);
+//            }
+            if (frame % (int)(fpsCal * 1000) == 0) {
                 sendFastTwister(angleToP);
                 leftRight = leftRight == 1 ? -1 : 1;
+            }
+            if (frame % (int)(fpsCal * 1000) == (int) (fpsCal * 500)) {
+                sendFastTwister(angleToP);
+                leftRight = leftRight == 1 ? 1 : -1;
             }
         }
     }

@@ -6,8 +6,9 @@ import java.util.Arrays;
 
 public class Config {
 
-    //TODO
-    // might need to make a base for each enemy type
+    //Fps
+    public static double fpsCalibration;
+    public static double deltaTime;
     //Enemy Multiplier -> multiply hp and price
     public static final int COW_MULTIPLIER = 10;
     public static final int CHICKEN_MULTIPLIER = 100;

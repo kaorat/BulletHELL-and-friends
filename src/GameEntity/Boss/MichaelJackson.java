@@ -36,32 +36,32 @@ public class MichaelJackson extends BaseBoss {
         double x = getTransform().getPosX() + (getImage().getWidth() * getTransform().getSclX()) / 2;
         double y = getTransform().getPosY() + (getImage().getHeight() * getTransform().getSclY()) / 2 - 25;
         if (!ready) {
-            if (frame > 600) {
+            if (frame > (int)(fpsCal * 600)) {
                 ready = true;
             }
             return;
         }
         preAction();
         // phase1
-        if (frame % 10 == 0) {
+        if (frame % (int)(fpsCal * 10) == 0) {
             sendDisco(x,y);
         }// phase2
         if (hp <= 160000) {
-            if (frame % 10 == 0) {
+            if (frame % (int)(fpsCal * 10) == 0) {
                 BulletUtils.shoot(x, y, 3, Math.random() * 90 + 225);
             }
-            if (frame % 40 == 0) {
+            if (frame % (int)(fpsCal * 40) == 0) {
                 BaseBullet rain = BulletUtils.shoot(Math.random() * Utility.getGameScreenX() - 5, 0, 0, 90);
                 BulletUtils.changeTrajectoryNow(rain, 0, 90, 0.01, 3);
             }
         }//phase3
         if (hp <= 80000) {
-            if (frame % 568 == 200) {
+            if (frame % (int)(fpsCal * 568) == (int)(fpsCal * 200)) {
                 sendWing(x,y);
                 leftRight = leftRight == 1 ? -1 : 1;
             }
         }
-        if (frame % 2130 == 700) {
+        if (frame % (int)(fpsCal * 2130) == (int)(fpsCal * 700)) {
             dancing();
         }
     }
@@ -77,10 +77,10 @@ public class MichaelJackson extends BaseBoss {
             BulletManager.getInstance().clearBullets();
             clearPhase = true;
         }
-        if (!startRotate && frame > 800) {
+        if (!startRotate && frame > (int)(fpsCal * 800)) {
             startRotate = true;
         }
-        if (!startChaos && frame > 1600) {
+        if (!startChaos && frame > (int)(fpsCal * 1600)) {
             startChaos = true;
         }
     }
@@ -124,19 +124,19 @@ public class MichaelJackson extends BaseBoss {
             public void handle(long now) {
                 if (frame2 == 0) {
                     transform.translateToPositionInMilliSecond(50, 75, 2500);
-                } else if (frame2 == 355) {
+                } else if (frame2 == (int)(fpsCal * 355)) {
                     transform.translateToPositionInMilliSecond(150, 120, 1000);
-                } else if (frame2 == 497) {
+                } else if (frame2 == (int)(fpsCal * 497)) {
                     transform.translateToPositionInMilliSecond(230, 150, 1000);
-                } else if (frame2 == 639) {
+                } else if (frame2 == (int)(fpsCal * 639)) {
                     transform.translateToPositionInMilliSecond(450, 70, 3000);
-                } else if (frame2 == 1065) {
+                } else if (frame2 == (int)(fpsCal * 1065)) {
                     transform.translateToPositionInMilliSecond(350, 80, 1000);
-                } else if (frame2 == 1207) {
+                } else if (frame2 == (int)(fpsCal * 1207)) {
                     transform.translateToPositionInMilliSecond(400, 134, 2000);
-                } else if (frame2 == 1491) {
+                } else if (frame2 == (int)(fpsCal * 1491)) {
                     transform.translateToPositionInMilliSecond(420, 90, 1000);
-                } else if (frame2 == 1633) {
+                } else if (frame2 == (int)(fpsCal * 1633)) {
                     transform.translateToPositionInMilliSecond(250, 100, 2500);
                     this.stop();
                 }

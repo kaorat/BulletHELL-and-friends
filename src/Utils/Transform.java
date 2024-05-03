@@ -81,18 +81,18 @@ public class Transform {
     public Point2D calculateTranslation(double factor) {
 
         double angleRad = Math.toRadians(rot);
-        double deltaX = factor * Math.cos(angleRad);
-        double deltaY = factor * Math.sin(angleRad);
+        double deltaX = factor * Math.cos(angleRad) * Config.fpsCalibration;
+        double deltaY = factor * Math.sin(angleRad) * Config.fpsCalibration;
 
         return new Point2D(deltaX, deltaY); // translations
     }
 
     private void accelerate() {
         if (maxSpeed > speed && accel > 0) {
-            speed += accel;
+            speed += accel * Config.fpsCalibration;
             if (speed > maxSpeed) speed = maxSpeed;
         } else if (maxSpeed < speed && accel < 0) {
-            speed += accel;
+            speed += accel * Config.fpsCalibration;
             if (speed < maxSpeed) speed = maxSpeed;
         }
     }

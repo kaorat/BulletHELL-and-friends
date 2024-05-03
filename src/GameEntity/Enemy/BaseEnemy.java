@@ -7,16 +7,14 @@ import GameEntity.Item.Soul;
 import Manager.BulletManager;
 import Manager.ItemManager;
 import Manager.StatManager;
-import Utils.EnemyType;
-import Utils.EnemyUtils;
-import Utils.Transform;
+import Utils.*;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
 public abstract class BaseEnemy extends GameObject {
-
     protected long partDrop;
     protected double hp;
     protected double fireRate;
@@ -29,17 +27,18 @@ public abstract class BaseEnemy extends GameObject {
     protected double uptime;
     protected double downtime;
     protected double shootTime;
+    protected ArrayList<Image> sprites;
     protected States state;
 
     public BaseEnemy(Transform transform, double z) {
         super(transform, z);
-
+        sprites = new ArrayList<>();
         this.fireRate = 700;
         this.partDrop = 11;
         state = States.DOWN;
-        downtime = Math.random() * 1000 + 1400;
+        downtime = Math.random() * 1000 + 1000;
         uptime = downtime;
-        shootTime = Math.random() * 3000 + 5000;
+        shootTime = Math.random() * 3000 + 2000;
 
     }
 
@@ -72,6 +71,7 @@ public abstract class BaseEnemy extends GameObject {
         //bullet collision
         BulletManager bm = BulletManager.getInstance();
         ArrayList<BaseBullet> bulletList = bm.getBullets();
+        move();
         if (this.hp <= 0) {
             EnemyUtils.dropParts(transform.getPosX(), transform.getPosY(), partDrop);
             if(Math.random() * 100 <= soulChance){
@@ -86,7 +86,30 @@ public abstract class BaseEnemy extends GameObject {
                 bullet.setDestroyed(true);
             }
         }
+    }
+    private void move()
+    {
+        if (state == States.DOWN) {
+            downtime -= 1000 * Config.deltaTime;
+            setImage(sprites.get(0));
+            transform.setRot(90);
+            transform.translate(0.7);
+            if (downtime <= 0) state = States.SHOOT;
+        }
+        if (state == States.SHOOT) {
+            setImage(sprites.get(1));
+            shootTime -= 1000 * Config.deltaTime;
+            firing();
+            if (shootTime <= 0) state = States.UP;
+        }
+        if (state == States.UP) {
+            uptime -= 1000 * Config.deltaTime;
+            setImage(sprites.get(2));
+            transform.setRot(270);
+            transform.translate(0.7);
 
+            if (uptime <= 0) destroyed = true;
+        }
     }
 
     protected enum States {

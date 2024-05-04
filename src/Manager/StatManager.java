@@ -28,7 +28,7 @@ public class StatManager implements Updatable {
     public StatManager() {
         setAmber(0);
         setCoin(1000000000000000000L);
-        setTotalCoin(0);
+        setTotalCoin(5000);
         setHoneyLevel(0);
         setEntireHoneyLevel(1);
         setDna(2);
@@ -62,7 +62,7 @@ public class StatManager implements Updatable {
     }
 
     public void reset() {
-        setAmber(getAmber());
+        setAmber(getAmber() + honeyLevel);
         setCoin(0);
         setSoul(0);
         setHoneyLevel(0);

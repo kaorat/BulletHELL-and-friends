@@ -99,8 +99,8 @@ public class KaoBoss extends BaseBoss {
     public void draw(GraphicsContext gc) {
         Utility.drawImage(gc, getImage(), transform);
         drawBounds(0, 0, 1, 1);
-        gc.setStroke(Color.YELLOW);
-        gc.strokeRect(bounds.getMinX(), bounds.getMinY(), bounds.getWidth(), bounds.getHeight());
+//        gc.setStroke(Color.YELLOW);
+//        gc.strokeRect(bounds.getMinX(), bounds.getMinY(), bounds.getWidth(), bounds.getHeight());
     }
 }
 

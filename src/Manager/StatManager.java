@@ -27,16 +27,16 @@ public class StatManager implements Updatable {
 
     public StatManager() {
         setAmber(0);
-        setCoin(1000000000000000000L);
-        setTotalCoin(5000);
+        setCoin(0);
+        setTotalCoin(0);
         setHoneyLevel(0);
         setEntireHoneyLevel(1);
-        setDna(2);
+        setDna(0);
         setCompletion(0);
         setDeath(0);
         setKilled(0);
         setTime(0);
-        setSoul(100000);
+        setSoul(0);
         gobletLevels = new ArrayList<>(Arrays.asList(1, 1, 1, 1, 1));
         dnaLevels = new ArrayList<>(Arrays.asList(0, 0));
         enemyUnlocked = new ArrayList<>(Arrays.asList(true, false, false));

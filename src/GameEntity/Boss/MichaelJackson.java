@@ -11,7 +11,6 @@ import javafx.scene.canvas.GraphicsContext;
 import java.util.ArrayList;
 
 public class MichaelJackson extends BaseBoss {
-    private boolean ready;
     private boolean startRotate;
     private boolean startChaos;
     private boolean clearPhase;

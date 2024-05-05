@@ -59,7 +59,5 @@ public abstract class BaseBoss extends GameObject {
     }
 
     @Override
-    public void draw(GraphicsContext gc) {
-
-    }
+    public abstract void draw(GraphicsContext gc);
 }

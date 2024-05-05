@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class KaoBoss extends BaseBoss {
-    private boolean ready;
     private int leftRight = 1; // Shuffle pattern side
     private boolean clearPhase; // Clear bullet as the next phase begins
 
@@ -27,8 +26,6 @@ public class KaoBoss extends BaseBoss {
 
     @Override
     public void action() {
-//        System.out.println(fpsCal);
-        System.out.println(frame);
         int angleToP = (int) ((PlayerManager.getInstance().getPlayer() != null) ? Transform.calculateAngleToTarget(getTransform(), PlayerManager.getInstance().getPlayer().getTransform()) : 90);
         if (!ready) {
             if (frame > (int)(fpsCal * 600)) {
@@ -44,7 +41,7 @@ public class KaoBoss extends BaseBoss {
         //phase 1
         if (hp > 5000) {
             if (frame % (int)(fpsCal * 2000) == 0) {
-                sendSlowTwister(angleToP, 1);
+                sendSlowTwister(angleToP);
             }
             if (frame % (int)(fpsCal * 2000) == (int)(fpsCal * 1000)) {
                 sendFastTwister(angleToP);
@@ -67,11 +64,10 @@ public class KaoBoss extends BaseBoss {
         }
     }
     //Create slow circle pattern
-    private void sendSlowTwister(int angleToP, int phase) {
+    private void sendSlowTwister(int angleToP) {
         List<List<BaseBullet>> bulletsBox = new ArrayList<>();
-        int angle = phase == 1 ? angleToP : (int) (Math.random() * 90);
         for (int i = 0; i < Math.floor(Math.random() * 10) + 30; i++) {
-            List<BaseBullet> bullets = BossUtils.circular(this, angle + (10 * i), 1.5 + (i * 0.08), 6, -0.05, 0);
+            List<BaseBullet> bullets = BossUtils.circular(this, angleToP + (10 * i), 1.5 + (i * 0.08), 6, -0.05, 0);
             bulletsBox.add(bullets);
         }
         for (int i = 0; i < bulletsBox.size(); i++) {
